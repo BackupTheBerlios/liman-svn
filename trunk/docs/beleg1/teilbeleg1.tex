@@ -5,22 +5,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
 \usepackage[T1]{fontenc}
-
-% Hilfsfunktion für Erkennenung der Erzeugung von PDF
-\newif\ifpdf 
-\ifx\pdfoutput\undefined
-  \pdffalse
-\else
-  \ifx\pdfoutput\relax
-    \pdffalse
-  \else
-    \ifnum\pdfoutput>0
-      \pdftrue
-    \else
-      \pdffalse
-    \fi
-  \fi
-\fi
+\usepackage{user} % eigene Befehle
 
 \ifpdf
   \usepackage[ps2pdf]{thumbpdf}
