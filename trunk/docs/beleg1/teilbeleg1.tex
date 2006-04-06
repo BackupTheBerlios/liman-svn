@@ -1,0 +1,47 @@
+\documentclass[a4paper,11pt,twoside]{scrreprt}
+
+\usepackage{txfonts}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+
+% Hilfsfunktion für Erkennenung der Erzeugung von PDF
+\newif\ifpdf 
+\ifx\pdfoutput\undefined
+  \pdffalse
+\else
+  \ifx\pdfoutput\relax
+    \pdffalse
+  \else
+    \ifnum\pdfoutput>0
+      \pdftrue
+    \else
+      \pdffalse
+    \fi
+  \fi
+\fi
+
+\ifpdf
+  \usepackage[ps2pdf]{thumbpdf}
+  \usepackage[pdftex]{hyperref}
+\else
+  \usepackage[active]{srcltx}
+\fi
+
+\include{meta} % Metainformationen wie Titel, Autoren,...
+
+\begin{document}
+\include{titel} % Titel des Dokuments mit Informationen aus meta
+
+% nur zum arbeiten
+\tableofcontents
+
+%Kapitel
+\include{funktionelle_anforderungen}
+\include{operationelle_anforderungen}
+\include{qualitaetsanforderungen}
+\include{basismaschine_umgebung}
+\include{planung}
+
+\end{document}

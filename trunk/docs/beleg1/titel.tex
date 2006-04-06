@@ -1,0 +1,49 @@
+% Momentan (schlecht) handgestrickt - wenn jemand es mit \maketitle und den
+% Autoren wie in Vorlage hinbekommt, bitte ändern
+
+\pagestyle{empty}% Nummern aus
+{% Kopf des Titels
+	\usekomafont{sectioning}
+	\begin{center}
+		\Large \bf{Softwarepraktikum 2006}\\[1.5ex]
+	\end{center}
+}
+\vspace{1.5cm}
+
+{%Titel
+	\begin{center}
+		\Huge\bf\dctitle
+		\\[2.5ex]
+	\end{center}
+}
+\vspace{1.5cm}
+
+{%Subjekt
+	\begin{center}
+		\bf\huge\dcsubject\\[1.5ex]
+		\dcsubtitle
+	\end{center}
+}
+\vspace{2.0cm}
+
+{%Autoren
+	\begin{tabbing}
+		\hspace{4.5cm}\=\textbf{Teamleiter:}\hspace{0.5cm}\=Simon~Wunderlich\\[2.0ex]
+		            \>\textbf{Mitglieder des Projektteams:}\\[1.5ex]
+		            \>            \>Andreas~Tröger \\[1.5ex]
+		            \>            \>Frank~Wilhelm \\[1.5ex]
+		            \>            \>Florian~Scharl \\[1.5ex]
+		            \>            \>Sven~Eckelmann \\[4.0ex]
+                            \> \textbf{Praktikumsbetreuer:} . . . . . . . . . . . . . .
+	\end{tabbing}
+}
+\vspace{3.0cm}
+
+{%Betreuer
+	Chemnitz, den \dcdate
+}
+
+%\maketitle
+\cleardoublepage
+\pagestyle{plain} % Seitennummern wieder an und von vorne
+\pagenumbering{arabic}
