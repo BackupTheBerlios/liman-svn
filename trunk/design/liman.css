@@ -1,0 +1,112 @@
+html, body {
+	background-color: #f0f0f0;
+	color: black;
+	font: x-small sans-serif;
+	margin: 0;
+	padding: 0;
+} 
+
+abbr, acronym {
+	border-bottom: 1px dotted black;
+	cursor: help;
+}
+
+h1 {
+	margin-left: 1em;
+}
+
+#sidebar {
+	float: left;
+	width: 11.5em;
+	padding: 0;
+	margin-left: .1em;
+	font-size: 125%;
+}
+
+#sidebar h2 {
+	font-size: 1em;	
+	margin: .2em .2em .2em .5em;
+}
+
+#navigation, #search {
+	background-color: white;
+	border: 1px solid #aaa;
+	color: black;
+	font-size: 0.9em;
+	margin-bottom: 1em;	
+	padding: 0 0.5em .3em 0em;
+	position: relative;
+	z-index: 3;
+}
+
+#navigation ul {
+	margin: 0 0 1em 0;
+	padding-left: 1em;
+	list-style: none;
+}
+
+#search input {
+	margin: 0 auto;
+	font-size: 1em;
+	width: 10.8em;
+	display: box;
+}
+
+#search form {
+	text-align: center
+}
+
+#content {
+	background-color: white;
+	border: 1px solid #aaa;
+	font-size: 125%;
+	margin: 0em .1em 0em 12em;
+	padding: 1em;
+	position: relative;
+	min-height: 20em;
+}
+
+#content h2 {
+	margin: 0.1em;
+}
+
+.content {
+	margin-left: 1em;
+}
+
+
+#loginbox {
+	width: 15em;
+	vertical-align: middle;
+	margin: 0 auto;
+	border: 2px solid #ccc;
+	background-color: #e0e0e0;
+	padding: 0.2em;
+}
+
+#loginform {
+	margin-left: 0.3em;
+	text-align: center;
+}
+
+#loginform label, #loginform #login, #loginform #password {
+	width: 13.5em;
+	margin: 0 auto 0.5em auto;
+	display: block;
+	font-size: 1em;
+}
+
+#searchresult {
+	width: 100%;
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+#searchresult td, #searchresult th {
+	border: 1px solid black;
+	text-align: center;
+}
+
+#bookdetails th {
+	text-align: left;
+}
