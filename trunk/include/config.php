@@ -8,7 +8,7 @@
 	$db_config['host'] = "db.berlios.de";
 	$db_config['prefix'] = "liman_";
 
-	$ext = "xhtml";	// Endung der von den Usern abrufbaren Dateien
+	$ext = "php";	// Endung der von den Usern abrufbaren Dateien
 
 	$smilies_path = $basepath."images/smilies";
 ?>

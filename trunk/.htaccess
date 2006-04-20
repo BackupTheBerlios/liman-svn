@@ -1,4 +1,3 @@
-AddType application/x-httpd-php .xhtml
 AddDefaultCharset UTF-8
-DirectoryIndex index.xhtml index.html index.htm index.php
+DirectoryIndex index.php index.html index.htm
 

@@ -56,13 +56,13 @@
 		 * @remarks $string wird nicht exakt auf Fehler untersucht und gegebenenfalls versuchen zu ignorieren
 		 * @remarks Gibt boolean false zurück, wenn nichts gefunden werden kann
 		 */
-		static function parse($string)
+		function parse($string)
 		{
-			static $allowed_entries = array('book', 'article', 'booklet',
+			$allowed_entries = array('book', 'article', 'booklet',
 					'conference', 'inbook', 'incollection', 'inproceedings', 'manual',
 					'mastersthesis', 'misc', 'phdthesis', 'proceedings', 'techreport',
 					'unpublished');
-			static $allowed_fields = array('author', 'title', 'publisher', 'year', 'ISBN');
+			$allowed_fields = array('author', 'title', 'publisher', 'year', 'ISBN');
 
 			// Funktioniert nicht bei Argumenten über mehrere Zeilen
 			if (preg_match_all('/@[\w]+[\s]*\{[\s]*[-\d\w]+([\s]*,[\s]*[\w]*[\s]*=[\s]*([\w]+|\{.*\}|".*")[\s]*)+\}/', $string, $regexp_entries) !== false)
