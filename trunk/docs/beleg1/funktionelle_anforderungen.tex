@@ -7,24 +7,38 @@ TODO: Blablabla, alles wichtig und ganz toll
 
 \subsubsection{Ereignistabelle}
 %wenn die Tabellen zu lang werden -> longtable
-(M = Mitarbeiter, A = Administrator)
 
-TODO:\\
-\begin{tabular}[ht]{|c|p{10em}|l|l|}
+\begin{tabular}[ht]{|l|l|l|l|}
 \hline
 Nr & Ereignis & Datenfluß im System & Antwort des Systems \\
 \hline\hline
-1. & A ändert oder Ergänzt Bucherliste & Bücherdaten & Bestätigung\_Bücheränderung \\
-2. & B macht auch was & Zahlungen & Ignorieren\_Änderungen \\
-2. & B macht auch was & Zahlungen & Ignorieren\_Änderungen \\
-2. & B macht auch was & Zahlungen & Ignorieren\_Änderungen \\
+1. & Administrator: & Benutzerdaten & Best\"atigung\_Benutzer\"anderung \\
+   & erg\"anzt Benutzer& & \\
+   & ver\"andert Benutzer& & \\	
+   & l\"oscht Benutzer& & \\	
+\hline
+2. & Benutzer: & Literaturdaten & Best\"atigung\_Literatur\"anderung \\
+   & erg\"anzt Literatur & &  \\
+   & ver\"andert Literatur & &  \\
+   & l\"oscht Literatur & &  \\
+\hline
+3. & Benutzer: & Kommentardaten & Best\"atigung\_Kommentar\"anderung \\
+   & erg\"anzt Kommentar & & \\
+   & ver\"andert Kommentar & &\\
+   & l\"oscht Kommentar & & \\
+\hline
+4. & Gast sucht Literatur& Suchbegriff & Suchergebnis \\
+\hline
+5. & Gast w\"ahlt Literatur & Literaturnummer & Literaturdaten \& Kommentare \\
+\hline
+6. & Gast exportiert Literatur & Exportanfrage & Literaturdaten in BibTex \\
 \hline
 \end{tabular}
 
 \subsubsection{Kontextdiagramm}
-TODO
+
 %\includegraphics[scale=0.5]{kontextdiagramm}
-% oder \centerline{\includegraphics[scale=0.5]{kontextdiagramm}}
+\centerline{\includegraphics[scale=0.5]{kontextdiagramm.png}}
 
 \subsection{Verhaltensmodell}
 \subsubsection{Grobes Verhaltensmodell (vergröbertes primäres Verhaltensmodell)}
@@ -50,18 +64,69 @@ TODO
 %\includegraphics[scale=0.5]{prozess_arrgghhh}
 
 \subsubsection{Datenkatalog}
-TODO:
 \begin{tabular}[ht]{|l|l|}
 \hline
 Element & Strukturbeschreibung \\
 \hline\hline
 % Mitglieder
-\emph{Mitglieder} & \{Mitglied\} \\
-Mitglied  & M\_Name + Anschrift + <Beitritts>Datum + @Parzellen\_Nr + (Funktion) \\
-\hline\hline
-\emph{Leistungen} & {Leistung} \\
-.... & ... \\
+\emph{Benutzer} & \{Benutzer\} \\
 \hline
+Benutzer  & @Benutzer\_Nr + Name + Login + Passwort + Rechte \\
+\hline
+Benutzer\_Nr & gZahl *6stellig, 000001 $\leq$ Benutzer\_Nr $\leq$ 999999* \\ 
+\hline
+Name & <Vor>Name + <Nach>Name \\
+\hline
+Login & Zeichenkette12 \\
+\hline
+Passwort & Zeichenkette12 \\
+\hline
+Rechte & ["Benutzer" $\mid "$Administrator"] \\
+\hline\hline
+
+\emph{Literatur} & {Literatur} \\
+\hline
+Literatur & @Literatur\_Nr + Titel + Autor + ISBN + Jahr + Beschreibung + Ort + Stichworte \\
+\hline
+Literatur\_Nr & gZahl *6stellig, 000001 $\leq$ Literatur\_Nr $\leq$ 999999* \\
+\hline
+Titel & Zeichenkette40 \\
+\hline
+Autor & Zeichenkette40 \\
+\hline
+ISBN & gZahl *1stellig* + '-' + gZahl *4stellig* + '-' + gZahl *4stellig* + '-' + gZahl *1stellig* \\
+\hline
+Jahr & gZahl *4stellig* \\
+\hline
+Beschreibung & Zeichenkette250 \\
+\hline
+Ort & Zeichenkette40 \\
+\hline
+Stichworte & Zeichenkette100 \\
+\hline\hline
+
+\emph{Kommentar} & {Kommentar} \\
+\hline
+Kommentar & @Kommentar\_Nr + Kommentartext \\
+\hline
+Kommentarnummer & gZahl *6stellig, 000001 $\leq$ Kommentar\_Nr $\leq$ 999999* \\
+\hline
+Kommentartext & Zeichenkette400 \\
+\hline\hline
+
+Best\"atigung\_Benutzer\"anderung & Benutzer\_Nr + Zeichenkette "Ver\"anderung vorgenommen" \\
+\hline
+Best\"atigung\_Literatur\"anderung & Literatur\_Nr + Zeichenkette "Ver\"anderung vorgenommen" \\
+\hline
+Best\"atigung\_Kommentar\"anderung & Kommentar\_Nr + Zeichenkette "Ver\"anderung vorgenommen" \\
+\hline
+Literatur\_Info & Literatur\_Nr + Titel + Beschreibung + Kommentartext \\
+\hline
+Suchergebnis & Literatur\_Nr + Titel \\
+\hline
+Bibtexdatei & *Datei im Bibtexformat* \\
+\hline
+
 \end{tabular}
 
 \subsubsection{Beziehungen zwischen Speichern (ERD)}
