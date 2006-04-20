@@ -6,19 +6,19 @@
 ?>
 <div id="cfront" class="content">
 	TestBlablabla
-	<hr />
+	<hr>
 
 	<div id="loginbox">
 		<form action="login.<?=$ext;?>" id="loginform">
 			<div>
-			<label for="login">Login:</label><input id="login" name="login" value="" type="text" />
-			<label for="password">Passwort:</label><input id="password" name="password" type="password" />
-			<input type="submit" value="Login" />
+			<label for="login">Login:</label><input id="login" name="login" value="" type="text">
+			<label for="password">Passwort:</label><input id="password" name="password" type="password">
+			<input type="submit" value="Login">
 			</div>
 		</form>
 	</div>
 
-	<hr />
+	<hr>
 
 	<table id="searchresult">
 		<thead>
@@ -51,7 +51,7 @@
 		</tbody>
 	</table>
 
-	<hr />
+	<hr>
 	
 	<table id="bookdetails">
 		<tbody>
@@ -82,7 +82,7 @@
 		</tbody>
 	</table>
 
-	<hr />
+	<hr>
 	<h3>BibTeX-Test</h3>
 	<pre><?php
 		require($basepath."include/bibtex.php");
