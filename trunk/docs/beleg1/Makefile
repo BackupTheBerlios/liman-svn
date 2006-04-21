@@ -7,7 +7,12 @@ DEPENDS =	Makefile\
 		planung.tex\
 		operationelle_anforderungen.tex\
 		funktionelle_anforderungen.tex\
-		basismaschine_umgebung.tex
+		basismaschine_umgebung.tex\
+		pspec_bibtex.tex\
+		pspec_kommentarverwaltung.tex\
+		pspec_buchinformation.tex\
+		pspec_mitgliederverwaltung.tex\
+		pspec_buchverwaltung.tex
 
 # Standard pdf
 all: pdf
