@@ -7,64 +7,58 @@ TODO: Blablabla, alles wichtig und ganz toll
 
 \subsubsection{Ereignistabelle}
 %wenn die Tabellen zu lang werden -> longtable
+N = Nutzer, M = registriertes Mitglied, A = Administrator \\
+M kann zusätzlich zu seinen, alle Ereignisse von N auslösen. A kann ebenso alle Ereignisse von M und N auslösen.
 
-\begin{tabular}[ht]{|l|l|l|l|}
+\begin{tabular}[ht]{|c|p{9.0em}|p{10.5em}|l|}
 \hline
 Nr & Ereignis & Datenfluß im System & Antwort des Systems \\
 \hline\hline
-1. & Administrator: & Benutzerdaten & Best\"atigung\_Benutzer\"anderung \\
-   & erg\"anzt Benutzer& & \\
-   & ver\"andert Benutzer& & \\	
-   & l\"oscht Benutzer& & \\	
-\hline
-2. & Benutzer: & Literaturdaten & Best\"atigung\_Literatur\"anderung \\
-   & erg\"anzt Literatur & &  \\
-   & ver\"andert Literatur & &  \\
-   & l\"oscht Literatur & &  \\
-\hline
-3. & Benutzer: & Kommentardaten & Best\"atigung\_Kommentar\"anderung \\
-   & erg\"anzt Kommentar & & \\
-   & ver\"andert Kommentar & &\\
-   & l\"oscht Kommentar & & \\
-\hline
-4. & Gast sucht Literatur& Suchbegriff & Suchergebnis \\
-\hline
-5. & Gast w\"ahlt Literatur & Literaturnummer & Literaturdaten \& Kommentare \\
-\hline
-6. & Gast exportiert Literatur & Exportanfrage & Literaturdaten in BibTex \\
-\hline
+1. & N sucht Buch & Suchbegriff & Suchtreffer \\\hline
+2. & N wählt Buch & Buchnummer & Buchdaten Kommentare \\\hline
+3. & N exportiert Buch & Exportanfrage &  BibTeX-Datei \\\hline
+4. & M legt Buch an & Buchdaten & Bestätigung\_Buchanlegen \\\hline
+5. & M ändert Buch & Buchdaten + Buchnummer & Bestätigung\_Buchändern\\\hline
+6. & M löscht Buch & Buchnummer & Bestätigung\_Buchlöschen \\\hline
+7. & M legt Kommentar an & Kommentardaten & Bestätigung\_Kommentaranlegen \\\hline
+8. & M ändert Kommentar & Kommentardaten + Kommentarnumme & Bestätigung\_Kommentarändern \\\hline
+9. & M löscht Kommentar & Kommentarnummer & Bestätigung\_Kommentarlöschen \\\hline
+10.& M importiert BibTeX & BibTeX-Datei & Bestätigung\_BibTeXImport \\\hline
+11.& A legt Mitglied an & Mitgliedsdaten & Bestätigung\_Mitgliedanlegen \\\hline
+12.& A ändert Mitglied & Mitgliedsdaten + Mitgliedsnummer & Bestätigung\_Mitgliedändern \\\hline
+13.& A löscht Mitglied & Mitgliedsnummer & Bestätigung\_Mitgliedlöschen \\\hline
+14.& A ruft Mitglieder ab & - & Mitgliederliste \\\hline
 \end{tabular}
 
 \subsubsection{Kontextdiagramm}
 
 %\includegraphics[scale=0.5]{kontextdiagramm}
-\centerline{\includegraphics[scale=0.5]{kontextdiagramm}}
+\includegraphics[scale=0.75]{kontextdiagramm}
 
 \subsection{Verhaltensmodell}
 \subsubsection{Grobes Verhaltensmodell (vergröbertes primäres Verhaltensmodell)}
-TODO
-%\includegraphics[scale=0.5]{verhaltensmodell_grob}
+\includegraphics[scale=0.70]{grobes_verhaltensmodell}
 
 \subsubsection{Primäres Verhaltensmodell}
-\paragraph{Teilmodell blabla}
-TODO
-%\includegraphics[scale=0.5]{erhaltensmodell_blabla}
+\paragraph{Teilmodell BibTeX}
+\includegraphics[scale=1.0]{teilmodell_bibtex}
 
-\paragraph{Teilmodell bloblo}
-TODO
-%\includegraphics[scale=0.5]{verhaltensmodell_bloblo}
 
-\subsubsection{Verfeinerungen der Prozesse des primären Verhaltensmodells}
-\paragraph{Verfeinerung zum Prozess: ieeekks}
-TODO
-%\includegraphics[scale=0.5]{prozess_ieeekks}
+\paragraph{Teilmodell Buchinformation}
+\includegraphics[scale=1.0]{teilmodell_buchinformation}
 
-\paragraph{Verfeinerung zum Prozess: arrgghhh}
-TODO
-%\includegraphics[scale=0.5]{prozess_arrgghhh}
+\paragraph{Teilmodell Buchverwaltung}
+\includegraphics[scale=0.85]{teilmodell_buchverwaltung}
+
+\paragraph{Teilmodell Kommentarverwaltung}
+\includegraphics[scale=0.85]{teilmodell_kommentarverwaltung}
+
+\paragraph{Teilmodell Mitgliederverwaltung}
+\includegraphics[scale=0.85]{teilmodell_mitgliederverwaltung}
+\newpage
 
 \subsubsection{Datenkatalog}
-\begin{tabular}[ht]{|l|l|}
+\begin{tabular}[ht]{|l|p{8.5cm}|}
 \hline
 Element & Strukturbeschreibung \\
 \hline\hline
@@ -124,7 +118,7 @@ Literatur\_Info & Literatur\_Nr + Titel + Beschreibung + Kommentartext \\
 \hline
 Suchergebnis & Literatur\_Nr + Titel \\
 \hline
-Bibtexdatei & *Datei im Bibtexformat* \\
+BibTeX-Datei & *Datei im Bibtexformat* \\
 \hline
 
 \end{tabular}
