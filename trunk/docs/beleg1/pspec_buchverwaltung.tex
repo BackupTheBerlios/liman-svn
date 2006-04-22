@@ -2,13 +2,27 @@
 \paragraph{Buch\_anlegen}
 \begin{tabular}[t]{p{9.5cm}ll}
 \textbf{Prozess}: Buch\_anlegen  	&\textbf{Datum}:      &21.04.2006\\
-					&\textbf{Bearbeiter}: &TODO\\
+					&\textbf{Bearbeiter}: &Frank Wilhelm\\
 \end{tabular}
 
 \hrulefill\\
 \textbf{Voraussetzung}:
 \begin{verbatim}
- asdasd
+ BEGIN
+   Finde in Literatur Buch
+         mit Literatur.Titel = Buchdaten.Titel
+         und Literatur.Autor = Buchdaten.Autor;
+ 
+   IF gefunden THEN
+   BEGIN
+     Zeige Warnung 201
+     IF not bestätigt THEN
+       Abbrechen
+   END
+   
+   Lege in Buch Literatur mit Buchdaten an
+   Setze Bestätigung_Buchanlegen
+ END
 \end{verbatim}
 \hrulefill
 
@@ -18,13 +32,22 @@
 \paragraph{Buch\_ändern}
 \begin{tabular}[t]{p{9.5cm}ll}
 \textbf{Prozess}: Buch\_ändern  	&\textbf{Datum}:      &21.04.2006\\
-					&\textbf{Bearbeiter}: &TODO\\
+					&\textbf{Bearbeiter}: &Frank Wilhelm\\
 \end{tabular}
 
 \hrulefill\\
 \textbf{Voraussetzung}:
 \begin{verbatim}
- asdasd
+ BEGIN
+   Setze in Literatur Buch
+         mit Literatur.Literatur_Nr = Buchnummer
+         auf Buchdaten;
+  
+   IF erfolgreich THEN
+     Setze Bestätigung_Buchändern
+   ELSE
+     Setze Fehler 202
+ END
 \end{verbatim}
 \hrulefill
 
@@ -40,6 +63,13 @@
 \hrulefill\\
 \textbf{Voraussetzung}:
 \begin{verbatim}
- asdasd
+ BEGIN
+   Lösche in Literatur Buch mit Literatur.Literatur_Nr = Buchnummer;
+   
+   IF erfolgreich THEN
+     Setze Bestätigung_Buchlöschen
+   ELSE
+     Setze Fehler 203
+ END
 \end{verbatim}
 \hrulefill

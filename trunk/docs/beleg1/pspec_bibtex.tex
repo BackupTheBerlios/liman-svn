@@ -2,13 +2,25 @@
 \paragraph{BibTeX\_importieren}
 \begin{tabular}[t]{p{9.5cm}ll}
 \textbf{Prozess}: BibTeX\_importieren  	&\textbf{Datum}:      &21.04.2006\\
-					&\textbf{Bearbeiter}: &TODO\\
+					&\textbf{Bearbeiter}: &Frank Wilhelm\\
 \end{tabular}
 
 \hrulefill\\
 \textbf{Voraussetzung}:
 \begin{verbatim}
- asdasd
+ BEGIN
+   Daten := deserialisiere BibTeX_Datei;
+   
+   IF lesen_erfolgreich THEN
+   BEGIN
+     Buch_anlegen( Daten )
+     
+     IF anlegen_erfolgreich THEN
+       Setze Bestätigung_BibTeXImport
+   END
+   ELSE
+     Setze Fehler 101
+ END
 \end{verbatim}
 \hrulefill
 
@@ -17,13 +29,21 @@
 \paragraph{BibTeX\_exportieren}
 \begin{tabular}[t]{p{9.5cm}ll}
 \textbf{Prozess}: BibTeX\_exportieren  	&\textbf{Datum}:      &21.04.2006\\
-					&\textbf{Bearbeiter}: &TODO\\\\
+					&\textbf{Bearbeiter}: &Frank Wilhelm\\\\
 \end{tabular}
 
 \hrulefill\\
 \textbf{Voraussetzung}:
 \begin{verbatim}
- asdasd
+ BEGIN
+   Daten := Finde in Buch Literatur mit Literatur.Literatur_Nr = Exportanfrage.Literatur_Nr;
+  
+   IF gefunden THEN
+     BibTeX_Datei := Serialisiere Daten
+   ELSE
+     Setze Fehler 102
+ END
 \end{verbatim}
+
 \hrulefill
 
