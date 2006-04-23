@@ -9,7 +9,7 @@
 \textbf{Voraussetzung}:
 \begin{verbatim}
  BEGIN
-   Finde in Literatur Buch
+   Finde in Buecher Literatur
          mit Literatur.Titel = Buchdaten.Titel
          und Literatur.Autor = Buchdaten.Autor;
  
@@ -20,7 +20,7 @@
        Abbrechen
    END
    
-   Lege in Buch Literatur mit Buchdaten an
+   Lege in Buecher Literatur mit Buchdaten an
    Setze Bestätigung_Buchanlegen
  END
 \end{verbatim}
@@ -39,7 +39,7 @@
 \textbf{Voraussetzung}:
 \begin{verbatim}
  BEGIN
-   Setze in Literatur Buch
+   Setze in Buecher Literatur
          mit Literatur.Literatur_Nr = Buchnummer
          auf Buchdaten;
   
@@ -64,7 +64,7 @@
 \textbf{Voraussetzung}:
 \begin{verbatim}
  BEGIN
-   Lösche in Literatur Buch mit Literatur.Literatur_Nr = Buchnummer;
+   Lösche in Buecher Literatur mit Literatur.Buch_Nr = Buchnummer;
    
    IF erfolgreich THEN
      Setze Bestätigung_Buchlöschen

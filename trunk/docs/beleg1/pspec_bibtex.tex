@@ -36,7 +36,8 @@
 \textbf{Voraussetzung}:
 \begin{verbatim}
  BEGIN
-   Daten := Finde in Buch Literatur mit Literatur.Literatur_Nr = Exportanfrage.Literatur_Nr;
+   Daten := Finde in Buecher Literatur mit Literatur.Buch_Nr = \
+              Exportanfrage.Buch_Nr;
   
    IF gefunden THEN
      BibTeX_Datei := Serialisiere Daten

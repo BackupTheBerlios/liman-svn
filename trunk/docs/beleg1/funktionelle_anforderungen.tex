@@ -10,25 +10,27 @@ TODO: Blablabla, alles wichtig und ganz toll
 N = Nutzer, M = registriertes Mitglied, A = Administrator \\
 M kann zusätzlich zu seinen, alle Ereignisse von N auslösen. A kann ebenso alle Ereignisse von M und N auslösen.
 
-\begin{tabular}[ht]{|c|p{9.0em}|p{10.5em}|l|}
+\begin{longtable}{|c|p{9.0em}|p{10.5em}|l|}
 \hline
 Nr & Ereignis & Datenfluß im System & Antwort des Systems \\
 \hline\hline
+\endhead
+
 1. & N sucht Buch & Suchbegriff & Suchtreffer \\\hline
-2. & N wählt Buch & Buchnummer & Buchdaten Kommentare \\\hline
+2. & N wählt Buch & Buch\_Nr & Buch\_Info \\\hline
 3. & N exportiert Buch & Exportanfrage &  BibTeX-Datei \\\hline
 4. & M legt Buch an & Buchdaten & Bestätigung\_Buchanlegen \\\hline
-5. & M ändert Buch & Buchdaten + Buchnummer & Bestätigung\_Buchändern\\\hline
-6. & M löscht Buch & Buchnummer & Bestätigung\_Buchlöschen \\\hline
+5. & M ändert Buch & Buch & Bestätigung\_Buchändern\\\hline
+6. & M löscht Buch & Buch\_Nr & Bestätigung\_Buchlöschen \\\hline
 7. & M legt Kommentar an & Kommentardaten & Bestätigung\_Kommentaranlegen \\\hline
-8. & M ändert Kommentar & Kommentardaten + Kommentarnumme & Bestätigung\_Kommentarändern \\\hline
-9. & M löscht Kommentar & Kommentarnummer & Bestätigung\_Kommentarlöschen \\\hline
+8. & M ändert Kommentar & Kommentar & Bestätigung\_Kommentarändern \\\hline
+9. & M löscht Kommentar & Kommentar\_Nr & Bestätigung\_Kommentarlöschen \\\hline
 10.& M importiert BibTeX & BibTeX-Datei & Bestätigung\_BibTeXImport \\\hline
 11.& A legt Mitglied an & Mitgliedsdaten & Bestätigung\_Mitgliedanlegen \\\hline
-12.& A ändert Mitglied & Mitgliedsdaten + Mitgliedsnummer & Bestätigung\_Mitgliedändern \\\hline
-13.& A löscht Mitglied & Mitgliedsnummer & Bestätigung\_Mitgliedlöschen \\\hline
+12.& A ändert Mitglied & Mitglied & Bestätigung\_Mitgliedändern \\\hline
+13.& A löscht Mitglied & Mitglied\_Nr & Bestätigung\_Mitgliedlöschen \\\hline
 14.& A ruft Mitglieder ab & - & Mitgliederliste \\\hline
-\end{tabular}
+\end{longtable}
 
 \newpage % Viele Bilder so skaliert, dass sie ordentlich auf A4-Seiten passen
 \subsubsection{Kontextdiagramm}
@@ -58,37 +60,25 @@ Nr & Ereignis & Datenfluß im System & Antwort des Systems \\
 \newpage
 
 \subsubsection{Datenkatalog}
-\begin{tabular}[ht]{|l|p{8.5cm}|}
+\begin{longtable}{|l|p{8.5cm}|}
 \hline
 Element & Strukturbeschreibung \\
 \hline\hline
-% Mitglieder
-\emph{Benutzer} & \{Benutzer\} \\
-\hline
-Benutzer  & @Benutzer\_Nr + Name + Login + Passwort + Rechte \\
-\hline
-Benutzer\_Nr & gZahl *6stellig, 000001 $\leq$ Benutzer\_Nr $\leq$ 999999* \\ 
-\hline
-Name & <Vor>Name + <Nach>Name \\
-\hline
-Login & Zeichenkette12 \\
-\hline
-Passwort & Zeichenkette12 \\
-\hline
-Rechte & ["Benutzer" $\mid "$Administrator"] \\
-\hline\hline
+\endhead
 
-\emph{Literatur} & {Literatur} \\
+\emph{Buecher} & \{Buch\} \\
 \hline
-Literatur & @Literatur\_Nr + Titel + Autor + ISBN + Jahr + Beschreibung + Ort + Stichworte \\
+Buch & @Buch\_Nr + Art + Titel + Autor + ISBN + Jahr + Beschreibung + Ort + Stichworte \\
 \hline
-Literatur\_Nr & gZahl *6stellig, 000001 $\leq$ Literatur\_Nr $\leq$ 999999* \\
+Buch\_Nr & gZahl *6stellig, 000001 $\leq$ Literatur\_Nr $\leq$ 999999* \\
+\hline
+Art & [``Buch'' | ``Artikel'' | ``Handbuch'' | ``Diplomarbeit'' | ``Sonstiges''] \textbf{BITTE UM VORSCHLÄGE/ÄNDERUNG}\\
 \hline
 Titel & Zeichenkette40 \\
 \hline
 Autor & Zeichenkette40 \\
 \hline
-ISBN & gZahl *1stellig* + '-' + gZahl *4stellig* + '-' + gZahl *4stellig* + '-' + gZahl *1stellig* \\
+ISBN & gZahl *1stellig* + '-' + gZahl *4stellig* + '-' + gZahl *4stellig* + '-' + gZahl *1stellig* \textbf{DAS STIMMT LAUT WIKIPEDIA NICHT}\\
 \hline
 Jahr & gZahl *4stellig* \\
 \hline
@@ -99,32 +89,72 @@ Ort & Zeichenkette40 \\
 Stichworte & Zeichenkette100 \\
 \hline\hline
 
-\emph{Kommentar} & {Kommentar} \\
+\emph{Kommentare} & \{Kommentar\} \\
 \hline
 Kommentar & @Kommentar\_Nr + Kommentartext \\
 \hline
-Kommentarnummer & gZahl *6stellig, 000001 $\leq$ Kommentar\_Nr $\leq$ 999999* \\
+Kommentar\_Nr & gZahl *6stellig, 000001 $\leq$ Kommentar\_Nr $\leq$ 999999* \\
 \hline
 Kommentartext & Zeichenkette400 \\
 \hline\hline
 
-Best\"atigung\_Benutzer\"anderung & Benutzer\_Nr + Zeichenkette "Ver\"anderung vorgenommen" \\
+\emph{Mitglieder} & \{Mitglied\} \\
 \hline
-Best\"atigung\_Literatur\"anderung & Literatur\_Nr + Zeichenkette "Ver\"anderung vorgenommen" \\
+Mitglied  & @Mitglieds\_Nr  + Name + Login + Passwort + Rechte\\
 \hline
-Best\"atigung\_Kommentar\"anderung & Kommentar\_Nr + Zeichenkette "Ver\"anderung vorgenommen" \\
+Mitglieds\_Nr & gZahl *6stellig, 000001 $\leq$ Benutzer\_Nr $\leq$ 999999* \\ 
 \hline
-Literatur\_Info & Literatur\_Nr + Titel + Beschreibung + Kommentartext \\
+Name & <Vor>Name + <Nach>Name \\
 \hline
-Suchergebnis & Literatur\_Nr + Titel \\
+Login & Zeichenkette12 \\
+\hline
+Passwort & Zeichenkette12 \\
+\hline
+Rechte & ["Benutzer" $\mid "$Administrator"] \\
+\hline\hline
+
+Mitgliedsdaten & Name + Login + Passwort + Rechte \\
+\hline
+Buchdaten & Art + Titel + Autor + ISBN + Jahr + Beschreibung + Ort + Stichworte \\
+\hline
+Kommentardaten & Kommentartext \\
 \hline
 BibTeX-Datei & *Datei im Bibtexformat* \\
 \hline
+Suchbegriff & [Zeichenkette100 | (Art) + (Titel) + (Autor) + (ISBN) + (Jahr) + (Beschreibung) + (Ort) + (Stichworte)] *Mindestens ein optionales Feld muss angegeben sein* \\
+\hline
+Exportanfrage & Buch\_Nr \textbf{BITTE UM VORSCHLÄGE/ÄNDERUNG} \\
+\hline\hline
 
-\end{tabular}
+Bestätigung\_BibTeXImport & Buch\_Nr + Zeichenkette "Importieren vorgenommen" \\
+\hline
+Bestätigung\_Buchanlegen & Buch\_Nr + Zeichenkette "Anlegen vorgenommen" \\
+\hline
+Bestätigung\_Buchändern & Buch\_Nr + Zeichenkette "Änderung vorgenommen" \\
+\hline
+Bestätigung\_Buchlöschen & Buch\_Nr + Zeichenkette "Löschen vorgenommen" \\
+\hline
+Bestätigung\_Kommentaranlegen & Kommentar\_Nr + Zeichenkette "Anlegen vorgenommen" \\
+\hline
+Bestätigung\_Kommentarändern & Kommentar\_Nr + Zeichenkette "Änderung vorgenommen" \\
+\hline
+Bestätigung\_Kommentarlöschen & Kommentar\_Nr + Zeichenkette "Löschen vorgenommen" \\
+\hline
+Bestätigung\_Mitgliedanlegen & Mitglieds\_Nr + Zeichenkette "Anlegen vorgenommen" \\
+\hline
+Bestätigung\_Mitgliedändern & Mitglieds\_Nr + Zeichenkette "Änderung vorgenommen" \\
+\hline
+Bestätigung\_Mitgliedlöschen & Mitglieds\_Nr + Zeichenkette "Löschen vorgenommen" \\
+\hline
+Buch\_Info & Buch + Kommentare \\
+\hline
+Suchtreffer & \{Buch\_Nr + Titel\} \textbf{NICHT NOCH MEHR?}\\
+\hline
+Mitgliederliste & \{Mitglieds\_Nr + Name\}\\
+\hline
+\end{longtable}
 
 \subsubsection{Beziehungen zwischen Speichern (ERD)}
-%wenn die Tabellen zu lang werden -> longtable
 TODO:
 %\includegraphics[scale=0.5]{erd}
 
