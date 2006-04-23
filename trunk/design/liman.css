@@ -28,7 +28,7 @@ h1 {
 	margin: .2em .2em .2em .5em;
 }
 
-#navigation, #search {
+#navigation, #search, #loginbox {
 	background-color: white;
 	border: 1px solid #aaa;
 	color: black;
@@ -45,14 +45,14 @@ h1 {
 	list-style: none;
 }
 
-#search input {
+#search input, #loginform #login, #loginform #password {
 	margin: 0 auto;
 	font-size: 1em;
 	width: 10.8em;
 	display: box;
 }
 
-#search form {
+#search form, #loginform {
 	text-align: center
 }
 
@@ -75,38 +75,22 @@ h1 {
 }
 
 
-#loginbox {
-	width: 15em;
-	vertical-align: middle;
-	margin: 0 auto;
-	border: 2px solid #ccc;
-	background-color: #e0e0e0;
-	padding: 0.2em;
-}
-
-#loginform {
-	margin-left: 0.3em;
-	text-align: center;
-}
-
-#loginform label, #loginform #login, #loginform #password {
-	width: 13.5em;
-	margin: 0 auto 0.5em auto;
-	display: block;
-	font-size: 1em;
-}
-
-#searchresult {
+#searchresult, #userlist {
 	width: 100%;
 	border: 1px solid black;
 	border-collapse: collapse;
 }
 
-#searchresult td, #searchresult th {
+#searchresult td, #searchresult th,  #userlist th{
 	border: 1px solid black;
 	text-align: center;
+}
+#userlist td {
+	border: 1px solid black;
+	text-align: left;
 }
 
 #bookdetails th {
 	text-align: left;
+	vertical-align: top;
 }

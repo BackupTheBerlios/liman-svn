@@ -39,9 +39,8 @@
 				<div id="navigation">
 					<h2><span>Navigation</span></h2>
 					<ul>
-						<li id="nhome"><a href="index.<?=$ext;?>" accesskey="h">Home</a></li>
-						<li id="nadd"><a href="add.<?=$ext;?>" accesskey="a">Hinzufügen</a></li>
-						<li id="nsearch"><a href="search.<?=$ext;?>" accesskey="s">Suchen</a></li>
+						<li id="nhome"><a href="index.<?=$ext;?>" accesskey="h">B&uuml;cher</a></li>
+						<li id="nuser"><a href="userlist.<?=$ext;?>" accesskey="n">Nutzer</a></li>
 					</ul>
 				</div>
 
@@ -51,6 +50,17 @@
 						<div>
 						<input name="search" value="" type="text">
 						<input value="Suche" type="submit">
+						</div>
+					</form>
+				</div>
+
+				<div id="loginbox">
+					<h2><span>Einloggen</span></h2>
+					<form action="login.<?=$ext;?>" id="loginform">
+						<div>
+						<label for="login">Login:</label><input id="login" name="login" value="" type="text">
+						<label for="password">Passwort:</label><input id="password" name="password" type="password">
+						<input type="submit" value="Login">
 						</div>
 					</form>
 				</div>
