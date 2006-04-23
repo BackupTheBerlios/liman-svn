@@ -10,9 +10,9 @@ Das System wird auf einem Webserver im Intranet oder
 Internet installiert, w"ahrend die Nutzer von ihren PCs mit
 einem Webbrowser darauf zugreifen.
 \subsubsection*{Nutzergruppe}
-Es gibt 3 Nutzerebenen. Leser k"onnen suchen und recherchieren,
-registrierte Nutzer d"urfen B"ucher hinzufuegen und kommentieren, und Administratoren
-d"urfen ausserdem noch Nutzer verwalten.
+Es gibt 3 Nutzerebenen. Unregistrierte Nutzer k"onnen suchen und recherchieren,
+Mitglieder d"urfen B"ucher hinzufuegen und kommentieren, und Administratoren
+d"urfen ausserdem noch Mitglieder verwalten.
 
 
 \section{Funktionelle Anforderungen}
@@ -29,12 +29,12 @@ Nr & Ereignis & Datenfluß im System & Antwort des Systems \\
 \hline\hline
 \endhead
 
-1. & N sucht Buch & Suchbegriff & Suchtreffer \\\hline
-2. & N wählt Buch & Buch\_Nr & Buch\_Info \\\hline
-3. & N exportiert Buch & Exportanfrage &  BibTeX-Datei \\\hline
-4. & M legt Buch an & Buchdaten & Bestätigung\_Buchanlegen \\\hline
-5. & M ändert Buch & Buch & Bestätigung\_Buchändern\\\hline
-6. & M löscht Buch & Buch\_Nr & Bestätigung\_Buchlöschen \\\hline
+1. & N sucht Literatur & Suchbegriff & Suchtreffer \\\hline
+2. & N wählt Literatur & Literatur\_Nr & Literatur\_Info \\\hline
+3. & N exportiert Literatur & Exportanfrage &  BibTeX-Datei \\\hline
+4. & M legt Literatur an & Literaturdaten & Bestätigung\_Literaturanlegen \\\hline
+5. & M ändert Literatur & Literatur & Bestätigung\_Literaturändern\\\hline
+6. & M löscht Literatur & Literatur\_Nr & Bestätigung\_Literaturlöschen \\\hline
 7. & M legt Kommentar an & Kommentardaten & Bestätigung\_Kommentaranlegen \\\hline
 8. & M ändert Kommentar & Kommentar & Bestätigung\_Kommentarändern \\\hline
 9. & M löscht Kommentar & Kommentar\_Nr & Bestätigung\_Kommentarlöschen \\\hline
@@ -59,11 +59,11 @@ Nr & Ereignis & Datenfluß im System & Antwort des Systems \\
 \paragraph{Teilmodell BibTeX}
 \includegraphics[scale=1.0]{teilmodell_bibtex}
 
-\paragraph{Teilmodell Buchinformation}
-\includegraphics[scale=1.0]{teilmodell_buchinformation}
+\paragraph{Teilmodell Literaturinformation}
+\includegraphics[scale=1.0]{teilmodell_literaturinformation}
 
-\paragraph{Teilmodell Buchverwaltung}
-\includegraphics[scale=0.93]{teilmodell_buchverwaltung}
+\paragraph{Teilmodell Literaturverwaltung}
+\includegraphics[scale=0.93]{teilmodell_literaturverwaltung}
 
 \paragraph{Teilmodell Kommentarverwaltung}
 \includegraphics[scale=0.93]{teilmodell_kommentarverwaltung}
@@ -79,11 +79,11 @@ Element & Strukturbeschreibung \\
 \hline\hline
 \endhead
 
-\emph{Buecher} & \{Buch\} \\
+\emph{Bibliothek} & \{Literatur\} \\
 \hline
-Buch & @Buch\_Nr + Art + Titel + Autor + ISBN + Jahr + Beschreibung + Ort + Stichworte \\
+Literatur & @Literatur\_Nr + Art + Titel + Autor + ISBN + Jahr + Beschreibung + Ort + Stichworte \\
 \hline
-Buch\_Nr & gZahl *6stellig, 000001 $\leq$ Literatur\_Nr $\leq$ 999999* \\
+Literatur\_Nr & gZahl *6stellig, 000001 $\leq$ Literatur\_Nr $\leq$ 999999* \\
 \hline
 Art & [``Buch'' | ``Artikel'' | ``Handbuch'' | ``Diplomarbeit'' | ``Sonstiges''] \textbf{BITTE UM VORSCHLÄGE/ÄNDERUNG}\\
 \hline
@@ -128,24 +128,24 @@ Rechte & ["Benutzer" $\mid "$Administrator"] \\
 
 Mitgliedsdaten & Name + Login + Passwort + Rechte \\
 \hline
-Buchdaten & Art + Titel + Autor + ISBN + Jahr + Beschreibung + Ort + Stichworte \\
+Literaturdaten & Art + Titel + Autor + ISBN + Jahr + Beschreibung + Ort + Stichworte \\
 \hline
-Kommentardaten & Kommentartext \\
+Kommentardaten & Literatur\_Nr + Mitglieds\_Nr + Kommentartext \\
 \hline
 BibTeX-Datei & *Datei im Bibtexformat* \\
 \hline
 Suchbegriff & [Zeichenkette100 | (Art) + (Titel) + (Autor) + (ISBN) + (Jahr) + (Beschreibung) + (Ort) + (Stichworte)] *Mindestens ein optionales Feld muss angegeben sein* \\
 \hline
-Exportanfrage & Buch\_Nr \textbf{BITTE UM VORSCHLÄGE/ÄNDERUNG} \\
+Exportanfrage & Literatur\_Nr \textbf{BITTE UM VORSCHLÄGE/ÄNDERUNG} \\
 \hline\hline
 
-Bestätigung\_BibTeXImport & Buch\_Nr + Zeichenkette "Importieren vorgenommen" \\
+Bestätigung\_BibTeXImport & Literatur\_Nr + Zeichenkette "Importieren vorgenommen" \\
 \hline
-Bestätigung\_Buchanlegen & Buch\_Nr + Zeichenkette "Anlegen vorgenommen" \\
+Bestätigung\_Literaturanlegen & Literatur\_Nr + Zeichenkette "Anlegen vorgenommen" \\
 \hline
-Bestätigung\_Buchändern & Buch\_Nr + Zeichenkette "Änderung vorgenommen" \\
+Bestätigung\_Literaturändern & Literatur\_Nr + Zeichenkette "Änderung vorgenommen" \\
 \hline
-Bestätigung\_Buchlöschen & Buch\_Nr + Zeichenkette "Löschen vorgenommen" \\
+Bestätigung\_Literaturlöschen & Literatur\_Nr + Zeichenkette "Löschen vorgenommen" \\
 \hline
 Bestätigung\_Kommentaranlegen & Kommentar\_Nr + Zeichenkette "Anlegen vorgenommen" \\
 \hline
@@ -159,9 +159,9 @@ Bestätigung\_Mitgliedändern & Mitglieds\_Nr + Zeichenkette "Änderung vorgenom
 \hline
 Bestätigung\_Mitgliedlöschen & Mitglieds\_Nr + Zeichenkette "Löschen vorgenommen" \\
 \hline
-Buch\_Info & Buch + Kommentare \\
+Literatur\_Info & Literatur + Kommentare \\
 \hline
-Suchtreffer & \{Buch\_Nr + Titel\} \textbf{NICHT NOCH MEHR?}\\
+Suchtreffer & \{Literatur\_Nr + Titel\} \textbf{NICHT NOCH MEHR?}\\
 \hline
 Mitgliederliste & \{Mitglieds\_Nr + Name\}\\
 \hline
@@ -173,9 +173,9 @@ TODO:
 
 \subsubsection{Prozessspezifikation}
 \input{pspec_bibtex}
-\input{pspec_buchinformation}
-\input{pspec_buchverwaltung}
 \input{pspec_kommentarverwaltung}
+\input{pspec_literaturinformation}
+\input{pspec_literaturverwaltung}
 \input{pspec_mitgliederverwaltung}
 
 \subsection{Definition der Nutzerschnittstelle}

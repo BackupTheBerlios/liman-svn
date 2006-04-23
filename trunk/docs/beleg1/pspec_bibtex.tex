@@ -6,14 +6,14 @@
 \end{tabular}
 
 \hrulefill\\
-\textbf{Voraussetzung}:
+\textbf{Voraussetzung}: Benutzer ist angemeldet. Bibliothek ist nicht voll.
 \begin{verbatim}
  BEGIN
    Daten := deserialisiere BibTeX_Datei;
    
    IF lesen_erfolgreich THEN
    BEGIN
-     Buch_anlegen( Daten )
+     Literatur_anlegen( Daten )
      
      IF anlegen_erfolgreich THEN
        Setze Bestätigung_BibTeXImport
@@ -33,11 +33,11 @@
 \end{tabular}
 
 \hrulefill\\
-\textbf{Voraussetzung}:
+\textbf{Voraussetzung}: -
 \begin{verbatim}
  BEGIN
-   Daten := Finde in Buecher Literatur mit Literatur.Buch_Nr = \
-              Exportanfrage.Buch_Nr;
+   Daten := Finde in Bibliothek Literatur mit Literatur.Literatur_Nr = \
+              Exportanfrage.Literatur_Nr;
   
    IF gefunden THEN
      BibTeX_Datei := Serialisiere Daten
