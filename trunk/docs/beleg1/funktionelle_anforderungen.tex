@@ -41,7 +41,7 @@ Nr & Ereignis & Datenfluß im System & Antwort des Systems \\
 10.& M importiert BibTeX & BibTeX-Datei & Bestätigung\_BibTeXImport \\\hline
 11.& A legt Mitglied an & Mitgliedsdaten & Bestätigung\_Mitgliedanlegen \\\hline
 12.& A ändert Mitglied & Mitglied & Bestätigung\_Mitgliedändern \\\hline
-13.& A löscht Mitglied & Mitglied\_Nr & Bestätigung\_Mitgliedlöschen \\\hline
+13.& A löscht Mitglied & Mitglieds\_Nr & Bestätigung\_Mitgliedlöschen \\\hline
 14.& A ruft Mitglieder ab & - & Mitgliederliste \\\hline
 \end{longtable}
 
@@ -104,7 +104,7 @@ Stichworte & Zeichenkette100 \\
 
 \emph{Kommentare} & \{Kommentar\} \\
 \hline
-Kommentar & @Kommentar\_Nr + Kommentartext \\
+Kommentar & @Kommentar\_Nr + Kommentartext + Literatur\_Nr + Mitglieds\_Nr\\
 \hline
 Kommentar\_Nr & gZahl *6stellig, 000001 $\leq$ Kommentar\_Nr $\leq$ 999999* \\
 \hline

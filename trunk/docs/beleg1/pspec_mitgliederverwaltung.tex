@@ -2,13 +2,20 @@
 \paragraph{Mitglieder\_anzeigen}
 \begin{tabular}[t]{p{9.5cm}ll}
 \textbf{Prozess}: Mitglieder\_anzeigen 	&\textbf{Datum}:      &21.04.2006\\
-					&\textbf{Bearbeiter}: &TODO\\
+					&\textbf{Bearbeiter}: &S. Eckelmann\\
 \end{tabular}
 
 \hrulefill\\
-\textbf{Voraussetzung}:
+\textbf{Voraussetzung}: Benutzer muss als Administrator angemeldet sein.
 \begin{verbatim}
- asdasd
+ BEGIN
+   Finde alle in Mitglieder
+
+   IF erfolgreich THEN
+      Setze Mitgliederliste := gefundene_Mitglieder
+   ELSE
+      Setze Fehler 501
+ END
 \end{verbatim}
 \hrulefill
 
@@ -16,13 +23,21 @@
 \paragraph{Mitglied\_anlegen}
 \begin{tabular}[t]{p{9.5cm}ll}
 \textbf{Prozess}: Mitglied\_anlegen  	&\textbf{Datum}:      &21.04.2006\\
-					&\textbf{Bearbeiter}: &TODO\\
+					&\textbf{Bearbeiter}: &S. Eckelmann\\
 \end{tabular}
 
 \hrulefill\\
-\textbf{Voraussetzung}:
+\textbf{Voraussetzung}: Benutzer muss als Administrator angemeldet sein.
 \begin{verbatim}
- asdasd
+ BEGIN
+   Finde in Mitglieder Mitglied
+         mit Mitglied.Login = Mitgliedsdaten.Login
+
+   IF gefunden THEN
+     Setze Fehler 502
+   ELSE
+     Lege in Mitglieder Mitglied mit Mitgliedsdaten an
+ END
 \end{verbatim}
 \hrulefill
 
@@ -32,13 +47,22 @@
 \paragraph{Mitglied\_ändern}
 \begin{tabular}[t]{p{9.5cm}ll}
 \textbf{Prozess}: Mitglied\_ändern  	&\textbf{Datum}:      &21.04.2006\\
-					&\textbf{Bearbeiter}: &TODO\\
+					&\textbf{Bearbeiter}: &S. Eckelmann\\
 \end{tabular}
 
 \hrulefill\\
-\textbf{Voraussetzung}:
+\textbf{Voraussetzung}: Benutzer muss als Administrator angemeldet sein.
 \begin{verbatim}
- asdasd
+  BEGIN
+   Setze in Mitglieder Mitglied_Eintrag
+         mit Mitglied_Eintrag.Mitglieds_Nr = Mitglied.Mitglieds_Nr
+         auf Mitglied;
+  
+   IF erfolgreich THEN
+     Setze Bestätigung_Mitgliedändern
+   ELSE
+     Setze Fehler 503
+ END
 \end{verbatim}
 \hrulefill
 
@@ -48,12 +72,23 @@
 \paragraph{Mitglied\_löschen}
 \begin{tabular}[t]{p{9.5cm}ll}
 \textbf{Prozess}: Mitglied\_löschen  	&\textbf{Datum}:      &21.04.2006\\
-					&\textbf{Bearbeiter}: &TODO\\
+					&\textbf{Bearbeiter}: &S. Eckelmann\\
 \end{tabular}
 
 \hrulefill\\
-\textbf{Voraussetzung}:
+\textbf{Voraussetzung}: Benutzer muss als Administrator angemeldet sein.
 \begin{verbatim}
- asdasd
+ BEGIN
+   Lösche in Mitglieder Mitglied mit Mitglied.Mitglieds_Nr = 
+                                     Mitglieds_Nr;
+
+   IF erfolgreich THEN
+     Lösche in Kommentare Kommentar mit Kommentar.Mitglieds_Nr = 
+                                        Mitglieds_Nr
+
+     Setze Bestätigung_Mitgliedlöschen
+   ELSE
+     Setze Fehler 504
+ END
 \end{verbatim}
 \hrulefill

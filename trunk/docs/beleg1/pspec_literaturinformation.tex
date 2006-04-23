@@ -2,13 +2,30 @@
 \paragraph{Literatur\_anzeigen}
 \begin{tabular}[t]{p{9.5cm}ll}
 \textbf{Prozess}: Literatur\_anzeigen  	&\textbf{Datum}:      &21.04.2006\\
-					&\textbf{Bearbeiter}: &TODO\\
+					&\textbf{Bearbeiter}: &S. Eckelmann\\
 \end{tabular}
 
 \hrulefill\\
-\textbf{Voraussetzung}:
+\textbf{Voraussetzung}: -
 \begin{verbatim}
- asdasd
+ BEGIN
+   Finde in Bibliothek Literatur
+         mit Literatur.Literatur_Nr = Literatur_Nr
+
+   IF gefunden THEN
+   BEGIN
+     Finde in Kommentare Kommentar
+           mit Kommentar.Literatur_Nr =  Literatur_Nr
+
+     IF gefunden THEN
+       Setze Literatur_Info := gefundene_Literatur
+                             + gefundene_Kommentare
+     ELSE
+       Setze Literatur_Info := gefundene_Literatur
+   END
+   ELSE
+     Setze Fehler 401
+ END
 \end{verbatim}
 \hrulefill
 
@@ -17,12 +34,33 @@
 \paragraph{Literatur\_suchen}
 \begin{tabular}[t]{p{9.5cm}ll}
 \textbf{Prozess}: Literatur\_suchen  	&\textbf{Datum}:      &21.04.2006\\
-					&\textbf{Bearbeiter}: &TODO\\
+					&\textbf{Bearbeiter}: &S. Eckelmann\\
 \end{tabular}
 
 \hrulefill\\
 \textbf{Voraussetzung}: -
 \begin{verbatim}
- asdasd
+ BEGIN
+   IF Volltextsuche THEN
+     Finde in Bibliothek Literatur
+           mit Suchbegriff in Literatur
+   ELSE
+   BEGIN
+     Finde in Bibliothek Literatur
+           mit Suchbegriff.Art = Literatur.Art
+           und Suchbegriff.Titel enthalten in Literatur.Titel
+           und Suchbegriff.Autor enthalten in Literatur.Autor
+           und Suchbegriff.ISBN enthalten in Literatur.ISBN
+           und Suchbegriff.Beschreibung in Literatur.Beschreibung // VT
+           und Suchbegriff.Jahr enthalten in Literatur.Jahr
+           und Suchbegriff.Ort enthalten in Literatur.Ort
+           und Suchbegriff.Stichworte in Literatur.Stichworte // Volltext
+   END
+   
+   IF gefunden THEN
+     Setz Suchtreffer := gefundene_Literatur
+   ELSE
+     Setze Fehler 402
+ END
 \end{verbatim}
 \hrulefill
