@@ -27,16 +27,15 @@
 \end{tabular}
 
 \hrulefill\\
-\textbf{Voraussetzung}: Benutzer muss als Administrator angemeldet sein.
+\textbf{Voraussetzung}: Benutzer muss als Administrator angemeldet sein. Es darf keinen anderes Mitglied mit gleichen Login geben (von Datenbank abgefangen).
 \begin{verbatim}
  BEGIN
-   Finde in Mitglieder Mitglied
-         mit Mitglied.Login = Mitgliedsdaten.Login
+   Lege in Mitglieder Mitglied mit Mitgliedsdaten an
 
    IF gefunden THEN
      Setze Fehler 502
    ELSE
-     Lege in Mitglieder Mitglied mit Mitgliedsdaten an
+     Setze Bestätigung_Mitgliedanlegen
  END
 \end{verbatim}
 \hrulefill
