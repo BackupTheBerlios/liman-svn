@@ -5,39 +5,116 @@ dass für die Speicherung von in der Regel (bis auf wenige Ausnahmen, für die d
          gZahl - 2Byte, rZahl - 4 Byte\\
          Zeichenkette - 1Byte pro Zeichen (der maximalen Länge) erforderlich sind.
 
-TODO:
-\begin{tabular}[ht]{|l|l|l|}
+TODO:\\
+\begin{longtable}{|l|p{6.0cm}|p{2cm}|}
 \hline
-Element & Struktur & Bytes \\
+Element & Struktur & Bytes\\
 \hline\hline
-% Mitglieder
-Mitglied  & M\_Name + (Funktion) & $50+14=64$ \\
-M\_Name  &  <Vor>Name + <Familien>Name & $25+25=50$ \\
-M\_Name  &  ["Vorsitzender" | "Stellvertreter" | "Kassenwart"] & $14$ \\
-\hline\hline
-Leistung & abc+cde & $19+23=42$ \\
-.... & ... & ... \\
+\endhead
+
+Literatur & @Literatur\_Nr + Art + Titel + Autor + ISBN + Jahr + Beschreibung + Ort + Stichworte \\
 \hline
-\end{tabular}
+Literatur\_Nr & gZahl *6stellig, 000001 $\leq$ Literatur\_Nr $\leq$ 999999*  & $4$\\
+\hline
+Art & [``Buch'' | ``Artikel'' | ``Handbuch'' | ``Diplomarbeit'' | ``Sonstiges''] \textbf{BITTE UM VORSCHLÄGE/ÄNDERUNG}  & $13$\\
+\hline
+Titel & Zeichenkette40 \\
+\hline
+Autor & Zeichenkette40 \\
+\hline
+ISBN & gZahl *1stellig* + '-' + gZahl *4stellig* + '-' + gZahl *4stellig* + '-' + gZahl *1stellig* \textbf{DAS STIMMT LAUT WIKIPEDIA NICHT}\\
+\hline
+Jahr & gZahl *4stellig* \\
+\hline
+Beschreibung & Zeichenkette250 \\
+\hline
+Ort & Zeichenkette40 \\
+\hline
+Stichworte & Zeichenkette100 \\
+\hline\hline
+
+Kommentar & @Kommentar\_Nr + Kommentartext + Literatur\_Nr + Mitglieds\_Nr\\
+\hline
+Kommentar\_Nr & gZahl *6stellig, 000001 $\leq$ Kommentar\_Nr $\leq$ 999999* \\
+\hline
+Kommentartext & Zeichenkette400 \\
+\hline\hline
+
+Mitglied  & @Mitglieds\_Nr  + Name + Login + Passwort + Rechte\\
+\hline
+Mitglieds\_Nr & gZahl *6stellig, 000001 $\leq$ Benutzer\_Nr $\leq$ 999999* \\ 
+\hline
+Name & <Vor>Name + <Nach>Name \\
+\hline
+Login & Zeichenkette12 \\
+\hline
+Passwort & Zeichenkette12 \\
+\hline
+Rechte & [``Benutzer'' $\mid $``Administrator``] \\
+\hline\hline
+
+Mitgliedsdaten & Name + Login + Passwort + Rechte \\
+\hline
+Literaturdaten & Art + Titel + Autor + ISBN + Jahr + Beschreibung + Ort + Stichworte \\
+\hline
+Kommentardaten & Literatur\_Nr + Mitglieds\_Nr + Kommentartext \\
+\hline
+BibTeX-Datei & *Datei im Bibtexformat* \\
+\hline
+Suchbegriff & [Zeichenkette100 | (Art) + (Titel) + (Autor) + (ISBN) + (Jahr) + (Beschreibung) + (Ort) + (Stichworte)] *Mindestens ein optionales Feld muss angegeben sein* \\
+\hline
+Exportanfrage & Literatur\_Nr \textbf{BITTE UM VORSCHLÄGE/ÄNDERUNG} \\
+\hline\hline
+
+Bestätigung\_BibTeXImport & Literatur\_Nr + Zeichenkette ''Importieren vorgenommen`` \\
+\hline
+Bestätigung\_Literaturanlegen & Literatur\_Nr + Zeichenkette ''Anlegen vorgenommen`` \\
+\hline
+Bestätigung\_Literaturändern & Literatur\_Nr + Zeichenkette ''Änderung vorgenommen`` \\
+\hline
+Bestätigung\_Literaturlöschen & Literatur\_Nr + Zeichenkette ''Löschen vorgenommen`` \\
+\hline
+Bestätigung\_Kommentaranlegen & Kommentar\_Nr + Zeichenkette ''Anlegen vorgenommen`` \\
+\hline
+Bestätigung\_Kommentarändern & Kommentar\_Nr + Zeichenkette ''Änderung vorgenommen`` \\
+\hline
+Bestätigung\_Kommentarlöschen & Kommentar\_Nr + Zeichenkette ''Löschen vorgenommen`` \\
+\hline
+Bestätigung\_Mitgliedanlegen & Mitglieds\_Nr + Zeichenkette ''Anlegen vorgenommen`` \\
+\hline
+Bestätigung\_Mitgliedändern & Mitglieds\_Nr + Zeichenkette ''Änderung vorgenommen`` \\
+\hline
+Bestätigung\_Mitgliedlöschen & Mitglieds\_Nr + Zeichenkette ''Löschen vorgenommen`` \\
+\hline
+Literatur\_Info & Literatur + Kommentare \\
+\hline
+Suchtreffer & \{Literatur\_Nr + Titel\} \textbf{NICHT NOCH MEHR?}\\
+\hline
+Mitgliederliste & \{Mitglieds\_Nr + Name\}\\
+\hline
+\end{longtable}
 
 \subsection{Speicher (Angaben zum Speicherbedarf in Byte)}
-TODO:
+TODO:\\
 \begin{tabular}[ht]{|l|l|l|l|l|}
 \hline
 Speicher & Struktur & Minimum & Mittel & Maximum \\
 \hline\hline
-Mitglieder & {Mitglied} & $0*64$ & $50*64=3200$ & $100*64=6400$ \\
-Leistungen & {Leistung} & $0*42$ & $50*42=2100$ & $100*42=4200$ \\
+Bibliothek & {Literatur} & $0*19$ & $50*19=950$ & $100*19=1900$ \\
+Kommentare & {Kommentar} & $0*19$ & $50*19=950$ & $100*19=1900$ \\
+Mitglieder & {Mitglied}  & $0*19$ & $50*19=950$ & $100*19=1900$ \\
 \hline
 \end{tabular}
 
 \subsection{Weitere Datenflüsse}
-TODO:
+TODO:\\
 \begin{tabular}[ht]{|l|l|l|l|l|}
 \hline
 Datenfluss & Struktur & Minimum & Mittel & Maximum \\
 \hline\hline
-Revisionsunterlagen & {Mitglied} & $0*64$ & $50*64=3200$ & $100*64=6400$ \\
+Kommentare & {Kommentar} & $0*64$ & $50*64=3200$ & $100*64=6400$ \\
+Suchtreffer & \{Literatur\_Nr + Titel\}  & $0*64$ & $50*64=3200$ & $100*64=6400$ \\
+...\\
 \hline
 \end{tabular}
 
@@ -51,7 +128,7 @@ TODO:
 \end{itemize}
 
 \subsection{Genauigkeit}
-TODO siehe Beispielbeleg S. 23
+Es werden nur Ganzzahlen im ganzen System verarbeitet. Es werden hierbei keine problematische Rechnungen vorgenommen.
 
 \section{Operationelle Anforderungen an die Datenströme}
 TODO siehe Beispielbeleg S. 23
