@@ -40,7 +40,7 @@
 	<br>
 	<hr>
 	<br>
-	<form action="litadd.php">
+	<form action="litmod.php">
 	<input type="submit" value="Literatur hinzuf&uuml;gen">
 	</form>
 

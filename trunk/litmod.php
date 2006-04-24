@@ -1,5 +1,5 @@
 <?php
-	$title = "Hinzuf&uuml;gen";
+	$title = "Literatur bearbeiten/hinzuf&uuml;gen";
 	//$extracss = "home.css";
 
 	require("include/header.php");
@@ -35,7 +35,7 @@
 			</tr>
 			<tr>
 				<th scope="row">Aktionen:</th>	
-				<td><input type="submit" value="Hinzuf&uuml;gen"></td>
+				<td><input type="submit" value="&Uuml;bernehmen"></td>
 			</tr>
 
 		</tbody>

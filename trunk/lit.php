@@ -57,7 +57,7 @@
 			</tr>
 			<tr>
 				<th scope="row">Aktionen:</th>	
-				<td><input type="submit" value="&Auml;ndern"><input type="submit" value="L&ouml;schen"><br> </td>
+				<td><input type="submit" value="Bearbeiten"><input type="submit" value="L&ouml;schen"><br> </td>
 			</tr>
 		</tbody>
 	</table>

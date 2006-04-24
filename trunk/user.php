@@ -6,6 +6,7 @@
 ?>
 <div id="cfront" class="content">
 	<br>
+	<form action="usermod.php">
 	
 	<table id="bookdetails">
 		<tbody>
@@ -28,13 +29,12 @@
 			<tr>
 				<th scope="row">Aktionen:</th>	
 				<td>
-				<form action="usermod.php">
-				<input type="submit" value="Bearbeiten"></form>
+				<input type="submit" value="Bearbeiten">
 				<br> </td>
 			</tr>
-
 		</tbody>
 	</table>
+	</form>
 </div>
 <?php	require("include/footer.php"); ?>
 
