@@ -10,9 +10,9 @@ DEPENDS =	Makefile\
 		basismaschine_umgebung.tex\
 		pspec_bibtex.tex\
 		pspec_kommentarverwaltung.tex\
-		pspec_buchinformation.tex\
+		pspec_literaturinformation.tex\
 		pspec_mitgliederverwaltung.tex\
-		pspec_buchverwaltung.tex
+		pspec_bibliotheksverwaltung.tex
 
 # Standard pdf
 all: pdf
