@@ -179,20 +179,59 @@ TODO:
 \input{pspec_mitgliederverwaltung}
 
 \subsection{Definition der Nutzerschnittstelle}
-TODO (Generell, Fargestaltung)
+
+Durch das Websystem ist die Nutzerschnittstelle beschr"ankt auf die Darstellung im Browser. Dadurch kann die Darstellung
+leicht bei verschiedenen Browser und Betriebssystemen variieren. Die Eingabefelder und Kn"opfe werden im Stil des 
+Betriebssystems dargestellt, sodass der Benutzer stets seine gewohnte Umgebung vorfinden kann. Ebenso kann man mittels der Optionen
+des Browser Schriftgr"osse und andere visuelle Einstellungen ver"andern. Das Grundlayout bleibt jedoch immer erhalten
+und richtet sich unter anderem auch nach der Gr"osse des ge"offneten Browserfensters.\\
+\\
+Das Layout teilt sich in einen Navigations/Uebersichtsteil auf der linken Seite der unabh"angig von der Auswahl immer
+zu sehen ist. Hier findet sich die Navigation, die Suchmaske fuer die Suchfunktion sowie Authentifikationsmaske zum Login.
+Auf der rechten, gr"osseren Seite befindet sich der Inhalt der aktuell aufgerufenen Funktion.\\
+\\
+Die Benutzung beginnt gew"ohnlich auf der Literaturliste (Startseite), jede Seite kann aber "uber direkte
+Ansteuerung mittels der Addresszeile des Browser oder auch Bookmarks abgerufen werden.\\
 
 \subsubsection{Ein- und Ausgabegeräte}
 F"ur die Eingabe wird ein vernetzter PC mit Tastatur und Maus vorrausgesetzt.\\
 Die Ausgabe erfolgt stets "uber einen Farbmonitor.
+\newpage
+\subsubsection{Navigationsleiste}
+\includegraphics[scale=0.6]{navigation.png} 
 
-\paragraph{Legende zur Layoutdarstellung}
-TODO Siehe Beispielbeleg S. 11
+Diese Leiste findet man unabh"angig vom Inhalt immer auf der linken Seite.
+Unter {\bf Navigation} findet man die Unterpunkte "Literatur" und "Nutzer", die zu den entsprechenden Listen f"uhren.\\
+\\
+{\bf Suchen} erlaubt die Eingabe eines Suchbegriffes, mit dem Knopf "Suche" wird der Vorgang gestartet. 
+Das Ergebnis findet sich dann im Inhaltsbereich auf der rechten Seite.\\
+\\
+Zum {\bf Einloggen} gibt man seinen Nutzerkennzeichen und Passwort ein. Ist man bereits eingeloggt, ist hier der Nutzerstatus
+und die M"oglichkeit zum Ausloggen zu finden.
+\subsubsection{Startseite, Literaturliste}
+\includegraphics[scale=0.6]{index.png}
 
-\paragraph{Grundfenster}
-TODO
+Hier ist die verf"ugbare Literatur aufgelistet. Durch Klicken der Titel gelangt man zur Detailansicht f"ur 
+das jeweilige Buch. Mit dem Knopf am Ende der Liste (und entsprechenden Rechten) kann man Literatur hinzufuegen.
 
-\paragraph{Menüs}
-TODO
+\subsubsection{Literaturdetails}
+\includegraphics[scale=0.6]{lit.png}
 
-\paragraph{Fenster irgendwas}
-TODO
+Alle verf"ugbaren Information zum Buch werden hier aufgelistet. Hat man entsprechende Privilegien kann man auch
+Bearbeiten/l"oschen oder Kommentare hinzufuegen/l"oschen.
+
+\subsubsection{Suchergebnisse}
+\includegraphics[scale=0.6]{search.png}
+
+Das Ergebnis der Suche ist eine Literaturliste und wird entsprechend genauso bedient.
+
+\subsubsection{Nutzerliste}
+\includegraphics[scale=0.6]{user.png}
+
+Hier werden alle Nutzer des Systems angezeigt, je nach Privelegien k"onnen auch die eigenen Daten oder andere
+Daten modifiziert oder hinzugef"ugt werden.
+
+\subsubsection{Nutzer bearbeiten/hinzuf"ugen}
+\includegraphics[scale=0.6]{usermod.png}
+
+Hier werden nutzerspezifische Daten und das Passwort ge"andert.
