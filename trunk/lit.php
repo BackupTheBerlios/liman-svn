@@ -1,5 +1,5 @@
 <?php
-	$title = "Buchdetails";
+	$title = "Literaturdetails";
 	//$extracss = "home.css";
 
 	require("include/header.php");
@@ -7,7 +7,7 @@
 <div id="cfront" class="content">
 	<hr>
 	
-	<table id="bookdetails">
+	<table id="litdetails">
 		<tbody>
 			<tr>
 				<th scope="row">Titel:</th>	

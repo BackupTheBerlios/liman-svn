@@ -7,7 +7,7 @@
 <div id="cfront" class="content">
 	<br>
 
-	<table id="bookadd">
+	<table id="litadd">
 		<tbody>
 			<tr>
 				<th scope="row">Titel:</th>	

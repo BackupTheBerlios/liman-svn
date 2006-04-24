@@ -6,6 +6,7 @@
 ?>
 <div id="cfront" class="content">
 	<br>
+	<form action="usermod.php">
 	<table id="userlist">
 		<thead>
 			<tr>
@@ -35,6 +36,7 @@
 			</tr>
 		</tbody>
 	</table>
+	</form>
 
 
 </div>

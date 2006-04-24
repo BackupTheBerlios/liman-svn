@@ -1,5 +1,5 @@
 <?php
-	$title = "Literaturliste";
+	$title = "Suchergebnisse f&uuml; \"Algorithmen\"";
 	//$extracss = "home.css";
 
 	require("include/header.php");
@@ -23,18 +23,6 @@
 				<td>Pearson Studium</td>
 				<td>3-8273-7032-9</td>
 			</tr>
-			<tr>
-				<td><a href="lit.<?=$ext;?>?id=456">Python - kurz und gut</a></td>
-				<td>Mark Lutz</td>
-				<td>O'Reilly</td>
-				<td>3-89721-240-4</td>
-			</tr>
-			<tr>
-				<td><a href="lit.<?=$ext;?>?id=456">Angewandte Kryptographie</a></td>
-				<td>Bruce Schneier</td>
-				<td>Addison-Wesley</td>
-				<td>3-89319-854-7</td>
-			</tr>
 		</tbody>
 	</table>
 	<br>
@@ -47,3 +35,4 @@
 
 </div>
 <?php	require("include/footer.php"); ?>
+

@@ -1,5 +1,5 @@
 <?php
-	$title = "Nutzer bearbeiten";
+	$title = "Nutzer bearbeiten/hinzuf&uuml;gen";
 	//$extracss = "home.css";
 
 	require("include/header.php");
@@ -7,6 +7,7 @@
 <div id="cfront" class="content">
 	<br>
 	
+	<form action="usermod.php">
 	<table id="bookdetails">
 		<tbody>
 			<tr>
@@ -37,13 +38,13 @@
 			<tr>
 				<th scope="row">Aktionen:</th>	
 				<td>
-				<form action="usermod.php">
-				<input type="submit" value="&Uuml;bernehmen"></form>
+				<input type="submit" value="&Uuml;bernehmen">
 				<br> </td>
 			</tr>
 
 		</tbody>
 	</table>
+	</form>
 </div>
 <?php	require("include/footer.php"); ?>
 

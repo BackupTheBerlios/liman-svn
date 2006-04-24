@@ -39,7 +39,7 @@
 				<div id="navigation">
 					<h2><span>Navigation</span></h2>
 					<ul>
-						<li id="nhome"><a href="index.<?=$ext;?>" accesskey="h">B&uuml;cher</a></li>
+						<li id="nhome"><a href="index.<?=$ext;?>" accesskey="h">Literatur</a></li>
 						<li id="nuser"><a href="userlist.<?=$ext;?>" accesskey="n">Nutzer</a></li>
 					</ul>
 				</div>
