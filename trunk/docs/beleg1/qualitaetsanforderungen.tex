@@ -1,15 +1,28 @@
 \chapter{Spezifikation wichtiger Qualitätsanforderungen}
 \section{Benutzerbarkeit}
-TODO siehe Beispielbeleg S. 24
-
+Im wesentlichen existieren drei Arten von Nutzern: \\
+\\
+\textbf{1. Administrator:} \\
+Er ist im wesentlichen f\"ur die Mitgliedsverwaltung zust\"andig, also das anlegen, \"andern und l\"oschen von Mitgliedseintr\"agen. \\
+Des weiteren k\"ummert er sich mit Hilfe der quelloffenen Basisprogramme um Datensicherungen. Eine gewisse Grundkenntnis im Umgang mit
+besagten Programmen ist also vorrausgesetzt. \\
+\\
+\textbf{2. Mitglied:} \\
+Nachdem man sich in der Literaturverwaltung registriert hat wird man zum Mitglied. Damit er\"offnen sich neue M\"oglichkeiten. \\
+So kann man neue Literatur hinzuf\"ugen, ab\"andern und l\"oschen oder Kommentare \"uber Literatureintr\"age verfassen.\\
+\\
+\textbf{3. Nutzer:} \\
+Wenn man sich nicht registriert ist man in der Gruppe der Nutzer, diese Gruppe hat keine M\"oglichkeit auf den Datenbestand der Literaturverwaltung einzuwirken.\\
+Die Rechte sind auf die Recherche beschr\"ankt, der Nutzer kann also B\"ucher suchen, ausw\"ahlen und sich die Beschreibungen und Kommentare ansehen.
 \section{Zuverlässigkeit}
-TODO siehe Beispielbeleg S. 24
-
+Eine einfache Bedienoberfl\"ache und klar formulierte Fehlermeldungen erm\"oglichen dem Nutzer bei Fehleingaben schnell auf die entsprechende Situation zu reagieren.\\
+Daten, die gespeichert werden sollen werden erst nach Best\"atigung in den Bestand \"ubernommen, sollte es vor der Best\"atigung zu einem Absturz kommen, muss das Mitglied die Daten erneut eingeben. \\
+Sollte es zur unbeabsichtigten L\"oschung oder Besch\"adigung von Daten kommen, hat der Administrator au\ss erhalb des zu entwicklenden Systems M\"oglichkeiten mit Hilfe des Verwendeten Datenbanksystems diese zu retten.
 \section{Integrität}
-TODO siehe Beispielbeleg S. 24
-
+Auch wenn aktiv auf den Datenbestand eingewirkt werden kann, so ist dies jedoch ausschlie\ss lich registrierten Mitgliedern m\"oglich solche \"Anderungen vorzunehmen.
+Diese \"Anderungen k\"onnen auch vom Administrator breinigt werden.\\
+Sollte es wiederholt zu sch\"adigenden Eingriffen seitens eines Mitglieds kommen, so ist der Adminstrator berechtigt betreffendes Mitgliedskonto samt aller Mitgliedsdaten zu l\"oschen.
 \section{Flexibilität}
-TODO siehe Beispielbeleg S. 24
-
+Auch wenn zur Zeit keine Erweiterungen an der Literaturverwaltung geplant sind, ist es aufgrund der Sprache PHP dennoch m\"oglich \"Anderungen vorzunehmen.
 \section{Portabilität}
-TODO siehe Beispielbeleg S. 24
+Aufgrund einer speziellen Konfiguration des Zielsystem in Hinblick auf Web- und SQL-Server, ist das portieren der Literaturverwaltung nicht ohne Weiteres m\"oglich.
