@@ -11,7 +11,7 @@ Element & Struktur & Bytes\\
 \hline\hline
 %\endhead
 
-Literatur & @Literatur\_Nr + Art + Titel + Autor + Jahr + Verlag + ISBN + Beschreibung + Ort + Stichworte & $4 + 13 + 40 + 40 + 2 + 40 + 20 + 250 + 40 + 100 = 539$ \\
+Literatur & @Literatur\_Nr + Art + Titel + Autor + (Jahr) + (Verlag) + (ISBN) + (Beschreibung) + (Ort) + (Stichworte) & $4 + 13 + 40 + 40 + 2 + 40 + 20 + 250 + 40 + 100 = 549$ \\
 \hline
 Literatur\_Nr & gZahl *6stellig, 000001 $\leq$ Literatur\_Nr $\leq$ 999999*  & $4$\\
 \hline
@@ -56,7 +56,7 @@ Rechte & [``Benutzer'' $\mid $``Administrator``] & $13$ \\
 
 Mitgliedsdaten & Name + Login + Passwort + Rechte & $20 + 12 + 12 + 13 = 57 $\\
 \hline
-Literaturdaten & Art + Titel + Autor + Jahr + Verlag + ISBN + Beschreibung + Ort + Stichworte & $13 + 40 + 40 + 2 + 40 + 20 + 250 + 40 + 100 = 535 $ \\
+Literaturdaten & Art + Titel + Autor + (Jahr) + (Verlag) + (ISBN) + (Beschreibung) + (Ort) + (Stichworte) & $13 + 40 + 40 + 2 + 40 + 20 + 250 + 40 + 100 = 545 $ \\
 \hline
 Kommentardaten & Literatur\_Nr + Mitglieds\_Nr + Kommentartext & $4 + 4 + 4 = 12 $ \\
 \hline
@@ -87,7 +87,7 @@ Bestätigung\_Mitgliedändern & Mitglieds\_Nr + Zeichenkette ''Änderung vorgeno
 \hline
 Bestätigung\_Mitgliedlöschen & Mitglieds\_Nr + Zeichenkette ''Löschen vorgenommen`` & $4 + 19 = 23$\\
 \hline
-Literatur\_Info & Literatur + Kommentare & $ 539 + 412 = 951 $ \\
+Literatur\_Info & Literatur + Kommentare & $ 549 + 412 = 961 $ \textbf{KOMMENTARE = VIELE KOMMENTARE UND NICHT NUR EINER}\\
 \hline
 Suchtreffer & \{Literatur\_Nr + Titel + Art + Beschreibung\} & $4 + 40 + 13 + 250 = 307$\\
 \hline
@@ -102,7 +102,7 @@ TODO:\\
 \hline
 Speicher & Struktur & Minimum & Mittel & Maximum \\
 \hline\hline
-Literatur & {Literatur} & $0*539$ & $50*539=26950$ & $100*539=53900$ \\
+Literatur & {Literatur} & $0*549$ & $50*549=26950$ & $100*549=54900$ \\
 Kommentare & {Kommentar} & $0*412$ & $50*412=20600$ & $100*412=41200$ \\
 Mitglieder & {Mitglied}  & $0*61$ & $50*61=3050$ & $100*61=6100$ \\
 \hline
