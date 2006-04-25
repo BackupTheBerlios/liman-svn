@@ -68,7 +68,7 @@
 	</table>
 	<hr>
 
-	<table id="litdetails">
+	<table id="litkommentare">
 		<tbody>
 			<tr>
 				<th scope="row">Hans Wurst:<br></th>	

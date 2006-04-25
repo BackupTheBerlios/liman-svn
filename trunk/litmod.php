@@ -23,7 +23,7 @@
 			</tr>
 			<tr>
 				<th scope="row">Stichworte:</th>	
-				<td><input type="input"></td>
+				<td><input type="text"></td>
 			</tr>
 			<tr>
 				<th scope="row">Art:</th>	
@@ -43,7 +43,7 @@
 			</tr>
 			<tr>
 				<th scope="row">Verlagsort:</th>	
-				<td><input type="input"></td>
+				<td><input type="text"></td>
 			</tr>
 
 			<tr>
