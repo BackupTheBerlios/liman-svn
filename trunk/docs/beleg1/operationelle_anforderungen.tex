@@ -5,96 +5,96 @@ dass für die Speicherung von in der Regel (bis auf wenige Ausnahmen, für die d
          gZahl - 2Byte, rZahl - 4 Byte\\
          Zeichenkette - 1Byte pro Zeichen (der maximalen Länge) erforderlich sind.
 
-TODO:\\
 \begin{longtable}{|l|p{6.0cm}|p{2cm}|}
 \hline
 Element & Struktur & Bytes\\
 \hline\hline
-\endhead
+%\endhead
 
-Literatur & @Literatur\_Nr + Art + Titel + Autor + Jahr + Verlag + ISBN + Beschreibung + Ort + Stichworte \\
+Literatur & @Literatur\_Nr + Art + Titel + Autor + Jahr + Verlag + ISBN + Beschreibung + Ort + Stichworte & $4 + 13 + 40 + 40 + 2 + 40 + 20 + 250 + 40 + 100 = 539$ \\
 \hline
 Literatur\_Nr & gZahl *6stellig, 000001 $\leq$ Literatur\_Nr $\leq$ 999999*  & $4$\\
 \hline
 Art & [``Buch'' | ``Artikel'' | ``Handbuch'' | ``Diplomarbeit'' | ``Sonstiges''] \textbf{BITTE UM VORSCHLÄGE/ÄNDERUNG}  & $13$\\
 \hline
-Titel & Zeichenkette40 \\
+Titel & Zeichenkette40 & $40$ \\
 \hline
-Autor & Zeichenkette40 \\
+Autor & Zeichenkette40 & $40$\\
 \hline
-Jahr & gZahl *4stellig* \\
+Jahr & gZahl *4stellig* & $2$\\
 \hline
-Verlag & Zeichenkette40 \\
+Verlag & Zeichenkette40 & $40$ \\
 \hline
-ISBN & gZahl *1stellig* + '-' + gZahl *4stellig* + '-' + gZahl *4stellig* + '-' + gZahl *1stellig* \textbf{DAS STIMMT LAUT WIKIPEDIA NICHT}\\
+ISBN & Zeichenkette20 & $20$  \\
 \hline
-Beschreibung & Zeichenkette250 \\
+Beschreibung & Zeichenkette250 & $250$ \\
 \hline
-Ort & Zeichenkette40 \\
+Ort & Zeichenkette40 & $40$ \\
 \hline
-Stichworte & Zeichenkette100 \\
+Stichworte & Zeichenkette100 & $100$\\
 \hline\hline
 
-Kommentar & @Kommentar\_Nr + Kommentartext + Literatur\_Nr + Mitglieds\_Nr\\
+Kommentar & @Kommentar\_Nr + Kommentartext + Literatur\_Nr + Mitglieds\_Nr & $4 + 400 + 4 + 4 = 412 $\\
 \hline
-Kommentar\_Nr & gZahl *6stellig, 000001 $\leq$ Kommentar\_Nr $\leq$ 999999* \\
+Kommentar\_Nr & gZahl *6stellig, 000001 $\leq$ Kommentar\_Nr $\leq$ 999999* & $4$ \\
 \hline
-Kommentartext & Zeichenkette400 \\
+Kommentartext & Zeichenkette400 & $400$\\
 \hline\hline
 
-Mitglied  & @Mitglieds\_Nr  + Name + Login + Passwort + Rechte\\
+Mitglied  & @Mitglieds\_Nr  + Name + Login + Passwort + Rechte & $4 + 20 + 12 + 12 + 13 = 61 $\\
 \hline
-Mitglieds\_Nr & gZahl *6stellig, 000001 $\leq$ Benutzer\_Nr $\leq$ 999999* \\ 
+Mitglieds\_Nr & gZahl *6stellig, 000001 $\leq$ Benutzer\_Nr $\leq$ 999999* & $4$ \\ 
 \hline
-Name & <Vor>Name + <Nach>Name \\
+Name & <Vor>Name + <Nach>Name & $10 + 10 = 20$\\
 \hline
-Login & Zeichenkette12 \\
+Login & Zeichenkette12 & $12$\\
 \hline
-Passwort & Zeichenkette12 \\
+Passwort & Zeichenkette12 & $12$\\
 \hline
-Rechte & [``Benutzer'' $\mid $``Administrator``] \\
+Rechte & [``Benutzer'' $\mid $``Administrator``] & $13$ \\
 \hline\hline
 
-Mitgliedsdaten & Name + Login + Passwort + Rechte \\
+Mitgliedsdaten & Name + Login + Passwort + Rechte & $20 + 12 + 12 + 13 = 57 $\\
 \hline
-Literaturdaten & Art + Titel + Autor + Jahr + Verlag + ISBN + Beschreibung + Ort + Stichworte \\
+Literaturdaten & Art + Titel + Autor + Jahr + Verlag + ISBN + Beschreibung + Ort + Stichworte & $13 + 40 + 40 + 2 + 40 + 20 + 250 + 40 + 100 = 535 $ \\
 \hline
-Kommentardaten & Literatur\_Nr + Mitglieds\_Nr + Kommentartext \\
+Kommentardaten & Literatur\_Nr + Mitglieds\_Nr + Kommentartext & $4 + 4 + 4 = 12 $ \\
 \hline
-BibTeX-Datei & *Datei im Bibtexformat* \\
+BibTeX-Datei & *Datei im Bibtexformat* & $8$\\
 \hline
-Suchbegriff & [Zeichenkette100 | (Art) + (Titel) + (Autor) + (ISBN) + (Jahr) + (Beschreibung) + (Ort) + (Stichworte)] *Mindestens ein optionales Feld muss angegeben sein* \\
+Suchbegriff & [Zeichenkette100 | (Art) + (Titel) + (Autor) + (ISBN) + (Jahr) + (Beschreibung) + (Ort) + (Stichworte)] *Mindestens ein optionales Feld muss angegeben sein* & $100 $ \\
 \hline
-Exportanfrage & Literatur\_Nr \textbf{BITTE UM VORSCHLÄGE/ÄNDERUNG} \\
+Exportanfrage & Literatur\_Nr \textbf{BITTE UM VORSCHLÄGE/ÄNDERUNG} & $4 $ \\
 \hline\hline
 
-Bestätigung\_BibTeXImport & Literatur\_Nr + Zeichenkette ''Importieren vorgenommen`` \\
+Bestätigung\_BibTeXImport & Literatur\_Nr + Zeichenkette ''Importieren vorgenommen`` & $4 + 23 = 27 $\\
 \hline
-Bestätigung\_Literaturanlegen & Literatur\_Nr + Zeichenkette ''Anlegen vorgenommen`` \\
+Bestätigung\_Literaturanlegen & Literatur\_Nr + Zeichenkette ''Anlegen vorgenommen`` & $4 + 19 = 23 $\\
 \hline
-Bestätigung\_Literaturändern & Literatur\_Nr + Zeichenkette ''Änderung vorgenommen`` \\
+Bestätigung\_Literaturändern & Literatur\_Nr + Zeichenkette ''Änderung vorgenommen`` & $4 + 20 = 24$ \\
 \hline
-Bestätigung\_Literaturlöschen & Literatur\_Nr + Zeichenkette ''Löschen vorgenommen`` \\
+Bestätigung\_Literaturlöschen & Literatur\_Nr + Zeichenkette ''Löschen vorgenommen`` & $4 + 19 = 23 $\\
 \hline
-Bestätigung\_Kommentaranlegen & Kommentar\_Nr + Zeichenkette ''Anlegen vorgenommen`` \\
+Bestätigung\_Kommentaranlegen & Kommentar\_Nr + Zeichenkette ''Anlegen vorgenommen`` & $4 + 19 = 23 $\\
 \hline
-Bestätigung\_Kommentarändern & Kommentar\_Nr + Zeichenkette ''Änderung vorgenommen`` \\
+Bestätigung\_Kommentarändern & Kommentar\_Nr + Zeichenkette ''Änderung vorgenommen`` & $4 + 20 = 23$\\
 \hline
-Bestätigung\_Kommentarlöschen & Kommentar\_Nr + Zeichenkette ''Löschen vorgenommen`` \\
+Bestätigung\_Kommentarlöschen & Kommentar\_Nr + Zeichenkette ''Löschen vorgenommen`` & $4 + 19 = 23$ \\
 \hline
-Bestätigung\_Mitgliedanlegen & Mitglieds\_Nr + Zeichenkette ''Anlegen vorgenommen`` \\
+Bestätigung\_Mitgliedanlegen & Mitglieds\_Nr + Zeichenkette ''Anlegen vorgenommen`` & $4 + 19 = 23 $ \\
 \hline
-Bestätigung\_Mitgliedändern & Mitglieds\_Nr + Zeichenkette ''Änderung vorgenommen`` \\
+Bestätigung\_Mitgliedändern & Mitglieds\_Nr + Zeichenkette ''Änderung vorgenommen`` & $4 + 20 = 24$\\
 \hline
-Bestätigung\_Mitgliedlöschen & Mitglieds\_Nr + Zeichenkette ''Löschen vorgenommen`` \\
+Bestätigung\_Mitgliedlöschen & Mitglieds\_Nr + Zeichenkette ''Löschen vorgenommen`` & $4 + 19 = 23$\\
 \hline
-Literatur\_Info & Literatur + Kommentare \\
+Literatur\_Info & Literatur + Kommentare & $ 539 + 412 = 951 $ \\
 \hline
-Suchtreffer & \{Literatur\_Nr + Titel\} \textbf{NICHT NOCH MEHR?}\\
+Suchtreffer & \{Literatur\_Nr + Titel + Art + Beschreibung\} & $4 + 40 + 13 + 250 = 307$\\
 \hline
-Mitgliederliste & \{Mitglieds\_Nr + Name\}\\
+Mitgliederliste & \{Mitglieds\_Nr + Name\} & $4 + 20 = 24 $\\
 \hline
 \end{longtable}
+
 
 \subsection{Speicher (Angaben zum Speicherbedarf in Byte)}
 TODO:\\
@@ -102,9 +102,9 @@ TODO:\\
 \hline
 Speicher & Struktur & Minimum & Mittel & Maximum \\
 \hline\hline
-Bibliothek & {Literatur} & $0*19$ & $50*19=950$ & $100*19=1900$ \\
-Kommentare & {Kommentar} & $0*19$ & $50*19=950$ & $100*19=1900$ \\
-Mitglieder & {Mitglied}  & $0*19$ & $50*19=950$ & $100*19=1900$ \\
+Literatur & {Literatur} & $0*539$ & $50*539=26950$ & $100*539=53900$ \\
+Kommentare & {Kommentar} & $0*412$ & $50*412=20600$ & $100*412=41200$ \\
+Mitglieder & {Mitglied}  & $0*61$ & $50*61=3050$ & $100*61=6100$ \\
 \hline
 \end{tabular}
 
@@ -114,9 +114,11 @@ TODO:\\
 \hline
 Datenfluss & Struktur & Minimum & Mittel & Maximum \\
 \hline\hline
-Kommentare & {Kommentar} & $0*64$ & $50*64=3200$ & $100*64=6400$ \\
-Suchtreffer & \{Literatur\_Nr + Titel\}  & $0*64$ & $50*64=3200$ & $100*64=6400$ \\
-...\\
+
+Suchtreffer & \{Literatur\_Nr + Titel + Art + Beschreibung\}  & $0*307$ & $50*307=15350$ & $100*307=30700$ \\
+BibTeX-Datei & \{Datei im Bibtexformat\} & $0*8$ & $50*8=400$ & $100*8=800$ \\
+ 
+\\
 \hline
 \end{tabular}
 
