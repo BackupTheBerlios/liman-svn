@@ -26,6 +26,11 @@
 				<td>Pearson Studium</td>
 			</tr>
 			<tr>
+				<th scope="row">Verlagsort:</th>	
+				<td>Bonn ; München ; Paris [u.a.]</td>
+			</tr>
+
+			<tr>
 				<th scope="row">ISBN:</th>	
 				<td>3-8273-7032-9</td>
 			</tr>
@@ -63,22 +68,19 @@
 	</table>
 	<hr>
 
-	<table id="bookdetails">
+	<table id="litdetails">
 		<tbody>
 			<tr>
-				<th scope="row">Simon Wunderlich:<br></th>	
+				<th scope="row">Hans Wurst:<br></th>	
 				<td>Tolle Dramatik, wirklich fesselnder Storyverlauf, nur das Ende war ein bisschen matt.</td>
 				<td><span style="font-size: 0.6em"><a href="loeschen.php">(loeschen)</a></span></td>
 			</tr>
 			<tr>
-				<th scope="row">Hans Wurst:</th>	
-				<td>Ich fands langweilig.</td>
-			</tr>
-			<tr>
 				<th scope="row">Neuer Kommentar:</th>	
 				<td>
-				<textarea cols=50 rows=10></textarea><br>
+				<textarea cols=40 rows=10></textarea><br>
 				<input type="submit" value="Kommentar senden"></td>
+				<td>&nbsp;</td>
 			</tr>
 
 

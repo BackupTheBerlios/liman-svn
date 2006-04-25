@@ -27,6 +27,15 @@
 				<td><input type="text" value="siwu@hrz.tu-chemnitz.de"></td>
 			</tr>
 			<tr>
+				<th scope="row">Rechte:</th>	
+				<td><select>
+				<option>Administrator</option>
+				<option>Mitarbeiter</option>
+				</select>
+				</td>
+			</tr>
+
+			<tr>
 				<th scope="row">Passwort:</th>	
 				<td><input type="password" value="password"></td>
 			</tr>

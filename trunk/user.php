@@ -23,6 +23,11 @@
 				<td>Wunderlich</td>
 			</tr>
 			<tr>
+				<th scope="row">Rechte:</th>	
+				<td>Administrator</td>
+			</tr>
+
+			<tr>
 				<th scope="row">E-Mail:</th>	
 				<td>siwu@hrz.tu-chemnitz.de</td>
 			</tr>

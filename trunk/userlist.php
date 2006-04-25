@@ -42,7 +42,7 @@
 	<br>
 	<form action="usermod.php">
 		<div>
-			<input type="submit" value="Literatur hinzuf&uuml;gen">
+			<input type="submit" value="Nutzer hinzuf&uuml;gen">
 		</div>
 	</form>
 

@@ -22,9 +22,30 @@
 				<td><input type="text"></td>
 			</tr>
 			<tr>
+				<th scope="row">Stichworte:</th>	
+				<td><input type="input"></td>
+			</tr>
+			<tr>
+				<th scope="row">Art:</th>	
+				<td><select>
+				<option>Buch</option>
+				<option>Paper</option>
+				<option>Hochglanzmagazin</option>
+				<option>Boulevardmagazin</option>
+				</select>
+				</td>
+			</tr>
+
+
+			<tr>
 				<th scope="row">Verlag:</th>	
 				<td><input type="text"></td>
 			</tr>
+			<tr>
+				<th scope="row">Verlagsort:</th>	
+				<td><input type="input"></td>
+			</tr>
+
 			<tr>
 				<th scope="row">ISBN:</th>	
 				<td><input type="text"></td>

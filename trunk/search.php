@@ -1,5 +1,5 @@
 <?php
-	$title = "Suchergebnisse f&uuml; \"Algorithmen\"";
+	$title = "Suchergebnisse f&uuml;r \"Algorithmen\"";
 	//$extracss = "home.css";
 
 	require("include/header.php");
