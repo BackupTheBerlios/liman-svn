@@ -10,8 +10,7 @@
 \begin{verbatim}
   BEGIN
    Finde in Bibliothek Literatur
-         mit Literatur.Titel = Kommentardaten.Buch_Nr
-   und Finde in Literatur.Autor = Literaturdaten.Autor;
+         mit Literatur.Literatur_Nr = Kommentardaten.Literatur_Nr
  
    IF gefunden THEN
    BEGIN
@@ -26,8 +25,9 @@
        Lege in Kommentare Kommentar mit Kommentardaten an
        Setze Bestätigung_Kommentaranlegen
      END
-
    END
+   ELSE
+       Setze Fehler 302
  END
 \end{verbatim}
 \hrulefill
@@ -52,7 +52,7 @@
    IF erfolgreich THEN
      Setze Bestätigung_Kommentarändern
    ELSE
-     Setze Fehler 302
+     Setze Fehler 303
  END
 \end{verbatim}
 \hrulefill
@@ -76,7 +76,7 @@
    IF erfolgreich THEN
      Setze Bestätigung_Kommentarlöschen
    ELSE
-     Setze Fehler 303
+     Setze Fehler 304
  END
 \end{verbatim}
 \hrulefill

@@ -114,7 +114,7 @@ Kommentartext & Zeichenkette400 \\
 
 \emph{Mitglieder} & \{Mitglied\} \\
 \hline
-Mitglied  & @Mitglieds\_Nr  + Name + Login + Passwort + Rechte\\
+Mitglied  & @Mitglieds\_Nr  + Name + Login + Passwort + Rechte + E-Mail\\
 \hline
 Mitglieds\_Nr & gZahl *6stellig, 000001 $\leq$ Benutzer\_Nr $\leq$ 999999* \\ 
 \hline
@@ -125,9 +125,11 @@ Login & Zeichenkette12 \\
 Passwort & Zeichenkette12 \\
 \hline
 Rechte & [``Benutzer'' $\mid $``Administrator``] \\
+\hline
+E-Mail & Zeichenkette320 \\
 \hline\hline
 
-Mitgliedsdaten & Name + Login + Passwort + Rechte \\
+Mitgliedsdaten & Name + Login + Passwort + Rechte + E-Mail\\
 \hline
 Literaturdaten & Art + Titel + Autor + (Jahr) + (Verlag) + (ISBN) + (Beschreibung) + (Ort) + (Stichworte) \\
 \hline
@@ -169,8 +171,7 @@ Mitgliederliste & \{Mitglieds\_Nr + Name\}\\
 \end{longtable}
 
 \subsubsection{Beziehungen zwischen Speichern (ERD)}
-TODO:
-\includegraphics[scale=0.35]{erd1.png}
+\includegraphics[scale=0.36]{erd1}
 
 \subsubsection{Prozessspezifikation}
 \input{pspec_bibliotheksverwaltung}

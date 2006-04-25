@@ -41,7 +41,7 @@ Kommentar\_Nr & gZahl *6stellig, 000001 $\leq$ Kommentar\_Nr $\leq$ 999999* & $4
 Kommentartext & Zeichenkette400 & $400$\\
 \hline\hline
 
-Mitglied  & @Mitglieds\_Nr  + Name + Login + Passwort + Rechte & $4 + 20 + 12 + 12 + 13 = 61 $\\
+Mitglied  & @Mitglieds\_Nr  + Name + Login + Passwort + Rechte + E-Mail & $4 + 20 + 12 + 12 + 13 = 381 $\\
 \hline
 Mitglieds\_Nr & gZahl *6stellig, 000001 $\leq$ Benutzer\_Nr $\leq$ 999999* & $4$ \\ 
 \hline
@@ -54,7 +54,7 @@ Passwort & Zeichenkette12 & $12$\\
 Rechte & [``Benutzer'' $\mid $``Administrator``] & $13$ \\
 \hline\hline
 
-Mitgliedsdaten & Name + Login + Passwort + Rechte & $20 + 12 + 12 + 13 = 57 $\\
+Mitgliedsdaten & Name + Login + Passwort + Rechte + E-Mail& $20 + 12 + 12 + 13 + 320= 377 $\\
 \hline
 Literaturdaten & Art + Titel + Autor + (Jahr) + (Verlag) + (ISBN) + (Beschreibung) + (Ort) + (Stichworte) & $13 + 40 + 40 + 2 + 40 + 20 + 250 + 40 + 100 = 545 $ \\
 \hline
@@ -104,7 +104,7 @@ Speicher & Struktur & Minimum & Mittel & Maximum \\
 \hline\hline
 Literatur & {Literatur} & $0*549$ & $50*549=26950$ & $100*549=54900$ \\
 Kommentare & {Kommentar} & $0*412$ & $50*412=20600$ & $100*412=41200$ \\
-Mitglieder & {Mitglied}  & $0*61$ & $50*61=3050$ & $100*61=6100$ \\
+Mitglieder & {Mitglied}  & $0*381$ & $50*381=19050$ & $100*381=38100$ \\
 \hline
 \end{tabular}
 
