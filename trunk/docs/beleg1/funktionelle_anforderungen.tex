@@ -34,12 +34,12 @@ Nr & Ereignis & Datenfluß im System & Antwort des Systems \\
 4. & M legt Literatur an & Literaturdaten & Bestätigung\_Literaturanlegen \\\hline
 5. & M ändert Literatur & Literatur & Bestätigung\_Literaturändern\\\hline
 6. & M löscht Literatur & Literatur\_Nr & Bestätigung\_Literaturlöschen \\\hline
-7. & M legt Kommentar an & Kommentardaten & Bestätigung\_Kommentaranlegen \\\hline
-8. & M ändert Kommentar & Kommentar & Bestätigung\_Kommentarändern \\\hline
-9. & M löscht Kommentar & Kommentar\_Nr & Bestätigung\_Kommentarlöschen \\\hline
-10.& M importiert BibTeX & BibTeX-Datei & Bestätigung\_BibTeXImport \\\hline
-11.& A legt Mitglied an & Mitgliedsdaten & Bestätigung\_Mitgliedanlegen \\\hline
-12.& A ändert Mitglied & Mitglied & Bestätigung\_Mitgliedändern \\\hline
+7. & M ändert Mitglied & Mitglied & Bestätigung\_Mitgliedändern \\\hline
+8. & M legt Kommentar an & Kommentardaten & Bestätigung\_Kommentaranlegen \\\hline
+9. & M ändert Kommentar & Kommentar & Bestätigung\_Kommentarändern \\\hline
+10. & M löscht Kommentar & Kommentar\_Nr & Bestätigung\_Kommentarlöschen \\\hline
+11.& M importiert BibTeX & BibTeX-Datei & Bestätigung\_BibTeXImport \\\hline
+12.& A legt Mitglied an & Mitgliedsdaten & Bestätigung\_Mitgliedanlegen \\\hline
 13.& A löscht Mitglied & Mitglieds\_Nr & Bestätigung\_Mitgliedlöschen \\\hline
 14.& A ruft Mitglieder ab & - & Mitgliederliste \\\hline
 \end{longtable}
@@ -137,7 +137,7 @@ Kommentardaten & Literatur\_Nr + Mitglieds\_Nr + Kommentartext \\
 \hline
 BibTeX-Datei & *Datei im Bibtexformat* \\
 \hline
-Suchbegriff & [Zeichenkette100 | (Art) + (Titel) + (Autor) + (ISBN) + (Jahr) + (Beschreibung) + (Ort) + (Stichworte)] *Mindestens ein optionales Feld muss angegeben sein* \\
+Suchbegriff & Zeichenkette100 \\
 \hline
 Exportanfrage & Literatur\_Nr \textbf{BITTE UM VORSCHLÄGE/ÄNDERUNG} \\
 \hline\hline
@@ -164,7 +164,9 @@ Bestätigung\_Mitgliedlöschen & Mitglieds\_Nr + Zeichenkette ''Löschen vorgeno
 \hline
 Literatur\_Info & Literatur + Kommentare \\
 \hline
-Suchtreffer & \{Literatur\_Nr + Titel\} \textbf{NICHT NOCH MEHR?}\\
+Suchtreffer & \{Literatur\_Nr + Titel + Autor + Verlag + ISBN\}\\
+\hline
+Letzte\_Literatur & \{Literatur\_Nr + Titel + Autor + Verlag + ISBN\}\\
 \hline
 Mitgliederliste & \{Mitglieds\_Nr + Name\}\\
 \hline

@@ -62,7 +62,7 @@ Kommentardaten & Literatur\_Nr + Mitglieds\_Nr + Kommentartext & $4 + 4 + 4 = 12
 \hline
 BibTeX-Datei & *Datei im Bibtexformat* & $8$\\
 \hline
-Suchbegriff & [Zeichenkette100 | (Art) + (Titel) + (Autor) + (ISBN) + (Jahr) + (Beschreibung) + (Ort) + (Stichworte)] *Mindestens ein optionales Feld muss angegeben sein* & $100 $ \\
+Suchbegriff & Zeichenkette100 & $100 $ \\
 \hline
 Exportanfrage & Literatur\_Nr \textbf{BITTE UM VORSCHLÄGE/ÄNDERUNG} & $4 $ \\
 \hline\hline
@@ -89,7 +89,9 @@ Bestätigung\_Mitgliedlöschen & Mitglieds\_Nr + Zeichenkette ''Löschen vorgeno
 \hline
 Literatur\_Info & Literatur + Kommentare & $ 549 + 412 = 961 $ \textbf{KOMMENTARE = VIELE KOMMENTARE UND NICHT NUR EINER}\\
 \hline
-Suchtreffer & \{Literatur\_Nr + Titel + Art + Beschreibung\} & $4 + 40 + 13 + 250 = 307$\\
+Suchtreffer & \{Literatur\_Nr + Titel + Autor + Verlag + ISBN\} & $4 + 40 + 40 + 40 + 20 = 144$\\
+\hline
+Letzte\_Literatur & \{Literatur\_Nr + Titel + Autor + Verlag + ISBN\} & $4 + 40 + 40 + 40 + 20 = 144$\\
 \hline
 Mitgliederliste & \{Mitglieds\_Nr + Name\} & $4 + 20 = 24 $\\
 \hline
@@ -110,12 +112,13 @@ Mitglieder & {Mitglied}  & $0*381$ & $50*381=19050$ & $100*381=38100$ \\
 
 \subsection{Weitere Datenflüsse}
 TODO:\\
-\begin{tabular}[ht]{|l|l|l|l|l|}
+\begin{tabular}[ht]{|l|p{3.2cm}|l|l|l|}
 \hline
 Datenfluss & Struktur & Minimum & Mittel & Maximum \\
 \hline\hline
 
-Suchtreffer & \{Literatur\_Nr + Titel + Art + Beschreibung\}  & $0*307$ & $50*307=15350$ & $100*307=30700$ \\
+Suchtreffer & \{Literatur\_Nr + Titel + Autor + Verlag + ISBN\}  & $0*144$ & $50*144=7200$ & $100*144=14400$ \\
+Letzte\_Literatur & \{Literatur\_Nr + Titel + Autor + Verlag + ISBN\}  & $0*144$ & $50*144=7200$ & $100*144=14400$ \\
 BibTeX-Datei & \{Datei im Bibtexformat\} & $0*8$ & $50*8=400$ & $100*8=800$ \\
  
 \\
