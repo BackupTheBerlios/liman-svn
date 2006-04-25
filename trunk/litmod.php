@@ -11,27 +11,27 @@
 		<tbody>
 			<tr>
 				<th scope="row">Titel:</th>	
-				<td><input type="input"></td>
+				<td><input type="text"></td>
 			</tr>
 			<tr>
 				<th scope="row">Autor:</th>	
-				<td><input type="input"></td>
+				<td><input type="text"></td>
 			</tr>
 			<tr>
 				<th scope="row">Erscheinungsjahr:</th>	
-				<td><input type="input"></td>
+				<td><input type="text"></td>
 			</tr>
 			<tr>
 				<th scope="row">Verlag:</th>	
-				<td><input type="input"></td>
+				<td><input type="text"></td>
 			</tr>
 			<tr>
 				<th scope="row">ISBN:</th>	
-				<td><input type="input"></td>
+				<td><input type="text"></td>
 			</tr>
 			<tr>
 				<th scope="row">Bemerkung:</th>	
-				<td><textarea></textarea></td>
+				<td><textarea cols="20" rows="10"></textarea></td>
 			</tr>
 			<tr>
 				<th scope="row">Aktionen:</th>	
@@ -40,8 +40,6 @@
 
 		</tbody>
 	</table>
-
-	</pre>
 </div>
 <?php	require("include/footer.php"); ?>
 

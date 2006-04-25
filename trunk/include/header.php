@@ -67,4 +67,4 @@
 			</div>
 
 			<div id="content">
-				<h2 <?=empty($title)?"":"id=\"".strtolower($title)."\""; ?>><?=empty($title)?"Inhalt":$title; ?></h2>
+				<h2 <?=empty($title)?"":"id=\"".makeid($title)."\""; ?>><?=empty($title)?"Inhalt":$title; ?></h2>

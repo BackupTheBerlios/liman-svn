@@ -68,7 +68,7 @@
 			<tr>
 				<th scope="row">Simon Wunderlich:<br></th>	
 				<td>Tolle Dramatik, wirklich fesselnder Storyverlauf, nur das Ende war ein bisschen matt.</td>
-				<td><font size=1><a href="loeschen.php">(loeschen)</a></font></td>
+				<td><span style="font-size: 0.6em"><a href="loeschen.php">(loeschen)</a></span></td>
 			</tr>
 			<tr>
 				<th scope="row">Hans Wurst:</th>	

@@ -38,6 +38,37 @@
 			quote_array($_COOKIE);
 		}
 
+		/**
+		 * @brief Wandelt String in HTML-ID um
+		 * @param str zu verarbeitende Rohdaten
+		 * @return umgewandelter String
+		 */
+		function makeid($str)
+		{
+			$str = strtolower($str);
+			$str = str_replace(" ", "_", $str);
+			$str = str_replace("/", "_", $str);
+			$str = str_replace("\\", "_", $str);
+
+			$str = str_replace("\"", "_", $str);
+			$str = str_replace("'", "_", $str);
+
+			$str = str_replace("ü", "ue", $str);
+			$str = str_replace("&uuml;", "ue", $str);
+
+			$str = str_replace("ä", "ae", $str);
+			$str = str_replace("&auml;", "ae", $str);
+
+			$str = str_replace("ö", "oe", $str);
+			$str = str_replace("&ouml;", "oe", $str);
+
+			if ($str[0] == '_')
+			{
+				$str[0] = " ";
+			}
+			return $str;
+		}
+
 		require($basepath."include/config.php");
 	}
 ?>

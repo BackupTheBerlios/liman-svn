@@ -12,19 +12,19 @@
 		<tbody>
 			<tr>
 				<th scope="row">Login:</th>	
-				<td><input type="input" value="siwu"></td>
+				<td><input type="text" value="siwu"></td>
 			</tr>
 			<tr>
 				<th scope="row">Vorname:</th>	
-				<td><input type="input" value="Simon"></td>
+				<td><input type="text" value="Simon"></td>
 			</tr>
 			<tr>
 				<th scope="row">Nachname:</th>	
-				<td><input type="input" value="Wunderlich"></td>
+				<td><input type="text" value="Wunderlich"></td>
 			</tr>
 			<tr>
 				<th scope="row">E-Mail:</th>	
-				<td><input type="input" value="siwu@hrz.tu-chemnitz.de"></td>
+				<td><input type="text" value="siwu@hrz.tu-chemnitz.de"></td>
 			</tr>
 			<tr>
 				<th scope="row">Passwort:</th>	

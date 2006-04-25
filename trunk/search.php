@@ -29,7 +29,9 @@
 	<hr>
 	<br>
 	<form action="litadd.php">
-	<input type="submit" value="Literatur hinzuf&uuml;gen">
+		<div>
+			<input type="submit" value="Literatur hinzuf&uuml;gen">
+		</div>
 	</form>
 
 

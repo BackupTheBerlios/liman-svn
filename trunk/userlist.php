@@ -41,7 +41,9 @@
 	<hr>
 	<br>
 	<form action="usermod.php">
-	<input type="submit" value="Literatur hinzuf&uuml;gen">
+		<div>
+			<input type="submit" value="Literatur hinzuf&uuml;gen">
+		</div>
 	</form>
 
 
