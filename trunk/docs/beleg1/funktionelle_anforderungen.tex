@@ -80,7 +80,7 @@ Element & Strukturbeschreibung \\
 
 \emph{Bibliothek} & \{Literatur\} \\
 \hline
-Literatur & @Literatur\_Nr + Art + Titel + Autor + ISBN + Jahr + Beschreibung + Ort + Stichworte \\
+Literatur & @Literatur\_Nr + Art + Titel + Autor + Jahr + Verlag + ISBN + Beschreibung + Ort + Stichworte \\
 \hline
 Literatur\_Nr & gZahl *6stellig, 000001 $\leq$ Literatur\_Nr $\leq$ 999999* \\
 \hline
@@ -90,9 +90,11 @@ Titel & Zeichenkette40 \\
 \hline
 Autor & Zeichenkette40 \\
 \hline
-ISBN & gZahl *1stellig* + '-' + gZahl *4stellig* + '-' + gZahl *4stellig* + '-' + gZahl *1stellig* \textbf{DAS STIMMT LAUT WIKIPEDIA NICHT}\\
-\hline
 Jahr & gZahl *4stellig* \\
+\hline
+Verlag & Zeichenkette40 \\
+\hline
+ISBN & gZahl *1stellig* + '-' + gZahl *4stellig* + '-' + gZahl *4stellig* + '-' + gZahl *1stellig* \textbf{DAS STIMMT LAUT WIKIPEDIA NICHT}\\
 \hline
 Beschreibung & Zeichenkette250 \\
 \hline
@@ -127,7 +129,7 @@ Rechte & [``Benutzer'' $\mid $``Administrator``] \\
 
 Mitgliedsdaten & Name + Login + Passwort + Rechte \\
 \hline
-Literaturdaten & Art + Titel + Autor + ISBN + Jahr + Beschreibung + Ort + Stichworte \\
+Literaturdaten & Art + Titel + Autor + Jahr + Verlag + ISBN + Beschreibung + Ort + Stichworte \\
 \hline
 Kommentardaten & Literatur\_Nr + Mitglieds\_Nr + Kommentartext \\
 \hline
