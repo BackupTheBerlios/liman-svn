@@ -41,11 +41,15 @@ Kommentar\_Nr & gZahl *6stellig, 000001 $\leq$ Kommentar\_Nr $\leq$ 999999* & $4
 Kommentartext & Zeichenkette400 & $400$\\
 \hline\hline
 
-Mitglied  & @Mitglieds\_Nr  + Name + Login + Passwort + Rechte + E-Mail & $4 + 20 + 12 + 12 + 13 = 381 $\\
+Mitglied  & @Mitglieds\_Nr  + Name + Vorname + Login + Passwort + Rechte + E-Mail & $4 + 20 + 20  + 12 + 12 + 13 + 50 = 131 $\\
 \hline
 Mitglieds\_Nr & gZahl *6stellig, 000001 $\leq$ Benutzer\_Nr $\leq$ 999999* & $4$ \\ 
 \hline
-Name & <Vor>Name + <Nach>Name & $10 + 10 = 20$\\
+Name & Zeichenkette20 & $20$\\
+\hline
+Vorname & Zeichenkette20 6 $20$ \\
+\hline
+E-Mail & Zeichenkette30 & $50$ \\
 \hline
 Login & Zeichenkette12 & $12$\\
 \hline
@@ -54,7 +58,7 @@ Passwort & Zeichenkette12 & $12$\\
 Rechte & [``Benutzer'' $\mid $``Administrator``] & $13$ \\
 \hline\hline
 
-Mitgliedsdaten & Name + Login + Passwort + Rechte + E-Mail& $20 + 12 + 12 + 13 + 320= 377 $\\
+Mitgliedsdaten & Name + Vorname + Login + Passwort + Rechte + E-Mail& $20 + 20 + 12 + 12 + 13 + 50 = 117 $\\
 \hline
 Literaturdaten & Art + Titel + Autor + (Jahr) + (Verlag) + (ISBN) + (Beschreibung) + (Ort) + (Stichworte) & $13 + 40 + 40 + 2 + 40 + 20 + 250 + 40 + 100 = 545 $ \\
 \hline
@@ -93,7 +97,7 @@ Suchtreffer & \{Literatur\_Nr + Titel + Autor + Verlag + ISBN\} & $4 + 40 + 40 +
 \hline
 Letzte\_Literatur & \{Literatur\_Nr + Titel + Autor + Verlag + ISBN\} & $4 + 40 + 40 + 40 + 20 = 144$\\
 \hline
-Mitgliederliste & \{Mitglieds\_Nr + Name\} & $4 + 20 = 24 $\\
+Mitgliederliste & \{Mitglieds\_Nr + Name + Vorname\} & $4 + 20 + 20 = 44 $\\
 \hline
 \end{longtable}
 
@@ -120,6 +124,7 @@ Datenfluss & Struktur & Minimum & Mittel & Maximum \\
 Suchtreffer & \{Literatur\_Nr + Titel + Autor + Verlag + ISBN\}  & $0*144$ & $50*144=7200$ & $100*144=14400$ \\
 Letzte\_Literatur & \{Literatur\_Nr + Titel + Autor + Verlag + ISBN\}  & $0*144$ & $50*144=7200$ & $100*144=14400$ \\
 BibTeX-Datei & \{Datei im Bibtexformat\} & $0*8$ & $50*8=400$ & $100*8=800$ \\
+Revisionsunterlagen &                      &      &            &            \\
  
 \\
 \hline
@@ -128,17 +133,24 @@ BibTeX-Datei & \{Datei im Bibtexformat\} & $0*8$ & $50*8=400$ & $100*8=800$ \\
 \subsection{Abschätzungen}
 TODO:
 \begin{itemize}
- \item \textbf{Gesamtsystem}: blablabla
- \item \textbf{Mitglieder}: blub
- \item \textbf{Leistungen}: jaja
- \item \textbf{Revisionsunterlagen}: nicht die auch noch
+ \item \textbf{Gesamtsystem}: Als Nutzungszeit wird von 5 Jahren ausgegangen, wobei die maximale Nutzungszeit, 
+die an das System gestellt wird, 10 Jahre betr\"agt.
+ \item \textbf{Mitglieder}: Es wird erwartet, dass nicht mehr als 500 Mitglieder den Dienst in Anspruch nehmen werden. Im Durchschnitt wird
+ die Mitgliederzahl etwa 200 betragen.
+\item \textbf{Leistungen}: Bei einem Stundenaufkommen zwischen 20 und 30 Stunden pro Jahr, kann davon ausgegangen werden, dass jedes 
+Mitglied in etwa 50 Suchanfragen, 10 Literatureinstellung und 20 Kommentaren abgibt. Die Informationen bleiben erhalten, solange der Dienst existiert.  
+ \item \textbf{Revisionsunterlagen}: Die Revision wird j\"ahrlich vom Administrator durchgef\"uhrt und umfasst normalerweise den Zeitraum seit der letzten Revision.  
 \end{itemize}
 
 \subsection{Genauigkeit}
 Es werden nur Ganzzahlen im ganzen System verarbeitet. Es werden hierbei keine problematische Rechnungen vorgenommen.
 
 \section{Operationelle Anforderungen an die Datenströme}
-TODO siehe Beispielbeleg S. 23
+Umfangreiche Datenstr\"ome k\"onnen im System nur auftreten, wenn Suchanfragen gestellt, Letzte Literatur aufgerufen, eine BibTex-Datei abgefragt 
+oder die Revisionsunterlagen abgerufen werden. Diese Datenstr\"ome bewegen sich im Bereich von maximal ..... Megabyte und im Mittel ...... Kilobyte, sodass es selten
+zu gr\"o\"seren Datenstr\"omen kommt.
+
 
 \section{Operationelle Anforderungen an die Prozesse}
-TODO siehe Beispielbeleg S. 23
+Es wird von Antwortzeien bis zu 5 Sekunden gerechnet. Da die meisten Prozesse auf dem Server verarbeitet werden und der Client diese nur Darstellen muss, 
+kann von 5 Sekunden ausgegangen werden. 

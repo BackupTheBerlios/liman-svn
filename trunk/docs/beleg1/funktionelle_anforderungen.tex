@@ -114,11 +114,13 @@ Kommentartext & Zeichenkette400 \\
 
 \emph{Mitglieder} & \{Mitglied\} \\
 \hline
-Mitglied  & @Mitglieds\_Nr  + Name + Login + Passwort + Rechte + E-Mail\\
+Mitglied  & @Mitglieds\_Nr  + Name + Vorname + Login + Passwort + Rechte + E-Mail\\
 \hline
 Mitglieds\_Nr & gZahl *6stellig, 000001 $\leq$ Benutzer\_Nr $\leq$ 999999* \\ 
 \hline
-Name & <Vor>Name + <Nach>Name \\
+Name & Zeichenkette20 \\
+\hline
+Vorname & Zeichenkette20 \\
 \hline
 Login & Zeichenkette12 \\
 \hline
@@ -126,10 +128,10 @@ Passwort & Zeichenkette12 \\
 \hline
 Rechte & [``Benutzer'' $\mid $``Administrator``] \\
 \hline
-E-Mail & Zeichenkette320 \\
+E-Mail & Zeichenkette50 \\
 \hline\hline
 
-Mitgliedsdaten & Name + Login + Passwort + Rechte + E-Mail\\
+Mitgliedsdaten & Name + Vorname + Login + Passwort + Rechte + E-Mail\\
 \hline
 Literaturdaten & Art + Titel + Autor + (Jahr) + (Verlag) + (ISBN) + (Beschreibung) + (Ort) + (Stichworte) \\
 \hline
@@ -168,7 +170,7 @@ Suchtreffer & \{Literatur\_Nr + Titel + Autor + Verlag + ISBN\}\\
 \hline
 Letzte\_Literatur & \{Literatur\_Nr + Titel + Autor + Verlag + ISBN\}\\
 \hline
-Mitgliederliste & \{Mitglieds\_Nr + Name\}\\
+Mitgliederliste & \{Mitglieds\_Nr + Name + Vorname\}\\
 \hline
 \end{longtable}
 
