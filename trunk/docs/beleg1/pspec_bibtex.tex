@@ -10,16 +10,25 @@
 \begin{verbatim}
  BEGIN
    Daten := deserialisiere BibTeX_Datei;
-   
+
    IF lesen_erfolgreich THEN
    BEGIN
-     Literatur_anlegen( Daten )
-     
-     IF anlegen_erfolgreich THEN
-       Setze Bestätigung_BibTeXImport
-   END
-   ELSE
-     Setze Fehler 201
+     Finde in Bibliothek Literatur
+           mit Literatur.Titel = Daten.Titel
+           und Literatur.Autor = Daten.Autor;
+
+     IF gefunden THEN
+     BEGIN
+       Zeige Warnung 201
+       IF not bestätigt THEN
+         Abbrechen
+     END
+   
+     Lege in Bibliothek Literatur mit Daten an
+     Setze Bestätigung_BibTeXImport
+  END
+  ELSE
+    Setze Fehler 202
  END
 \end{verbatim}
 \hrulefill
@@ -42,7 +51,7 @@
    IF gefunden THEN
      BibTeX_Datei := Serialisiere Daten
    ELSE
-     Setze Fehler 202
+     Setze Fehler 203
  END
 \end{verbatim}
 
