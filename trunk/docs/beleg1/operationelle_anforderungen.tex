@@ -11,11 +11,11 @@ Element & Struktur & Bytes\\
 \hline\hline
 \endhead
 
-Literatur & @Literatur\_Nr + Art + Titel + Autor + (Jahr) + (Verlag) + (ISBN) + (Beschreibung) + (Ort) + (Stichworte) & $4 + 13 + 40 + 40 + 2 + 40 + 20 + 250 + 40 + 100 = 549$ \\
+Literatur & @Literatur\_Nr + Art + Titel + Autor + (Jahr) + (Verlag) + (ISBN) + (Beschreibung) + (Ort) + (Stichworte) & $4 + 20 + 40 + 40 + 2 + 40 + 20 + 250 + 40 + 100 = 556$ \\
 \hline
 Literatur\_Nr & gZahl *6stellig, 000001 $\leq$ Literatur\_Nr $\leq$ 999999*  & $4$\\
 \hline
-Art & [``Buch'' | ``Artikel'' | ``Handbuch'' | ``Diplomarbeit'' | ``Sonstiges''] \textbf{BITTE UM VORSCHLÄGE/ÄNDERUNG}  & $13$\\
+Art & Zeichenkette20  & $20$\\
 \hline
 Titel & Zeichenkette40 & $40$ \\
 \hline
@@ -39,17 +39,17 @@ Kommentar & @Kommentar\_Nr + Kommentartext + Literatur\_Nr + Mitglieds\_Nr & $4 
 Kommentar\_Nr & gZahl *6stellig, 000001 $\leq$ Kommentar\_Nr $\leq$ 999999* & $4$ \\
 \hline
 Kommentartext & Zeichenkette400 & $400$\\
-\hline\hline
+\hline
 
-Mitglied  & @Mitglieds\_Nr  + Name + Vorname + Login + Passwort + Rechte + E-Mail & $4 + 20 + 20  + 12 + 12 + 13 + 50 = 131 $\\
+Mitglied  & @Mitglieds\_Nr  + Name + Vorname + Login + Passwort + Rechte + E-Mail & $4 + 20 + 20  + 12 + 12 + 13 + 350 = 431 $\\
 \hline
 Mitglieds\_Nr & gZahl *6stellig, 000001 $\leq$ Benutzer\_Nr $\leq$ 999999* & $4$ \\ 
 \hline
 Name & Zeichenkette20 & $20$\\
 \hline
-Vorname & Zeichenkette20 6 $20$ \\
+Vorname & Zeichenkette20 & $20$ \\
 \hline
-E-Mail & Zeichenkette30 & $50$ \\
+E-Mail & Zeichenkette350 & $350$ \\
 \hline
 Login & Zeichenkette12 & $12$\\
 \hline
@@ -58,17 +58,17 @@ Passwort & Zeichenkette12 & $12$\\
 Rechte & [``Benutzer'' $\mid $``Administrator``] & $13$ \\
 \hline\hline
 
-Mitgliedsdaten & Name + Vorname + Login + Passwort + Rechte + E-Mail& $20 + 20 + 12 + 12 + 13 + 50 = 117 $\\
+Mitgliedsdaten & Name + Vorname + Login + Passwort + Rechte + E-Mail& $20 + 20 + 12 + 12 + 13 + 350 = 427 $\\
 \hline
-Literaturdaten & Art + Titel + Autor + (Jahr) + (Verlag) + (ISBN) + (Beschreibung) + (Ort) + (Stichworte) & $13 + 40 + 40 + 2 + 40 + 20 + 250 + 40 + 100 = 545 $ \\
+Literaturdaten & Art + Titel + Autor + (Jahr) + (Verlag) + (ISBN) + (Beschreibung) + (Ort) + (Stichworte) & $20 + 40 + 40 + 2 + 40 + 20 + 250 + 40 + 100 = 552 $ \\
 \hline
 Kommentardaten & Literatur\_Nr + Mitglieds\_Nr + Kommentartext & $4 + 4 + 4 = 12 $ \\
 \hline
-BibTeX-Datei & *Datei im Bibtexformat* & $8$\\
+BibTeX-Datei & *Datei im Bibtexformat* & $1024$\\
 \hline
 Suchbegriff & Zeichenkette100 & $100 $ \\
 \hline
-Exportanfrage & Literatur\_Nr \textbf{BITTE UM VORSCHLÄGE/ÄNDERUNG} & $4 $ \\
+Exportanfrage & Literatur\_Nr & $4 $ \\
 \hline\hline
 
 Bestätigung\_BibTeXImport & Literatur\_Nr + Zeichenkette ''Importieren vorgenommen`` & $4 + 23 = 27 $\\
@@ -90,8 +90,8 @@ Bestätigung\_Mitgliedanlegen & Mitglieds\_Nr + Zeichenkette ''Anlegen vorgenomm
 Bestätigung\_Mitgliedändern & Mitglieds\_Nr + Zeichenkette ''Änderung vorgenommen`` & $4 + 20 = 24$\\
 \hline
 Bestätigung\_Mitgliedlöschen & Mitglieds\_Nr + Zeichenkette ''Löschen vorgenommen`` & $4 + 19 = 23$\\
-\hline
-Literatur\_Info & Literatur + Kommentare & $ 549 + 412 = 961 $ \textbf{KOMMENTARE = VIELE KOMMENTARE UND NICHT NUR EINER}\\
+%\hline
+%Literatur\_Info & Literatur + Kommentare & $ 549 + 412 = 961 $ \textbf{KOMMENTARE = VIELE KOMMENTARE UND NICHT NUR EINER}\\
 \hline
 Suchtreffer & \{Literatur\_Nr + Titel + Autor + Verlag + ISBN\} & $4 + 40 + 40 + 40 + 20 = 144$\\
 \hline
@@ -103,51 +103,46 @@ Mitgliederliste & \{Mitglieds\_Nr + Name + Vorname\} & $4 + 20 + 20 = 44 $\\
 
 
 \subsection{Speicher (Angaben zum Speicherbedarf in Byte)}
-TODO:\\
 \begin{tabular}[ht]{|l|l|l|l|l|}
 \hline
 Speicher & Struktur & Minimum & Mittel & Maximum \\
 \hline\hline
-Literatur & {Literatur} & $0*549$ & $50*549=26950$ & $100*549=54900$ \\
+Literatur & {Literatur} & $0*556$ & $50*556=27800$ & $100*556=55600$ \\
 Kommentare & {Kommentar} & $0*412$ & $50*412=20600$ & $100*412=41200$ \\
-Mitglieder & {Mitglied}  & $0*381$ & $50*381=19050$ & $100*381=38100$ \\
+Mitglieder & {Mitglied}  & $0*431$ & $50*431=21550$ & $100*431=43100$ \\
 \hline
 \end{tabular}
 
 \subsection{Weitere Datenflüsse}
-TODO:\\
-\begin{tabular}[ht]{|l|p{3.2cm}|l|l|l|}
+\begin{tabular}[ht]{|l|p{4cm}||p{2cm}||p{2cm}||p{2cm}|}
 \hline
 Datenfluss & Struktur & Minimum & Mittel & Maximum \\
 \hline\hline
 
 Suchtreffer & \{Literatur\_Nr + Titel + Autor + Verlag + ISBN\}  & $0*144$ & $50*144=7200$ & $100*144=14400$ \\
 Letzte\_Literatur & \{Literatur\_Nr + Titel + Autor + Verlag + ISBN\}  & $0*144$ & $50*144=7200$ & $100*144=14400$ \\
-BibTeX-Datei & \{Datei im Bibtexformat\} & $0*8$ & $50*8=400$ & $100*8=800$ \\
-Revisionsunterlagen &                      &      &            &            \\
- 
-\\
+BibTeX-Datei & \{Datei im Bibtexformat\} & $0*1024$ & $50*1024=51200$ & $100*1024=102400$ \\
+Literatur\_Info & \{Literatur + Kommentare\} & $556 + 0*412=556$ & $556 + 100*412=41756$ & $556 + 200*412=82956$ \\
 \hline
 \end{tabular}
 
 \subsection{Abschätzungen}
-TODO:
 \begin{itemize}
  \item \textbf{Gesamtsystem}: Als Nutzungszeit wird von 5 Jahren ausgegangen, wobei die maximale Nutzungszeit, 
 die an das System gestellt wird, 10 Jahre betr\"agt.
  \item \textbf{Mitglieder}: Es wird erwartet, dass nicht mehr als 500 Mitglieder den Dienst in Anspruch nehmen werden. Im Durchschnitt wird
  die Mitgliederzahl etwa 200 betragen.
 \item \textbf{Leistungen}: Bei einem Stundenaufkommen zwischen 20 und 30 Stunden pro Jahr, kann davon ausgegangen werden, dass jedes 
-Mitglied in etwa 50 Suchanfragen, 10 Literatureinstellung und 20 Kommentaren abgibt. Die Informationen bleiben erhalten, solange der Dienst existiert.  
- \item \textbf{Revisionsunterlagen}: Die Revision wird j\"ahrlich vom Administrator durchgef\"uhrt und umfasst normalerweise den Zeitraum seit der letzten Revision.  
+Mitglied in etwa 53 Suchanfragen, 10 Literatureinstellung und 20 Kommentaren abgibt. Die Informationen bleiben erhalten, solange der Dienst existiert.  
+\item \textbf{Exportieren}: In einem Jahr werden ca. 100 bis 150 Exportanfragen pro Mitglied erwartet.
 \end{itemize}
 
 \subsection{Genauigkeit}
 Es werden nur Ganzzahlen im ganzen System verarbeitet. Es werden hierbei keine problematische Rechnungen vorgenommen.
 
 \section{Operationelle Anforderungen an die Datenströme}
-Umfangreiche Datenstr\"ome k\"onnen im System nur auftreten, wenn Suchanfragen gestellt, Letzte Literatur aufgerufen, eine BibTex-Datei abgefragt 
-oder die Revisionsunterlagen abgerufen werden. Diese Datenstr\"ome bewegen sich im Bereich von maximal ..... Megabyte und im Mittel ...... Kilobyte, sodass es selten
+Umfangreiche Datenstr\"ome k\"onnen im System nur auftreten, wenn Suchanfragen gestellt, Letzte Literatur aufgerufen oder eine BibTex-Datei abgefragt wird. 
+Diese Datenstr\"ome bewegen sich im Bereich von maximal 1 Megabyte und im Durchschnitt 30 Kilobyte, sodass es selten
 zu gr\"o\"seren Datenstr\"omen kommt.
 
 

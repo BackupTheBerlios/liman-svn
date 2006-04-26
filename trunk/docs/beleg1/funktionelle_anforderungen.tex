@@ -85,7 +85,7 @@ Literatur & @Literatur\_Nr + Art + Titel + Autor + (Jahr) + (Verlag) + (ISBN) + 
 \hline
 Literatur\_Nr & gZahl *6stellig, 000001 $\leq$ Literatur\_Nr $\leq$ 999999* \\
 \hline
-Art & [``Buch'' | ``Artikel'' | ``Handbuch'' | ``Diplomarbeit'' | ``Sonstiges''] \textbf{BITTE UM VORSCHLÄGE/ÄNDERUNG}\\
+Art & Zeichenkette20 \\
 \hline
 Titel & Zeichenkette40 \\
 \hline
@@ -123,13 +123,13 @@ Name & Zeichenkette20 \\
 \hline
 Vorname & Zeichenkette20 \\
 \hline
+E-Mail & Zeichenkette350 \\
+\hline
 Login & Zeichenkette12 \\
 \hline
 Passwort & Zeichenkette12 \\
 \hline
 Rechte & [``Benutzer'' $\mid $``Administrator``] \\
-\hline
-E-Mail & Zeichenkette50 \\
 \hline\hline
 
 Mitgliedsdaten & Name + Vorname + Login + Passwort + Rechte + E-Mail\\
@@ -142,7 +142,7 @@ BibTeX-Datei & *Datei im Bibtexformat* \\
 \hline
 Suchbegriff & Zeichenkette100 \\
 \hline
-Exportanfrage & Literatur\_Nr \textbf{BITTE UM VORSCHLÄGE/ÄNDERUNG} \\
+Exportanfrage & Literatur\_Nr \\
 \hline\hline
 
 Bestätigung\_BibTeXImport & Literatur\_Nr + Zeichenkette ''Importieren vorgenommen`` \\
@@ -164,8 +164,6 @@ Bestätigung\_Mitgliedanlegen & Mitglieds\_Nr + Zeichenkette ''Anlegen vorgenomm
 Bestätigung\_Mitgliedändern & Mitglieds\_Nr + Zeichenkette ''Änderung vorgenommen`` \\
 \hline
 Bestätigung\_Mitgliedlöschen & Mitglieds\_Nr + Zeichenkette ''Löschen vorgenommen`` \\
-\hline
-Literatur\_Info & Literatur + Kommentare \\
 \hline
 Suchtreffer & \{Literatur\_Nr + Titel + Autor + Verlag + ISBN\}\\
 \hline
