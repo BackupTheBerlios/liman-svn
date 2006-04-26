@@ -62,21 +62,8 @@
 \textbf{Voraussetzung}: -
 \begin{verbatim}
  BEGIN
-   IF Volltextsuche THEN
-     Finde in Bibliothek Literatur
-           mit Suchbegriff in Literatur
-   ELSE
-   BEGIN
-     Finde in Bibliothek Literatur
-           mit Suchbegriff.Art = Literatur.Art
-           und Suchbegriff.Titel enthalten in Literatur.Titel
-           und Suchbegriff.Autor enthalten in Literatur.Autor
-           und Suchbegriff.ISBN enthalten in Literatur.ISBN
-           und Suchbegriff.Beschreibung in Literatur.Beschreibung // VT
-           und Suchbegriff.Jahr enthalten in Literatur.Jahr
-           und Suchbegriff.Ort enthalten in Literatur.Ort
-           und Suchbegriff.Stichworte in Literatur.Stichworte // Volltext
-   END
+   Finde in Bibliothek Literatur
+         mit Suchbegriff in Literatur
    
    IF gefunden THEN
      Setz Suchtreffer := gefundene_Literatur
