@@ -28,20 +28,21 @@ Nr & Ereignis & Datenfluß im System & Antwort des Systems \\
 \hline\hline
 \endhead
 
-1. & N sucht Literatur & Suchbegriff & Suchtreffer \\\hline
-2. & N wählt Literatur & Literatur\_Nr & Literatur\_Info \\\hline
-3. & N exportiert Literatur & Exportanfrage &  BibTeX-Datei \\\hline
-4. & M legt Literatur an & Literaturdaten & Bestätigung\_Literaturanlegen \\\hline
-5. & M ändert Literatur & Literatur & Bestätigung\_Literaturändern\\\hline
-6. & M löscht Literatur & Literatur\_Nr & Bestätigung\_Literaturlöschen \\\hline
-7. & M ändert Mitglied & Mitglied & Bestätigung\_Mitgliedändern \\\hline
-8. & M legt Kommentar an & Kommentardaten & Bestätigung\_Kommentaranlegen \\\hline
-9. & M ändert Kommentar & Kommentar & Bestätigung\_Kommentarändern \\\hline
-10. & M löscht Kommentar & Kommentar\_Nr & Bestätigung\_Kommentarlöschen \\\hline
-11.& M importiert BibTeX & BibTeX-Datei & Bestätigung\_BibTeXImport \\\hline
-12.& A legt Mitglied an & Mitgliedsdaten & Bestätigung\_Mitgliedanlegen \\\hline
-13.& A löscht Mitglied & Mitglieds\_Nr & Bestätigung\_Mitgliedlöschen \\\hline
-14.& A ruft Mitglieder ab & - & Mitgliederliste \\\hline
+1. & N ruft neu hinzugefügte Literatur ab & - & Letzte\_Literatur \\\hline
+2. & N sucht Literatur & Suchbegriff & Suchtreffer \\\hline
+3. & N wählt Literatur & Literatur\_Nr & Literatur\_Info \\\hline
+4. & N exportiert Literatur & Exportanfrage &  BibTeX-Datei \\\hline
+5. & M legt Literatur an & Literaturdaten & Bestätigung\_Literaturanlegen \\\hline
+6. & M ändert Literatur & Literatur & Bestätigung\_Literaturändern\\\hline
+7. & M löscht Literatur & Literatur\_Nr & Bestätigung\_Literaturlöschen \\\hline
+8. & M ändert Mitglied & Mitglied & Bestätigung\_Mitgliedändern \\\hline
+9. & M legt Kommentar an & Kommentardaten & Bestätigung\_Kommentaranlegen \\\hline
+10. & M ändert Kommentar & Kommentar & Bestätigung\_Kommentarändern \\\hline
+11. & M löscht Kommentar & Kommentar\_Nr & Bestätigung\_Kommentarlöschen \\\hline
+12.& M importiert BibTeX & BibTeX-Datei & Bestätigung\_BibTeXImport \\\hline
+13.& A legt Mitglied an & Mitgliedsdaten & Bestätigung\_Mitgliedanlegen \\\hline
+14.& A löscht Mitglied & Mitglieds\_Nr & Bestätigung\_Mitgliedlöschen \\\hline
+15.& A ruft Mitglieder ab & - & Mitgliederliste \\\hline
 \end{longtable}
 
 \newpage % Viele Bilder so skaliert, dass sie ordentlich auf A4-Seiten passen
@@ -192,7 +193,7 @@ Betriebssystems dargestellt, sodass der Benutzer stets seine gewohnte Umgebung v
 des Browser Schriftgr"o"se und andere visuelle Einstellungen ver"andern. Das Grundlayout bleibt jedoch immer erhalten
 und richtet sich unter anderem auch nach der Gr"o"se des ge"offneten Browserfensters.\\
 \\
-Das Layout teilt sich in einen Navigations/"Ubersichtsteil auf der linken Seite der unabh"angig von der Auswahl immer
+Das Layout teilt sich in einen Navigations-/"Ubersichtsteil auf der linken Seite der unabh"angig von der Auswahl immer
 zu sehen ist. Hier findet sich die Navigation, die Suchmaske f"ur die Suchfunktion sowie Authentifikationsmaske zum Login.
 Auf der rechten, gr"o"seren Seite befindet sich der Inhalt der aktuell aufgerufenen Funktion.\\
 \\
