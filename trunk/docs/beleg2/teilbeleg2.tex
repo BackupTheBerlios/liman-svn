@@ -1,0 +1,40 @@
+\documentclass[a4paper,twoside]{scrreprt}
+
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{pslatex}
+\usepackage{amssymb}
+\usepackage{textcomp}
+\usepackage{parskip}
+\usepackage{graphicx}
+\usepackage{txfonts}
+\usepackage[T1]{fontenc}
+\usepackage{user} % eigene Befehle
+\usepackage{longtable}
+\usepackage{floatflt}
+
+\ifpdf
+  \usepackage[ps2pdf]{thumbpdf}
+  \usepackage[pdftex]{hyperref}
+\else
+  \usepackage[active]{srcltx}
+\fi
+
+\include{meta} % Metainformationen wie Titel, Autoren,...
+
+\begin{document}
+\include{titel} % Titel des Dokuments mit Informationen aus meta
+\cleardoublepage
+
+\tableofcontents
+\cleardoublepage
+
+%Kapitel
+\chapter{Entwurfsdokumentation}
+
+%Sektionen
+\input{systemarchitektur}
+\input{klassenspezifikation}
+
+
+\end{document}
