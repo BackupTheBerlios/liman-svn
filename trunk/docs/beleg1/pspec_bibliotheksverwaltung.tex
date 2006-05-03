@@ -20,6 +20,17 @@
        Abbrechen
    END
    
+   Finde in Autoren Autor
+         mit Autor.Name = Literaturdaten.Autor.Name;
+         
+   IF gefunden THEN
+     Literaturdaten.Autor := Autor
+   ELSE
+   BEGIN
+     Lege in Autoren Autor mit Literaturdaten.Autor.Name an
+     Literaturdaten.Autor := Autor
+   END
+   
    Lege in Bibliothek Literatur mit Literaturdaten an
    Setze Bestätigung_Literaturanlegen
  END
@@ -39,6 +50,17 @@
 \textbf{Voraussetzung}: Benutzer ist angemeldet.
 \begin{verbatim}
  BEGIN
+   Finde in Autoren Autor
+         mit Autor.Name =  Literatur.Autor.Name;
+         
+   IF gefunden THEN
+      Literatur.Autor := Autor
+   ELSE
+   BEGIN
+     Lege in Autoren Autor mit Literaturdaten.Autor.Name an
+     Literatur.Autor := Autor
+   END
+   
    Setze in Bibliothek Literatur_Eintrag
          mit Literatur_Eintrag.Literatur_Nr = Literatur.Literatur_Nr
          auf Literatur;
