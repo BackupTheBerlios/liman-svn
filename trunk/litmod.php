@@ -15,7 +15,6 @@
 			</tr>
 			<tr>
 				<th scope="row">Autor:<br>
-				<span style="font-size:8px">(Mehrere Autoren durch<br> Kommata trennen)</span>				</th>	
 				<td><input type="text"></td>
 			</tr>
 			<tr>
