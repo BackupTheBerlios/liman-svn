@@ -7,7 +7,7 @@
 <div id="cfront" class="content">
 	<br><br>
 	<h3>Volltextsuche</h3>
-	<table id="searchmore">
+	<table class="searchmore">
 		<tbody>
 			<tr>
 				<td scope=row>Suchbegriff:</td>
@@ -20,7 +20,7 @@
 	<hr>
 	<h3>Autoren- und Titelsuche</h3>
 
-	<table id="searchmore">
+	<table class="searchmore">
 		<tbody>
 			<tr>
 				<td scope=row>Autor:</td>

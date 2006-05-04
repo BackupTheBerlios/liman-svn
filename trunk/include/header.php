@@ -50,7 +50,7 @@
 						<div>
 						<input name="search" value="" type="text">
 						<input value="Suche" type="submit">
-						<font size=1><a href="searchmore.php">Erweiterte Suche</a></font>
+						<span style="font-size: 0.6em"><a href="searchmore.php">Erweiterte Suche</a></span>
 						</div>
 					</form>
 				</div>
