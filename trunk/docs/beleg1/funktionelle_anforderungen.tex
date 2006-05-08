@@ -81,17 +81,15 @@ Element & Strukturbeschreibung \\
 
 \emph{Bibliothek} & \{Literatur\} \\
 \hline
-Literatur & @Literatur\_Nr + Art + Titel + Autor + (Jahr) + (Verlag) + (ISBN) + (Beschreibung) + (Ort) + (Stichworte) \\
+Literatur & @Literatur\_Nr + Art + Titel + (Jahr) + (Verlag) + (ISBN) + (Beschreibung) + (Ort) + (Stichworte) \\
 \hline
 Literatur\_Nr & gZahl *6stellig, 000001 $\leq$ Literatur\_Nr $\leq$ 999999* \\
 \hline
-Art & Zeichenkette20 \\
+Art & ['' Sachbuch'' | '' Zeitschrift '' | '' wissenschaftliche Arbeit '' | ''Lehrbuch ''] \\
 \hline
 Titel & Zeichenkette40 \\
 \hline
-Autor & Zeichenkette40 \\
-\hline
-Jahr & gZahl *4stellig* \\
+Jahr & gZahl *4stellig*, 0001 $\leq$ Jahr $\leq$ 9999* \\
 \hline
 Verlag & Zeichenkette40 \\
 \hline
@@ -102,6 +100,15 @@ Beschreibung & Zeichenkette250 \\
 Ort & Zeichenkette40 \\
 \hline
 Stichworte & Zeichenkette100 \\
+\hline\hline
+
+\emph{Autoren} & \{Autor\} \\
+\hline
+Autor & @Autor\_Nr + Autorname \\
+\hline
+Autor\_Nr & gZahl *6stellig, 000001 $\leq$ Autor\_Nr $\leq$ 999999* \\
+\hline
+Autorname & Zeichenkette40 \\
 \hline\hline
 
 \emph{Kommentare} & \{Kommentar\} \\
@@ -117,7 +124,7 @@ Kommentartext & Zeichenkette400 \\
 \hline
 Mitglied  & @Mitglieds\_Nr  + Name + Vorname + Login + Passwort + Rechte + E-Mail\\
 \hline
-Mitglieds\_Nr & gZahl *6stellig, 000001 $\leq$ Benutzer\_Nr $\leq$ 999999* \\ 
+Mitglieds\_Nr & gZahl *6stellig, 000001 $\leq$ Mitglieds\_Nr $\leq$ 999999* \\ 
 \hline
 Name & Zeichenkette20 \\
 \hline
@@ -134,7 +141,7 @@ Rechte & [``Benutzer'' $\mid $``Administrator``] \\
 
 Mitgliedsdaten & Name + Vorname + Login + Passwort + Rechte + E-Mail\\
 \hline
-Literaturdaten & Art + Titel + Autor + (Jahr) + (Verlag) + (ISBN) + (Beschreibung) + (Ort) + (Stichworte) \\
+Literaturdaten & Art + Titel + Autorname + (Jahr) + (Verlag) + (ISBN) + (Beschreibung) + (Ort) + (Stichworte) \\
 \hline
 Kommentardaten & Literatur\_Nr + Mitglieds\_Nr + Kommentartext \\
 \hline
@@ -165,9 +172,9 @@ Bestätigung\_Mitgliedändern & Mitglieds\_Nr + Zeichenkette ''Änderung vorgeno
 \hline
 Bestätigung\_Mitgliedlöschen & Mitglieds\_Nr + Zeichenkette ''Löschen vorgenommen`` \\
 \hline
-Suchtreffer & \{Literatur\_Nr + Titel + Autor + Verlag + ISBN\}\\
+Suchtreffer & \{Literatur\_Nr + Titel + Verlag + ISBN\}\\
 \hline
-Letzte\_Literatur & \{Literatur\_Nr + Titel + Autor + Verlag + ISBN\}\\
+Letzte\_Literatur & \{Literatur\_Nr + Titel + Autorname + Verlag + ISBN\}\\
 \hline
 Mitgliederliste & \{Mitglieds\_Nr + Name + Vorname\}\\
 \hline

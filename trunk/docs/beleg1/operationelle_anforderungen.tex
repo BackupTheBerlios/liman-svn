@@ -11,15 +11,13 @@ Element & Struktur & Bytes\\
 \hline\hline
 \endhead
 
-Literatur & @Literatur\_Nr + Art + Titel + Autor + (Jahr) + (Verlag) + (ISBN) + (Beschreibung) + (Ort) + (Stichworte) & $4 + 20 + 40 + 40 + 2 + 40 + 20 + 250 + 40 + 100 = 556$ \\
+Literatur & @Literatur\_Nr + Art + Titel + (Jahr) + (Verlag) + (ISBN) + (Beschreibung) + (Ort) + (Stichworte) & $24 + 20 + 40 + 2 + 40 + 20 + 250 + 40 + 100 = 546$ \\
 \hline
 Literatur\_Nr & gZahl *6stellig, 000001 $\leq$ Literatur\_Nr $\leq$ 999999*  & $4$\\
 \hline
-Art & Zeichenkette20  & $20$\\
+Art & ['' Sachbuch'' | '' Zeitschrift '' | '' wissenschaftliche Arbeit '' | ''Lehrbuch ''] & $24$\\
 \hline
 Titel & Zeichenkette40 & $40$ \\
-\hline
-Autor & Zeichenkette40 & $40$\\
 \hline
 Jahr & gZahl *4stellig* & $2$\\
 \hline
@@ -32,6 +30,13 @@ Beschreibung & Zeichenkette250 & $250$ \\
 Ort & Zeichenkette40 & $40$ \\
 \hline
 Stichworte & Zeichenkette100 & $100$\\
+\hline\hline
+
+Autor & @Autor\_Nr + Autorname & $4 + 40 = 44  $\\
+\hline
+Autor\_Nr & gZahl *6stellig, 000001 $\leq$ Autor\_Nr $\leq$ 999999* & $4$ \\
+\hline
+Autorname & Zeichenkette40 & $40$\\
 \hline\hline
 
 Kommentar & @Kommentar\_Nr + Kommentartext + Literatur\_Nr + Mitglieds\_Nr & $4 + 400 + 4 + 4 = 412 $\\
@@ -60,7 +65,7 @@ Rechte & [``Benutzer'' $\mid $``Administrator``] & $13$ \\
 
 Mitgliedsdaten & Name + Vorname + Login + Passwort + Rechte + E-Mail& $20 + 20 + 12 + 12 + 13 + 350 = 427 $\\
 \hline
-Literaturdaten & Art + Titel + Autor + (Jahr) + (Verlag) + (ISBN) + (Beschreibung) + (Ort) + (Stichworte) & $20 + 40 + 40 + 2 + 40 + 20 + 250 + 40 + 100 = 552 $ \\
+Literaturdaten & Art + Titel + Autorname + (Jahr) + (Verlag) + (ISBN) + (Beschreibung) + (Ort) + (Stichworte) & $24 + 40 + 40 + 2 + 40 + 20 + 250 + 40 + 100 = 556 $ \\
 \hline
 Kommentardaten & Literatur\_Nr + Mitglieds\_Nr + Kommentartext & $4 + 4 + 4 = 12 $ \\
 \hline
@@ -93,9 +98,9 @@ Bestätigung\_Mitgliedlöschen & Mitglieds\_Nr + Zeichenkette ''Löschen vorgeno
 %\hline
 %Literatur\_Info & Literatur + Kommentare & $ 549 + 412 = 961 $ \textbf{KOMMENTARE = VIELE KOMMENTARE UND NICHT NUR EINER}\\
 \hline
-Suchtreffer & \{Literatur\_Nr + Titel + Autor + Verlag + ISBN\} & $4 + 40 + 40 + 40 + 20 = 144$\\
+Suchtreffer & \{Literatur\_Nr + Titel + Verlag + ISBN\} & $4 + 40 + 40 + 20 = 104$\\
 \hline
-Letzte\_Literatur & \{Literatur\_Nr + Titel + Autor + Verlag + ISBN\} & $4 + 40 + 40 + 40 + 20 = 144$\\
+Letzte\_Literatur & \{Literatur\_Nr + Titel + Autorname + Verlag + ISBN\} & $4 + 40 + 40 + 40 + 20 = 144$\\
 \hline
 Mitgliederliste & \{Mitglieds\_Nr + Name + Vorname\} & $4 + 20 + 20 = 44 $\\
 \hline
@@ -110,6 +115,7 @@ Speicher & Struktur & Minimum & Mittel & Maximum \\
 Literatur & {Literatur} & $0*556$ & $50*556=27800$ & $100*556=55600$ \\
 Kommentare & {Kommentar} & $0*412$ & $50*412=20600$ & $100*412=41200$ \\
 Mitglieder & {Mitglied}  & $0*431$ & $50*431=21550$ & $100*431=43100$ \\
+Autoren & {Autor} & $1*44$ & $2*44=88$ & $5*44=220$ \\ 
 \hline
 \end{tabular}
 
@@ -119,10 +125,10 @@ Mitglieder & {Mitglied}  & $0*431$ & $50*431=21550$ & $100*431=43100$ \\
 Datenfluss & Struktur & Minimum & Mittel & Maximum \\
 \hline\hline
 
-Suchtreffer & \{Literatur\_Nr + Titel + Autor + Verlag + ISBN\}  & $0*144$ & $50*144=7200$ & $100*144=14400$ \\
+Suchtreffer & \{Literatur\_Nr + Titel + Verlag + ISBN\}  & $0*104$ & $50*104=5200$ & $100*104=10400$ \\
 Letzte\_Literatur & \{Literatur\_Nr + Titel + Autor + Verlag + ISBN\}  & $0*144$ & $50*144=7200$ & $100*144=14400$ \\
 BibTeX-Datei & \{Datei im Bibtexformat\} & $0*1024$ & $50*1024=51200$ & $100*1024=102400$ \\
-Literatur\_Info & \{Literatur + Kommentare\} & $556 + 0*412=556$ & $556 + 100*412=41756$ & $556 + 200*412=82956$ \\
+Literatur\_Info & \{Literatur + Kommentare\} & $546 + 0*412=546$ & $546 + 100*412=41746$ & $546 + 200*412=82946$ \\
 \hline
 \end{tabular}
 
@@ -147,5 +153,5 @@ zu gr\"o\"seren Datenstr\"omen kommt.
 
 
 \section{Operationelle Anforderungen an die Prozesse}
-Es wird von Antwortzeiten bis zu 5 Sekunden gerechnet. Da die meisten Prozesse auf dem Server verarbeitet werden und der Client diese nur Darstellen muss, 
-kann von 5 Sekunden ausgegangen werden. 
+Es wird von Antwortzeiten bis zu 2 Sekunden gerechnet. Da die meisten Prozesse auf dem Server verarbeitet werden und der Client diese nur Darstellen muss, 
+kann von 2 Sekunden ausgegangen werden. 
