@@ -1,0 +1,52 @@
+\subsection{Bib\-Te\-X Klassenreferenz}
+\label{classBibTeX}\index{BibTeX@{BibTeX}}
+{\bf Bib\-Te\-X}{\rm (S.\,\pageref{classBibTeX})} Parser und Exporter.  
+
+
+\subsubsection*{\"{O}ffentliche Methoden}
+\begin{CompactItemize}
+\item 
+{\bf Bib\-Te\-X} ()\label{classBibTeX_8f5bb42a792203a05dd14a55cd8e0fb3}
+
+\begin{CompactList}\small\item\em Konstruktor. \item\end{CompactList}\item 
+{\bf parse} (\$string)
+\begin{CompactList}\small\item\em Parser für {\bf Bib\-Te\-X}{\rm (S.\,\pageref{classBibTeX})}. \item\end{CompactList}\item 
+{\bf to\-String} ()
+\begin{CompactList}\small\item\em Konvertiert Bib\-Te\-X-Eintrag in String. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsubsection{Ausf\"{u}hrliche Beschreibung}
+{\bf Bib\-Te\-X}{\rm (S.\,\pageref{classBibTeX})} Parser und Exporter. 
+
+
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\index{BibTeX@{Bib\-Te\-X}!parse@{parse}}
+\index{parse@{parse}!BibTeX@{Bib\-Te\-X}}
+\paragraph{\setlength{\rightskip}{0pt plus 5cm}Bib\-Te\-X::parse (\$ {\em string})}\hfill\label{classBibTeX_0fcfbb98f28eb1700cd6877116dc57f6}
+
+
+Parser für {\bf Bib\-Te\-X}{\rm (S.\,\pageref{classBibTeX})}. 
+
+\begin{Desc}
+\item[Parameter:]
+\begin{description}
+\item[{\em \$string}]Zu \char`\"{}parsende\char`\"{} String \end{description}
+\end{Desc}
+\begin{Desc}
+\item[R\"{u}ckgabe:]Array von {\bf Bib\-Te\-X}{\rm (S.\,\pageref{classBibTeX})} \end{Desc}
+\begin{Desc}
+\item[Bemerkungen:]\$string wird nicht exakt auf Fehler untersucht und gegebenenfalls versuchen zu ignorieren 
+
+Gibt boolean false zurück, wenn nichts gefunden werden kann \end{Desc}
+\index{BibTeX@{Bib\-Te\-X}!toString@{toString}}
+\index{toString@{toString}!BibTeX@{Bib\-Te\-X}}
+\paragraph{\setlength{\rightskip}{0pt plus 5cm}Bib\-Te\-X::to\-String ()}\hfill\label{classBibTeX_e656009bd9e0ddf6cf4076d7d76fe94c}
+
+
+Konvertiert Bib\-Te\-X-Eintrag in String. 
+
+\begin{Desc}
+\item[R\"{u}ckgabe:]String mit Bib\-Te\-X-Informationen \end{Desc}
+\begin{Desc}
+\item[Bemerkungen:]Gibt boolean false zurück, wenn zu wenig Informationen vorhanden sind \end{Desc}

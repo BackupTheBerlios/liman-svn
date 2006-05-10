@@ -1,6 +1,7 @@
 MAIN = teilbeleg2
 DEPENDS =	Makefile\
 		teilbeleg2.tex\
+		doxygen/classBibTeX.tex\
 		meta.tex\
 		titel.tex
 
