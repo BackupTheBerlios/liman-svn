@@ -11,7 +11,7 @@ Element & Struktur & Bytes\\
 \hline\hline
 \endhead
 
-Literatur & @Literatur\_Nr + Art + Titel + (Jahr) + (Verlag) + (ISBN) + (Beschreibung) + (Ort) + (Stichworte) & $24 + 20 + 40 + 2 + 40 + 20 + 250 + 40 + 100 = 546$ \\
+Literatur & @Literatur\_Nr + Art + Titel + (Jahr) + (Verlag) + (ISBN) + (Beschreibung) + (Ort) + (Stichworte) & $4 + 24 + 40 + 2 + 40 + 20 + 250 + 40 + 100 = 520$ \\
 \hline
 Literatur\_Nr & gZahl *6stellig, 000001 $\leq$ Literatur\_Nr $\leq$ 999999*  & $4$\\
 \hline
@@ -112,7 +112,7 @@ Mitgliederliste & \{Mitglieds\_Nr + Name + Vorname\} & $4 + 20 + 20 = 44 $\\
 \hline
 Speicher & Struktur & Minimum & Mittel & Maximum \\
 \hline\hline
-Literatur & {Literatur} & $0*556$ & $50*556=27800$ & $100*556=55600$ \\
+Literatur & {Literatur} & $0*520$ & $50*520=26000$ & $100*520=52000$ \\
 Kommentare & {Kommentar} & $0*412$ & $50*412=20600$ & $100*412=41200$ \\
 Mitglieder & {Mitglied}  & $0*431$ & $50*431=21550$ & $100*431=43100$ \\
 Autoren & {Autor} & $1*44$ & $2*44=88$ & $5*44=220$ \\ 
@@ -128,7 +128,7 @@ Datenfluss & Struktur & Minimum & Mittel & Maximum \\
 Suchtreffer & \{Literatur\_Nr + Titel + \{Autorname\} + Verlag + ISBN\}  & $0*104 + 0*40$ & $50*104 + 100*40=9200$ & $100*104 + 500*40=30400$ \\
 Letzte\_Literatur & \{Literatur\_Nr + Titel + \{Autorname\} + Verlag + ISBN\}  & $0*104 + 0*40$ & $50*104 + 100*40=9200$ & $100*104 + 500*40=30400$ \\
 BibTeX-Datei & \{Datei im Bibtexformat\} & $0*1024$ & $50*1024=51200$ & $100*1024=102400$ \\
-Literatur\_Info & \{Literatur + Kommentare\} & $546 + 0*412=546$ & $546 + 100*412=41746$ & $546 + 200*412=82946$ \\
+Literatur\_Info & \{Literatur + Kommentare\} & $520 + 0*412=520$ & $520 + 100*412=41720$ & $520 + 200*412=82920$ \\
 \hline
 \end{tabular}
 
