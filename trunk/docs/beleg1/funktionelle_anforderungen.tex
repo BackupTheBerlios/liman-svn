@@ -104,7 +104,7 @@ Stichworte & Zeichenkette100 \\
 
 \emph{Autoren} & \{Autor\} \\
 \hline
-Autor & @Autor\_Nr + \{Autorname\} \\
+Autor & @Autor\_Nr + Autorname \\
 \hline
 Autor\_Nr & gZahl *6stellig, 000001 $\leq$ Autor\_Nr $\leq$ 999999* \\
 \hline
@@ -141,7 +141,7 @@ Rechte & [``Benutzer'' $\mid $``Administrator``] \\
 
 Mitgliedsdaten & Name + Vorname + Login + Passwort + Rechte + E-Mail\\
 \hline
-Literaturdaten & Art + Titel + Autorname + (Jahr) + (Verlag) + (ISBN) + (Beschreibung) + (Ort) + (Stichworte) \\
+Literaturdaten & Art + Titel + \{Autorname\} + (Jahr) + (Verlag) + (ISBN) + (Beschreibung) + (Ort) + (Stichworte) \\
 \hline
 Kommentardaten & Literatur\_Nr + Mitglieds\_Nr + Kommentartext \\
 \hline
@@ -172,9 +172,9 @@ Bestätigung\_Mitgliedändern & Mitglieds\_Nr + Zeichenkette ''Änderung vorgeno
 \hline
 Bestätigung\_Mitgliedlöschen & Mitglieds\_Nr + Zeichenkette ''Löschen vorgenommen`` \\
 \hline
-Suchtreffer & \{Literatur\_Nr + Titel + Autorname + Verlag + ISBN\}\\
+Suchtreffer & \{Literatur\_Nr + Titel + \{Autorname\} + Verlag + ISBN\}\\
 \hline
-Letzte\_Literatur & \{Literatur\_Nr + Titel + Autorname + Verlag + ISBN\}\\
+Letzte\_Literatur & \{Literatur\_Nr + Titel + \{Autorname\} + Verlag + ISBN\}\\
 \hline
 Mitgliederliste & \{Mitglieds\_Nr + Name + Vorname\}\\
 \hline
