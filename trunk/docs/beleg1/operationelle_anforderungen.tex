@@ -15,7 +15,7 @@ Literatur & @Literatur\_Nr + Art + Titel + (Jahr) + (Verlag) + (ISBN) + (Beschre
 \hline
 Literatur\_Nr & gZahl *6stellig, 000001 $\leq$ Literatur\_Nr $\leq$ 999999*  & $4$\\
 \hline
-Art & ['' Sachbuch'' | '' Zeitschrift '' | '' wissenschaftliche Arbeit '' | ''Lehrbuch ''] & $24$\\
+Art & ['' Buch'' | '' Artikel '' | '' Broschüre '' | '' Protokoll '' | '' Anleitung '' | '' Diplomarbeit '' | '' Dissertation '' | '' Techn. Bericht '' | '' Unveröffentlicht '' | '' Sonstiges ''] & $24$\\
 \hline
 Titel & Zeichenkette40 & $40$ \\
 \hline
@@ -98,7 +98,7 @@ Bestätigung\_Mitgliedlöschen & Mitglieds\_Nr + Zeichenkette ''Löschen vorgeno
 %\hline
 %Literatur\_Info & Literatur + Kommentare & $ 549 + 412 = 961 $ \textbf{KOMMENTARE = VIELE KOMMENTARE UND NICHT NUR EINER}\\
 \hline
-Suchtreffer & \{Literatur\_Nr + Titel + Verlag + ISBN\} & $4 + 40 + 40 + 20 = 104$\\
+Suchtreffer & \{Literatur\_Nr + Titel + Autorname + Verlag + ISBN\} & $4 + 40 + 40 + 40 + 20 = 144$\\
 \hline
 Letzte\_Literatur & \{Literatur\_Nr + Titel + Autorname + Verlag + ISBN\} & $4 + 40 + 40 + 40 + 20 = 144$\\
 \hline
@@ -125,8 +125,8 @@ Autoren & {Autor} & $1*44$ & $2*44=88$ & $5*44=220$ \\
 Datenfluss & Struktur & Minimum & Mittel & Maximum \\
 \hline\hline
 
-Suchtreffer & \{Literatur\_Nr + Titel + Verlag + ISBN\}  & $0*104$ & $50*104=5200$ & $100*104=10400$ \\
-Letzte\_Literatur & \{Literatur\_Nr + Titel + Autor + Verlag + ISBN\}  & $0*144$ & $50*144=7200$ & $100*144=14400$ \\
+Suchtreffer & \{Literatur\_Nr + Titel + Autorname + Verlag + ISBN\}  & $0*104 + 0*40$ & $50*104 + 100*40=9200$ & $100*104 + 500*40=30400$ \\
+Letzte\_Literatur & \{Literatur\_Nr + Titel + Autorname + Verlag + ISBN\}  & $0*104 + 0*40$ & $50*104 + 100*40=9200$ & $100*104 + 500*40=30400$ \\
 BibTeX-Datei & \{Datei im Bibtexformat\} & $0*1024$ & $50*1024=51200$ & $100*1024=102400$ \\
 Literatur\_Info & \{Literatur + Kommentare\} & $546 + 0*412=546$ & $546 + 100*412=41746$ & $546 + 200*412=82946$ \\
 \hline
