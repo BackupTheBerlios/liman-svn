@@ -33,7 +33,7 @@ Nr & Ereignis & Datenfluß im System & Antwort des Systems \\
 3. & N wählt Literatur & Literatur\_Nr & Literatur\_Info \\\hline
 4. & N exportiert Literatur & Exportanfrage &  BibTeX-Datei \\\hline
 5. & M legt Literatur an & Literaturdaten & Bestätigung\_Literaturanlegen \\\hline
-6. & M ändert Literatur & Literatur & Bestätigung\_Literaturändern\\\hline
+6. & M ändert Literatur & LiteraturdatenID & Bestätigung\_Literaturändern\\\hline
 7. & M löscht Literatur & Literatur\_Nr & Bestätigung\_Literaturlöschen \\\hline
 8. & M ändert Mitglied & Mitglied & Bestätigung\_Mitgliedändern \\\hline
 9. & M legt Kommentar an & Kommentardaten & Bestätigung\_Kommentaranlegen \\\hline
@@ -139,9 +139,12 @@ Passwort & Zeichenkette12 \\
 Rechte & [``Benutzer'' $\mid $``Administrator``] \\
 \hline\hline
 
+Autorennamen & \{Autorname\} \\
+\hline
 Mitgliedsdaten & Name + Vorname + Login + Passwort + Rechte + E-Mail\\
 \hline
-Literaturdaten & Art + Titel + \{Autorname\} + (Jahr) + (Verlag) + (ISBN) + (Beschreibung) + (Ort) + (Stichworte) \\
+Literaturdaten & Art + Titel + Autorennamen + (Jahr) + (Verlag) + (ISBN) + (Beschreibung) + (Ort) + (Stichworte) \\
+LiteraturdatenID & Literatur\_Nr + Literaturdaten \\
 \hline
 Kommentardaten & Literatur\_Nr + Mitglieds\_Nr + Kommentartext \\
 \hline
@@ -172,9 +175,9 @@ Bestätigung\_Mitgliedändern & Mitglieds\_Nr + Zeichenkette ''Änderung vorgeno
 \hline
 Bestätigung\_Mitgliedlöschen & Mitglieds\_Nr + Zeichenkette ''Löschen vorgenommen`` \\
 \hline
-Suchtreffer & \{Literatur\_Nr + Titel + \{Autorname\} + Verlag + ISBN\}\\
+Suchtreffer & \{Literatur\_Nr + Titel + Autorennamen + Verlag + ISBN\}\\
 \hline
-Letzte\_Literatur & \{Literatur\_Nr + Titel + \{Autorname\} + Verlag + ISBN\}\\
+Letzte\_Literatur & \{Literatur\_Nr + Titel + Autorennamen + Verlag + ISBN\}\\
 \hline
 Mitgliederliste & \{Mitglieds\_Nr + Name + Vorname\}\\
 \hline

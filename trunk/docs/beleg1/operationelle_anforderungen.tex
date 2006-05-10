@@ -11,11 +11,11 @@ Element & Struktur & Bytes\\
 \hline\hline
 \endhead
 
-Literatur & @Literatur\_Nr + Art + Titel + (Jahr) + (Verlag) + (ISBN) + (Beschreibung) + (Ort) + (Stichworte) & $4 + 24 + 40 + 2 + 40 + 20 + 250 + 40 + 100 = 520$ \\
+Literatur & @Literatur\_Nr + Art + Titel + (Jahr) + (Verlag) + (ISBN) + (Beschreibung) + (Ort) + (Stichworte) & $4 + 16 + 40 + 2 + 40 + 20 + 250 + 40 + 100 = 512$ \\
 \hline
 Literatur\_Nr & gZahl *6stellig, 000001 $\leq$ Literatur\_Nr $\leq$ 999999*  & $4$\\
 \hline
-Art & ['' Buch'' | '' Artikel '' | '' Broschüre '' | '' Protokoll '' | '' Anleitung '' | '' Diplomarbeit '' | '' Dissertation '' | '' Techn. Bericht '' | '' Unveröffentlicht '' | '' Sonstiges ''] & $24$\\
+Art & ['' Buch'' | '' Artikel '' | '' Broschüre '' | '' Protokoll '' | '' Anleitung '' | '' Diplomarbeit '' | '' Dissertation '' | '' Techn. Bericht '' | '' Unveröffentlicht '' | '' Sonstiges ''] & $16$\\
 \hline
 Titel & Zeichenkette40 & $40$ \\
 \hline
@@ -44,7 +44,7 @@ Kommentar & @Kommentar\_Nr + Kommentartext + Literatur\_Nr + Mitglieds\_Nr & $4 
 Kommentar\_Nr & gZahl *6stellig, 000001 $\leq$ Kommentar\_Nr $\leq$ 999999* & $4$ \\
 \hline
 Kommentartext & Zeichenkette400 & $400$\\
-\hline
+\hline\hline
 
 Mitglied  & @Mitglieds\_Nr  + Name + Vorname + Login + Passwort + Rechte + E-Mail & $4 + 20 + 20  + 12 + 12 + 13 + 350 = 431 $\\
 \hline
@@ -64,8 +64,6 @@ Rechte & [``Benutzer'' $\mid $``Administrator``] & $13$ \\
 \hline\hline
 
 Mitgliedsdaten & Name + Vorname + Login + Passwort + Rechte + E-Mail& $20 + 20 + 12 + 12 + 13 + 350 = 427 $\\
-\hline
-Literaturdaten & Art + Titel + \{Autorname\} + (Jahr) + (Verlag) + (ISBN) + (Beschreibung) + (Ort) + (Stichworte) & $24 + 40 + 40 + 2 + 40 + 20 + 250 + 40 + 100 = 556 $ \\
 \hline
 Kommentardaten & Literatur\_Nr + Mitglieds\_Nr + Kommentartext & $4 + 4 + 4 = 12 $ \\
 \hline
@@ -95,12 +93,6 @@ Bestätigung\_Mitgliedanlegen & Mitglieds\_Nr + Zeichenkette ''Anlegen vorgenomm
 Bestätigung\_Mitgliedändern & Mitglieds\_Nr + Zeichenkette ''Änderung vorgenommen`` & $4 + 20 = 24$\\
 \hline
 Bestätigung\_Mitgliedlöschen & Mitglieds\_Nr + Zeichenkette ''Löschen vorgenommen`` & $4 + 19 = 23$\\
-%\hline
-%Literatur\_Info & Literatur + Kommentare & $ 549 + 412 = 961 $ \textbf{KOMMENTARE = VIELE KOMMENTARE UND NICHT NUR EINER}\\
-\hline
-Suchtreffer & \{Literatur\_Nr + Titel + \{Autorname\} + Verlag + ISBN\} & $4 + 40 + 40 + 40 + 20 = 144$\\
-\hline
-Letzte\_Literatur & \{Literatur\_Nr + Titel + \{Autorname\} + Verlag + ISBN\} & $4 + 40 + 40 + 40 + 20 = 144$\\
 \hline
 Mitgliederliste & \{Mitglieds\_Nr + Name + Vorname\} & $4 + 20 + 20 = 44 $\\
 \hline
@@ -112,7 +104,7 @@ Mitgliederliste & \{Mitglieds\_Nr + Name + Vorname\} & $4 + 20 + 20 = 44 $\\
 \hline
 Speicher & Struktur & Minimum & Mittel & Maximum \\
 \hline\hline
-Literatur & {Literatur} & $0*520$ & $50*520=26000$ & $100*520=52000$ \\
+Literatur & {Literatur} & $0*512$ & $50*512=25600$ & $100*512=51200$ \\
 Kommentare & {Kommentar} & $0*412$ & $50*412=20600$ & $100*412=41200$ \\
 Mitglieder & {Mitglied}  & $0*431$ & $50*431=21550$ & $100*431=43100$ \\
 Autoren & {Autor} & $1*44$ & $2*44=88$ & $5*44=220$ \\ 
@@ -125,10 +117,13 @@ Autoren & {Autor} & $1*44$ & $2*44=88$ & $5*44=220$ \\
 Datenfluss & Struktur & Minimum & Mittel & Maximum \\
 \hline\hline
 
-Suchtreffer & \{Literatur\_Nr + Titel + \{Autorname\} + Verlag + ISBN\}  & $0*104 + 0*40$ & $50*104 + 100*40=9200$ & $100*104 + 500*40=30400$ \\
-Letzte\_Literatur & \{Literatur\_Nr + Titel + \{Autorname\} + Verlag + ISBN\}  & $0*104 + 0*40$ & $50*104 + 100*40=9200$ & $100*104 + 500*40=30400$ \\
+Autorennamen & \{Autorname\} & $1*40=0$ & $2*40=80$ & $5*40=200$\\
+Literaturdaten & Art + Titel + Autorennamen + (Jahr) + (Verlag) + (ISBN) + (Beschreibung) + (Ort) + (Stichworte) & $24 + 40 + 1*40 + 2 + 40 + 20 + 250 + 40 + 100 = 556 $ & $24 + 40 + 2*40 + 2 + 40 + 20 + 250 + 40 + 100=596$ & $24 + 40 + 5*40 + 2 + 40 + 20 + 250 + 40 + 100 = 716 $  \\
+LiteraturdatenID & Literatur\_Nr + Literaturdaten & $4 + 556 = 560 $ & $4 + 596 = 600$ & $4 + 716 = 720 $  \\
+Suchtreffer & \{Literatur\_Nr + Titel + Autorennamen + Verlag + ISBN\} & $0*(4 + 40 + 1*40 + 40 + 20) = 0$ & $50*(4 + 40 + 2*40 + 40 + 20) = 9200$ & $100*(4 + 40 + 5*40 + 40 + 20) = 30400$\\
+Letzte\_Literatur & \{Literatur\_Nr + Titel + Autorennamen + Verlag + ISBN\} & $0*(4 + 40 + 1*40 + 40 + 20) = 0$ & $50*(4 + 40 + 2*40 + 40 + 20)=9200$ & $100*(4 + 40 + 5*40 + 40 + 20)=30400$\\
 BibTeX-Datei & \{Datei im Bibtexformat\} & $0*1024$ & $50*1024=51200$ & $100*1024=102400$ \\
-Literatur\_Info & \{Literatur + Kommentare\} & $520 + 0*412=520$ & $520 + 100*412=41720$ & $520 + 200*412=82920$ \\
+Literatur\_Info & \{Literatur + Kommentare\} & $512 + 0*412=512$ & $512 + 100*412=41712$ & $512 + 200*412=82912$ \\
 \hline
 \end{tabular}
 
