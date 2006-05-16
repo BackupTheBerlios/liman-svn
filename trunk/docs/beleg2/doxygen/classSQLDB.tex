@@ -1,0 +1,197 @@
+\hypertarget{classSQLDB}{
+\subsection{SQLDB Klassenreferenz}
+\label{classSQLDB}\index{SQLDB@{SQLDB}}
+}
+Datenbankzugriff über My\-SQL.  
+
+
+\subsubsection*{\"{O}ffentliche Methoden}
+\begin{CompactItemize}
+\item 
+\hyperlink{classSQLDB_069ba0502ed4bfedb72768a03ff6854d}{SQLDB} (\$host, \$user, \$password, \$database, \$persist=true)
+\begin{CompactList}\small\item\em Öffnet eine Datenbankverbindung. \item\end{CompactList}\item 
+\hyperlink{classSQLDB_2d1ec94a4c94e4a505ec37f944363954}{affected\_\-rows} ()
+\begin{CompactList}\small\item\em Anzahl zuletzt geänderter Datensätze. \item\end{CompactList}\item 
+\hyperlink{classSQLDB_8c4f10efb418445877d7263412a082fa}{close} ()
+\begin{CompactList}\small\item\em Beendet Verbindung. \item\end{CompactList}\item 
+\hyperlink{classSQLDB_01346cc7c56480b57c76ca2dac515b2a}{data\_\-seek} (\$row\_\-number)
+\begin{CompactList}\small\item\em Springt auf Datensatz. \item\end{CompactList}\item 
+\hyperlink{classSQLDB_c889958653ffbf14922988e1dcbe014b}{error} ()
+\begin{CompactList}\small\item\em Liefert Fehlerinformationen. \item\end{CompactList}\item 
+\hyperlink{classSQLDB_43fa0105050768eba0ded5bd2f736709}{fetch\_\-object} ()
+\begin{CompactList}\small\item\em Liefert Datensatz als Objekt. \item\end{CompactList}\item 
+\hyperlink{classSQLDB_cbd6f7a7ad0dbe4cd7f0533649be1abd}{fetch\_\-row} ()
+\begin{CompactList}\small\item\em Liefert Datensatz als Feld. \item\end{CompactList}\item 
+\hyperlink{classSQLDB_8168b4df39a17186620e4777c7413a44}{free\_\-result} ()
+\begin{CompactList}\small\item\em Entfernt Ergebnisse. \item\end{CompactList}\item 
+\hyperlink{classSQLDB_8b8f1f63b6172381e118b3cbc32f9f69}{num\_\-rows} ()
+\begin{CompactList}\small\item\em Anzahl zuletzt gefundener Datensätze. \item\end{CompactList}\item 
+\hyperlink{classSQLDB_9a5af86138a3bb12ba443318a26103a1}{query} (\$query)
+\begin{CompactList}\small\item\em Sendet Anfrage an Server. \item\end{CompactList}\end{CompactItemize}
+\subsubsection*{\"{O}ffentliche Attribute}
+\begin{CompactItemize}
+\item 
+\hyperlink{classSQLDB_2c62843044a6ec53ad3384fb36aa811b}{\$db\_\-id} = 0
+\begin{CompactList}\small\item\em Identifikation der aktuellen Datenbankverbindung. \item\end{CompactList}\item 
+\hyperlink{classSQLDB_879fa41a3df6664f4ce83960808326ab}{\$query\_\-result} = 0
+\begin{CompactList}\small\item\em Identifikation der letzten Datenbankabfrage. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsubsection{Ausf\"{u}hrliche Beschreibung}
+Datenbankzugriff über My\-SQL. 
+
+Erlaubt den abstrahierten Zugriff über SQL auf eine Datenbank (hier My\-SQL). 
+
+
+
+\subsubsection{Beschreibung der Konstruktoren und Destruktoren}
+\hypertarget{classSQLDB_069ba0502ed4bfedb72768a03ff6854d}{
+\index{SQLDB@{SQLDB}!SQLDB@{SQLDB}}
+\index{SQLDB@{SQLDB}!SQLDB@{SQLDB}}
+\paragraph[SQLDB]{\setlength{\rightskip}{0pt plus 5cm}SQLDB::SQLDB (\$ {\em host}, \$ {\em user}, \$ {\em password}, \$ {\em database}, \$ {\em persist} = {\tt true})}\hfill}
+\label{classSQLDB_069ba0502ed4bfedb72768a03ff6854d}
+
+
+Öffnet eine Datenbankverbindung. 
+
+\begin{Desc}
+\item[Parameter:]
+\begin{description}
+\item[{\em \$host}]Adresse oder IP des My\-SQL-Servers \item[{\em \$user}]Benutzernamen für My\-SQL-Zugriff \item[{\em \$password}]Benutzerpasswort für My\-SQL-Zugriff \item[{\em \$database}]Auszuwählende Datenbank \item[{\em \$persist}]Aufbau einer persistenten (geteilten) Verbindung \end{description}
+\end{Desc}
+\begin{Desc}
+\item[R\"{u}ckgabe:]Kennung der Datenbankverbindung oder im Fehlerfall false \end{Desc}
+
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{classSQLDB_2d1ec94a4c94e4a505ec37f944363954}{
+\index{SQLDB@{SQLDB}!affected_rows@{affected\_\-rows}}
+\index{affected_rows@{affected\_\-rows}!SQLDB@{SQLDB}}
+\paragraph[affected\_\-rows]{\setlength{\rightskip}{0pt plus 5cm}SQLDB::affected\_\-rows ()}\hfill}
+\label{classSQLDB_2d1ec94a4c94e4a505ec37f944363954}
+
+
+Anzahl zuletzt geänderter Datensätze. 
+
+Gibt Anzahl der bei der letzten INSERT, UPDATE bzw. DELETE Anweisung geänderten Datensätze \begin{Desc}
+\item[R\"{u}ckgabe:]Anzahl der Datensätze \end{Desc}
+\begin{Desc}
+\item[Bemerkungen:]Für gefundene Datensätze sollte \hyperlink{classSQLDB_8b8f1f63b6172381e118b3cbc32f9f69}{num\_\-rows()} genutzt werden \end{Desc}
+\hypertarget{classSQLDB_8c4f10efb418445877d7263412a082fa}{
+\index{SQLDB@{SQLDB}!close@{close}}
+\index{close@{close}!SQLDB@{SQLDB}}
+\paragraph[close]{\setlength{\rightskip}{0pt plus 5cm}SQLDB::close ()}\hfill}
+\label{classSQLDB_8c4f10efb418445877d7263412a082fa}
+
+
+Beendet Verbindung. 
+
+Beendet die Verbindung zum Datenbankserver \begin{Desc}
+\item[R\"{u}ckgabe:]Bei Erfolg true, im Fehlerfall false \end{Desc}
+\begin{Desc}
+\item[Bemerkungen:]Persistente Verbindungen werden nicht geschlossen \end{Desc}
+\hypertarget{classSQLDB_01346cc7c56480b57c76ca2dac515b2a}{
+\index{SQLDB@{SQLDB}!data_seek@{data\_\-seek}}
+\index{data_seek@{data\_\-seek}!SQLDB@{SQLDB}}
+\paragraph[data\_\-seek]{\setlength{\rightskip}{0pt plus 5cm}SQLDB::data\_\-seek (\$ {\em row\_\-number})}\hfill}
+\label{classSQLDB_01346cc7c56480b57c76ca2dac515b2a}
+
+
+Springt auf Datensatz. 
+
+Lässt den internen Zeiger auf angegebenen Datensatz der letzten Anfrage zeigen. Der Datensatz lässt sich danach mit fetch\_\-$\ast$ abfragen. \begin{Desc}
+\item[R\"{u}ckgabe:]Bei Erfolg true, im Fehlerfall false \end{Desc}
+\hypertarget{classSQLDB_c889958653ffbf14922988e1dcbe014b}{
+\index{SQLDB@{SQLDB}!error@{error}}
+\index{error@{error}!SQLDB@{SQLDB}}
+\paragraph[error]{\setlength{\rightskip}{0pt plus 5cm}SQLDB::error ()}\hfill}
+\label{classSQLDB_c889958653ffbf14922988e1dcbe014b}
+
+
+Liefert Fehlerinformationen. 
+
+Liefert Array mit Fehlernachricht und interner Fehlernummer zurück \begin{Desc}
+\item[R\"{u}ckgabe:]Feld mit feld\mbox{[}0\mbox{]} als Fehlernachricht und feld\mbox{[}1\mbox{]} als Fehlernummer \end{Desc}
+\hypertarget{classSQLDB_43fa0105050768eba0ded5bd2f736709}{
+\index{SQLDB@{SQLDB}!fetch_object@{fetch\_\-object}}
+\index{fetch_object@{fetch\_\-object}!SQLDB@{SQLDB}}
+\paragraph[fetch\_\-object]{\setlength{\rightskip}{0pt plus 5cm}SQLDB::fetch\_\-object ()}\hfill}
+\label{classSQLDB_43fa0105050768eba0ded5bd2f736709}
+
+
+Liefert Datensatz als Objekt. 
+
+Wandelt aktuellen Datensatz in Objekt um und gibt ihn zurück. Nach erfolgreicher Operation wird der interne Zeiger eine Stelle weiter gerückt \begin{Desc}
+\item[R\"{u}ckgabe:]Bei Erfolg Datensatz als Objekt, sonst false \end{Desc}
+\hypertarget{classSQLDB_cbd6f7a7ad0dbe4cd7f0533649be1abd}{
+\index{SQLDB@{SQLDB}!fetch_row@{fetch\_\-row}}
+\index{fetch_row@{fetch\_\-row}!SQLDB@{SQLDB}}
+\paragraph[fetch\_\-row]{\setlength{\rightskip}{0pt plus 5cm}SQLDB::fetch\_\-row ()}\hfill}
+\label{classSQLDB_cbd6f7a7ad0dbe4cd7f0533649be1abd}
+
+
+Liefert Datensatz als Feld. 
+
+Wandelt aktuellen Datensatz in Feld um und gibt ihn zurück. Nach erfolgreicher Operation wird der interne Zeiger eine Stelle weiter gerückt \begin{Desc}
+\item[R\"{u}ckgabe:]Bei Erfolg Datensatz als Feld, sonst false \end{Desc}
+\hypertarget{classSQLDB_8168b4df39a17186620e4777c7413a44}{
+\index{SQLDB@{SQLDB}!free_result@{free\_\-result}}
+\index{free_result@{free\_\-result}!SQLDB@{SQLDB}}
+\paragraph[free\_\-result]{\setlength{\rightskip}{0pt plus 5cm}SQLDB::free\_\-result ()}\hfill}
+\label{classSQLDB_8168b4df39a17186620e4777c7413a44}
+
+
+Entfernt Ergebnisse. 
+
+Entfernt Datensätze der letzten Anfrage und gibt deren Speicher frei \begin{Desc}
+\item[Bemerkungen:]Funktion wird vor jedem query aufgerufen \end{Desc}
+\hypertarget{classSQLDB_8b8f1f63b6172381e118b3cbc32f9f69}{
+\index{SQLDB@{SQLDB}!num_rows@{num\_\-rows}}
+\index{num_rows@{num\_\-rows}!SQLDB@{SQLDB}}
+\paragraph[num\_\-rows]{\setlength{\rightskip}{0pt plus 5cm}SQLDB::num\_\-rows ()}\hfill}
+\label{classSQLDB_8b8f1f63b6172381e118b3cbc32f9f69}
+
+
+Anzahl zuletzt gefundener Datensätze. 
+
+Gibt Anzahl der bei der letzten SELECT-Anweisung gefundenen Datensätze \begin{Desc}
+\item[R\"{u}ckgabe:]Anzahl der Datensätze \end{Desc}
+\begin{Desc}
+\item[Bemerkungen:]Für geänderte Datensätze sollte \hyperlink{classSQLDB_2d1ec94a4c94e4a505ec37f944363954}{affected\_\-rows()} genutzt werden \end{Desc}
+\hypertarget{classSQLDB_9a5af86138a3bb12ba443318a26103a1}{
+\index{SQLDB@{SQLDB}!query@{query}}
+\index{query@{query}!SQLDB@{SQLDB}}
+\paragraph[query]{\setlength{\rightskip}{0pt plus 5cm}SQLDB::query (\$ {\em query})}\hfill}
+\label{classSQLDB_9a5af86138a3bb12ba443318a26103a1}
+
+
+Sendet Anfrage an Server. 
+
+Sendet eine Anfrage an die aktive Datenbank. Erhaltene Datensätze der Anfrage können mit fetch\_\-field, fetch\_\-object und fetch\_\-row abgefragt werden \begin{Desc}
+\item[Parameter:]
+\begin{description}
+\item[{\em \$query}]SQL-Anfrage an den Datenbankserver \end{description}
+\end{Desc}
+\begin{Desc}
+\item[R\"{u}ckgabe:]false wenn ein Fehler in der Anfrage aufgetreten ist \end{Desc}
+
+
+\subsubsection{Dokumentation der Datenelemente}
+\hypertarget{classSQLDB_2c62843044a6ec53ad3384fb36aa811b}{
+\index{SQLDB@{SQLDB}!$db_id@{\$db\_\-id}}
+\index{$db_id@{\$db\_\-id}!SQLDB@{SQLDB}}
+\paragraph[\$db\_\-id]{\setlength{\rightskip}{0pt plus 5cm}SQLDB::\$db\_\-id = 0}\hfill}
+\label{classSQLDB_2c62843044a6ec53ad3384fb36aa811b}
+
+
+Identifikation der aktuellen Datenbankverbindung. 
+
+\hypertarget{classSQLDB_879fa41a3df6664f4ce83960808326ab}{
+\index{SQLDB@{SQLDB}!$query_result@{\$query\_\-result}}
+\index{$query_result@{\$query\_\-result}!SQLDB@{SQLDB}}
+\paragraph[\$query\_\-result]{\setlength{\rightskip}{0pt plus 5cm}SQLDB::\$query\_\-result = 0}\hfill}
+\label{classSQLDB_879fa41a3df6664f4ce83960808326ab}
+
+
+Identifikation der letzten Datenbankabfrage. 
+

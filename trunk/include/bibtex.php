@@ -1,11 +1,11 @@
 <?php
-	/**
-	 * @brief Gib §string bis zum ersten Auftreten von $needle aus
-	 * @param $string zu lesende String
-	 * @param $needle zu findende String
-	 * @param $offset Offset des als erstes zu bearbeidende Buchstabens
-	 * @returns Array aus Position des Fundes und Teilstring bis (aber nicht einschließlich) gefundenem $needle
-	 * @remarks Gibt boolean false zurück, wenn needle nicht gefunden werden kann
+	/*! \brief Gib §string bis zum ersten Auftreten von $needle aus
+	 *
+	 *  \param $string zu lesende String
+	 *  \param $needle zu findende String
+	 *  \param $offset Offset des als erstes zu bearbeidende Buchstabens
+	 *  \returns Array aus Position des Fundes und Teilstring bis (aber nicht einschließlich) gefundenem $needle
+	 *  \remarks Gibt boolean false zurück, wenn needle nicht gefunden werden kann
 	 */
 	function strtill($string, $needle , $offset = 0)
 	{
@@ -19,23 +19,25 @@
 		}
 	}
 
-	/**
-	 * @brief BibTeX Parser und Exporter
+	/*! \brief BibTeX Parser und Exporter
+	 *
+	 *  \note Das sollte mit Buch verschmolzen werden
 	 */
 	class BibTeX
 	{
-		var $type;
-		var $id;
-		var $title;
-		var $author;
-		var $year;
-		var $publisher;
-		var $isbn;
-		var $annote;
+		var $type; ///< Typ der Literatur
+		var $id; ///< Buchidentifikationsnummer
+		var $title; ///< Titel der Literatur
+		var $author; ///< Autoren der Literatur
+		var $year; ///< Erscheinungsjahr
+		var $publisher; ///< Verlag/Herausgeber
+		var $isbn; ///< ISBN der Literatur
+		var $annote; ///< Bemerkung zur Literatur
 		
 		
-		/**
-		 * @brief Konstruktor
+		/*! \brief Konstruktor
+		 * 
+		 *  Erstellt eine leere Literaturangabe
 		 */
 		function BibTeX()
 		{
@@ -49,12 +51,12 @@
 			$annote = "";
 		}
 
-		/**
-		 * @brief Parser für BibTeX
-		 * @param $string Zu "parsende" String
-		 * @return Array von BibTeX
-		 * @remarks $string wird nicht exakt auf Fehler untersucht und gegebenenfalls versuchen zu ignorieren
-		 * @remarks Gibt boolean false zurück, wenn nichts gefunden werden kann
+		/*! \brief Parser für BibTeX
+		 *
+		 *  \param $string Zu "parsende" String
+		 *  \return Array von BibTeX
+		 *  \remarks $string wird nicht exakt auf Fehler untersucht und gegebenenfalls versuchen zu ignorieren
+		 *  \remarks Gibt boolean false zurück, wenn nichts gefunden werden kann
 		 */
 		function parse($string)
 		{
@@ -172,10 +174,10 @@
 			return $entries;
 		}
 
-		/**
-		 * @brief Konvertiert BibTeX-Eintrag in String
-		 * @return String mit BibTeX-Informationen
-		 * @remarks Gibt boolean false zurück, wenn zu wenig Informationen vorhanden sind
+		/*! \brief Konvertiert BibTeX-Eintrag in String
+		 *
+		 *  \return String mit BibTeX-Informationen
+		 *  \remarks Gibt boolean false zurück, wenn zu wenig Informationen vorhanden sind
 		 */
 		function toString()
 		{

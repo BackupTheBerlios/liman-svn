@@ -1,7 +1,8 @@
 <?php
 	error_reporting(E_ALL);
 
-	/// Datenbankeinstellungen
+	// Datenbankeinstellungen
+	$db_config['dbms'] = "mysql";	// welche Datenbankklasse benutzen?
 	$db_config['user'] = "liman";
 	$db_config['pass'] = "drownamil";
 	$db_config['name'] = "liman";

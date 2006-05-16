@@ -38,10 +38,9 @@
 			quote_array($_COOKIE);
 		}
 
-		/**
-		 * @brief Wandelt String in HTML-ID um
-		 * @param str zu verarbeitende Rohdaten
-		 * @return umgewandelter String
+		/*! \brief Wandelt String in HTML-ID um
+		 *  \param str zu verarbeitende Rohdaten
+		 *  \return umgewandelter String
 		 */
 		function makeid($str)
 		{
@@ -70,5 +69,6 @@
 		}
 
 		require($basepath."include/config.php");
+		require($basepath."include/sqldb.php");
 	}
 ?>
