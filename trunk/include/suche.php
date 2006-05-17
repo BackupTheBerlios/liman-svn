@@ -4,19 +4,38 @@
 		define("Suche", 1);
 		require_once("literatur.php");
 
-		/*! \brief blabla
+		/*! \brief TODO
 		 *
+		 *  TODO
 		 */
 		class Suche
 		{
-			var $blabla = 0; ///< blabla
+			var $Treffer = 0; ///< TODO
 			
-
-			/*! \brief blabla
+			/*! \brief TODO
 			 *
-			 *  \param $blabla blabla
+			 *  TODO
 			 */
 			function Suche()
+			{
+			}
+			
+			/*! \brief TODO
+			 *
+			 *  TODO
+			 *  \param $volltext TODO
+			 */
+			function Suche($volltext)
+			{
+			}
+			
+			/*! \brief TODO
+			 *
+			 *  TODO
+			 *  \param $autor TODO
+			 *  \param $titel TODO
+			 */
+			function Suche($autor, $titel)
 			{
 			}
 		}

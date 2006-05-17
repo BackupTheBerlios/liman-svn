@@ -56,25 +56,13 @@
 				return  false;
 			}
 			
-			/*! \brief Anzahl zuletzt geänderter Datensätze
-			 *
-			 *  Gibt Anzahl der bei der letzten INSERT, UPDATE bzw.
-			 *  DELETE Anweisung geänderten Datensätze
-			 *  \return Anzahl der Datensätze
-			 *  \remarks Für gefundene Datensätze sollte num_rows() genutzt werden
-			 */
-			function affected_rows()
-			{
-				return @mysql_affected_rows($this->db_id);
-			}
-			
 			/*! \brief Beendet Verbindung
 			 *
 			 *  Beendet die Verbindung zum Datenbankserver
 			 *  \return Bei Erfolg true, im Fehlerfall false
 			 *  \remarks Persistente Verbindungen werden nicht geschlossen
 			 */
-			function close()
+			function Close()
 			{
 				return @mysql_close($this->db_id);
 			}
@@ -83,27 +71,12 @@
 			 *
 			 *  Lässt den internen Zeiger auf angegebenen
 			 *  Datensatz der letzten Anfrage zeigen. Der
-			 *  Datensatz lässt sich danach mit fetch_*
-			 *  abfragen.
+			 *  Datensatz lässt sich danach mit Fetch abfragen.
 			 *  \return Bei Erfolg true, im Fehlerfall false
 			 */
-			function data_seek($row_number)
+			function DataSeek($row_number)
 			{
 				return @mysql_data_seek($this->query_result, $row_number);
-			}
-			
-			/*! \brief Liefert Fehlerinformationen
-			 *
-			 *  Liefert Array mit Fehlernachricht und interner
-			 *  Fehlernummer zurück
-			 *  \return Feld mit feld[0] als Fehlernachricht und feld[1] als Fehlernummer
-			 */
-			function error()
-			{
-				$error = array();
-				$error['msg'] = @mysql_error($query_result);
-				$error['code'] = @mysql_errno($query_result);
-				return $error;
 			}
 			
 			/*! \brief Liefert Datensatz als Objekt
@@ -113,21 +86,9 @@
 			 *  interne Zeiger eine Stelle weiter gerückt
 			 *  \return Bei Erfolg Datensatz als Objekt, sonst false
 			 */
-			function fetch_object()
+			function Fetch()
 			{
 				return @mysql_fetch_object($this->query_result);
-			}
-			
-			/*! \brief Liefert Datensatz als Feld
-			 *
-			 *  Wandelt aktuellen Datensatz in Feld um und gibt
-			 *  ihn zurück. Nach erfolgreicher Operation wird der
-			 *  interne Zeiger eine Stelle weiter gerückt
-			 *  \return Bei Erfolg Datensatz als Feld, sonst false
-			 */
-			function fetch_row()
-			{
-				return @mysql_fetch_row($this->query_result);
 			}
 			
 			/*! \brief Entfernt Ergebnisse
@@ -136,11 +97,37 @@
 			 *  deren Speicher frei
 			 *  \remarks Funktion wird vor jedem query aufgerufen
 			 */
-			function free_result()
+			function FreeResult()
 			{
 				$ret = @mysql_free_result($this->query_result);
 				unset($this->query_result);
 				return $ret;
+			}
+			
+			/*! \brief Anzahl zuletzt geänderter Datensätze
+			 *
+			 *  Gibt Anzahl der bei der letzten INSERT, UPDATE bzw.
+			 *  DELETE Anweisung geänderten Datensätze
+			 *  \return Anzahl der Datensätze
+			 *  \remarks Für gefundene Datensätze sollte num_rows() genutzt werden
+			 */
+			function GetAffectedRows()
+			{
+				return @mysql_affected_rows($this->db_id);
+			}
+			
+			/*! \brief Liefert Fehlerinformationen
+			 *
+			 *  Liefert Array mit Fehlernachricht und interner
+			 *  Fehlernummer zurück
+			 *  \return Feld mit feld[0] als Fehlernachricht und feld[1] als Fehlernummer
+			 */
+			function GetError()
+			{
+				$error = array();
+				$error['msg'] = @mysql_error($query_result);
+				$error['code'] = @mysql_errno($query_result);
+				return $error;
 			}
 			
 			/*! \brief Anzahl zuletzt gefundener Datensätze
@@ -150,7 +137,7 @@
 			 *  \return Anzahl der Datensätze
 			 *  \remarks Für geänderte Datensätze sollte affected_rows() genutzt werden
 			 */
-			function num_rows()
+			function GetNumRows()
 			{
 				return @mysql_num_rows($this->query_result);
 			}
@@ -158,13 +145,12 @@
 			/*! \brief Sendet Anfrage an Server
 			 *
 			 *  Sendet eine Anfrage an die aktive Datenbank.
-			 *  Erhaltene Datensätze der Anfrage können mit
-			 *  fetch_field, fetch_object und fetch_row abgefragt
-			 *  werden
+			 *  Erhaltene Datensätze der Anfrage können mit Fetch
+			 *  abgefragt  werden
 			 *  \param $query SQL-Anfrage an den Datenbankserver
 			 *  \return false wenn ein Fehler in der Anfrage aufgetreten ist
 			 */
-			function query($query)
+			function Query($query)
 			{
 				$this->free_result();
 				return $this->query_result = @mysql_query($query, $this->db_id);

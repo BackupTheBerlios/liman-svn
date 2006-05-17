@@ -3,19 +3,39 @@
 	{
 		define("Autor", 1);
 
-		/*! \brief blabla
+		/*! \brief TODO
 		 *
+		 *  TODO
 		 */
 		class Autor
 		{
-			var $blabla = 0; ///< blabla
+			var $Nr = 0; ///< TODO
+			var $Name = 0; ///< TODO
 			
-
-			/*! \brief blabla
+			/*! \brief TODO
 			 *
-			 *  \param $blabla blabla
+			 *  TODO
+			 *  \param $data TODO
 			 */
-			function Autor()
+			function Autor($data)
+			{
+			}
+
+			/*! \brief TODO
+			 *
+			 *  TODO
+			 */
+			function Clean()
+			{
+			}
+
+			/*! \brief TODO
+			 *
+			 *  TODO
+			 *  \param $autoren TODO
+			 *  \return TODO
+			 */
+			function Split($autoren)
 			{
 			}
 		}
