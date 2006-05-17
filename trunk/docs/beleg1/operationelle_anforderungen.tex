@@ -105,8 +105,11 @@ Mitgliederliste & \{Mitglieds\_Nr + Name + Vorname\} & $4 + 20 + 20 = 44 $\\
 Speicher & Struktur & Minimum & Mittel & Maximum \\
 \hline\hline
 Literatur & {Literatur} & $0*512$ & $50*512=25600$ & $100*512=51200$ \\
+\hline
 Kommentare & {Kommentar} & $0*412$ & $50*412=20600$ & $100*412=41200$ \\
+\hline
 Mitglieder & {Mitglied}  & $0*459$ & $50*459=22950$ & $100*459=45900$ \\
+\hline
 Autoren & {Autor} & $1*44$ & $2*44=88$ & $5*44=220$ \\ 
 \hline
 \end{tabular}
@@ -118,11 +121,17 @@ Datenfluss & Struktur & Minimum & Mittel & Maximum \\
 \hline\hline
 
 Autorennamen & \{Autorname\} & $1*40=0$ & $2*40=80$ & $5*40=200$\\
+\hline
 Literaturdaten & Art + Titel + Autorennamen + (Jahr) + (Verlag) + (ISBN) + (Beschreibung) + (Ort) + (Stichworte) & $24 + 40 + 1*40 + 2 + 40 + 20 + 250 + 40 + 100 = 556 $ & $24 + 40 + 2*40 + 2 + 40 + 20 + 250 + 40 + 100=596$ & $24 + 40 + 5*40 + 2 + 40 + 20 + 250 + 40 + 100 = 716 $  \\
+\hline
 LiteraturdatenID & Literatur\_Nr + Literaturdaten & $4 + 556 = 560 $ & $4 + 596 = 600$ & $4 + 716 = 720 $  \\
+\hline
 Suchtreffer & \{Literatur\_Nr + Titel + Autorennamen + Verlag + ISBN\} & $0*(4 + 40 + 1*40 + 40 + 20) = 0$ & $50*(4 + 40 + 2*40 + 40 + 20) = 9200$ & $100*(4 + 40 + 5*40 + 40 + 20) = 30400$\\
+\hline
 Letzte\_Literatur & \{Literatur\_Nr + Titel + Autorennamen + Verlag + ISBN\} & $0*(4 + 40 + 1*40 + 40 + 20) = 0$ & $50*(4 + 40 + 2*40 + 40 + 20)=9200$ & $100*(4 + 40 + 5*40 + 40 + 20)=30400$\\
+\hline
 BibTeX-Datei & \{Datei im Bibtexformat\} & $0*1024$ & $50*1024=51200$ & $100*1024=102400$ \\
+\hline
 Literatur\_Info & \{Literatur + Kommentare\} & $512 + 0*412=512$ & $512 + 100*412=41712$ & $512 + 200*412=82912$ \\
 \hline
 \end{tabular}
