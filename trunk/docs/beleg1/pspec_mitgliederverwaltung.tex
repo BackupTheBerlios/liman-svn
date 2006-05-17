@@ -30,6 +30,7 @@
 \textbf{Voraussetzung}: Benutzer muss als Administrator angemeldet sein. Es darf keinen anderes Mitglied mit gleichen Login geben (von Datenbank abgefangen).
 \begin{verbatim}
  BEGIN
+   Bestimme Hash des Passworts
    Lege in Mitglieder Mitglied mit Mitgliedsdaten an
 
    IF gefunden THEN
@@ -53,6 +54,7 @@
 \textbf{Voraussetzung}: Benutzer ist angemeldet. Mitglied.Mitglieds\_Nr ist die Nummer des aktuell angemeldeten Nutzers (außer er ist Administrator)
 \begin{verbatim}
   BEGIN
+   Bestimme Hash des Passworts, wenn geändert
    Setze in Mitglieder Mitglied_Eintrag
          mit Mitglied_Eintrag.Mitglieds_Nr = Mitglied.Mitglieds_Nr
          auf Mitglied;

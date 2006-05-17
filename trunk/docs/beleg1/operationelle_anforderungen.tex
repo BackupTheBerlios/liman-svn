@@ -46,7 +46,7 @@ Kommentar\_Nr & gZahl *6stellig, 000001 $\leq$ Kommentar\_Nr $\leq$ 999999* & $4
 Kommentartext & Zeichenkette400 & $400$\\
 \hline\hline
 
-Mitglied  & @Mitglieds\_Nr  + Name + Vorname + Login + Passwort + Rechte + E-Mail & $4 + 20 + 20  + 12 + 12 + 13 + 350 = 431 $\\
+Mitglied  & @Mitglieds\_Nr  + Name + Vorname + Login + Passwort + Rechte + E-Mail & $4 + 20 + 20  + 12 + 40 + 13 + 350 = 459 $\\
 \hline
 Mitglieds\_Nr & gZahl *6stellig, 000001 $\leq$ Benutzer\_Nr $\leq$ 999999* & $4$ \\ 
 \hline
@@ -58,12 +58,12 @@ E-Mail & Zeichenkette350 & $350$ \\
 \hline
 Login & Zeichenkette12 & $12$\\
 \hline
-Passwort & Zeichenkette12 & $12$\\
+Passwort & Zeichenkette40 & $40$\\
 \hline
 Rechte & [``Benutzer'' $\mid $``Administrator``] & $13$ \\
 \hline\hline
 
-Mitgliedsdaten & Name + Vorname + Login + Passwort + Rechte + E-Mail& $20 + 20 + 12 + 12 + 13 + 350 = 427 $\\
+Mitgliedsdaten & Name + Vorname + Login + Passwort + Rechte + E-Mail& $20 + 20 + 12 + 40 + 13 + 350 = 455 $\\
 \hline
 Kommentardaten & Literatur\_Nr + Mitglieds\_Nr + Kommentartext & $4 + 4 + 4 = 12 $ \\
 \hline
@@ -106,7 +106,7 @@ Speicher & Struktur & Minimum & Mittel & Maximum \\
 \hline\hline
 Literatur & {Literatur} & $0*512$ & $50*512=25600$ & $100*512=51200$ \\
 Kommentare & {Kommentar} & $0*412$ & $50*412=20600$ & $100*412=41200$ \\
-Mitglieder & {Mitglied}  & $0*431$ & $50*431=21550$ & $100*431=43100$ \\
+Mitglieder & {Mitglied}  & $0*459$ & $50*459=22950$ & $100*459=45900$ \\
 Autoren & {Autor} & $1*44$ & $2*44=88$ & $5*44=220$ \\ 
 \hline
 \end{tabular}
