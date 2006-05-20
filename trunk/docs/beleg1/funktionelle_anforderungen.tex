@@ -29,7 +29,7 @@ Nr & Ereignis & Datenfluß im System & Antwort des Systems \\
 \endhead
 
 1. & N ruft neu hinzugefügte Literatur ab & - & Letzte\_Literatur \\\hline
-2. & N sucht Literatur & Suchbegriff & Suchtreffer \\\hline
+2. & N sucht Literatur & Suchanfrage & Suchtreffer \\\hline
 3. & N wählt Literatur & Literatur\_Nr & Literatur\_Info \\\hline
 4. & N exportiert Literatur & Exportanfrage &  BibTeX-Datei \\\hline
 5. & M legt Literatur an & Literaturdaten & Bestätigung\_Literaturanlegen \\\hline
@@ -150,6 +150,8 @@ LiteraturdatenID & Literatur\_Nr + Literaturdaten \\
 Kommentardaten & Literatur\_Nr + Mitglieds\_Nr + Kommentartext \\
 \hline
 BibTeX-Datei & *Datei im Bibtexformat* \\
+\hline
+Suchanfrage & [Suchbegriff | Titel + Autor] \\
 \hline
 Suchbegriff & Zeichenkette100 \\
 \hline
