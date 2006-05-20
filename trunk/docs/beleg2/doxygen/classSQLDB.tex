@@ -38,7 +38,9 @@ Datenbankzugriff über My\-SQL.
 \subsubsection{Ausf\"{u}hrliche Beschreibung}
 Datenbankzugriff über My\-SQL. 
 
-Erlaubt den abstrahierten Zugriff über SQL auf eine Datenbank (hier My\-SQL). 
+Erlaubt den abstrahierten Zugriff über SQL auf eine Datenbank (hier My\-SQL). \begin{Desc}
+\item[Vorbedingung:]\end{Desc}
+
 
 
 
@@ -53,9 +55,11 @@ Erlaubt den abstrahierten Zugriff über SQL auf eine Datenbank (hier My\-SQL).
 Öffnet eine Datenbankverbindung. 
 
 \begin{Desc}
+\item[Vorbedingung:]\end{Desc}
+\begin{Desc}
 \item[Parameter:]
 \begin{description}
-\item[{\em \$host}]Adresse oder IP des My\-SQL-Servers \item[{\em \$user}]Benutzernamen für My\-SQL-Zugriff \item[{\em \$password}]Benutzerpasswort für My\-SQL-Zugriff \item[{\em \$database}]Auszuwählende Datenbank \item[{\em \$persist}]Aufbau einer persistenten (geteilten) Verbindung \end{description}
+\item[\mbox{$\leftarrow$} {\em \$host}]Adresse oder IP des My\-SQL-Servers \item[\mbox{$\leftarrow$} {\em \$user}]Benutzernamen für My\-SQL-Zugriff \item[\mbox{$\leftarrow$} {\em \$password}]Benutzerpasswort für My\-SQL-Zugriff \item[\mbox{$\leftarrow$} {\em \$database}]Auszuwählende Datenbank \item[\mbox{$\leftarrow$} {\em \$persist}]Aufbau einer persistenten (geteilten) Verbindung \end{description}
 \end{Desc}
 \begin{Desc}
 \item[R\"{u}ckgabe:]Kennung der Datenbankverbindung oder im Fehlerfall false \end{Desc}
@@ -71,7 +75,9 @@ Erlaubt den abstrahierten Zugriff über SQL auf eine Datenbank (hier My\-SQL).
 
 Beendet Verbindung. 
 
-Beendet die Verbindung zum Datenbankserver \begin{Desc}
+\begin{Desc}
+\item[Vorbedingung:]Beendet die Verbindung zum Datenbankserver \end{Desc}
+\begin{Desc}
 \item[R\"{u}ckgabe:]Bei Erfolg true, im Fehlerfall false \end{Desc}
 \begin{Desc}
 \item[Bemerkungen:]Persistente Verbindungen werden nicht geschlossen \end{Desc}
@@ -84,7 +90,9 @@ Beendet die Verbindung zum Datenbankserver \begin{Desc}
 
 Springt auf Datensatz. 
 
-Lässt den internen Zeiger auf angegebenen Datensatz der letzten Anfrage zeigen. Der Datensatz lässt sich danach mit Fetch abfragen. \begin{Desc}
+\begin{Desc}
+\item[Vorbedingung:]Lässt den internen Zeiger auf angegebenen Datensatz der letzten Anfrage zeigen. Der Datensatz lässt sich danach mit Fetch abfragen. \end{Desc}
+\begin{Desc}
 \item[R\"{u}ckgabe:]Bei Erfolg true, im Fehlerfall false \end{Desc}
 \hypertarget{classSQLDB_a55c00ce1de0e50e0a58cae61892ba35}{
 \index{SQLDB@{SQLDB}!Fetch@{Fetch}}
@@ -95,7 +103,9 @@ Lässt den internen Zeiger auf angegebenen Datensatz der letzten Anfrage zeigen.
 
 Liefert Datensatz als Objekt. 
 
-Wandelt aktuellen Datensatz in Objekt um und gibt ihn zurück. Nach erfolgreicher Operation wird der interne Zeiger eine Stelle weiter gerückt \begin{Desc}
+\begin{Desc}
+\item[Vorbedingung:]Wandelt aktuellen Datensatz in Objekt um und gibt ihn zurück. Nach erfolgreicher Operation wird der interne Zeiger eine Stelle weiter gerückt \end{Desc}
+\begin{Desc}
 \item[R\"{u}ckgabe:]Bei Erfolg Datensatz als Objekt, sonst false \end{Desc}
 \hypertarget{classSQLDB_e7da8a2f993c4bb91167a150e07e8b52}{
 \index{SQLDB@{SQLDB}!FreeResult@{FreeResult}}
@@ -106,7 +116,9 @@ Wandelt aktuellen Datensatz in Objekt um und gibt ihn zurück. Nach erfolgreiche
 
 Entfernt Ergebnisse. 
 
-Entfernt Datensätze der letzten Anfrage und gibt deren Speicher frei \begin{Desc}
+\begin{Desc}
+\item[Vorbedingung:]Entfernt Datensätze der letzten Anfrage und gibt deren Speicher frei \end{Desc}
+\begin{Desc}
 \item[Bemerkungen:]Funktion wird vor jedem query aufgerufen \end{Desc}
 \hypertarget{classSQLDB_8f3c28ae4ed5941c043459d6204a887b}{
 \index{SQLDB@{SQLDB}!GetAffectedRows@{GetAffectedRows}}
@@ -117,7 +129,9 @@ Entfernt Datensätze der letzten Anfrage und gibt deren Speicher frei \begin{Des
 
 Anzahl zuletzt geänderter Datensätze. 
 
-Gibt Anzahl der bei der letzten INSERT, UPDATE bzw. DELETE Anweisung geänderten Datensätze \begin{Desc}
+\begin{Desc}
+\item[Vorbedingung:]Gibt Anzahl der bei der letzten INSERT, UPDATE bzw. DELETE Anweisung geänderten Datensätze \end{Desc}
+\begin{Desc}
 \item[R\"{u}ckgabe:]Anzahl der Datensätze \end{Desc}
 \begin{Desc}
 \item[Bemerkungen:]Für gefundene Datensätze sollte num\_\-rows() genutzt werden \end{Desc}
@@ -130,7 +144,9 @@ Gibt Anzahl der bei der letzten INSERT, UPDATE bzw. DELETE Anweisung geänderten
 
 Liefert Fehlerinformationen. 
 
-Liefert Array mit Fehlernachricht und interner Fehlernummer zurück \begin{Desc}
+\begin{Desc}
+\item[Vorbedingung:]Liefert Array mit Fehlernachricht und interner Fehlernummer zurück \end{Desc}
+\begin{Desc}
 \item[R\"{u}ckgabe:]Feld mit feld\mbox{[}0\mbox{]} als Fehlernachricht und feld\mbox{[}1\mbox{]} als Fehlernummer \end{Desc}
 \hypertarget{classSQLDB_15b181251b309ab55331be29fa33ac9f}{
 \index{SQLDB@{SQLDB}!GetNumRows@{GetNumRows}}
@@ -141,7 +157,9 @@ Liefert Array mit Fehlernachricht und interner Fehlernummer zurück \begin{Desc}
 
 Anzahl zuletzt gefundener Datensätze. 
 
-Gibt Anzahl der bei der letzten SELECT-Anweisung gefundenen Datensätze \begin{Desc}
+\begin{Desc}
+\item[Vorbedingung:]Gibt Anzahl der bei der letzten SELECT-Anweisung gefundenen Datensätze \end{Desc}
+\begin{Desc}
 \item[R\"{u}ckgabe:]Anzahl der Datensätze \end{Desc}
 \begin{Desc}
 \item[Bemerkungen:]Für geänderte Datensätze sollte affected\_\-rows() genutzt werden \end{Desc}
@@ -154,13 +172,15 @@ Gibt Anzahl der bei der letzten SELECT-Anweisung gefundenen Datensätze \begin{D
 
 Sendet Anfrage an Server. 
 
-Sendet eine Anfrage an die aktive Datenbank. Erhaltene Datensätze der Anfrage können mit Fetch abgefragt werden \begin{Desc}
+\begin{Desc}
+\item[Vorbedingung:]Sendet eine Anfrage an die aktive Datenbank. Erhaltene Datensätze der Anfrage können mit Fetch abgefragt werden \end{Desc}
+\begin{Desc}
 \item[Parameter:]
 \begin{description}
-\item[{\em \$query}]SQL-Anfrage an den Datenbankserver \end{description}
+\item[\mbox{$\leftarrow$} {\em \$query}]SQL-Anfrage an den Datenbankserver \end{description}
 \end{Desc}
 \begin{Desc}
-\item[R\"{u}ckgabe:]false wenn ein Fehler in der Anfrage aufgetreten ist \end{Desc}
+\item[R\"{u}ckgabe:]wenn ein Fehler in der Anfrage aufgetreten ist \end{Desc}
 
 
 \subsubsection{Dokumentation der Datenelemente}

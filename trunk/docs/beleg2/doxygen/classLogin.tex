@@ -2,23 +2,32 @@
 \subsection{Login Klassenreferenz}
 \label{classLogin}\index{Login@{Login}}
 }
-blabla  
+Verwaltet Logininformationen.  
 
 
 \subsubsection*{\"{O}ffentliche Methoden}
 \begin{CompactItemize}
 \item 
 \hyperlink{classLogin_4847f3e07e43b540d3339392346f87ff}{Login} ()
-\begin{CompactList}\small\item\em blabla \item\end{CompactList}\end{CompactItemize}
-\subsubsection*{\"{O}ffentliche Attribute}
-\begin{CompactItemize}
-\item 
-\hyperlink{classLogin_00bf0b2858a6ecc754cd00e7b21798e3}{\$blabla} = 0
-\begin{CompactList}\small\item\em blabla \item\end{CompactList}\end{CompactItemize}
+\begin{CompactList}\small\item\em Liest Session für Anmeldedaten ein. \item\end{CompactList}\item 
+\hyperlink{classLogin_86b5c73ef1fb4bd03f91cc4771c960b7}{Login} (\$benutzer, \$passwort)
+\begin{CompactList}\small\item\em Ändert Session mit neuen Anmeldedaten. \item\end{CompactList}\item 
+\hyperlink{classLogin_4cbf74bd382f34e863aec07c3eda0400}{Logout} ()
+\begin{CompactList}\small\item\em Entfernt Session. \item\end{CompactList}\item 
+\hyperlink{classLogin_6c120224aa6719f58c6ccd08acc28758}{Is\-Administrator} ()
+\begin{CompactList}\small\item\em Ermittelt ob Administratorrechte vorliegen. \item\end{CompactList}\item 
+\hyperlink{classLogin_70d2747b0aa454f4203a789afea25318}{Is\-Member} ()
+\begin{CompactList}\small\item\em Ermittelt ob mindestens Mitgliedsrechte vorliegen. \item\end{CompactList}\end{CompactItemize}
 
 
 \subsubsection{Ausf\"{u}hrliche Beschreibung}
-blabla 
+Verwaltet Logininformationen. 
+
+Verwaltet die aus der sich aktuellen Anmeldung ergebenen Session des Users und der damit entstehenen Rechte \begin{Desc}
+\item[Vorbedingung:]Das Loginobjekt muss vor einer Übertragung von Inhaltsdaten zum User angelegt werden, um ein Cookie anlegen zu können. Es sollte kein zweites Objekt vom Typ \hyperlink{classLogin}{Login} existieren. \end{Desc}
+\begin{Desc}
+\item[Bemerkungen:]Sollte ein weiteres Objekt vom Typ \hyperlink{classLogin}{Login} existieren in welche neue Logininformationen eingetragen werden, wird keine weitere Session angelegt, sondern die alten Informationen in der aktuellen Session überschrieben. \end{Desc}
+
 
 
 
@@ -30,22 +39,69 @@ blabla
 \label{classLogin_4847f3e07e43b540d3339392346f87ff}
 
 
-blabla 
+Liest Session für Anmeldedaten ein. 
 
+Liest Daten aus der Session ein. Sollten keine vorhanden sein, dann wird eine neue, leere Session angelegt. Sollten Daten vorhanden sein, wird die Korrektheit über die Datenbank (Mitglieder) und die Verbindungsinformationen geprüft. Nach dieser Prüfung werden abhängig vom Ausgang die Rechteinformationen gesetzt \begin{Desc}
+\item[Vorbedingung:]Eine Verbindung zur Datenbank muss bestehen. Der Konstruktor muss vor dem Senden von Inhaltsdaten aufgerufen werden, um ein Cookie erstellen zu können. \end{Desc}
+\hypertarget{classLogin_86b5c73ef1fb4bd03f91cc4771c960b7}{
+\index{Login@{Login}!Login@{Login}}
+\index{Login@{Login}!Login@{Login}}
+\paragraph[Login]{\setlength{\rightskip}{0pt plus 5cm}Login::Login (\$ {\em benutzer}, \$ {\em passwort})}\hfill}
+\label{classLogin_86b5c73ef1fb4bd03f91cc4771c960b7}
+
+
+Ändert Session mit neuen Anmeldedaten. 
+
+Das Klartextpasswort wird mit \hyperlink{classMitglied_9b13db80866c22bf992e73f2eb75e369}{Mitglied::Password\-Hash} gehashtd um danach mit Benutzernamen (\$benutzer) gegen die Einträge in Mitglieder zu prüfen. Ist diese erfolgreich, wird eine neue Session mit gehashtem Passwort, Benuternamen und Verbindungsinformationen erstellt. Sollte irgendwo ein Fehler bei der Anmeldung auftreten, erhält er Nutzerrechte (wird also nicht zum \hyperlink{classMitglied}{Mitglied}). Sonst erhält er die Rechte aus dem gefundenem Eintrag in Mitglieder. \begin{Desc}
+\item[Vorbedingung:]Eine Verbindung zur Datenbank muss bestehen. Der Konstruktor muss vor dem Senden von Inhaltsdaten aufgerufen werden, um ein Cookie erstellen zu können. \end{Desc}
 \begin{Desc}
 \item[Parameter:]
 \begin{description}
-\item[{\em \$blabla}]blabla \end{description}
+\item[\mbox{$\leftarrow$} {\em \$benutzer}]neuer Benutzername \item[\mbox{$\leftarrow$} {\em \$passwort}]Passwort in Klartext des Nutzers \end{description}
 \end{Desc}
 
 
-\subsubsection{Dokumentation der Datenelemente}
-\hypertarget{classLogin_00bf0b2858a6ecc754cd00e7b21798e3}{
-\index{Login@{Login}!$blabla@{\$blabla}}
-\index{$blabla@{\$blabla}!Login@{Login}}
-\paragraph[\$blabla]{\setlength{\rightskip}{0pt plus 5cm}Login::\$blabla = 0}\hfill}
-\label{classLogin_00bf0b2858a6ecc754cd00e7b21798e3}
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{classLogin_6c120224aa6719f58c6ccd08acc28758}{
+\index{Login@{Login}!IsAdministrator@{IsAdministrator}}
+\index{IsAdministrator@{IsAdministrator}!Login@{Login}}
+\paragraph[IsAdministrator]{\setlength{\rightskip}{0pt plus 5cm}Login::Is\-Administrator ()}\hfill}
+\label{classLogin_6c120224aa6719f58c6ccd08acc28758}
 
 
-blabla 
+Ermittelt ob Administratorrechte vorliegen. 
 
+Vergleicht ob die bei der Erstellung des Loginobjekts ermittelten Rechte mindestens den Wert für Administratorrechte ($>$=2) haben \begin{Desc}
+\item[Vorbedingung:]- \end{Desc}
+\begin{Desc}
+\item[R\"{u}ckgabewerte:]
+\begin{description}
+\item[{\em true}]wenn Administratorrechte vorliegen \item[{\em false}]wenn Nutzer- oder Mitgliedsrechte vorliegen \end{description}
+\end{Desc}
+\hypertarget{classLogin_70d2747b0aa454f4203a789afea25318}{
+\index{Login@{Login}!IsMember@{IsMember}}
+\index{IsMember@{IsMember}!Login@{Login}}
+\paragraph[IsMember]{\setlength{\rightskip}{0pt plus 5cm}Login::Is\-Member ()}\hfill}
+\label{classLogin_70d2747b0aa454f4203a789afea25318}
+
+
+Ermittelt ob mindestens Mitgliedsrechte vorliegen. 
+
+Vergleicht ob die bei der Erstellung des Loginobjekts ermittelten Rechte mindestens den Wert für Mitgliedsrechte ($>$=1) haben \begin{Desc}
+\item[Vorbedingung:]- \end{Desc}
+\begin{Desc}
+\item[R\"{u}ckgabewerte:]
+\begin{description}
+\item[{\em true}]wenn mindestens Mitgliedsrechte vorliegen \item[{\em false}]wenn Nutzerrechte vorliegen \end{description}
+\end{Desc}
+\hypertarget{classLogin_4cbf74bd382f34e863aec07c3eda0400}{
+\index{Login@{Login}!Logout@{Logout}}
+\index{Logout@{Logout}!Login@{Login}}
+\paragraph[Logout]{\setlength{\rightskip}{0pt plus 5cm}Login::Logout ()}\hfill}
+\label{classLogin_4cbf74bd382f34e863aec07c3eda0400}
+
+
+Entfernt Session. 
+
+Die Anmeldedaten und Verbindungsdaten werden in der Session entfernt. Außerdem werden die Rechte auf Gast (0) gesetzt. \begin{Desc}
+\item[Vorbedingung:]- \end{Desc}

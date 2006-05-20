@@ -1,10 +1,12 @@
 <?php
 	/*! \brief Gib §string bis zum ersten Auftreten von $needle aus
 	 *
-	 *  \param $string zu lesende String
-	 *  \param $needle zu findende String
-	 *  \param $offset Offset des als erstes zu bearbeidende Buchstabens
-	 *  \returns Array aus Position des Fundes und Teilstring bis (aber nicht einschließlich) gefundenem $needle
+	 *  TODO
+	 *  \pre
+	 *  \param[in] $string zu lesende String
+	 *  \param[in] $needle zu findende String
+	 *  \param[in] $offset Offset des als erstes zu bearbeidende Buchstabens
+	 *  \return Array aus Position des Fundes und Teilstring bis (aber nicht einschließlich) gefundenem $needle
 	 *  \remarks Gibt boolean false zurück, wenn needle nicht gefunden werden kann
 	 */
 	function strtill($string, $needle , $offset = 0)
@@ -21,6 +23,8 @@
 
 	/*! \brief BibTeX Parser und Exporter
 	 *
+	 *  TODO
+	 *  \pre
 	 *  \note Das sollte mit Buch verschmolzen werden
 	 */
 	class BibTeX
@@ -38,6 +42,7 @@
 		/*! \brief Konstruktor
 		 * 
 		 *  Erstellt eine leere Literaturangabe
+		 *  \pre
 		 */
 		function BibTeX()
 		{
@@ -53,7 +58,9 @@
 
 		/*! \brief Parser für BibTeX
 		 *
-		 *  \param $string Zu "parsende" String
+		 *  TODO
+		 *  \pre
+		 *  \param[in] $string Zu "parsende" String
 		 *  \return Array von BibTeX
 		 *  \remarks $string wird nicht exakt auf Fehler untersucht und gegebenenfalls versuchen zu ignorieren
 		 *  \remarks Gibt boolean false zurück, wenn nichts gefunden werden kann
@@ -176,6 +183,8 @@
 
 		/*! \brief Konvertiert BibTeX-Eintrag in String
 		 *
+		 *  TODO
+		 *  \pre
 		 *  \return String mit BibTeX-Informationen
 		 *  \remarks Gibt boolean false zurück, wenn zu wenig Informationen vorhanden sind
 		 */
