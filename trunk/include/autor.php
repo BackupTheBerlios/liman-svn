@@ -15,7 +15,7 @@ if(!defined("Autor"))
 		/*! \brief TODO
 		 *
 		 *  TODO
-		 *  \pre
+		 *  \pre TODO
 		 *  \param[in] $data TODO
 		 */
 		function Autor($data)
@@ -25,7 +25,7 @@ if(!defined("Autor"))
 		/*! \brief TODO
 		 *
 		 *  TODO
-		 *  \pre
+		 *  \pre TODO
 		 */
 		function Clean()
 		{
@@ -34,7 +34,7 @@ if(!defined("Autor"))
 		/*! \brief TODO
 		 *
 		 *  TODO
-		 *  \pre
+		 *  \pre TODO
 		 *  \param[in] $autoren TODO
 		 *  \return TODO
 		 */

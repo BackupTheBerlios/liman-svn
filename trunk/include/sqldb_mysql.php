@@ -8,7 +8,7 @@ if(!defined("SQLDB"))
 	 *
 	 *  Erlaubt den abstrahierten Zugriff über SQL auf eine
 	 *  Datenbank (hier MySQL).
-	 *  \pre
+	 *  \pre TODO
 	 */
 	class SQLDB
 	{
@@ -18,13 +18,15 @@ if(!defined("SQLDB"))
 
 		/*! \brief Öffnet eine Datenbankverbindung
 		 *
-		 *  \pre
+		 *  TODO
+		 *  \pre TODO
 		 *  \param[in] $host Adresse oder IP des MySQL-Servers
 		 *  \param[in] $user Benutzernamen für MySQL-Zugriff
 		 *  \param[in] $password Benutzerpasswort für MySQL-Zugriff
 		 *  \param[in] $database Auszuwählende Datenbank
 		 *  \param[in] $persist Aufbau einer persistenten (geteilten) Verbindung
-		 *  \return Kennung der Datenbankverbindung oder im Fehlerfall false
+		 *  \return bei Erfolg Kennung der Datenbankverbindung
+		 *  \retval false bei Misserfolg
 		 */
 		function SQLDB($host, $user, $password, $database, $persist = true)
 		{
@@ -60,9 +62,10 @@ if(!defined("SQLDB"))
 		
 		/*! \brief Beendet Verbindung
 		 *
-		 *  \pre
 		 *  Beendet die Verbindung zum Datenbankserver
-		 *  \return Bei Erfolg true, im Fehlerfall false
+		 *  \pre TODO
+		 *  \retval true bei Erfolg
+		 *  \retval false bei Misserfolg
 		 *  \remarks Persistente Verbindungen werden nicht geschlossen
 		 */
 		function Close()
@@ -72,11 +75,12 @@ if(!defined("SQLDB"))
 		
 		/*! \brief Springt auf Datensatz
 		 *
-		 *  \pre
 		 *  Lässt den internen Zeiger auf angegebenen Datensatz der
 		 *  letzten Anfrage zeigen. Der Datensatz lässt sich danach mit
 		 *  Fetch abfragen.
-		 *  \return Bei Erfolg true, im Fehlerfall false
+		 *  \pre TODO
+		 *  \retval true bei Erfolg
+		 *  \retval false bei Misserfolg
 		 */
 		function DataSeek($row_number)
 		{
@@ -85,11 +89,12 @@ if(!defined("SQLDB"))
 		
 		/*! \brief Liefert Datensatz als Objekt
 		 *
-		 *  \pre
 		 *  Wandelt aktuellen Datensatz in Objekt um und gibt ihn
 		 *  zurück. Nach erfolgreicher Operation wird der
 		 *  interne Zeiger eine Stelle weiter gerückt
-		 *  \return Bei Erfolg Datensatz als Objekt, sonst false
+		 *  \pre TODO
+		 *  \return bei Erfolg Datensatz als Objekt
+		 *  \retval false bei Misserfolg
 		 */
 		function Fetch()
 		{
@@ -98,9 +103,9 @@ if(!defined("SQLDB"))
 		
 		/*! \brief Entfernt Ergebnisse
 		 *
-		 *  \pre
 		 *  Entfernt Datensätze der letzten Anfrage und gibt deren
 		 *  Speicher frei
+		 *  \pre TODO
 		 *  \remarks Funktion wird vor jedem query aufgerufen
 		 */
 		function FreeResult()
@@ -112,9 +117,9 @@ if(!defined("SQLDB"))
 		
 		/*! \brief Anzahl zuletzt geänderter Datensätze
 		 *
-		 *  \pre
 		 *  Gibt Anzahl der bei der letzten INSERT, UPDATE bzw. DELETE
 		 *  Anweisung geänderten Datensätze
+		 *  \pre TODO
 		 *  \return Anzahl der Datensätze
 		 *  \remarks Für gefundene Datensätze sollte num_rows() genutzt werden
 		 */
@@ -125,9 +130,9 @@ if(!defined("SQLDB"))
 		
 		/*! \brief Liefert Fehlerinformationen
 		 *
-		 *  \pre
 		 *  Liefert Array mit Fehlernachricht und interner Fehlernummer
 		 *  zurück
+		 *  \pre TODO
 		 *  \return Feld mit feld[0] als Fehlernachricht und feld[1] als Fehlernummer
 		 */
 		function GetError()
@@ -140,9 +145,9 @@ if(!defined("SQLDB"))
 		
 		/*! \brief Anzahl zuletzt gefundener Datensätze
 		 *
-		 *  \pre
 		 *  Gibt Anzahl der bei der letzten SELECT-Anweisung
 		 *  gefundenen Datensätze
+		 *  \pre TODO
 		 *  \return Anzahl der Datensätze
 		 *  \remarks Für geänderte Datensätze sollte affected_rows() genutzt werden
 		 */
@@ -153,10 +158,10 @@ if(!defined("SQLDB"))
 		
 		/*! \brief Sendet Anfrage an Server
 		 *
-		 *  \pre
 		 *  Sendet eine Anfrage an die aktive Datenbank.
 		 *  Erhaltene Datensätze der Anfrage können mit Fetch abgefragt
 		 *  werden
+		 *  \pre TODO
 		 *  \param[in] $query SQL-Anfrage an den Datenbankserver
 		 *  \return wenn ein Fehler in der Anfrage aufgetreten ist
 		 */

@@ -2,7 +2,7 @@
 	/*! \brief Gib §string bis zum ersten Auftreten von $needle aus
 	 *
 	 *  TODO
-	 *  \pre
+	 *  \pre TODO
 	 *  \param[in] $string zu lesende String
 	 *  \param[in] $needle zu findende String
 	 *  \param[in] $offset Offset des als erstes zu bearbeidende Buchstabens
@@ -24,7 +24,7 @@
 	/*! \brief BibTeX Parser und Exporter
 	 *
 	 *  TODO
-	 *  \pre
+	 *  \pre TODO
 	 *  \note Das sollte mit Buch verschmolzen werden
 	 */
 	class BibTeX
@@ -42,7 +42,7 @@
 		/*! \brief Konstruktor
 		 * 
 		 *  Erstellt eine leere Literaturangabe
-		 *  \pre
+		 *  \pre TODO
 		 */
 		function BibTeX()
 		{
@@ -59,7 +59,7 @@
 		/*! \brief Parser für BibTeX
 		 *
 		 *  TODO
-		 *  \pre
+		 *  \pre TODO
 		 *  \param[in] $string Zu "parsende" String
 		 *  \return Array von BibTeX
 		 *  \remarks $string wird nicht exakt auf Fehler untersucht und gegebenenfalls versuchen zu ignorieren
@@ -184,7 +184,7 @@
 		/*! \brief Konvertiert BibTeX-Eintrag in String
 		 *
 		 *  TODO
-		 *  \pre
+		 *  \pre TODO
 		 *  \return String mit BibTeX-Informationen
 		 *  \remarks Gibt boolean false zurück, wenn zu wenig Informationen vorhanden sind
 		 */

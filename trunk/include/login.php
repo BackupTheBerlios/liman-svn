@@ -6,11 +6,11 @@ if(!defined("Login"))
 	/*! \brief Verwaltet Logininformationen
 	 *
 	 *  Verwaltet die aus der sich aktuellen Anmeldung ergebenen Session
-	 *  des Users und der damit entstehenen Rechte
+	 *  des Users und der damit entstehenden Rechte
 	 *  \pre Das Loginobjekt muss vor einer Übertragung von Inhaltsdaten zum 
 	 *    User angelegt werden, um ein Cookie anlegen zu können. Es sollte
 	 *    kein zweites Objekt vom Typ Login existieren.
-	 *  \remarks Sollte ein weiteres Objekt vom Typ Login existieren in
+	 *  \remarks Sollte ein weiteres Objekt vom Typ Login existieren, in
 	 *    welche neue Logininformationen eingetragen werden, wird keine
 	 *    weitere Session angelegt, sondern die alten Informationen in
 	 *    der aktuellen Session überschrieben.
@@ -44,7 +44,7 @@ if(!defined("Login"))
 		/*! \brief Ändert Session mit neuen Anmeldedaten
 		 *
 		 *  Das Klartextpasswort wird mit Mitglied::PasswordHash
-		 *  gehashtd um danach mit Benutzernamen ($benutzer) gegen die
+		 *  gehasht, um diese mit Benutzernamen ($benutzer) gegen die
 		 *  Einträge in Mitglieder zu prüfen. Ist diese erfolgreich,
 		 *  wird eine neue Session mit gehashtem Passwort, Benuternamen
 		 *  und Verbindungsinformationen erstellt. Sollte irgendwo ein

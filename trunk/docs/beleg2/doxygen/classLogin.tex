@@ -23,10 +23,10 @@ Verwaltet Logininformationen.
 \subsubsection{Ausf\"{u}hrliche Beschreibung}
 Verwaltet Logininformationen. 
 
-Verwaltet die aus der sich aktuellen Anmeldung ergebenen Session des Users und der damit entstehenen Rechte \begin{Desc}
+Verwaltet die aus der sich aktuellen Anmeldung ergebenen Session des Users und der damit entstehenden Rechte \begin{Desc}
 \item[Vorbedingung:]Das Loginobjekt muss vor einer Übertragung von Inhaltsdaten zum User angelegt werden, um ein Cookie anlegen zu können. Es sollte kein zweites Objekt vom Typ \hyperlink{classLogin}{Login} existieren. \end{Desc}
 \begin{Desc}
-\item[Bemerkungen:]Sollte ein weiteres Objekt vom Typ \hyperlink{classLogin}{Login} existieren in welche neue Logininformationen eingetragen werden, wird keine weitere Session angelegt, sondern die alten Informationen in der aktuellen Session überschrieben. \end{Desc}
+\item[Bemerkungen:]Sollte ein weiteres Objekt vom Typ \hyperlink{classLogin}{Login} existieren, in welche neue Logininformationen eingetragen werden, wird keine weitere Session angelegt, sondern die alten Informationen in der aktuellen Session überschrieben. \end{Desc}
 
 
 
@@ -52,7 +52,7 @@ Liest Daten aus der Session ein. Sollten keine vorhanden sein, dann wird eine ne
 
 Ändert Session mit neuen Anmeldedaten. 
 
-Das Klartextpasswort wird mit \hyperlink{classMitglied_9b13db80866c22bf992e73f2eb75e369}{Mitglied::Password\-Hash} gehashtd um danach mit Benutzernamen (\$benutzer) gegen die Einträge in Mitglieder zu prüfen. Ist diese erfolgreich, wird eine neue Session mit gehashtem Passwort, Benuternamen und Verbindungsinformationen erstellt. Sollte irgendwo ein Fehler bei der Anmeldung auftreten, erhält er Nutzerrechte (wird also nicht zum \hyperlink{classMitglied}{Mitglied}). Sonst erhält er die Rechte aus dem gefundenem Eintrag in Mitglieder. \begin{Desc}
+Das Klartextpasswort wird mit \hyperlink{classMitglied_9b13db80866c22bf992e73f2eb75e369}{Mitglied::Password\-Hash} gehasht, um diese mit Benutzernamen (\$benutzer) gegen die Einträge in Mitglieder zu prüfen. Ist diese erfolgreich, wird eine neue Session mit gehashtem Passwort, Benuternamen und Verbindungsinformationen erstellt. Sollte irgendwo ein Fehler bei der Anmeldung auftreten, erhält er Nutzerrechte (wird also nicht zum \hyperlink{classMitglied}{Mitglied}). Sonst erhält er die Rechte aus dem gefundenem Eintrag in Mitglieder. \begin{Desc}
 \item[Vorbedingung:]Eine Verbindung zur Datenbank muss bestehen. Der Konstruktor muss vor dem Senden von Inhaltsdaten aufgerufen werden, um ein Cookie erstellen zu können. \end{Desc}
 \begin{Desc}
 \item[Parameter:]

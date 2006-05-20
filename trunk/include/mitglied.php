@@ -7,7 +7,7 @@ if(!defined("Mitglied"))
 	/*! \brief TODO
 	 *
 	 *  TODO
-	 *  \pre
+	 *  \pre TODO
 	 */
 	class Mitglied
 	{
@@ -22,7 +22,7 @@ if(!defined("Mitglied"))
 		/*! \brief TODO
 		 *
 		 *  TODO
-		 *  \pre
+		 *  \pre TODO
 		 *  \param[in] $pass TODO
 		 */
 		function PasswordHash($pass)
@@ -33,7 +33,7 @@ if(!defined("Mitglied"))
 		/*! \brief TODO
 		 *
 		 *  TODO
-		 *  \pre
+		 *  \pre TODO
 		 *  \param[in] $nr TODO
 		 */
 		function Delete($nr)
@@ -43,7 +43,7 @@ if(!defined("Mitglied"))
 		/*! \brief TODO
 		 *
 		 *  TODO
-		 *  \pre
+		 *  \pre TODO
 		 *  \param[in] $login TODO
 		 *  \param[in] $passwort TODO
 		 *  \param[in] $rechte TODO
@@ -58,7 +58,7 @@ if(!defined("Mitglied"))
 		/*! \brief TODO
 		 *
 		 *  TODO
-		 *  \pre
+		 *  \pre TODO
 		 *  \param[in] nr TODO
 		 *  \param[in] $login TODO
 		 *  \param[in] $passwort TODO
@@ -74,7 +74,7 @@ if(!defined("Mitglied"))
 		/*! \brief TODO
 		 *
 		 *  TODO
-		 *  \pre
+		 *  \pre TODO
 		 *  \return TODO
 		 */
 		function GetAll()

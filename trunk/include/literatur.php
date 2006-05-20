@@ -10,7 +10,7 @@ if(!defined("Literatur"))
 	/*! \brief TODO
 	 *
 	 *  TODO
-	 *  \pre
+	 *  \pre TODO
 	 */
 	class Literatur
 	{
@@ -29,7 +29,7 @@ if(!defined("Literatur"))
 		/*! \brief TODO
 		 *
 		 *  TODO
-		 *  \pre
+		 *  \pre TODO
 		 *  \param[in] $nr TODO
 		 */
 		function Literatur($nr)
@@ -39,7 +39,7 @@ if(!defined("Literatur"))
 		/*! \brief TODO
 		 *
 		 *  TODO
-		 *  \pre
+		 *  \pre TODO
 		 *  \return TODO
 		 */
 		function ToBibtex()
@@ -49,7 +49,7 @@ if(!defined("Literatur"))
 		/*! \brief TODO
 		 *
 		 *  TODO
-		 *  \pre
+		 *  \pre TODO
 		 *  \param[in] $nr TODO
 		 */
 		function Delete($nr)
@@ -59,7 +59,7 @@ if(!defined("Literatur"))
 		/*! \brief TODO
 		 *
 		 *  TODO
-		 *  \pre
+		 *  \pre TODO
 		 *  \param[in] $bibtex TODO
 		 */
 		function Insert($bibtex)
@@ -69,7 +69,7 @@ if(!defined("Literatur"))
 		/*! \brief TODO
 		 *
 		 *  TODO
-		 *  \pre
+		 *  \pre TODO
 		 *  \param[in] $art TODO
 		 *  \param[in] $titel TODO
 		 *  \param[in] $jahr TODO
@@ -87,7 +87,7 @@ if(!defined("Literatur"))
 		/*! \brief TODO
 		 *
 		 *  TODO
-		 *  \pre
+		 *  \pre TODO
 		 *  \param[in] $nr TODO
 		 *  \param[in] $art TODO
 		 *  \param[in] $titel TODO

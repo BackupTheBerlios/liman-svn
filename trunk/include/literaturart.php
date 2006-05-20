@@ -6,7 +6,7 @@ if(!defined("LiteraturArt"))
 	/*! \brief TODO
 	 *
 	 *  TODO
-	 *  \pre
+	 *  \pre TODO
 	 */
 	class LiteraturArt
 	{
@@ -28,7 +28,7 @@ if(!defined("LiteraturArt"))
 		/*! \brief TODO
 		 *
 		 *  TODO
-		 *  \pre
+		 *  \pre TODO
 		 *  \param[in] $text TODO
 		 */
 		function LiteraturArt($text)
@@ -93,7 +93,7 @@ if(!defined("LiteraturArt"))
 		/*! \brief TODO
 		 *
 		 *  TODO
-		 *  \pre
+		 *  \pre TODO
 		 *  \return TODO
 		 */
 		function GetDisplayText()
@@ -136,7 +136,7 @@ if(!defined("LiteraturArt"))
 		/*! \brief TODO
 		 *
 		 *  TODO
-		 *  \pre
+		 *  \pre TODO
 		 *  \return TODO
 		 */
 		function GetBibtexText()

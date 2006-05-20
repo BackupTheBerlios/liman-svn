@@ -7,7 +7,7 @@ if(!defined("Kommentar"))
 	/*! \brief TODO
 	 *
 	 *  TODO
-	 *  \pre
+	 *  \pre TODO
 	 */
 	class Kommentar
 	{
@@ -19,7 +19,7 @@ if(!defined("Kommentar"))
 		/*! \brief TODO
 		 *
 		 *  TODO
-		 *  \pre
+		 *  \pre TODO
 		 *  \param[in] $data TODO
 		 */
 		function Kommentar($data)
@@ -29,7 +29,7 @@ if(!defined("Kommentar"))
 		/*! \brief TODO
 		 *
 		 *  TODO
-		 *  \pre
+		 *  \pre TODO
 		 *  \param[in] $nr TODO
 		 */
 		function Delete($nr)
@@ -39,7 +39,7 @@ if(!defined("Kommentar"))
 		/*! \brief TODO
 		 *
 		 *  TODO
-		 *  \pre
+		 *  \pre TODO
 		 *  \param[in] $literatur_nr TODO
 		 */
 		function DeleteAll($literatur_nr)
@@ -49,7 +49,7 @@ if(!defined("Kommentar"))
 		/*! \brief TODO
 		 *
 		 *  TODO
-		 *  \pre
+		 *  \pre TODO
 		 *  \param[in] $data TODO
 		 */
 		function Insert($data)
@@ -59,7 +59,7 @@ if(!defined("Kommentar"))
 		/*! \brief TODO
 		 *
 		 *  TODO
-		 *  \pre
+		 *  \pre TODO
 		 *  \param[in] $text TODO
 		 *  \param[in] $verfasser_nr TODO
 		 *  \param[in] $literatur_nr TODO

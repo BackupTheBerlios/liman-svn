@@ -7,7 +7,7 @@ if(!defined("Suche"))
 	/*! \brief TODO
 	 *
 	 *  TODO
-	 *  \pre
+	 *  \pre TODO
 	 */
 	class Suche
 	{
@@ -16,7 +16,7 @@ if(!defined("Suche"))
 		/*! \brief Sucht zuletzt hinzugefügte Literatur
 		 *
 		 *  TODO
-		 *  \pre
+		 *  \pre TODO
 		 */
 		function Suche()
 		{
@@ -25,7 +25,7 @@ if(!defined("Suche"))
 		/*! \brief Sucht nach Literatur mit Suchbegriff
 		 *
 		 *  TODO
-		 *  \pre
+		 *  \pre TODO
 		 *  \param[in] $volltext TODO
 		 */
 		function Suche($volltext)
@@ -35,7 +35,7 @@ if(!defined("Suche"))
 		/*! \brief Sucht Literatur mit Autor und Titel
 		 *
 		 *  TODO
-		 *  \pre
+		 *  \pre TODO
 		 *  \param[in] $autor TODO
 		 *  \param[in] $titel TODO
 		 */

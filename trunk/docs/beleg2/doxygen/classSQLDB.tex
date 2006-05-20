@@ -39,7 +39,7 @@ Datenbankzugriff über My\-SQL.
 Datenbankzugriff über My\-SQL. 
 
 Erlaubt den abstrahierten Zugriff über SQL auf eine Datenbank (hier My\-SQL). \begin{Desc}
-\item[Vorbedingung:]\end{Desc}
+\item[Vorbedingung:]TODO \end{Desc}
 
 
 
@@ -54,15 +54,20 @@ Erlaubt den abstrahierten Zugriff über SQL auf eine Datenbank (hier My\-SQL). \
 
 Öffnet eine Datenbankverbindung. 
 
-\begin{Desc}
-\item[Vorbedingung:]\end{Desc}
+TODO \begin{Desc}
+\item[Vorbedingung:]TODO \end{Desc}
 \begin{Desc}
 \item[Parameter:]
 \begin{description}
 \item[\mbox{$\leftarrow$} {\em \$host}]Adresse oder IP des My\-SQL-Servers \item[\mbox{$\leftarrow$} {\em \$user}]Benutzernamen für My\-SQL-Zugriff \item[\mbox{$\leftarrow$} {\em \$password}]Benutzerpasswort für My\-SQL-Zugriff \item[\mbox{$\leftarrow$} {\em \$database}]Auszuwählende Datenbank \item[\mbox{$\leftarrow$} {\em \$persist}]Aufbau einer persistenten (geteilten) Verbindung \end{description}
 \end{Desc}
 \begin{Desc}
-\item[R\"{u}ckgabe:]Kennung der Datenbankverbindung oder im Fehlerfall false \end{Desc}
+\item[R\"{u}ckgabe:]bei Erfolg Kennung der Datenbankverbindung \end{Desc}
+\begin{Desc}
+\item[R\"{u}ckgabewerte:]
+\begin{description}
+\item[{\em false}]bei Misserfolg \end{description}
+\end{Desc}
 
 
 \subsubsection{Dokumentation der Elementfunktionen}
@@ -75,10 +80,13 @@ Erlaubt den abstrahierten Zugriff über SQL auf eine Datenbank (hier My\-SQL). \
 
 Beendet Verbindung. 
 
+Beendet die Verbindung zum Datenbankserver \begin{Desc}
+\item[Vorbedingung:]TODO \end{Desc}
 \begin{Desc}
-\item[Vorbedingung:]Beendet die Verbindung zum Datenbankserver \end{Desc}
-\begin{Desc}
-\item[R\"{u}ckgabe:]Bei Erfolg true, im Fehlerfall false \end{Desc}
+\item[R\"{u}ckgabewerte:]
+\begin{description}
+\item[{\em true}]bei Erfolg \item[{\em false}]bei Misserfolg \end{description}
+\end{Desc}
 \begin{Desc}
 \item[Bemerkungen:]Persistente Verbindungen werden nicht geschlossen \end{Desc}
 \hypertarget{classSQLDB_0766b746a81684e014c235db35818e54}{
@@ -90,10 +98,13 @@ Beendet Verbindung.
 
 Springt auf Datensatz. 
 
+Lässt den internen Zeiger auf angegebenen Datensatz der letzten Anfrage zeigen. Der Datensatz lässt sich danach mit Fetch abfragen. \begin{Desc}
+\item[Vorbedingung:]TODO \end{Desc}
 \begin{Desc}
-\item[Vorbedingung:]Lässt den internen Zeiger auf angegebenen Datensatz der letzten Anfrage zeigen. Der Datensatz lässt sich danach mit Fetch abfragen. \end{Desc}
-\begin{Desc}
-\item[R\"{u}ckgabe:]Bei Erfolg true, im Fehlerfall false \end{Desc}
+\item[R\"{u}ckgabewerte:]
+\begin{description}
+\item[{\em true}]bei Erfolg \item[{\em false}]bei Misserfolg \end{description}
+\end{Desc}
 \hypertarget{classSQLDB_a55c00ce1de0e50e0a58cae61892ba35}{
 \index{SQLDB@{SQLDB}!Fetch@{Fetch}}
 \index{Fetch@{Fetch}!SQLDB@{SQLDB}}
@@ -103,10 +114,15 @@ Springt auf Datensatz.
 
 Liefert Datensatz als Objekt. 
 
+Wandelt aktuellen Datensatz in Objekt um und gibt ihn zurück. Nach erfolgreicher Operation wird der interne Zeiger eine Stelle weiter gerückt \begin{Desc}
+\item[Vorbedingung:]TODO \end{Desc}
 \begin{Desc}
-\item[Vorbedingung:]Wandelt aktuellen Datensatz in Objekt um und gibt ihn zurück. Nach erfolgreicher Operation wird der interne Zeiger eine Stelle weiter gerückt \end{Desc}
+\item[R\"{u}ckgabe:]bei Erfolg Datensatz als Objekt \end{Desc}
 \begin{Desc}
-\item[R\"{u}ckgabe:]Bei Erfolg Datensatz als Objekt, sonst false \end{Desc}
+\item[R\"{u}ckgabewerte:]
+\begin{description}
+\item[{\em false}]bei Misserfolg \end{description}
+\end{Desc}
 \hypertarget{classSQLDB_e7da8a2f993c4bb91167a150e07e8b52}{
 \index{SQLDB@{SQLDB}!FreeResult@{FreeResult}}
 \index{FreeResult@{FreeResult}!SQLDB@{SQLDB}}
@@ -116,8 +132,8 @@ Liefert Datensatz als Objekt.
 
 Entfernt Ergebnisse. 
 
-\begin{Desc}
-\item[Vorbedingung:]Entfernt Datensätze der letzten Anfrage und gibt deren Speicher frei \end{Desc}
+Entfernt Datensätze der letzten Anfrage und gibt deren Speicher frei \begin{Desc}
+\item[Vorbedingung:]TODO \end{Desc}
 \begin{Desc}
 \item[Bemerkungen:]Funktion wird vor jedem query aufgerufen \end{Desc}
 \hypertarget{classSQLDB_8f3c28ae4ed5941c043459d6204a887b}{
@@ -129,8 +145,8 @@ Entfernt Ergebnisse.
 
 Anzahl zuletzt geänderter Datensätze. 
 
-\begin{Desc}
-\item[Vorbedingung:]Gibt Anzahl der bei der letzten INSERT, UPDATE bzw. DELETE Anweisung geänderten Datensätze \end{Desc}
+Gibt Anzahl der bei der letzten INSERT, UPDATE bzw. DELETE Anweisung geänderten Datensätze \begin{Desc}
+\item[Vorbedingung:]TODO \end{Desc}
 \begin{Desc}
 \item[R\"{u}ckgabe:]Anzahl der Datensätze \end{Desc}
 \begin{Desc}
@@ -144,8 +160,8 @@ Anzahl zuletzt geänderter Datensätze.
 
 Liefert Fehlerinformationen. 
 
-\begin{Desc}
-\item[Vorbedingung:]Liefert Array mit Fehlernachricht und interner Fehlernummer zurück \end{Desc}
+Liefert Array mit Fehlernachricht und interner Fehlernummer zurück \begin{Desc}
+\item[Vorbedingung:]TODO \end{Desc}
 \begin{Desc}
 \item[R\"{u}ckgabe:]Feld mit feld\mbox{[}0\mbox{]} als Fehlernachricht und feld\mbox{[}1\mbox{]} als Fehlernummer \end{Desc}
 \hypertarget{classSQLDB_15b181251b309ab55331be29fa33ac9f}{
@@ -157,8 +173,8 @@ Liefert Fehlerinformationen.
 
 Anzahl zuletzt gefundener Datensätze. 
 
-\begin{Desc}
-\item[Vorbedingung:]Gibt Anzahl der bei der letzten SELECT-Anweisung gefundenen Datensätze \end{Desc}
+Gibt Anzahl der bei der letzten SELECT-Anweisung gefundenen Datensätze \begin{Desc}
+\item[Vorbedingung:]TODO \end{Desc}
 \begin{Desc}
 \item[R\"{u}ckgabe:]Anzahl der Datensätze \end{Desc}
 \begin{Desc}
@@ -172,8 +188,8 @@ Anzahl zuletzt gefundener Datensätze.
 
 Sendet Anfrage an Server. 
 
-\begin{Desc}
-\item[Vorbedingung:]Sendet eine Anfrage an die aktive Datenbank. Erhaltene Datensätze der Anfrage können mit Fetch abgefragt werden \end{Desc}
+Sendet eine Anfrage an die aktive Datenbank. Erhaltene Datensätze der Anfrage können mit Fetch abgefragt werden \begin{Desc}
+\item[Vorbedingung:]TODO \end{Desc}
 \begin{Desc}
 \item[Parameter:]
 \begin{description}
