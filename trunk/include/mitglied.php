@@ -20,6 +20,17 @@ if(!defined("Mitglied"))
 		var $Nachname = ""; ///< Nachname des Mitglieds
 		var $Email = ""; ///< E-Mail-Adresse des Mitglieds
 		
+		/*! \brief Liest Mitglied ein
+		 *
+		 *  Liest Mitglied mit Mitglied_Nr ($nr)
+		 *  und setzt Felder entsprechend den Daten.
+		 *  \pre Datenbankverbindung muss bestehen
+		 *  \param[in] $nr Nummer der zu einlesenden Literatur
+		 */
+		function Mitglied($nr)
+		{
+		}
+		
 		/*! \brief Generiert Passworthash
 		 *
 		 *  Aus übergebenes Klartextpasswort wird ein 40 Byte großer
