@@ -1,7 +1,15 @@
+	
 MAIN = teilbeleg2
 DEPENDS =	Makefile\
 		teilbeleg2.tex\
-		doxygen/classBibTeX.tex\
+		doxygen/classAutor.tex\
+		doxygen/classKommentar.tex\
+		doxygen/classLiteratur.tex\
+		doxygen/classLiteraturArt.tex\
+		doxygen/classLogin.tex\
+		doxygen/classMitglied.tex\
+		doxygen/classSuche.tex\
+		doxygen/classSQLDB.tex\
 		meta.tex\
 		titel.tex
 
