@@ -2,25 +2,25 @@
 \subsection{Literatur\-Art Klassenreferenz}
 \label{classLiteraturArt}\index{LiteraturArt@{LiteraturArt}}
 }
-TODO.  
+Verwaltet Literaturarten.  
 
 
 \subsubsection*{\"{O}ffentliche Methoden}
 \begin{CompactItemize}
 \item 
 \hyperlink{classLiteraturArt_b3312217430531ed7821a46a39c49af7}{Literatur\-Art} (\$text)
-\begin{CompactList}\small\item\em TODO. \item\end{CompactList}\item 
+\begin{CompactList}\small\item\em Importiert \hyperlink{classBibTeX}{Bib\-Te\-X}, interne Namen. \item\end{CompactList}\item 
 \hyperlink{classLiteraturArt_43f747a6c5d840a22ddcd7e46d27cba0}{Get\-Display\-Text} ()
-\begin{CompactList}\small\item\em TODO. \item\end{CompactList}\item 
+\begin{CompactList}\small\item\em Liefert Bezeichner für Datenbank/Benutzeroberfläche. \item\end{CompactList}\item 
 \hyperlink{classLiteraturArt_01e1a2acd95df1ae0bb22e57b70a63de}{Get\-Bibtex\-Text} ()
-\begin{CompactList}\small\item\em TODO. \item\end{CompactList}\end{CompactItemize}
+\begin{CompactList}\small\item\em Liefert Bezeichner für \hyperlink{classBibTeX}{Bib\-Te\-X}. \item\end{CompactList}\end{CompactItemize}
 
 
 \subsubsection{Ausf\"{u}hrliche Beschreibung}
-TODO. 
+Verwaltet Literaturarten. 
 
-TODO \begin{Desc}
-\item[Vorbedingung:]TODO \end{Desc}
+Verwaltet die aus der Datenbank oder Bib\-Te\-X-Datei erhaltenen Informationen zur Art einer \hyperlink{classLiteratur}{Literatur}. Enthaltene Informationen können wieder als Bib\-Te\-X- oder als der in Datenbank/Benutzeroberfläche verwendeten Namen zurückgegeben werden. \begin{Desc}
+\item[Vorbedingung:]- \end{Desc}
 
 
 
@@ -33,15 +33,17 @@ TODO \begin{Desc}
 \label{classLiteraturArt_b3312217430531ed7821a46a39c49af7}
 
 
-TODO. 
+Importiert \hyperlink{classBibTeX}{Bib\-Te\-X}, interne Namen. 
 
-TODO \begin{Desc}
-\item[Vorbedingung:]TODO \end{Desc}
+Importiert die in Bib\-Te\-X-Dateien oder in der Datenbank/Benutzeroberflächen verwendeten Bezeichner für Literaturarten und weist sie einen internen Wert zu. \begin{Desc}
+\item[Vorbedingung:]- \end{Desc}
 \begin{Desc}
 \item[Parameter:]
 \begin{description}
-\item[\mbox{$\leftarrow$} {\em \$text}]TODO \end{description}
+\item[\mbox{$\leftarrow$} {\em \$text}]\hyperlink{classBibTeX}{Bib\-Te\-X} oder interner Bezeichner einer Literaturart \end{description}
 \end{Desc}
+\begin{Desc}
+\item[Bemerkungen:]Ist der Bezeichner unbekannt, erhält die \hyperlink{classLiteratur}{Literatur} die Art \char`\"{}Sonstiges\char`\"{} \end{Desc}
 
 
 \subsubsection{Dokumentation der Elementfunktionen}
@@ -52,12 +54,14 @@ TODO \begin{Desc}
 \label{classLiteraturArt_01e1a2acd95df1ae0bb22e57b70a63de}
 
 
-TODO. 
+Liefert Bezeichner für \hyperlink{classBibTeX}{Bib\-Te\-X}. 
 
-TODO \begin{Desc}
-\item[Vorbedingung:]TODO \end{Desc}
+Je nach der bei der Erstellung des Objekts gewählten Art, wird der dazugehöroge Bezeichner für die Literaturart in \hyperlink{classBibTeX}{Bib\-Te\-X} herausgesucht. \begin{Desc}
+\item[Vorbedingung:]- \end{Desc}
 \begin{Desc}
-\item[R\"{u}ckgabe:]TODO \end{Desc}
+\item[R\"{u}ckgabe:]String mit Bezeichner der Literaturart in Bib\-Te\-X-Darstellung \end{Desc}
+\begin{Desc}
+\item[Bemerkungen:]Sollte der Wert der \hyperlink{classLiteratur}{Literatur} nicht bekannt sein wird \char`\"{}Sonstiges\char`\"{} zurückgegeben \end{Desc}
 \hypertarget{classLiteraturArt_43f747a6c5d840a22ddcd7e46d27cba0}{
 \index{LiteraturArt@{Literatur\-Art}!GetDisplayText@{GetDisplayText}}
 \index{GetDisplayText@{GetDisplayText}!LiteraturArt@{Literatur\-Art}}
@@ -65,9 +69,11 @@ TODO \begin{Desc}
 \label{classLiteraturArt_43f747a6c5d840a22ddcd7e46d27cba0}
 
 
-TODO. 
+Liefert Bezeichner für Datenbank/Benutzeroberfläche. 
 
-TODO \begin{Desc}
-\item[Vorbedingung:]TODO \end{Desc}
+Je nach der bei der Erstellung des Objekts gewählten Art, wird der dazugehöroge Bezeichner für die Literaturart in der Datenbank/Benutzeroberfläche herausgesucht. \begin{Desc}
+\item[Vorbedingung:]- \end{Desc}
 \begin{Desc}
-\item[R\"{u}ckgabe:]TODO \end{Desc}
+\item[R\"{u}ckgabe:]String mit Bezeichner der Literaturart in Datenbank/Benutzeroberflächendarstellung \end{Desc}
+\begin{Desc}
+\item[Bemerkungen:]Sollte der Wert der \hyperlink{classLiteratur}{Literatur} nicht bekannt sein wird \char`\"{}Sonstiges\char`\"{} zurückgegeben \end{Desc}

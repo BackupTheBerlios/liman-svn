@@ -1,5 +1,5 @@
 <?php
-	/*! \brief Gib §string bis zum ersten Auftreten von $needle aus
+	/*! \brief Gib $string bis zum ersten Auftreten von $needle aus
 	 *
 	 *  TODO
 	 *  \pre TODO

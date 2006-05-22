@@ -7,10 +7,10 @@ if(!defined("Literatur"))
 	require_once("literaturart.php");
 	require_once("autor.php");
 
-	/*! \brief TODO
+	/*! \brief Verwaltet Literatur
 	 *
 	 *  TODO
-	 *  \pre TODO
+	 *  \pre Datenbankverbindung muss bestehen
 	 */
 	class Literatur
 	{
@@ -26,80 +26,78 @@ if(!defined("Literatur"))
 		var $Autoren = array(); ///< Feld mit Autoren der Literatur
 		var $Kommentare = array(); ///< Feld mit Kommentaren der Literatur
 		
-		/*! \brief TODO
+		/*! \brief Liest Literatur ein
 		 *
 		 *  TODO
-		 *  \pre TODO
-		 *  \param[in] $nr TODO
+		 *  \pre Datenbankverbindung muss bestehen
+		 *  \param[in] $nr Nummer der zu einlesenden Literatur
 		 */
 		function Literatur($nr)
 		{
 		}
 
-		/*! \brief TODO
+		/*! \brief Exportiert Literatur nach BibTeX
 		 *
 		 *  TODO
-		 *  \pre TODO
+		 *  \pre -
 		 *  \return TODO
 		 */
 		function ToBibtex()
 		{
 		}
 
-		/*! \brief TODO
+		/*! \brief Löscht Literatur
 		 *
 		 *  TODO
-		 *  \pre TODO
-		 *  \param[in] $nr TODO
+		 *  \pre Datenbankverbindung muss bestehen
+		 *  \param[in] $nr Nummer der zu löschenden Literatur
 		 */
 		function Delete($nr)
 		{
 		}
 
-		/*! \brief TODO
+		/*! \brief Importiert BibTeX
 		 *
 		 *  TODO
-		 *  \pre TODO
-		 *  \param[in] $bibtex TODO
+		 *  \pre Datenbankverbindung muss bestehen
+		 *  \param[in] $bibtex String mit Inhalt einer BibTeX-Datei
 		 */
-		function Insert($bibtex)
+		function InsertBibTeX($bibtex)
 		{
 		}
 
-		/*! \brief TODO
+		/*! \brief Legt Literatur an
 		 *
 		 *  TODO
-		 *  \pre TODO
-		 *  \param[in] $art TODO
-		 *  \param[in] $titel TODO
-		 *  \param[in] $jahr TODO
-		 *  \param[in] $nr TODO
-		 *  \param[in] $verlag TODO
-		 *  \param[in] $isbn TODO
-		 *  \param[in] $beschreibung TODO
-		 *  \param[in] $ort TODO
-		 *  \param[in] $stichworte TODO
+		 *  \pre Datenbankverbindung muss bestehen
+		 *  \param[in] $art Bezeichner der Literaturart
+		 *  \param[in] $titel Titel der Literatur
+		 *  \param[in] $jahr Erscheinungsjahr der Literatur
+		 *  \param[in] $verlag Verlag der Literatur
+		 *  \param[in] $isbn ISBN der Literatur
+		 *  \param[in] $beschreibung Beschreibung der Literatur
+		 *  \param[in] $ort Erscheinungsort
+		 *  \param[in] $stichworte Stichworte
 		 */
-		function Insert($art, $titel, $jahr, $nr, $verlag, $isbn, $beschreibung, $ort, $stichworte)
+		function Insert($art, $titel, $jahr, $verlag, $isbn, $beschreibung, $ort, $stichworte)
 		{
 		}
 
-		/*! \brief TODO
+		/*! \brief Ändert Literatur
 		 *
 		 *  TODO
-		 *  \pre TODO
-		 *  \param[in] $nr TODO
-		 *  \param[in] $art TODO
-		 *  \param[in] $titel TODO
-		 *  \param[in] $jahr TODO
-		 *  \param[in] $nr TODO
-		 *  \param[in] $verlag TODO
-		 *  \param[in] $isbn TODO
-		 *  \param[in] $beschreibung TODO
-		 *  \param[in] $ort TODO
-		 *  \param[in] $stichworte TODO
+		 *  \pre Datenbankverbindung muss bestehen
+		 *  \param[in] $nr Nummer der zu verändernden Literatur
+		 *  \param[in] $art neuer Bezeichner der Literaturart
+		 *  \param[in] $titel neuer Titel der Literatur
+		 *  \param[in] $jahr neues Erscheinungsjahr der Literatur
+		 *  \param[in] $verlag neuer Verlag der Literatur
+		 *  \param[in] $isbn neue ISBN der Literatur
+		 *  \param[in] $beschreibung neue Beschreibung der Literatur
+		 *  \param[in] $ort neuer Erscheinungsort
+		 *  \param[in] $stichworte neue Stichworte
 		 */
-		function Insert($nr, $art, $titel, $jahr, $nr, $verlag, $isbn, $beschreibung, $ort, $stichworte)
+		function Update($nr, $art, $titel, $jahr, $verlag, $isbn, $beschreibung, $ort, $stichworte)
 		{
 		}
 	}

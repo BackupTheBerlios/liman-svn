@@ -2,40 +2,40 @@
 \subsection{Kommentar Klassenreferenz}
 \label{classKommentar}\index{Kommentar@{Kommentar}}
 }
-TODO.  
+Verwaltet Kommentare.  
 
 
 \subsubsection*{\"{O}ffentliche Methoden}
 \begin{CompactItemize}
 \item 
 \hyperlink{classKommentar_ea774e2108c754890c602dfdd53d64e1}{Kommentar} (\$data)
-\begin{CompactList}\small\item\em TODO. \item\end{CompactList}\item 
+\begin{CompactList}\small\item\em Legt Kommentarobjekt an. \item\end{CompactList}\item 
 \hyperlink{classKommentar_31c1fdfb4fb8f24e0016c8ddb98ddcdc}{Delete} (\$nr)
-\begin{CompactList}\small\item\em TODO. \item\end{CompactList}\item 
+\begin{CompactList}\small\item\em Löscht \hyperlink{classKommentar}{Kommentar}. \item\end{CompactList}\item 
 \hyperlink{classKommentar_9903f1df98f71eefa3b44a81d6a8ee5c}{Delete\-All} (\$literatur\_\-nr)
-\begin{CompactList}\small\item\em TODO. \item\end{CompactList}\item 
-\hyperlink{classKommentar_2cafefbbb7bddd9bc63ebe37bebcac1d}{Insert} (\$data)
-\begin{CompactList}\small\item\em TODO. \item\end{CompactList}\item 
-\hyperlink{classKommentar_074f62a61ba97457894fc52935724116}{Update} (\$text, \$verfasser\_\-nr, \$literatur\_\-nr)
-\begin{CompactList}\small\item\em TODO. \item\end{CompactList}\end{CompactItemize}
+\begin{CompactList}\small\item\em Löscht alle zu einer \hyperlink{classLiteratur}{Literatur} gehörenden Kommentare. \item\end{CompactList}\item 
+\hyperlink{classKommentar_6119b3c12a61d8d5a41cded165517914}{Insert} (\$text, \$verfasser\_\-nr, \$literatur\_\-nr)
+\begin{CompactList}\small\item\em Legt \hyperlink{classKommentar}{Kommentar} an. \item\end{CompactList}\item 
+\hyperlink{classKommentar_0b3e20e910493e67b67b747243f04511}{Update} (\$nr, \$text)
+\begin{CompactList}\small\item\em Ändert einen \hyperlink{classKommentar}{Kommentar}. \item\end{CompactList}\end{CompactItemize}
 \subsubsection*{\"{O}ffentliche Attribute}
 \begin{CompactItemize}
 \item 
-\hyperlink{classKommentar_1b0a3cfcb9fc7075f985cc8067ab1982}{\$Nr} = 0
-\begin{CompactList}\small\item\em TODO. \item\end{CompactList}\item 
-\hyperlink{classKommentar_c9a481413d6ba0c000719ad514bad4b5}{\$Text} = 0
-\begin{CompactList}\small\item\em TODO. \item\end{CompactList}\item 
-\hyperlink{classKommentar_c92b002e40690ee052fec446ff2a0ef6}{\$Verfasser\_\-Nr} = 0
-\begin{CompactList}\small\item\em TODO. \item\end{CompactList}\item 
-\hyperlink{classKommentar_84f0fc10295968adde28169f8df018d9}{\$Verfasser\_\-Name} = 0
-\begin{CompactList}\small\item\em TODO. \item\end{CompactList}\end{CompactItemize}
+\hyperlink{classKommentar_1b0a3cfcb9fc7075f985cc8067ab1982}{\$Nr}
+\begin{CompactList}\small\item\em Identifikationsnummer des Kommentars. \item\end{CompactList}\item 
+\hyperlink{classKommentar_c9a481413d6ba0c000719ad514bad4b5}{\$Text}
+\begin{CompactList}\small\item\em Kommentartext. \item\end{CompactList}\item 
+\hyperlink{classKommentar_c92b002e40690ee052fec446ff2a0ef6}{\$Verfasser\_\-Nr}
+\begin{CompactList}\small\item\em Mitglieds\_\-Nr des Verfassers. \item\end{CompactList}\item 
+\hyperlink{classKommentar_84f0fc10295968adde28169f8df018d9}{\$Verfasser\_\-Name}
+\begin{CompactList}\small\item\em Name des Verfassers (Vor- und Nachname). \item\end{CompactList}\end{CompactItemize}
 
 
 \subsubsection{Ausf\"{u}hrliche Beschreibung}
-TODO. 
+Verwaltet Kommentare. 
 
 TODO \begin{Desc}
-\item[Vorbedingung:]TODO \end{Desc}
+\item[Vorbedingung:]Datenbankverbindung muss bestehen \end{Desc}
 
 
 
@@ -48,14 +48,16 @@ TODO \begin{Desc}
 \label{classKommentar_ea774e2108c754890c602dfdd53d64e1}
 
 
-TODO. 
+Legt Kommentarobjekt an. 
 
 TODO \begin{Desc}
-\item[Vorbedingung:]TODO \end{Desc}
+\item[Vorbedingung:]- \end{Desc}
 \begin{Desc}
 \item[Parameter:]
 \begin{description}
-\item[\mbox{$\leftarrow$} {\em \$data}]TODO \end{description}
+\item[\mbox{$\leftarrow$} {\em \$data}]Objekt mit Kommentardaten der Form\begin{itemize}
+\item Nr\item Text\item Mitglieds\_\-Nr\item Vorname\item Nachname \end{itemize}
+\end{description}
 \end{Desc}
 
 
@@ -67,14 +69,14 @@ TODO \begin{Desc}
 \label{classKommentar_31c1fdfb4fb8f24e0016c8ddb98ddcdc}
 
 
-TODO. 
+Löscht \hyperlink{classKommentar}{Kommentar}. 
 
 TODO \begin{Desc}
-\item[Vorbedingung:]TODO \end{Desc}
+\item[Vorbedingung:]Datenbankverbindung muss bestehen \end{Desc}
 \begin{Desc}
 \item[Parameter:]
 \begin{description}
-\item[\mbox{$\leftarrow$} {\em \$nr}]TODO \end{description}
+\item[\mbox{$\leftarrow$} {\em \$nr}]Nummer des zu löschenden Kommentars \end{description}
 \end{Desc}
 \hypertarget{classKommentar_9903f1df98f71eefa3b44a81d6a8ee5c}{
 \index{Kommentar@{Kommentar}!DeleteAll@{DeleteAll}}
@@ -83,46 +85,46 @@ TODO \begin{Desc}
 \label{classKommentar_9903f1df98f71eefa3b44a81d6a8ee5c}
 
 
-TODO. 
+Löscht alle zu einer \hyperlink{classLiteratur}{Literatur} gehörenden Kommentare. 
 
 TODO \begin{Desc}
-\item[Vorbedingung:]TODO \end{Desc}
+\item[Vorbedingung:]Datenbankverbindung muss bestehen \end{Desc}
 \begin{Desc}
 \item[Parameter:]
 \begin{description}
-\item[\mbox{$\leftarrow$} {\em \$literatur\_\-nr}]TODO \end{description}
+\item[\mbox{$\leftarrow$} {\em \$literatur\_\-nr}]Nummer der \hyperlink{classLiteratur}{Literatur} \end{description}
 \end{Desc}
-\hypertarget{classKommentar_2cafefbbb7bddd9bc63ebe37bebcac1d}{
+\hypertarget{classKommentar_6119b3c12a61d8d5a41cded165517914}{
 \index{Kommentar@{Kommentar}!Insert@{Insert}}
 \index{Insert@{Insert}!Kommentar@{Kommentar}}
-\paragraph[Insert]{\setlength{\rightskip}{0pt plus 5cm}Kommentar::Insert (\$ {\em data})}\hfill}
-\label{classKommentar_2cafefbbb7bddd9bc63ebe37bebcac1d}
+\paragraph[Insert]{\setlength{\rightskip}{0pt plus 5cm}Kommentar::Insert (\$ {\em text}, \$ {\em verfasser\_\-nr}, \$ {\em literatur\_\-nr})}\hfill}
+\label{classKommentar_6119b3c12a61d8d5a41cded165517914}
 
 
-TODO. 
+Legt \hyperlink{classKommentar}{Kommentar} an. 
 
 TODO \begin{Desc}
-\item[Vorbedingung:]TODO \end{Desc}
+\item[Vorbedingung:]Datenbankverbindung muss bestehen \end{Desc}
 \begin{Desc}
 \item[Parameter:]
 \begin{description}
-\item[\mbox{$\leftarrow$} {\em \$data}]TODO \end{description}
+\item[\mbox{$\leftarrow$} {\em \$text}]Text des Kommentars \item[\mbox{$\leftarrow$} {\em \$verfasser\_\-nr}]Mitglieds\_\-Nr des Verfassers \item[\mbox{$\leftarrow$} {\em \$literatur\_\-nr}]Nummer der \hyperlink{classLiteratur}{Literatur} \end{description}
 \end{Desc}
-\hypertarget{classKommentar_074f62a61ba97457894fc52935724116}{
+\hypertarget{classKommentar_0b3e20e910493e67b67b747243f04511}{
 \index{Kommentar@{Kommentar}!Update@{Update}}
 \index{Update@{Update}!Kommentar@{Kommentar}}
-\paragraph[Update]{\setlength{\rightskip}{0pt plus 5cm}Kommentar::Update (\$ {\em text}, \$ {\em verfasser\_\-nr}, \$ {\em literatur\_\-nr})}\hfill}
-\label{classKommentar_074f62a61ba97457894fc52935724116}
+\paragraph[Update]{\setlength{\rightskip}{0pt plus 5cm}Kommentar::Update (\$ {\em nr}, \$ {\em text})}\hfill}
+\label{classKommentar_0b3e20e910493e67b67b747243f04511}
 
 
-TODO. 
+Ändert einen \hyperlink{classKommentar}{Kommentar}. 
 
 TODO \begin{Desc}
-\item[Vorbedingung:]TODO \end{Desc}
+\item[Vorbedingung:]Datenbankverbindung muss bestehen \end{Desc}
 \begin{Desc}
 \item[Parameter:]
 \begin{description}
-\item[\mbox{$\leftarrow$} {\em \$text}]TODO \item[\mbox{$\leftarrow$} {\em \$verfasser\_\-nr}]TODO \item[\mbox{$\leftarrow$} {\em \$literatur\_\-nr}]TODO \end{description}
+\item[\mbox{$\leftarrow$} {\em \$nr}]Nummer des zu verändernden Kommentars \item[\mbox{$\leftarrow$} {\em \$text}]neuer Text des Kommentars \end{description}
 \end{Desc}
 
 
@@ -130,36 +132,36 @@ TODO \begin{Desc}
 \hypertarget{classKommentar_1b0a3cfcb9fc7075f985cc8067ab1982}{
 \index{Kommentar@{Kommentar}!$Nr@{\$Nr}}
 \index{$Nr@{\$Nr}!Kommentar@{Kommentar}}
-\paragraph[\$Nr]{\setlength{\rightskip}{0pt plus 5cm}Kommentar::\$Nr = 0}\hfill}
+\paragraph[\$Nr]{\setlength{\rightskip}{0pt plus 5cm}Kommentar::\$Nr}\hfill}
 \label{classKommentar_1b0a3cfcb9fc7075f985cc8067ab1982}
 
 
-TODO. 
+Identifikationsnummer des Kommentars. 
 
 \hypertarget{classKommentar_c9a481413d6ba0c000719ad514bad4b5}{
 \index{Kommentar@{Kommentar}!$Text@{\$Text}}
 \index{$Text@{\$Text}!Kommentar@{Kommentar}}
-\paragraph[\$Text]{\setlength{\rightskip}{0pt plus 5cm}Kommentar::\$Text = 0}\hfill}
+\paragraph[\$Text]{\setlength{\rightskip}{0pt plus 5cm}Kommentar::\$Text}\hfill}
 \label{classKommentar_c9a481413d6ba0c000719ad514bad4b5}
 
 
-TODO. 
+Kommentartext. 
 
 \hypertarget{classKommentar_84f0fc10295968adde28169f8df018d9}{
 \index{Kommentar@{Kommentar}!$Verfasser_Name@{\$Verfasser\_\-Name}}
 \index{$Verfasser_Name@{\$Verfasser\_\-Name}!Kommentar@{Kommentar}}
-\paragraph[\$Verfasser\_\-Name]{\setlength{\rightskip}{0pt plus 5cm}Kommentar::\$Verfasser\_\-Name = 0}\hfill}
+\paragraph[\$Verfasser\_\-Name]{\setlength{\rightskip}{0pt plus 5cm}Kommentar::\$Verfasser\_\-Name}\hfill}
 \label{classKommentar_84f0fc10295968adde28169f8df018d9}
 
 
-TODO. 
+Name des Verfassers (Vor- und Nachname). 
 
 \hypertarget{classKommentar_c92b002e40690ee052fec446ff2a0ef6}{
 \index{Kommentar@{Kommentar}!$Verfasser_Nr@{\$Verfasser\_\-Nr}}
 \index{$Verfasser_Nr@{\$Verfasser\_\-Nr}!Kommentar@{Kommentar}}
-\paragraph[\$Verfasser\_\-Nr]{\setlength{\rightskip}{0pt plus 5cm}Kommentar::\$Verfasser\_\-Nr = 0}\hfill}
+\paragraph[\$Verfasser\_\-Nr]{\setlength{\rightskip}{0pt plus 5cm}Kommentar::\$Verfasser\_\-Nr}\hfill}
 \label{classKommentar_c92b002e40690ee052fec446ff2a0ef6}
 
 
-TODO. 
+Mitglieds\_\-Nr des Verfassers. 
 

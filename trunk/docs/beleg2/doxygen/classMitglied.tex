@@ -2,46 +2,46 @@
 \subsection{Mitglied Klassenreferenz}
 \label{classMitglied}\index{Mitglied@{Mitglied}}
 }
-TODO.  
+Verwaltet Mitglieder.  
 
 
 \subsubsection*{\"{O}ffentliche Methoden}
 \begin{CompactItemize}
 \item 
 \hyperlink{classMitglied_9b13db80866c22bf992e73f2eb75e369}{Password\-Hash} (\$pass)
-\begin{CompactList}\small\item\em TODO. \item\end{CompactList}\item 
+\begin{CompactList}\small\item\em Generiert Passworthash. \item\end{CompactList}\item 
 \hyperlink{classMitglied_c6900c12663e9b228bf9942fc045b8b4}{Delete} (\$nr)
-\begin{CompactList}\small\item\em TODO. \item\end{CompactList}\item 
+\begin{CompactList}\small\item\em Entfernt \hyperlink{classMitglied}{Mitglied}. \item\end{CompactList}\item 
 \hyperlink{classMitglied_a856527798258505adf9eb08b79fd9fc}{Insert} (\$login, \$passwort, \$rechte, \$vorname, \$nachname, \$email)
-\begin{CompactList}\small\item\em TODO. \item\end{CompactList}\item 
+\begin{CompactList}\small\item\em Legt \hyperlink{classMitglied}{Mitglied} an. \item\end{CompactList}\item 
 \hyperlink{classMitglied_0d173487bebdd0579a70ea007b37b5ec}{Update} (\$nr, \$login, \$passwort, \$rechte, \$vorname, \$nachname, \$email)
-\begin{CompactList}\small\item\em TODO. \item\end{CompactList}\item 
+\begin{CompactList}\small\item\em Ändert ein \hyperlink{classMitglied}{Mitglied}. \item\end{CompactList}\item 
 \hyperlink{classMitglied_70ce63c9c9a7159966dc9e80a7f726a2}{Get\-All} ()
-\begin{CompactList}\small\item\em TODO. \item\end{CompactList}\end{CompactItemize}
+\begin{CompactList}\small\item\em Rückgabe einer Liste der Mitglieder. \item\end{CompactList}\end{CompactItemize}
 \subsubsection*{\"{O}ffentliche Attribute}
 \begin{CompactItemize}
 \item 
-\hyperlink{classMitglied_113efe44273361b7c167c729666ad04c}{\$Nr} = 0
-\begin{CompactList}\small\item\em TODO. \item\end{CompactList}\item 
-\hyperlink{classMitglied_626ee2f2551cc2840bdeac6a04491b2e}{\$Login} = \char`\"{}\char`\"{}
-\begin{CompactList}\small\item\em TODO. \item\end{CompactList}\item 
-\hyperlink{classMitglied_94f43b65c468ad42ac45be064d015446}{\$Passwort} = \char`\"{}\char`\"{}
-\begin{CompactList}\small\item\em TODO. \item\end{CompactList}\item 
-\hyperlink{classMitglied_adadc54a72a46a089ddec43855ba3c7e}{\$Rechte} = 0
-\begin{CompactList}\small\item\em TODO. \item\end{CompactList}\item 
-\hyperlink{classMitglied_157424daca1ecda5b6f6a3e0f24ecfce}{\$Vorname} = \char`\"{}\char`\"{}
-\begin{CompactList}\small\item\em TODO. \item\end{CompactList}\item 
-\hyperlink{classMitglied_635def9ec266748689397299c7f79d9c}{\$Nachname} = \char`\"{}\char`\"{}
-\begin{CompactList}\small\item\em TODO. \item\end{CompactList}\item 
-\hyperlink{classMitglied_4be6b837c482ac912188663380d31122}{\$Email} = \char`\"{}\char`\"{}
-\begin{CompactList}\small\item\em TODO. \item\end{CompactList}\end{CompactItemize}
+\hyperlink{classMitglied_113efe44273361b7c167c729666ad04c}{\$Nr}
+\begin{CompactList}\small\item\em Identifikationsnummer des Mitglieds. \item\end{CompactList}\item 
+\hyperlink{classMitglied_626ee2f2551cc2840bdeac6a04491b2e}{\$Login}
+\begin{CompactList}\small\item\em Benutzername des Mitglieds. \item\end{CompactList}\item 
+\hyperlink{classMitglied_94f43b65c468ad42ac45be064d015446}{\$Passwort}
+\begin{CompactList}\small\item\em Passworthash des Benutzerpassworts. \item\end{CompactList}\item 
+\hyperlink{classMitglied_adadc54a72a46a089ddec43855ba3c7e}{\$Rechte}
+\begin{CompactList}\small\item\em Rechte des Mitglieds (0 - Gast, 1 - \hyperlink{classMitglied}{Mitglied}, 2 - Administrator). \item\end{CompactList}\item 
+\hyperlink{classMitglied_157424daca1ecda5b6f6a3e0f24ecfce}{\$Vorname}
+\begin{CompactList}\small\item\em Vorname des Mitglieds. \item\end{CompactList}\item 
+\hyperlink{classMitglied_635def9ec266748689397299c7f79d9c}{\$Nachname}
+\begin{CompactList}\small\item\em Nachname des Mitglieds. \item\end{CompactList}\item 
+\hyperlink{classMitglied_4be6b837c482ac912188663380d31122}{\$Email}
+\begin{CompactList}\small\item\em E-Mail-Adresse des Mitglieds. \item\end{CompactList}\end{CompactItemize}
 
 
 \subsubsection{Ausf\"{u}hrliche Beschreibung}
-TODO. 
+Verwaltet Mitglieder. 
 
-TODO \begin{Desc}
-\item[Vorbedingung:]TODO \end{Desc}
+Stellt Funktionen zum Entfernen, Hinzufügen, Ändern und Auflisten von Mitgliedern bereit. \begin{Desc}
+\item[Vorbedingung:]Datenbankverbindung muss bestehen \end{Desc}
 
 
 
@@ -54,14 +54,14 @@ TODO \begin{Desc}
 \label{classMitglied_c6900c12663e9b228bf9942fc045b8b4}
 
 
-TODO. 
+Entfernt \hyperlink{classMitglied}{Mitglied}. 
 
-TODO \begin{Desc}
-\item[Vorbedingung:]TODO \end{Desc}
+Entfernt \hyperlink{classMitglied}{Mitglied} mit Mitgliedsnummer (\$nr) aus Mitglieder und löscht zusätzlich die Kommentare des Mitglieds in Kommentare \begin{Desc}
+\item[Vorbedingung:]Datenbankverbindung muss bestehen \end{Desc}
 \begin{Desc}
 \item[Parameter:]
 \begin{description}
-\item[\mbox{$\leftarrow$} {\em \$nr}]TODO \end{description}
+\item[\mbox{$\leftarrow$} {\em \$nr}]Mitglieds\_\-Nr des zu löschenden Mitglieds\end{description}
 \end{Desc}
 \hypertarget{classMitglied_70ce63c9c9a7159966dc9e80a7f726a2}{
 \index{Mitglied@{Mitglied}!GetAll@{GetAll}}
@@ -70,12 +70,14 @@ TODO \begin{Desc}
 \label{classMitglied_70ce63c9c9a7159966dc9e80a7f726a2}
 
 
-TODO. 
+Rückgabe einer Liste der Mitglieder. 
 
-TODO \begin{Desc}
-\item[Vorbedingung:]TODO \end{Desc}
+Liest alle Mitglieder mit Nr, \hyperlink{classLogin}{Login}, Vorname, Nachname und Email aus Mitgliedertabelle und gibt die ausgelesenen Objekte in einem Feld zurück \begin{Desc}
+\item[Vorbedingung:]Datenbankverbindung muss bestehen \end{Desc}
 \begin{Desc}
-\item[R\"{u}ckgabe:]TODO \end{Desc}
+\item[R\"{u}ckgabe:]Feld mit Objekten der Form\begin{itemize}
+\item Nr\item \hyperlink{classLogin}{Login}\item Vorname\item Nachname\item E-Mail\end{itemize}
+\end{Desc}
 \hypertarget{classMitglied_a856527798258505adf9eb08b79fd9fc}{
 \index{Mitglied@{Mitglied}!Insert@{Insert}}
 \index{Insert@{Insert}!Mitglied@{Mitglied}}
@@ -83,14 +85,14 @@ TODO \begin{Desc}
 \label{classMitglied_a856527798258505adf9eb08b79fd9fc}
 
 
-TODO. 
+Legt \hyperlink{classMitglied}{Mitglied} an. 
 
-TODO \begin{Desc}
-\item[Vorbedingung:]TODO \end{Desc}
+Fügt neues \hyperlink{classMitglied}{Mitglied} mit Benutzernamen (\$login), Passwort (\$passwort), Benutzerrechten (\$rechte), Vorname (\$vorname), Nachname (\$nachname), E-Mail-Adresse (\$email) in Mitglieder ein. Dazu wird das Passwort noch mit Mitglied::Passwort\-Hash gehasht. \begin{Desc}
+\item[Vorbedingung:]Datenbankverbindung muss bestehen \end{Desc}
 \begin{Desc}
 \item[Parameter:]
 \begin{description}
-\item[\mbox{$\leftarrow$} {\em \$login}]TODO \item[\mbox{$\leftarrow$} {\em \$passwort}]TODO \item[\mbox{$\leftarrow$} {\em \$rechte}]TODO \item[\mbox{$\leftarrow$} {\em \$vorname}]TODO \item[\mbox{$\leftarrow$} {\em \$nachname}]TODO \item[\mbox{$\leftarrow$} {\em \$email}]TODO \end{description}
+\item[\mbox{$\leftarrow$} {\em \$login}]Benutzername des neuen Mitglieds \item[\mbox{$\leftarrow$} {\em \$passwort}]Benutzerpasswort des neuen Mitglieds \item[\mbox{$\leftarrow$} {\em \$rechte}]Rechte des neuen Mitglieds (1 - \hyperlink{classMitglied}{Mitglied}, 2 - Passwort) \item[\mbox{$\leftarrow$} {\em \$vorname}]Vorname des neuen Mitglieds \item[\mbox{$\leftarrow$} {\em \$nachname}]Nachname des neuen Mitglieds \item[\mbox{$\leftarrow$} {\em \$email}]E-Mail-Adresse des neuen Mitglieds\end{description}
 \end{Desc}
 \hypertarget{classMitglied_9b13db80866c22bf992e73f2eb75e369}{
 \index{Mitglied@{Mitglied}!PasswordHash@{PasswordHash}}
@@ -99,14 +101,14 @@ TODO \begin{Desc}
 \label{classMitglied_9b13db80866c22bf992e73f2eb75e369}
 
 
-TODO. 
+Generiert Passworthash. 
 
-TODO \begin{Desc}
-\item[Vorbedingung:]TODO \end{Desc}
+Aus übergebenes Klartextpasswort wird ein 40 Byte großer hexkodierter Hash generiert. Als Hashingalgorithmus wird SHA-1 genutzt \begin{Desc}
+\item[Vorbedingung:]- \end{Desc}
 \begin{Desc}
 \item[Parameter:]
 \begin{description}
-\item[\mbox{$\leftarrow$} {\em \$pass}]TODO \end{description}
+\item[\mbox{$\leftarrow$} {\em \$pass}]zu hashendes Klartextpasswort \end{description}
 \end{Desc}
 \hypertarget{classMitglied_0d173487bebdd0579a70ea007b37b5ec}{
 \index{Mitglied@{Mitglied}!Update@{Update}}
@@ -115,14 +117,14 @@ TODO \begin{Desc}
 \label{classMitglied_0d173487bebdd0579a70ea007b37b5ec}
 
 
-TODO. 
+Ändert ein \hyperlink{classMitglied}{Mitglied}. 
 
-TODO \begin{Desc}
-\item[Vorbedingung:]TODO \end{Desc}
+Ändert die Daten das Mitglieds mit der Mitglieds\_\-Nr (\$nr), in neuen Benutzernamen (\$login), Passwort (\$passwort), Benutzerrechten (\$rechte), Vorname (\$vorname), Nachname (\$nachname), E-Mail-Adresse (\$email) in Mitglieder. Wenn \$passwort nicht die Länge 0 hat, wird es noch mit Mitglied::Passwort\-Hash gehasht. Andernfalls wird das alte Passwort in Mitglieder beibehalten. \begin{Desc}
+\item[Vorbedingung:]Datenbankverbindung muss bestehen \end{Desc}
 \begin{Desc}
 \item[Parameter:]
 \begin{description}
-\item[\mbox{$\leftarrow$} {\em nr}]TODO \item[\mbox{$\leftarrow$} {\em \$login}]TODO \item[\mbox{$\leftarrow$} {\em \$passwort}]TODO \item[\mbox{$\leftarrow$} {\em \$rechte}]TODO \item[\mbox{$\leftarrow$} {\em \$vorname}]TODO \item[\mbox{$\leftarrow$} {\em \$nachname}]TODO \item[\mbox{$\leftarrow$} {\em \$email}]TODO \end{description}
+\item[\mbox{$\leftarrow$} {\em \$nr}]Mitglieds\_\-Nr des zu verändernden Mitglieds \item[\mbox{$\leftarrow$} {\em \$login}]neuer Benutzername des Mitglieds \item[\mbox{$\leftarrow$} {\em \$passwort}]neues Passwort des Mitglieds \item[\mbox{$\leftarrow$} {\em \$rechte}]neuen Rechte des Mitglieds \item[\mbox{$\leftarrow$} {\em \$vorname}]neuer Vorname des Mitglieds \item[\mbox{$\leftarrow$} {\em \$nachname}]neuer Nachname des Mitglieds \item[\mbox{$\leftarrow$} {\em \$email}]neue E-Mail-Adresse des Mitglieds\end{description}
 \end{Desc}
 
 
@@ -130,63 +132,63 @@ TODO \begin{Desc}
 \hypertarget{classMitglied_4be6b837c482ac912188663380d31122}{
 \index{Mitglied@{Mitglied}!$Email@{\$Email}}
 \index{$Email@{\$Email}!Mitglied@{Mitglied}}
-\paragraph[\$Email]{\setlength{\rightskip}{0pt plus 5cm}Mitglied::\$Email = \char`\"{}\char`\"{}}\hfill}
+\paragraph[\$Email]{\setlength{\rightskip}{0pt plus 5cm}Mitglied::\$Email}\hfill}
 \label{classMitglied_4be6b837c482ac912188663380d31122}
 
 
-TODO. 
+E-Mail-Adresse des Mitglieds. 
 
 \hypertarget{classMitglied_626ee2f2551cc2840bdeac6a04491b2e}{
 \index{Mitglied@{Mitglied}!$Login@{\$Login}}
 \index{$Login@{\$Login}!Mitglied@{Mitglied}}
-\paragraph[\$Login]{\setlength{\rightskip}{0pt plus 5cm}Mitglied::\$\hyperlink{classLogin}{Login} = \char`\"{}\char`\"{}}\hfill}
+\paragraph[\$Login]{\setlength{\rightskip}{0pt plus 5cm}Mitglied::\$\hyperlink{classLogin}{Login}}\hfill}
 \label{classMitglied_626ee2f2551cc2840bdeac6a04491b2e}
 
 
-TODO. 
+Benutzername des Mitglieds. 
 
 \hypertarget{classMitglied_635def9ec266748689397299c7f79d9c}{
 \index{Mitglied@{Mitglied}!$Nachname@{\$Nachname}}
 \index{$Nachname@{\$Nachname}!Mitglied@{Mitglied}}
-\paragraph[\$Nachname]{\setlength{\rightskip}{0pt plus 5cm}Mitglied::\$Nachname = \char`\"{}\char`\"{}}\hfill}
+\paragraph[\$Nachname]{\setlength{\rightskip}{0pt plus 5cm}Mitglied::\$Nachname}\hfill}
 \label{classMitglied_635def9ec266748689397299c7f79d9c}
 
 
-TODO. 
+Nachname des Mitglieds. 
 
 \hypertarget{classMitglied_113efe44273361b7c167c729666ad04c}{
 \index{Mitglied@{Mitglied}!$Nr@{\$Nr}}
 \index{$Nr@{\$Nr}!Mitglied@{Mitglied}}
-\paragraph[\$Nr]{\setlength{\rightskip}{0pt plus 5cm}Mitglied::\$Nr = 0}\hfill}
+\paragraph[\$Nr]{\setlength{\rightskip}{0pt plus 5cm}Mitglied::\$Nr}\hfill}
 \label{classMitglied_113efe44273361b7c167c729666ad04c}
 
 
-TODO. 
+Identifikationsnummer des Mitglieds. 
 
 \hypertarget{classMitglied_94f43b65c468ad42ac45be064d015446}{
 \index{Mitglied@{Mitglied}!$Passwort@{\$Passwort}}
 \index{$Passwort@{\$Passwort}!Mitglied@{Mitglied}}
-\paragraph[\$Passwort]{\setlength{\rightskip}{0pt plus 5cm}Mitglied::\$Passwort = \char`\"{}\char`\"{}}\hfill}
+\paragraph[\$Passwort]{\setlength{\rightskip}{0pt plus 5cm}Mitglied::\$Passwort}\hfill}
 \label{classMitglied_94f43b65c468ad42ac45be064d015446}
 
 
-TODO. 
+Passworthash des Benutzerpassworts. 
 
 \hypertarget{classMitglied_adadc54a72a46a089ddec43855ba3c7e}{
 \index{Mitglied@{Mitglied}!$Rechte@{\$Rechte}}
 \index{$Rechte@{\$Rechte}!Mitglied@{Mitglied}}
-\paragraph[\$Rechte]{\setlength{\rightskip}{0pt plus 5cm}Mitglied::\$Rechte = 0}\hfill}
+\paragraph[\$Rechte]{\setlength{\rightskip}{0pt plus 5cm}Mitglied::\$Rechte}\hfill}
 \label{classMitglied_adadc54a72a46a089ddec43855ba3c7e}
 
 
-TODO. 
+Rechte des Mitglieds (0 - Gast, 1 - \hyperlink{classMitglied}{Mitglied}, 2 - Administrator). 
 
 \hypertarget{classMitglied_157424daca1ecda5b6f6a3e0f24ecfce}{
 \index{Mitglied@{Mitglied}!$Vorname@{\$Vorname}}
 \index{$Vorname@{\$Vorname}!Mitglied@{Mitglied}}
-\paragraph[\$Vorname]{\setlength{\rightskip}{0pt plus 5cm}Mitglied::\$Vorname = \char`\"{}\char`\"{}}\hfill}
+\paragraph[\$Vorname]{\setlength{\rightskip}{0pt plus 5cm}Mitglied::\$Vorname}\hfill}
 \label{classMitglied_157424daca1ecda5b6f6a3e0f24ecfce}
 
 
-TODO. 
+Vorname des Mitglieds. 
 

@@ -17,24 +17,22 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<td><a href="lit.<?=$ext;?>?id=123">Algorithmen</a></td>
-				<td>Sedgewick</td>
-				<td>Pearson Studium</td>
-				<td>3-8273-7032-9</td>
-			</tr>
-			<tr>
-				<td><a href="lit.<?=$ext;?>?id=456">Python - kurz und gut</a></td>
-				<td>Mark Lutz</td>
-				<td>O'Reilly</td>
-				<td>3-89721-240-4</td>
-			</tr>
-			<tr>
-				<td><a href="lit.<?=$ext;?>?id=456">Angewandte Kryptographie</a></td>
-				<td>Bruce Schneier</td>
-				<td>Addison-Wesley</td>
-				<td>3-89319-854-7</td>
-			</tr>
+			<?php
+				require_once("include/suche.php");
+				$search = new Suche();
+				for ($i = 0; $i < count($search->Treffer); $i++)
+				{
+					$cur = $search->Treffer[$i];
+			?>
+				<tr>
+					<td><a href="lit.<?=$ext;?>?id=<?=htmlspecialchars($cur->Nr);?>"><?=htmlspecialchars($cur->Titel);?></a></td>
+					<td><?=htmlspecialchars($cur->Autor);?></td>
+					<td><?=htmlspecialchars($cur->Verlag);?></td>
+					<td><?=htmlspecialchars($cur->ISBN);?></td>
+				</tr>
+			<?php
+				}
+			?>
 		</tbody>
 	</table>
 	<br>

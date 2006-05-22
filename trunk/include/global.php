@@ -70,6 +70,7 @@ if (!defined("global"))
 
 	require($basepath."include/config.php");
 	require($basepath."include/sqldb.php");
+	require($basepath."include/login.php");
 }
 ?>
 

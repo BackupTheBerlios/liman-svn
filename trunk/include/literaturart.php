@@ -3,10 +3,13 @@ if(!defined("LiteraturArt"))
 {
 	define("LiteraturArt", 1);
 
-	/*! \brief TODO
+	/*! \brief Verwaltet Literaturarten
 	 *
-	 *  TODO
-	 *  \pre TODO
+	 *  Verwaltet die aus der Datenbank oder BibTeX-Datei erhaltenen
+	 *  Informationen zur Art einer Literatur. Enthaltene Informationen
+	 *  können wieder als BibTeX- oder als der in Datenbank/Benutzeroberfläche
+	 *  verwendeten Namen zurückgegeben werden.
+	 *  \pre -
 	 */
 	class LiteraturArt
 	{
@@ -25,11 +28,15 @@ if(!defined("LiteraturArt"))
 		 */
 		var $value = 0;
 		
-		/*! \brief TODO
+		/*! \brief Importiert BibTeX, interne Namen
 		 *
-		 *  TODO
-		 *  \pre TODO
-		 *  \param[in] $text TODO
+		 *  Importiert die in BibTeX-Dateien oder in der
+		 *  Datenbank/Benutzeroberflächen verwendeten Bezeichner für
+		 *  Literaturarten und weist sie einen internen Wert zu.
+		 *  \pre -
+		 *  \param[in] $text BibTeX oder interner Bezeichner einer Literaturart
+		 *  \remarks Ist der Bezeichner unbekannt, erhält die Literatur
+		 *    die Art "Sonstiges"
 		 */
 		function LiteraturArt($text)
 		{
@@ -90,11 +97,16 @@ if(!defined("LiteraturArt"))
 			};
 		}
 		
-		/*! \brief TODO
+		/*! \brief Liefert Bezeichner für Datenbank/Benutzeroberfläche
 		 *
-		 *  TODO
-		 *  \pre TODO
-		 *  \return TODO
+		 *  Je nach der bei der Erstellung des Objekts gewählten Art,
+		 *  wird der dazugehöroge Bezeichner für die Literaturart
+		 *  in der Datenbank/Benutzeroberfläche herausgesucht.
+		 *  \pre -
+		 *  \return String mit Bezeichner der Literaturart in
+		 *    Datenbank/Benutzeroberflächendarstellung
+		 *  \remarks Sollte der Wert der Literatur nicht bekannt sein
+		 *    wird "Sonstiges" zurückgegeben
 		 */
 		function GetDisplayText()
 		{
@@ -133,11 +145,16 @@ if(!defined("LiteraturArt"))
 			};
 		}
 		
-		/*! \brief TODO
+		/*! \brief Liefert Bezeichner für BibTeX
 		 *
-		 *  TODO
-		 *  \pre TODO
-		 *  \return TODO
+		 *  Je nach der bei der Erstellung des Objekts gewählten Art,
+		 *  wird der dazugehöroge Bezeichner für die Literaturart
+		 *  in BibTeX herausgesucht.
+		 *  \pre -
+		 *  \return String mit Bezeichner der Literaturart in
+		 *    BibTeX-Darstellung
+		 *  \remarks Sollte der Wert der Literatur nicht bekannt sein
+		 *    wird "Sonstiges" zurückgegeben
 		 */
 		function GetBibtexText()
 		{

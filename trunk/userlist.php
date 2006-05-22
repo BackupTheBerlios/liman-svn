@@ -11,29 +11,42 @@
 		<thead>
 			<tr>
 				<th scope="col">Login</th>
-				<th scope="col">Vorame</th>
+				<th scope="col">Vorname</th>
 				<th scope="col">Nachname</th>
 				<th scope="col">E-Mail</th>
 				<th scope="col">Aktionen</th>
 			</tr>
 		</thead>
 		<tbody>
+			<?php
+				/// \todo richtig implementieren
+				require_once("include/mitglied.php");
+				$members = Mitglied::GetAll();
+				for ($i = 0; $i < count($members); $i++)
+				{
+					$cur = $members[$i];
+			?>
 			<tr>
-				<td><a href="user.<?=$ext;?>?id=123">siwu</a></td>
-				<td>Simon</td>
-				<td>Wunderlich</td>
-				<td>siwu@hrz.tu-chemnitz.de</td>
-				<td><input type="submit" value="Details">
-					<input type="submit" value="Bearbeiten">
-					</td>
+				<td><a href="user.<?=$ext;?>?id=<?=htmlspecialchars($cur->Nr); ?>"><?=htmlspecialchars($cur->Login); ?></a></td>
+				<td><?=htmlspecialchars($cur->Vorname); ?></td>
+				<td><?=htmlspecialchars($cur->Nachname); ?></td>
+				<td><?=htmlspecialchars($cur->Email); ?></td>
+				<td>
+					<?php
+						if ($login->IsAdministrator() === true || $login->Nr == $cur->Nr)
+						{
+							echo "<input type=\"submit\" value=\"Bearbeiten\">";
+						}
+						else
+						{
+							echo "<input type=\"submit\" value=\"Details\">";
+						}
+					?>
+				</td>
 			</tr>
-			<tr>
-				<td><a href="user.<?=$ext;?>?id=456">hans</a></td>
-				<td>Hans</td>
-				<td>Wurst</td>
-				<td>hans@foobar.de</td>
-				<td><input type="submit" value="Details"></td>
-			</tr>
+			<?php
+				}
+			?>
 		</tbody>
 	</table>
 	</form>

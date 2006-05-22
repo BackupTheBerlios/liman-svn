@@ -3,40 +3,43 @@ if(!defined("Autor"))
 {
 	define("Autor", 1);
 
-	/*! \brief TODO
+	/*! \brief Verwaltet Autoren
 	 *
 	 *  TODO
+	 *  \pre Datenbankverbindung muss bestehen
 	 */
 	class Autor
 	{
-		var $Nr = 0; ///< TODO
-		var $Name = 0; ///< TODO
+		var $Nr = 0; ///< Identifikationsnummer des Autors
+		var $Name = 0; ///< Name des Autors
 		
-		/*! \brief TODO
+		/*! \brief Legt Autorenobjekt an
 		 *
 		 *  TODO
-		 *  \pre TODO
-		 *  \param[in] $data TODO
+		 *  \pre -
+		 *  \param[in] $data Objekt mit Autorendaten der Form
+		 *    - Nr
+		 *    - Name
 		 */
 		function Autor($data)
 		{
 		}
 
-		/*! \brief TODO
+		/*! \brief Entfernt unnötige Autoren
 		 *
 		 *  TODO
-		 *  \pre TODO
+		 *  \pre Datenbankverbindung muss bestehen
 		 */
 		function Clean()
 		{
 		}
 
-		/*! \brief TODO
+		/*! \brief Legt neue Autoren aus kommagetrennter Liste an
 		 *
 		 *  TODO
-		 *  \pre TODO
-		 *  \param[in] $autoren TODO
-		 *  \return TODO
+		 *  \pre Datenbankverbindung muss bestehen
+		 *  \param[in] $autoren String mit kommagetrennter Liste von Autoren
+		 *  \return Datenbankverbindung muss bestehen
 		 */
 		function Split($autoren)
 		{
