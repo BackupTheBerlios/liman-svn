@@ -70,6 +70,7 @@ if(!defined("Literatur"))
 		 *
 		 *  TODO
 		 *  \pre Datenbankverbindung muss bestehen
+		 *  \param[in] $autoren String mit kommagetrennter Liste von Autoren
 		 *  \param[in] $art Bezeichner der Literaturart
 		 *  \param[in] $titel Titel der Literatur
 		 *  \param[in] $jahr Erscheinungsjahr der Literatur
@@ -79,7 +80,7 @@ if(!defined("Literatur"))
 		 *  \param[in] $ort Erscheinungsort
 		 *  \param[in] $stichworte Stichworte
 		 */
-		function Insert($art, $titel, $jahr, $verlag, $isbn, $beschreibung, $ort, $stichworte)
+		function Insert($autoren, $art, $titel, $jahr, $verlag, $isbn, $beschreibung, $ort, $stichworte)
 		{
 		}
 
@@ -88,6 +89,7 @@ if(!defined("Literatur"))
 		 *  TODO
 		 *  \pre Datenbankverbindung muss bestehen
 		 *  \param[in] $nr Nummer der zu verändernden Literatur
+		 *  \param[in] $autoren String mit kommagetrennter Liste von Autoren
 		 *  \param[in] $art neuer Bezeichner der Literaturart
 		 *  \param[in] $titel neuer Titel der Literatur
 		 *  \param[in] $jahr neues Erscheinungsjahr der Literatur
@@ -97,7 +99,7 @@ if(!defined("Literatur"))
 		 *  \param[in] $ort neuer Erscheinungsort
 		 *  \param[in] $stichworte neue Stichworte
 		 */
-		function Update($nr, $art, $titel, $jahr, $verlag, $isbn, $beschreibung, $ort, $stichworte)
+		function Update($nr, $autoren, $art, $titel, $jahr, $verlag, $isbn, $beschreibung, $ort, $stichworte)
 		{
 		}
 	}

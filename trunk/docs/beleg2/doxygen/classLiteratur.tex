@@ -16,9 +16,9 @@ Verwaltet \hyperlink{classLiteratur}{Literatur}.
 \begin{CompactList}\small\item\em Löscht \hyperlink{classLiteratur}{Literatur}. \item\end{CompactList}\item 
 \hyperlink{classLiteratur_d466a307b1971ee736e1d4ba9342dc55}{Insert\-Bib\-Te\-X} (\$bibtex)
 \begin{CompactList}\small\item\em Importiert \hyperlink{classBibTeX}{Bib\-Te\-X}. \item\end{CompactList}\item 
-\hyperlink{classLiteratur_a4690c2e86e3522c139ed506d3fae4d9}{Insert} (\$art, \$titel, \$jahr, \$verlag, \$isbn, \$beschreibung, \$ort, \$stichworte)
+\hyperlink{classLiteratur_3347551316e8f73659fc6f32ac6095df}{Insert} (\$autoren, \$art, \$titel, \$jahr, \$verlag, \$isbn, \$beschreibung, \$ort, \$stichworte)
 \begin{CompactList}\small\item\em Legt \hyperlink{classLiteratur}{Literatur} an. \item\end{CompactList}\item 
-\hyperlink{classLiteratur_756f0e7b428ea0c04fd4e94b4bc66544}{Update} (\$nr, \$art, \$titel, \$jahr, \$verlag, \$isbn, \$beschreibung, \$ort, \$stichworte)
+\hyperlink{classLiteratur_b613c28476ea28058f8fc2bccb57c923}{Update} (\$nr, \$autoren, \$art, \$titel, \$jahr, \$verlag, \$isbn, \$beschreibung, \$ort, \$stichworte)
 \begin{CompactList}\small\item\em Ändert \hyperlink{classLiteratur}{Literatur}. \item\end{CompactList}\end{CompactItemize}
 \subsubsection*{\"{O}ffentliche Attribute}
 \begin{CompactItemize}
@@ -92,11 +92,11 @@ TODO \begin{Desc}
 \begin{description}
 \item[\mbox{$\leftarrow$} {\em \$nr}]Nummer der zu löschenden \hyperlink{classLiteratur}{Literatur} \end{description}
 \end{Desc}
-\hypertarget{classLiteratur_a4690c2e86e3522c139ed506d3fae4d9}{
+\hypertarget{classLiteratur_3347551316e8f73659fc6f32ac6095df}{
 \index{Literatur@{Literatur}!Insert@{Insert}}
 \index{Insert@{Insert}!Literatur@{Literatur}}
-\paragraph[Insert]{\setlength{\rightskip}{0pt plus 5cm}Literatur::Insert (\$ {\em art}, \$ {\em titel}, \$ {\em jahr}, \$ {\em verlag}, \$ {\em isbn}, \$ {\em beschreibung}, \$ {\em ort}, \$ {\em stichworte})}\hfill}
-\label{classLiteratur_a4690c2e86e3522c139ed506d3fae4d9}
+\paragraph[Insert]{\setlength{\rightskip}{0pt plus 5cm}Literatur::Insert (\$ {\em autoren}, \$ {\em art}, \$ {\em titel}, \$ {\em jahr}, \$ {\em verlag}, \$ {\em isbn}, \$ {\em beschreibung}, \$ {\em ort}, \$ {\em stichworte})}\hfill}
+\label{classLiteratur_3347551316e8f73659fc6f32ac6095df}
 
 
 Legt \hyperlink{classLiteratur}{Literatur} an. 
@@ -106,7 +106,7 @@ TODO \begin{Desc}
 \begin{Desc}
 \item[Parameter:]
 \begin{description}
-\item[\mbox{$\leftarrow$} {\em \$art}]Bezeichner der Literaturart \item[\mbox{$\leftarrow$} {\em \$titel}]Titel der \hyperlink{classLiteratur}{Literatur} \item[\mbox{$\leftarrow$} {\em \$jahr}]Erscheinungsjahr der \hyperlink{classLiteratur}{Literatur} \item[\mbox{$\leftarrow$} {\em \$verlag}]Verlag der \hyperlink{classLiteratur}{Literatur} \item[\mbox{$\leftarrow$} {\em \$isbn}]ISBN der \hyperlink{classLiteratur}{Literatur} \item[\mbox{$\leftarrow$} {\em \$beschreibung}]Beschreibung der \hyperlink{classLiteratur}{Literatur} \item[\mbox{$\leftarrow$} {\em \$ort}]Erscheinungsort \item[\mbox{$\leftarrow$} {\em \$stichworte}]Stichworte \end{description}
+\item[\mbox{$\leftarrow$} {\em \$autoren}]String mit kommagetrennter Liste von Autoren \item[\mbox{$\leftarrow$} {\em \$art}]Bezeichner der Literaturart \item[\mbox{$\leftarrow$} {\em \$titel}]Titel der \hyperlink{classLiteratur}{Literatur} \item[\mbox{$\leftarrow$} {\em \$jahr}]Erscheinungsjahr der \hyperlink{classLiteratur}{Literatur} \item[\mbox{$\leftarrow$} {\em \$verlag}]Verlag der \hyperlink{classLiteratur}{Literatur} \item[\mbox{$\leftarrow$} {\em \$isbn}]ISBN der \hyperlink{classLiteratur}{Literatur} \item[\mbox{$\leftarrow$} {\em \$beschreibung}]Beschreibung der \hyperlink{classLiteratur}{Literatur} \item[\mbox{$\leftarrow$} {\em \$ort}]Erscheinungsort \item[\mbox{$\leftarrow$} {\em \$stichworte}]Stichworte \end{description}
 \end{Desc}
 \hypertarget{classLiteratur_d466a307b1971ee736e1d4ba9342dc55}{
 \index{Literatur@{Literatur}!InsertBibTeX@{InsertBibTeX}}
@@ -137,11 +137,11 @@ TODO \begin{Desc}
 \item[Vorbedingung:]- \end{Desc}
 \begin{Desc}
 \item[R\"{u}ckgabe:]TODO \end{Desc}
-\hypertarget{classLiteratur_756f0e7b428ea0c04fd4e94b4bc66544}{
+\hypertarget{classLiteratur_b613c28476ea28058f8fc2bccb57c923}{
 \index{Literatur@{Literatur}!Update@{Update}}
 \index{Update@{Update}!Literatur@{Literatur}}
-\paragraph[Update]{\setlength{\rightskip}{0pt plus 5cm}Literatur::Update (\$ {\em nr}, \$ {\em art}, \$ {\em titel}, \$ {\em jahr}, \$ {\em verlag}, \$ {\em isbn}, \$ {\em beschreibung}, \$ {\em ort}, \$ {\em stichworte})}\hfill}
-\label{classLiteratur_756f0e7b428ea0c04fd4e94b4bc66544}
+\paragraph[Update]{\setlength{\rightskip}{0pt plus 5cm}Literatur::Update (\$ {\em nr}, \$ {\em autoren}, \$ {\em art}, \$ {\em titel}, \$ {\em jahr}, \$ {\em verlag}, \$ {\em isbn}, \$ {\em beschreibung}, \$ {\em ort}, \$ {\em stichworte})}\hfill}
+\label{classLiteratur_b613c28476ea28058f8fc2bccb57c923}
 
 
 Ändert \hyperlink{classLiteratur}{Literatur}. 
@@ -151,7 +151,7 @@ TODO \begin{Desc}
 \begin{Desc}
 \item[Parameter:]
 \begin{description}
-\item[\mbox{$\leftarrow$} {\em \$nr}]Nummer der zu verändernden \hyperlink{classLiteratur}{Literatur} \item[\mbox{$\leftarrow$} {\em \$art}]neuer Bezeichner der Literaturart \item[\mbox{$\leftarrow$} {\em \$titel}]neuer Titel der \hyperlink{classLiteratur}{Literatur} \item[\mbox{$\leftarrow$} {\em \$jahr}]neues Erscheinungsjahr der \hyperlink{classLiteratur}{Literatur} \item[\mbox{$\leftarrow$} {\em \$verlag}]neuer Verlag der \hyperlink{classLiteratur}{Literatur} \item[\mbox{$\leftarrow$} {\em \$isbn}]neue ISBN der \hyperlink{classLiteratur}{Literatur} \item[\mbox{$\leftarrow$} {\em \$beschreibung}]neue Beschreibung der \hyperlink{classLiteratur}{Literatur} \item[\mbox{$\leftarrow$} {\em \$ort}]neuer Erscheinungsort \item[\mbox{$\leftarrow$} {\em \$stichworte}]neue Stichworte \end{description}
+\item[\mbox{$\leftarrow$} {\em \$nr}]Nummer der zu verändernden \hyperlink{classLiteratur}{Literatur} \item[\mbox{$\leftarrow$} {\em \$autoren}]String mit kommagetrennter Liste von Autoren \item[\mbox{$\leftarrow$} {\em \$art}]neuer Bezeichner der Literaturart \item[\mbox{$\leftarrow$} {\em \$titel}]neuer Titel der \hyperlink{classLiteratur}{Literatur} \item[\mbox{$\leftarrow$} {\em \$jahr}]neues Erscheinungsjahr der \hyperlink{classLiteratur}{Literatur} \item[\mbox{$\leftarrow$} {\em \$verlag}]neuer Verlag der \hyperlink{classLiteratur}{Literatur} \item[\mbox{$\leftarrow$} {\em \$isbn}]neue ISBN der \hyperlink{classLiteratur}{Literatur} \item[\mbox{$\leftarrow$} {\em \$beschreibung}]neue Beschreibung der \hyperlink{classLiteratur}{Literatur} \item[\mbox{$\leftarrow$} {\em \$ort}]neuer Erscheinungsort \item[\mbox{$\leftarrow$} {\em \$stichworte}]neue Stichworte \end{description}
 \end{Desc}
 
 
