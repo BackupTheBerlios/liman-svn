@@ -6,7 +6,9 @@ if(!defined("Kommentar"))
 
 	/*! \brief Verwaltet Kommentare
 	 *
-	 *  TODO
+	 *  Stellt Funktionen zum Anlegen, Löschen, Bearbeiten von Kommentaren
+	 *  bereit. Es können sowohl einzelne Kommentare oder nach Literatur-
+	 *  bzw. Mitgliederverbundenen Kommentaren gelöscht werden.
 	 *  \pre Datenbankverbindung muss bestehen
 	 */
 	class Kommentar
@@ -18,7 +20,8 @@ if(!defined("Kommentar"))
 		
 		/*! \brief Legt Kommentarobjekt an
 		 *
-		 *  TODO
+		 *  Legt ein neues Kommentarobjekt aus einem Objekt mit den
+		 *  Attributen Nr, Text, Verfasser_Nr und Verfasser_Name an.
 		 *  \pre -
 		 *  \param[in] $data Objekt mit Kommentardaten der Form
 		 *    - Nr
@@ -33,7 +36,8 @@ if(!defined("Kommentar"))
 		
 		/*! \brief Löscht Kommentar
 		 *
-		 *  TODO
+		 *  Löscht einen Kommentar aus Kommentare mit der Kommentar_Nr
+		 *  $nr.
 		 *  \pre Datenbankverbindung muss bestehen
 		 *  \param[in] $nr Nummer des zu löschenden Kommentars
 		 */
@@ -43,17 +47,33 @@ if(!defined("Kommentar"))
 		
 		/*! \brief Löscht alle zu einer Literatur gehörenden Kommentare
 		 *
-		 *  TODO
+		 *  Löscht alle Kommentare aus Kommentare, die mit Literatur
+		 *  mit der Literaturnummer ($literatur_nr) verbunden sind.
 		 *  \pre Datenbankverbindung muss bestehen
 		 *  \param[in] $literatur_nr Nummer der Literatur
 		 */
 		function DeleteAll($literatur_nr)
 		{
 		}
+
+		/*! \brief Löscht alle zu einem Mitglied gehörenden Kommentare
+		 *
+		 *  Löscht alle Kommentare aus Kommentare, die mit Kommentaren
+		 *  mit der Kommentarnummer ($kommentar_nr) verbunden sind.
+		 *  \pre Datenbankverbindung muss bestehen
+		 *  \param[in] $member_nr Nummer eines Mitglieds
+		 */
+		function DeleteAllMember($member_nr)
+		{
+		}
 		
 		/*! \brief Legt Kommentar an
 		 *
-		 *  TODO
+		 *  Legt einen neuen Kommentar mit Text ($text) zu einer
+		 *  Literatur ($literatur_nr) vom einem Verfasser 
+		 *  ($verfasser_nr) an. Ist das aktuelle Mitglied kein 
+		 *  Administrator, dann muss $verfasser_nr gleich der aktuellen
+		 *  Nummer des Logins sein.
 		 *  \pre Datenbankverbindung muss bestehen
 		 *  \param[in] $text Text des Kommentars
 		 *  \param[in] $verfasser_nr Mitglieds_Nr des Verfassers
@@ -65,7 +85,10 @@ if(!defined("Kommentar"))
 		
 		/*! \brief Ändert einen Kommentar
 		 *
-		 *  TODO
+		 *  Ändert in Kommentare den Text des Kommentars mit $nr
+		 *  in $text. Ist das aktuelle Mitglied kein Administrator,
+		 *  dann muss die aktuelle Nummer des Mitglieds gleich der
+		 *  Mitglieds_Nr des Kommentars in Kommentare sein.
 		 *  \pre Datenbankverbindung muss bestehen
 		 *  \param[in] $nr Nummer des zu verändernden Kommentars
 		 *  \param[in] $text neuer Text des Kommentars
