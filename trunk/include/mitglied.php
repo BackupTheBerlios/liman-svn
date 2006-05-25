@@ -2,7 +2,7 @@
 if(!defined("Mitglied"))
 {
 	define("Mitglied", 1);
-	require_once("login.php");
+	require_once("include/login.php");
 
 	/*! \brief Verwaltet Mitglieder
 	 *

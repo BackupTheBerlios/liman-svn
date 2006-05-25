@@ -3,6 +3,11 @@ if (!defined("global"))
 {
 	define("global", 1);
 	
+	if (empty($basepath))
+	{
+		$basepath = "./";
+	}
+
 	// Benutze Backslashes, wenn dies nicht automatisch gemacht wird
 	if( !get_magic_quotes_gpc())
 	{
@@ -68,9 +73,8 @@ if (!defined("global"))
 		return $str;
 	}
 
-	require($basepath."include/config.php");
-	require($basepath."include/sqldb.php");
-	require($basepath."include/login.php");
+	require_once($basepath."include/config.php");
+	require_once($basepath."include/sqldb.php");
+	require_once($basepath."include/login.php");
 }
 ?>
-

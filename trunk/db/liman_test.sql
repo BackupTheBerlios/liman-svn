@@ -121,4 +121,4 @@ CREATE TABLE IF NOT EXISTS `liman_Mitglieder` (
 -- 
 
 INSERT INTO `liman_Mitglieder` (`Mitglieds_Nr`, `Name`, `Vorname`, `Email`, `Login`, `Passwort`, `Rechte`) VALUES (1, 'Wunderlich', 'Simon', 'siwu@hrz.tu-chemnitz.de', 'siwu', 'c47c25460079d8a87d44175b732f73af2e92', 'Administrator'),
-(2, 'Wurst', 'Hans', 'hans@foobar.de', 'hans', 'c47c25460079d8a87d44175b732f73af2e92b6d2', 'Benutzer');
+(2, 'Wurst', 'Hans', 'hans@foobar.de', 'hans', 'c47c25460079d8a87d44175b732f73af2e92', 'Benutzer');

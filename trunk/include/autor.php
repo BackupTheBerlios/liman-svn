@@ -25,12 +25,14 @@ if(!defined("Autor"))
 		 */
 		function Autor($data)
 		{
+			$this->Nr = $data->Nr;
+			$this->Name = $data->Name;
 		}
 
 		/*! \brief Entfernt unnötige Autoren
 		 *
 		 *  Entfernt aus Autoren alle Autoren, die keine Verbindung
-		 *  (Autoren_Literatur-Tabelle) mehr mit Literatur haben.
+		 *  (Literatur_Autoren-Tabelle) mehr mit Literatur haben.
 		 *  \pre Datenbankverbindung muss bestehen
 		 */
 		function Clean()
@@ -48,9 +50,19 @@ if(!defined("Autor"))
 		 */
 		function GetAll($literatur_nr)
 		{
-			/// \todo implementieren
-			$authors = array();
+			global $db_config, $sqldb;
 
+			$authors = array();
+			$sql = "SELECT  autoren.Autor_Nr AS Nr, Autorname AS Name
+					FROM ".$db_config['prefix']."Literatur_Autor AS connect
+					INNER JOIN  ".$db_config['prefix']."Autoren AS autoren
+					ON connect.Autor_Nr = autoren.Autor_Nr
+					WHERE Literatur_Nr = '$literatur_nr'";
+			$sqldb->Query($sql);
+			while ($cur = $sqldb->Fetch())
+			{
+				$authors[] = new Autor($cur);
+			}
 			return $authors;
 		}
 

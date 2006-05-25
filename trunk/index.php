@@ -2,7 +2,7 @@
 	$title = "Literaturliste";
 	//$extracss = "home.css";
 
-	require("include/header.php");
+	require_once("include/header.php");
 ?>
 <div id="cfront" class="content">
 	
@@ -46,4 +46,4 @@
 
 
 </div>
-<?php	require("include/footer.php"); ?>
+<?php	require_once("include/footer.php"); ?>

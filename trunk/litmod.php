@@ -2,7 +2,7 @@
 	$title = "Literatur bearbeiten/hinzuf&uuml;gen";
 	//$extracss = "home.css";
 
-	require("include/header.php");
+	require_once("include/header.php");
 ?>
 <div id="cfront" class="content">
 	<br>
@@ -62,5 +62,5 @@
 		</tbody>
 	</table>
 </div>
-<?php	require("include/footer.php"); ?>
+<?php	require_once("include/footer.php"); ?>
 

@@ -2,10 +2,10 @@
 if(!defined("Literatur"))
 {
 	define("Literatur", 1);
-	require_once("login.php");
-	require_once("kommentar.php");
-	require_once("literaturart.php");
-	require_once("autor.php");
+	require_once("include/login.php");
+	require_once("include/kommentar.php");
+	require_once("include/literaturart.php");
+	require_once("include/autor.php");
 
 	/*! \brief Verwaltet Literatur
 	 *
@@ -81,7 +81,7 @@ if(!defined("Literatur"))
 		 *  Parametern ($art, $titel, $jahr, $verlag, $isbn,
 		 *  $beschreibung, $ort, $stichworte) an. Danach werden die
 		 *  Autoren ($autoren) in Autoren geschrieben und mit der
-		 *  Tabelle Autoren_Literatur der Literatur zugeordnet.
+		 *  Tabelle Literatur_Autoren der Literatur zugeordnet.
 		 *  \pre Datenbankverbindung muss bestehen
 		 *  \param[in] $autoren String mit kommagetrennter Liste von Autoren
 		 *  \param[in] $art Bezeichner der Literaturart
@@ -104,7 +104,7 @@ if(!defined("Literatur"))
 		 *  Literatur_Nr $nr zu den neuen Werten ($art, $titel, $jahr,
 		 *  $verlag, $isbn, $beschreibung, $ort, $stichworte) zu ändern.
 		 *  Danach werden die Autoren ($autoren) in Autoren geschrieben
-		 *  und mit der Tabelle Autoren_Literatur der Literatur
+		 *  und mit der Tabelle Literatur_Autoren der Literatur
 		 *  zugeordnet. Alle jetzt noch nicht zugeordneten Autoren in
 		 *  Autoren werden gelöscht.
 		 *  \pre Datenbankverbindung muss bestehen

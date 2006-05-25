@@ -2,6 +2,7 @@
 if(!defined("Login"))
 {
 	define("Login", 1);
+	require_once("include/mitglied.php");
 
 	/*! \brief Verwaltet Logininformationen
 	 *
@@ -53,17 +54,65 @@ if(!defined("Login"))
 		 */
 		function Login($benutzer = "", $passwort = "")
 		{
-			if (empty($benutzer) === true || empty($passwort) == true)
+			global $db_config, $sqldb;
+
+			@session_start();
+
+			$this->Level = 0;
+			$this->Nr = 0;
+
+			// Neue Session starten?
+			if (empty($benutzer) === false && empty($passwort) === false)
 			{
-				/// \todo implementieren (Session einlesen und überprüfen
-				$this->Level = 1;
-				$this->Nr = 1;
+				session_register("benutzer");
+				session_register("passwort");
+				session_register("ip");
+
+				$_SESSION["benutzer"] = $benutzer;
+				$_SESSION["passwort"] = Mitglied::PasswordHash($passwort);
+				$_SESSION["ip"] = $_SERVER['REMOTE_ADDR'];
+				
 			}
-			else
+
+			// Korrekt eingeloggt?
+			if (isset($_SESSION["ip"]) && $_SESSION["ip"] == $_SERVER['REMOTE_ADDR'] &&
+				!empty($_SESSION["benutzer"]) && !empty($_SESSION["passwort"]))
 			{
-				/// \todo implementieren (Anmelden und Session erstellen)
-				$this->Level = 2;
-				$this->Nr = 1;
+				// Hole, Nr, Passwort und Rechte zu Loginnamen
+				$sql = "SELECT Mitglieds_Nr AS Nr, Passwort AS passwort, Rechte
+					FROM ".$db_config['prefix']."Mitglieder AS members
+					WHERE members.Login = '".$_SESSION["benutzer"]."'
+					LIMIT 1";
+			
+				$sqldb->Query($sql);
+				if ($line = $sqldb->Fetch())
+				{
+					if ($line->passwort === $_SESSION["passwort"])
+					{
+						$this->Nr = $line->Nr;
+						switch ($line->Rechte)
+						{
+						case "Administrator":
+							$this->Level = 2;
+							break;
+						case "Benutzer":
+							$this->Level = 1;
+							break;
+						default:
+							$this->Level = 0;
+						}
+					}
+					else
+					{
+						// Falsche Passwort
+						$this->Logout();
+					}
+				}
+				else
+				{
+					// Benutzername nicht gefunden
+					$this->Logout();
+				}
 			}
 		}
 
@@ -76,7 +125,8 @@ if(!defined("Login"))
 		 */
 		function Logout()
 		{
-			/// \todo implementieren
+			session_unset();
+			session_destroy();
 			$this->Level = 0;
 			$this->Nr = 0;
 		}

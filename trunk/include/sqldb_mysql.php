@@ -222,7 +222,7 @@ if(!defined("SQLDB"))
 		{
 			if ($this->db_id !== false)
 			{
-				$this->free_result();
+				$this->FreeResult();
 				return $this->query_result = @mysql_query($query, $this->db_id);
 			}
 			else

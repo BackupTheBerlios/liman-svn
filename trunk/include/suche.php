@@ -2,7 +2,8 @@
 if(!defined("Suche"))
 {
 	define("Suche", 1);
-	require_once("literatur.php");
+	require_once("include/autor.php");
+	require_once("include/literatur.php");
 
 	/*! \brief Suche Literaturdaten
 	 *
@@ -36,21 +37,32 @@ if(!defined("Suche"))
 		 */
 		function LetzteLiteratur()
 		{
-			/// \todo implementieren
-			$this->Treffer = array();
-			$cur1->Nr = 1;
-			$cur1->Titel = "Algorithmen";
-			$cur1->Autor = "Sedgewick";
-			$cur1->Verlag = "Pearson Studium";
-			$cur1->ISBN = "3-8273-7032-9";
-			$this->Treffer[] = $cur1;
+			global $sqldb, $db_config;
 
-			$cur2->Nr = 2;
-			$cur2->Titel = "Python - kurz und gut";
-			$cur2->Autor = "Mark Lutz";
-			$cur2->Verlag = "O'Reilly";
-			$cur2->ISBN = "3-89721-240-4";
-			$this->Treffer[] = $cur2;
+			$sql = "SELECT Literatur_Nr AS Nr, Titel, Verlag, ISBN
+					FROM ".$db_config['prefix']."Bibliothek AS bibliothek
+					ORDER BY `Literatur_Nr` DESC
+					LIMIT 10";
+			$sqldb->Query($sql);
+
+			$this->Treffer = array();
+			while ($cur = $sqldb->Fetch())
+			{
+				// Kommagetrennte Autorenliste erstellen
+				$authors = Autor::GetAll($cur->Nr);
+				$autorlist = "";
+				for ($i = 0; $i < count($authors); $i++)
+				{
+					if ($i != 0)
+					{
+						$autorlist .= ", ";
+					}
+					$autorlist .= $authors[$i]->Name;
+				}
+				$cur->Autor = $autorlist;
+
+				$this->Treffer[] = $cur;
+			}
 		}
 
 		/*! \brief Sucht nach Literatur mit Suchbegriff
@@ -67,21 +79,39 @@ if(!defined("Suche"))
 		 */
 		function VolltextSuche($volltext)
 		{
-			/// \todo implementieren
+			global $sqldb, $db_config;
 			$this->Treffer = array();
-			$cur1->Nr = 1;
-			$cur1->Titel = "Algorithmen";
-			$cur1->Autor = "Sedgewick";
-			$cur1->Verlag = "Pearson Studium";
-			$cur1->ISBN = "3-8273-7032-9";
-			$this->Treffer[] = $cur1;
 
-			$cur2->Nr = 3;
-			$cur2->Titel = "Angewandte Kryptographie";
-			$cur2->Autor = "Bruce Schneier";
-			$cur2->Verlag = "Addison-Wesley";
-			$cur2->ISBN = "3-89319-854-7";
-			$this->Treffer[] = $cur2;
+			$volltext = trim($volltext);
+			if (empty($volltext) === false)
+			{
+				$sql = "SELECT DISTINCT bibliothek.Literatur_Nr AS Nr, Titel, Verlag, ISBN
+						FROM (".$db_config['prefix']."Bibliothek AS bibliothek
+							INNER JOIN  ".$db_config['prefix']."Literatur_Autor AS connect
+							ON bibliothek.Literatur_Nr = connect.Literatur_Nr)
+						INNER JOIN  ".$db_config['prefix']."Autoren AS autoren
+						ON connect.Autor_Nr = autoren.Autor_Nr
+						WHERE MATCH (Titel, Verlag, ISBN, Beschreibung, Ort, Stichworte) AGAINST ('$volltext')
+						OR MATCH (Autorname) AGAINST ('$volltext')";
+				$sqldb->Query($sql);
+				while ($cur = $sqldb->Fetch())
+				{
+					// Kommagetrennte Autorenliste erstellen
+					$authors = Autor::GetAll($cur->Nr);
+					$autorlist = "";
+					for ($i = 0; $i < count($authors); $i++)
+					{
+						if ($i != 0)
+						{
+							$autorlist .= ", ";
+						}
+						$autorlist .= $authors[$i]->Name;
+					}
+					$cur->Autor = $autorlist;
+	
+					$this->Treffer[] = $cur;
+				}
+			}
 		}
 		
 		/*! \brief Sucht Literatur mit Autor und Titel
@@ -93,27 +123,47 @@ if(!defined("Suche"))
 		 *  oder keine passenden Einträge vorhanden sein, dann wird
 		 *  $Treffer ein Feld der Länge 0.
 		 *  \pre Datenbankverbindung muss bestehen.
-		 *  \param[in] $autor String mit Autorname
 		 *  \param[in] $titel String mit Literaturtitel
+		 *  \param[in] $autor String mit Autorname
 		 *  \private
 		 */
-		function AutorTitelSuche($autor, $titel)
+		function AutorTitelSuche($titel, $autor)
 		{
-			/// \todo implementieren
+			global $sqldb, $db_config;
 			$this->Treffer = array();
-			$cur1->Nr = 2;
-			$cur1->Titel = "Python - kurz und gut";
-			$cur1->Autor = "Mark Lutz";
-			$cur1->Verlag = "O'Reilly";
-			$cur1->ISBN = "3-89721-240-4";
-			$this->Treffer[] = $cur1;
 
-			$cur2->Nr = 3;
-			$cur2->Titel = "Angewandte Kryptographie";
-			$cur2->Autor = "Bruce Schneier";
-			$cur2->Verlag = "Addison-Wesley";
-			$cur2->ISBN = "3-89319-854-7";
-			$this->Treffer[] = $cur2;
+			$titel = trim($titel);
+			$autor = trim($autor);
+			if (empty($titel) === false || !empty($autor) === false)
+			{
+				$sql = "SELECT DISTINCT bibliothek.Literatur_Nr AS Nr, Titel, Verlag, ISBN
+						FROM (".$db_config['prefix']."Bibliothek AS bibliothek
+							INNER JOIN  ".$db_config['prefix']."Literatur_Autor AS connect
+							ON bibliothek.Literatur_Nr = connect.Literatur_Nr)
+						INNER JOIN  ".$db_config['prefix']."Autoren AS autoren
+						ON connect.Autor_Nr = autoren.Autor_Nr
+						WHERE bibliothek.Titel like '%".$titel."%' AND
+							autoren.Autorname like '%".$autor."%'";
+				$sqldb->Query($sql);
+
+				while ($cur = $sqldb->Fetch())
+				{
+					// Kommagetrennte Autorenliste erstellen
+					$authors = Autor::GetAll($cur->Nr);
+					$autorlist = "";
+					for ($i = 0; $i < count($authors); $i++)
+					{
+						if ($i != 0)
+						{
+							$autorlist .= ", ";
+						}
+						$autorlist .= $authors[$i]->Name;
+					}
+					$cur->Autor = $autorlist;
+	
+					$this->Treffer[] = $cur;
+				}
+			}
 		}
 
 		
@@ -158,7 +208,7 @@ if(!defined("Suche"))
 				$this->VolltextSuche($suchbegriff);
 				break;
 			case 2:
-				$this->AutorTitelSuche($autor, $suchbegriff);
+				$this->AutorTitelSuche($suchbegriff, $autor);
 				break;
 			}
 		}

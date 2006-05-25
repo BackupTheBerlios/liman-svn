@@ -2,7 +2,7 @@
 	$title = "Literaturdetails";
 	//$extracss = "home.css";
 
-	require("include/header.php");
+	require_once("include/header.php");
 ?>
 <div id="cfront" class="content">
 	<hr>
@@ -42,7 +42,7 @@
 				<th scope="row">Bibtex:</th>	
 				<td>
 				<pre><?php
-					require($basepath."include/bibtex.php");
+					require_once($basepath."include/bibtex.php");
 					$example = " aber trotzdem wird dieses kaputte dokument nicht falsch erkannt
 						@article{     lin1973,
 									author = \"Sedgewick\",
@@ -89,4 +89,4 @@
 		</tbody>
 	</table>
 </div>
-<?php	require("include/footer.php"); ?>
+<?php	require_once("include/footer.php"); ?>

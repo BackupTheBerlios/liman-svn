@@ -1,15 +1,16 @@
 <?php
+	
 	ob_start('ob_gzhandler'); 
 	header("Content-Language: de");
 
 	header("Content-type: text/html; charset=UTF-8");
-	
+
 	if (empty($basepath))
                 $basepath = "./";
 	elseif (isset($_GET["basepath"]) || isset($_POST["basepath"]))
 		die("Don't send basepath with request");
 
-	require($basepath."include/global.php");
+	require_once($basepath."include/global.php");
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
@@ -46,7 +47,7 @@
 
 				<div id="search">
 					<h2><span>Suchen</span></h2>
-					<form action="search.<?=$ext;?>" id="searchform">
+					<form action="search.<?=$ext;?>" id="searchform" method="post">
 						<div>
 						<input name="search" value="" type="text">
 						<input value="Suche" type="submit">
@@ -57,13 +58,29 @@
 
 				<div id="loginbox">
 					<h2><span>Einloggen</span></h2>
-					<form action="login.<?=$ext;?>" id="loginform">
-						<div>
-						<label for="login">Login:</label><input id="login" name="login" value="" type="text">
-						<label for="password">Passwort:</label><input id="password" name="password" type="password">
-						<input type="submit" value="Login">
-						</div>
-					</form>
+					<?php
+						if ($login->IsMember() === false)
+						{
+					?>
+						<form action="login.<?=$ext;?>" id="loginform" method="post">
+							<div>
+							<label for="login">Login:</label><input id="login" name="login" value="" type="text">
+							<label for="password">Passwort:</label><input id="password" name="password" type="password">
+							<input type="submit" value="Login">
+							</div>
+						</form>
+					<?php
+						}
+						else
+						{
+					?>
+						<form action="login.<?=$ext;?>?logout" id="loginform" method="post">
+							<div><input type="submit" value="Logout">
+							</div>
+						</form>
+					<?php
+						}
+					?>
 				</div>
 			</div>
 

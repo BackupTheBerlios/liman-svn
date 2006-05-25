@@ -2,7 +2,7 @@
 	$title = "Nutzer";
 	//$extracss = "home.css";
 
-	require("include/header.php");
+	require_once("include/header.php");
 ?>
 <div id="cfront" class="content">
 	<br>
@@ -61,5 +61,5 @@
 
 
 </div>
-<?php	require("include/footer.php"); ?>
+<?php	require_once("include/footer.php"); ?>
 
