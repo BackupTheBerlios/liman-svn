@@ -48,20 +48,23 @@ if(!defined("Suche"))
 			$this->Treffer = array();
 			while ($cur = $sqldb->Fetch())
 			{
+				$this->Treffer[] = $cur;	
+			}
+
+			for ($i = 0; $i < count($this->Treffer); $i++)
+			{
 				// Kommagetrennte Autorenliste erstellen
-				$authors = Autor::GetAll($cur->Nr);
+				$authors = Autor::GetAll($this->Treffer[$i]->Nr);
 				$autorlist = "";
-				for ($i = 0; $i < count($authors); $i++)
+				for ($j = 0; $j < count($authors); $j++)
 				{
-					if ($i != 0)
+					if ($j != 0)
 					{
 						$autorlist .= ", ";
 					}
-					$autorlist .= $authors[$i]->Name;
+					$autorlist .= $authors[$j]->Name;
 				}
-				$cur->Autor = $autorlist;
-
-				$this->Treffer[] = $cur;
+				$this->Treffer[$i]->Autor = $autorlist;
 			}
 		}
 
@@ -94,22 +97,26 @@ if(!defined("Suche"))
 						WHERE MATCH (Titel, Verlag, ISBN, Beschreibung, Ort, Stichworte) AGAINST ('$volltext')
 						OR MATCH (Autorname) AGAINST ('$volltext')";
 				$sqldb->Query($sql);
+				
 				while ($cur = $sqldb->Fetch())
 				{
+					$this->Treffer[] = $cur;	
+				}
+	
+				for ($i = 0; $i < count($this->Treffer); $i++)
+				{
 					// Kommagetrennte Autorenliste erstellen
-					$authors = Autor::GetAll($cur->Nr);
+					$authors = Autor::GetAll($this->Treffer[$i]->Nr);
 					$autorlist = "";
-					for ($i = 0; $i < count($authors); $i++)
+					for ($j = 0; $j < count($authors); $j++)
 					{
-						if ($i != 0)
+						if ($j != 0)
 						{
 							$autorlist .= ", ";
 						}
-						$autorlist .= $authors[$i]->Name;
+						$autorlist .= $authors[$j]->Name;
 					}
-					$cur->Autor = $autorlist;
-	
-					$this->Treffer[] = $cur;
+					$this->Treffer[$i]->Autor = $autorlist;
 				}
 			}
 		}
@@ -148,20 +155,23 @@ if(!defined("Suche"))
 
 				while ($cur = $sqldb->Fetch())
 				{
+					$this->Treffer[] = $cur;	
+				}
+	
+				for ($i = 0; $i < count($this->Treffer); $i++)
+				{
 					// Kommagetrennte Autorenliste erstellen
-					$authors = Autor::GetAll($cur->Nr);
+					$authors = Autor::GetAll($this->Treffer[$i]->Nr);
 					$autorlist = "";
-					for ($i = 0; $i < count($authors); $i++)
+					for ($j = 0; $j < count($authors); $j++)
 					{
-						if ($i != 0)
+						if ($j != 0)
 						{
 							$autorlist .= ", ";
 						}
-						$autorlist .= $authors[$i]->Name;
+						$autorlist .= $authors[$j]->Name;
 					}
-					$cur->Autor = $autorlist;
-	
-					$this->Treffer[] = $cur;
+					$this->Treffer[$i]->Autor = $autorlist;
 				}
 			}
 		}
