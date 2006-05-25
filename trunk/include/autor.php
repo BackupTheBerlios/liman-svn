@@ -42,16 +42,16 @@ if(!defined("Autor"))
 		 *  Liest alle Autoren die einer Literatur ($nr) zugeordnet
 		 *  sind aus Bibliothek aus und gibt sie als Feld des Typs
 		 *  Autor zurück.
-		 *  \param[in] $nr Nr einer Literatur mit Autoren
+		 *  \param[in] $literatur_nr Nr einer Literatur mit Autoren
 		 *  \pre Datenbankverbindung muss bestehen
 		 *  \return Feld vom Typ Autor
 		 */
-		function GetAll($nr)
+		function GetAll($literatur_nr)
 		{
 			/// \todo implementieren
 			$authors = array();
 
-			//return $authors;
+			return $authors;
 		}
 
 		/*! \brief Legt neue Autoren aus kommagetrennter Liste an

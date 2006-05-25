@@ -12,7 +12,7 @@ Verwaltet Autoren.
 \begin{CompactList}\small\item\em Legt Autorenobjekt an. \item\end{CompactList}\item 
 \hyperlink{classAutor_77b27af7e471abe5a404fc92c7319921}{Clean} ()
 \begin{CompactList}\small\item\em Entfernt unnötige Autoren. \item\end{CompactList}\item 
-\hyperlink{classAutor_073e31faa28a51d6992e6bed20326a07}{Get\-All} (\$nr)
+\hyperlink{classAutor_79cd90084cab240919a5daecf39156a7}{Get\-All} (\$literatur\_\-nr)
 \begin{CompactList}\small\item\em Rückgabe eines Feldes von Autoren. \item\end{CompactList}\item 
 \hyperlink{classAutor_2ba5418b6622f414fa8a054e6c2a2db8}{Split} (\$autoren)
 \begin{CompactList}\small\item\em Legt neue Autoren aus kommagetrennter Liste an. \item\end{CompactList}\end{CompactItemize}
@@ -67,11 +67,11 @@ Entfernt unnötige Autoren.
 
 Entfernt aus Autoren alle Autoren, die keine Verbindung (Autoren\_\-Literatur-Tabelle) mehr mit \hyperlink{classLiteratur}{Literatur} haben. \begin{Desc}
 \item[Vorbedingung:]Datenbankverbindung muss bestehen \end{Desc}
-\hypertarget{classAutor_073e31faa28a51d6992e6bed20326a07}{
+\hypertarget{classAutor_79cd90084cab240919a5daecf39156a7}{
 \index{Autor@{Autor}!GetAll@{GetAll}}
 \index{GetAll@{GetAll}!Autor@{Autor}}
-\paragraph[GetAll]{\setlength{\rightskip}{0pt plus 5cm}Autor::Get\-All (\$ {\em nr})}\hfill}
-\label{classAutor_073e31faa28a51d6992e6bed20326a07}
+\paragraph[GetAll]{\setlength{\rightskip}{0pt plus 5cm}Autor::Get\-All (\$ {\em literatur\_\-nr})}\hfill}
+\label{classAutor_79cd90084cab240919a5daecf39156a7}
 
 
 Rückgabe eines Feldes von Autoren. 
@@ -79,7 +79,7 @@ Rückgabe eines Feldes von Autoren.
 Liest alle Autoren die einer \hyperlink{classLiteratur}{Literatur} (\$nr) zugeordnet sind aus Bibliothek aus und gibt sie als Feld des Typs \hyperlink{classAutor}{Autor} zurück. \begin{Desc}
 \item[Parameter:]
 \begin{description}
-\item[\mbox{$\leftarrow$} {\em \$nr}]Nr einer \hyperlink{classLiteratur}{Literatur} mit Autoren \end{description}
+\item[\mbox{$\leftarrow$} {\em \$literatur\_\-nr}]Nr einer \hyperlink{classLiteratur}{Literatur} mit Autoren \end{description}
 \end{Desc}
 \begin{Desc}
 \item[Vorbedingung:]Datenbankverbindung muss bestehen \end{Desc}
