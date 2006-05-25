@@ -165,7 +165,7 @@ if(!defined("SQLDB"))
 		
 		/*! \brief Liefert Fehlerinformationen
 		 *
-		 *  Liefert Array mit Fehlernachricht und interner Fehlernummer
+		 *  Liefert Feld mit Fehlernachricht und interner Fehlernummer
 		 *  zurück.
 		 *  \pre Datenbankverbindung muss bestehen
 		 *  \return Feld mit feld[0] als Fehlernachricht und feld[1] als Fehlernummer

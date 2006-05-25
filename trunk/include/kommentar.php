@@ -58,8 +58,8 @@ if(!defined("Kommentar"))
 
 		/*! \brief Löscht alle zu einem Mitglied gehörenden Kommentare
 		 *
-		 *  Löscht alle Kommentare aus Kommentare, die mit Kommentaren
-		 *  mit der Kommentarnummer ($kommentar_nr) verbunden sind.
+		 *  Löscht alle Kommentare aus Kommentare, die mit Mitglieder
+		 *  mit der Mitglieds_Nr ($member_nr) verbunden sind.
 		 *  \pre Datenbankverbindung muss bestehen
 		 *  \param[in] $member_nr Nummer eines Mitglieds
 		 */

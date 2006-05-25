@@ -10,7 +10,7 @@ if(!defined("Literatur"))
 	/*! \brief Verwaltet Literatur
 	 *
 	 *  Stellt Funktionen zum Abruf, Exportieren, Löschen, Importieren,
-	 *  Hinzufügen und Ändern von Literatur in Bibliothek zur verfügung.
+	 *  Hinzufügen und Ändern von Literatur in Bibliothek zur Verfügung.
 	 *  \pre Datenbankverbindung muss bestehen
 	 */
 	class Literatur

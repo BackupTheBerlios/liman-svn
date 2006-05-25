@@ -112,7 +112,7 @@ if(!defined("Mitglied"))
 		 *    - Login
 		 *    - Vorname
 		 *    - Nachname
-		 *    - E-Mail
+		 *    - Email
 		 */
 		function GetAll()
 		{

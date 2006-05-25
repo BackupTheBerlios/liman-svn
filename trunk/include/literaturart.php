@@ -28,7 +28,7 @@ if(!defined("LiteraturArt"))
 		 */
 		var $value = 0;
 		
-		/*! \brief Importiert BibTeX, interne Namen
+		/*! \brief Importiert BibTeX- bzw. interne Namen
 		 *
 		 *  Importiert die in BibTeX-Dateien oder in der
 		 *  Datenbank/Benutzeroberflächen verwendeten Bezeichner für
@@ -100,7 +100,7 @@ if(!defined("LiteraturArt"))
 		/*! \brief Liefert Bezeichner für Datenbank/Benutzeroberfläche
 		 *
 		 *  Je nach der bei der Erstellung des Objekts gewählten Art,
-		 *  wird der dazugehöroge Bezeichner für die Literaturart
+		 *  wird der dazugehörige Bezeichner für die Literaturart
 		 *  in der Datenbank/Benutzeroberfläche herausgesucht.
 		 *  \pre -
 		 *  \return String mit Bezeichner der Literaturart in
@@ -148,7 +148,7 @@ if(!defined("LiteraturArt"))
 		/*! \brief Liefert Bezeichner für BibTeX
 		 *
 		 *  Je nach der bei der Erstellung des Objekts gewählten Art,
-		 *  wird der dazugehöroge Bezeichner für die Literaturart
+		 *  wird der dazugehörige Bezeichner für die Literaturart
 		 *  in BibTeX herausgesucht.
 		 *  \pre -
 		 *  \return String mit Bezeichner der Literaturart in
