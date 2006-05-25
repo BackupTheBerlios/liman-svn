@@ -50,7 +50,7 @@ Verwaltet \hyperlink{classLiteratur}{Literatur}.
 \subsubsection{Ausf\"{u}hrliche Beschreibung}
 Verwaltet \hyperlink{classLiteratur}{Literatur}. 
 
-TODO \begin{Desc}
+Stellt Funktionen zum Abruf, Exportieren, Löschen, Importieren, Hinzufügen und Ändern von \hyperlink{classLiteratur}{Literatur} in Bibliothek zur verfügung. \begin{Desc}
 \item[Vorbedingung:]Datenbankverbindung muss bestehen \end{Desc}
 
 
@@ -66,7 +66,7 @@ TODO \begin{Desc}
 
 Liest \hyperlink{classLiteratur}{Literatur} ein. 
 
-TODO \begin{Desc}
+Erstellt aus \hyperlink{classLiteratur}{Literatur} in Bibliothek mit Literatur\_\-Nr (\$nr) neues Literaturobjekt. \begin{Desc}
 \item[Vorbedingung:]Datenbankverbindung muss bestehen \end{Desc}
 \begin{Desc}
 \item[Parameter:]
@@ -85,7 +85,7 @@ TODO \begin{Desc}
 
 Löscht \hyperlink{classLiteratur}{Literatur}. 
 
-TODO \begin{Desc}
+Löscht \hyperlink{classLiteratur}{Literatur} aus Bibliothek mit der Literatur\_\-Nr \$nr. Alle verbundenen Kommentare werden aus Kommentare gelöscht. Außerdem werden alle nun nicht mehr gebrauchten Autoren in Autoren gelöscht. \begin{Desc}
 \item[Vorbedingung:]Datenbankverbindung muss bestehen \end{Desc}
 \begin{Desc}
 \item[Parameter:]
@@ -101,7 +101,7 @@ TODO \begin{Desc}
 
 Legt \hyperlink{classLiteratur}{Literatur} an. 
 
-TODO \begin{Desc}
+Legt neue \hyperlink{classLiteratur}{Literatur} in Bibliothek mit den übergebenen Parametern (\$art, \$titel, \$jahr, \$verlag, \$isbn, \$beschreibung, \$ort, \$stichworte) an. Danach werden die Autoren (\$autoren) in Autoren geschrieben und mit der Tabelle Autoren\_\-Literatur der \hyperlink{classLiteratur}{Literatur} zugeordnet. \begin{Desc}
 \item[Vorbedingung:]Datenbankverbindung muss bestehen \end{Desc}
 \begin{Desc}
 \item[Parameter:]
@@ -117,7 +117,7 @@ TODO \begin{Desc}
 
 Importiert \hyperlink{classBibTeX}{Bib\-Te\-X}. 
 
-TODO \begin{Desc}
+Importiert \hyperlink{classLiteratur}{Literatur} nach Bibliothek aus einem Bib\-Te\-X-formatierten String. Alle Einträge werden dazu nacheinandere eingelesen und umgewandelt, um diese dann in die Datenbank zu schreiben. \begin{Desc}
 \item[Vorbedingung:]Datenbankverbindung muss bestehen \end{Desc}
 \begin{Desc}
 \item[Parameter:]
@@ -133,10 +133,10 @@ TODO \begin{Desc}
 
 Exportiert \hyperlink{classLiteratur}{Literatur} nach \hyperlink{classBibTeX}{Bib\-Te\-X}. 
 
-TODO \begin{Desc}
+Exportiert die aktuellen Informationen im Literaturobjekt in das Bib\-Te\-X-Format. \begin{Desc}
 \item[Vorbedingung:]- \end{Desc}
 \begin{Desc}
-\item[R\"{u}ckgabe:]TODO \end{Desc}
+\item[R\"{u}ckgabe:]\$string mit Bib\-Te\-X-Eintrag \end{Desc}
 \hypertarget{classLiteratur_b613c28476ea28058f8fc2bccb57c923}{
 \index{Literatur@{Literatur}!Update@{Update}}
 \index{Update@{Update}!Literatur@{Literatur}}
@@ -146,7 +146,7 @@ TODO \begin{Desc}
 
 Ändert \hyperlink{classLiteratur}{Literatur}. 
 
-TODO \begin{Desc}
+Entfernt alle zur Literatur\_\-Nr (\$nr) gehörenden Verbindungen in Autor\_\-Literatur um danach die \hyperlink{classLiteratur}{Literatur} mit Literatur\_\-Nr \$nr zu den neuen Werten (\$art, \$titel, \$jahr, \$verlag, \$isbn, \$beschreibung, \$ort, \$stichworte) zu ändern. Danach werden die Autoren (\$autoren) in Autoren geschrieben und mit der Tabelle Autoren\_\-Literatur der \hyperlink{classLiteratur}{Literatur} zugeordnet. Alle jetzt noch nicht zugeordneten Autoren in Autoren werden gelöscht. \begin{Desc}
 \item[Vorbedingung:]Datenbankverbindung muss bestehen \end{Desc}
 \begin{Desc}
 \item[Parameter:]

@@ -9,7 +9,8 @@ if(!defined("Literatur"))
 
 	/*! \brief Verwaltet Literatur
 	 *
-	 *  TODO
+	 *  Stellt Funktionen zum Abruf, Exportieren, Löschen, Importieren,
+	 *  Hinzufügen und Ändern von Literatur in Bibliothek zur verfügung.
 	 *  \pre Datenbankverbindung muss bestehen
 	 */
 	class Literatur
@@ -28,7 +29,8 @@ if(!defined("Literatur"))
 		
 		/*! \brief Liest Literatur ein
 		 *
-		 *  TODO
+		 *  Erstellt aus Literatur in Bibliothek mit Literatur_Nr
+		 *  ($nr) neues Literaturobjekt.
 		 *  \pre Datenbankverbindung muss bestehen
 		 *  \param[in] $nr Nummer der zu einlesenden Literatur
 		 */
@@ -38,9 +40,10 @@ if(!defined("Literatur"))
 
 		/*! \brief Exportiert Literatur nach BibTeX
 		 *
-		 *  TODO
+		 *  Exportiert die aktuellen Informationen im Literaturobjekt
+		 *  in das BibTeX-Format.
 		 *  \pre -
-		 *  \return TODO
+		 *  \return $string mit BibTeX-Eintrag
 		 */
 		function ToBibtex()
 		{
@@ -48,7 +51,10 @@ if(!defined("Literatur"))
 
 		/*! \brief Löscht Literatur
 		 *
-		 *  TODO
+		 *  Löscht Literatur aus Bibliothek mit der Literatur_Nr $nr.
+		 *  Alle verbundenen Kommentare werden aus Kommentare gelöscht.
+		 *  Außerdem werden alle nun nicht mehr gebrauchten Autoren in
+		 *  Autoren gelöscht.
 		 *  \pre Datenbankverbindung muss bestehen
 		 *  \param[in] $nr Nummer der zu löschenden Literatur
 		 */
@@ -58,7 +64,10 @@ if(!defined("Literatur"))
 
 		/*! \brief Importiert BibTeX
 		 *
-		 *  TODO
+		 *  Importiert Literatur nach Bibliothek aus einem
+		 *  BibTeX-formatierten String. Alle Einträge werden dazu
+		 *  nacheinandere eingelesen und umgewandelt, um diese dann
+		 *  in die Datenbank zu schreiben.
 		 *  \pre Datenbankverbindung muss bestehen
 		 *  \param[in] $bibtex String mit Inhalt einer BibTeX-Datei
 		 */
@@ -68,7 +77,11 @@ if(!defined("Literatur"))
 
 		/*! \brief Legt Literatur an
 		 *
-		 *  TODO
+		 *  Legt neue Literatur in Bibliothek mit den übergebenen
+		 *  Parametern ($art, $titel, $jahr, $verlag, $isbn,
+		 *  $beschreibung, $ort, $stichworte) an. Danach werden die
+		 *  Autoren ($autoren) in Autoren geschrieben und mit der
+		 *  Tabelle Autoren_Literatur der Literatur zugeordnet.
 		 *  \pre Datenbankverbindung muss bestehen
 		 *  \param[in] $autoren String mit kommagetrennter Liste von Autoren
 		 *  \param[in] $art Bezeichner der Literaturart
@@ -86,7 +99,14 @@ if(!defined("Literatur"))
 
 		/*! \brief Ändert Literatur
 		 *
-		 *  TODO
+		 *  Entfernt alle zur Literatur_Nr ($nr) gehörenden
+		 *  Verbindungen in Autor_Literatur um danach die Literatur mit
+		 *  Literatur_Nr $nr zu den neuen Werten ($art, $titel, $jahr,
+		 *  $verlag, $isbn, $beschreibung, $ort, $stichworte) zu ändern.
+		 *  Danach werden die Autoren ($autoren) in Autoren geschrieben
+		 *  und mit der Tabelle Autoren_Literatur der Literatur
+		 *  zugeordnet. Alle jetzt noch nicht zugeordneten Autoren in
+		 *  Autoren werden gelöscht.
 		 *  \pre Datenbankverbindung muss bestehen
 		 *  \param[in] $nr Nummer der zu verändernden Literatur
 		 *  \param[in] $autoren String mit kommagetrennter Liste von Autoren
