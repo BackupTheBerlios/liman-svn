@@ -76,7 +76,8 @@ h1 {
 
 
 #searchresult, #userlist {
-	width: 100%;
+	
+	width: 99%;
 	border: 1px solid black;
 	border-collapse: collapse;
 }
