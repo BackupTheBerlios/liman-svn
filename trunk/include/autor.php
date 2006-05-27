@@ -37,6 +37,7 @@ if(!defined("Autor"))
 		 */
 		function Clean()
 		{
+			/// \todo implementieren
 		}
 
 		/*! \brief Rückgabe eines Feldes von Autoren
@@ -82,6 +83,7 @@ if(!defined("Autor"))
 		 */
 		function Split($autoren)
 		{
+			/// \todo implementieren
 		}
 	}
 }

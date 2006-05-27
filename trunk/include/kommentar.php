@@ -32,6 +32,7 @@ if(!defined("Kommentar"))
 		 */
 		function Kommentar($data)
 		{
+			/// \todo implementieren
 		}
 		
 		/*! \brief Löscht Kommentar
@@ -43,6 +44,7 @@ if(!defined("Kommentar"))
 		 */
 		function Delete($nr)
 		{
+			/// \todo implementieren
 		}
 		
 		/*! \brief Löscht alle zu einer Literatur gehörenden Kommentare
@@ -54,6 +56,7 @@ if(!defined("Kommentar"))
 		 */
 		function DeleteAll($literatur_nr)
 		{
+			/// \todo implementieren
 		}
 
 		/*! \brief Löscht alle zu einem Mitglied gehörenden Kommentare
@@ -65,6 +68,7 @@ if(!defined("Kommentar"))
 		 */
 		function DeleteAllMember($member_nr)
 		{
+			/// \todo implementieren
 		}
 		
 		/*! \brief Legt Kommentar an
@@ -81,6 +85,7 @@ if(!defined("Kommentar"))
 		 */
 		function Insert($text, $verfasser_nr, $literatur_nr)
 		{
+			/// \todo implementieren
 		}
 		
 		/*! \brief Ändert einen Kommentar
@@ -95,6 +100,7 @@ if(!defined("Kommentar"))
 		 */
 		function Update($nr, $text)
 		{
+			/// \todo implementieren
 		}
 	}
 }

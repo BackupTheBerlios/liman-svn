@@ -29,6 +29,7 @@ if(!defined("Mitglied"))
 		 */
 		function Mitglied($nr)
 		{
+			/// \todo implementieren
 		}
 		
 		/*! \brief Generiert Passworthash
@@ -63,7 +64,9 @@ if(!defined("Mitglied"))
 		 *  ($passwort), Benutzerrechten ($rechte), Vorname ($vorname),
 		 *  Nachname ($nachname), E-Mail-Adresse ($email) in Mitglieder
 		 *  ein. Dazu wird das Passwort noch mit Mitglied::PasswortHash
-		 *  gehasht.
+		 *  gehasht. Sollte ein Mitglied mit gleichem Login existieren
+		 *  wird ein Fehler zurückgegeben, da die Datenbank nur ein
+		 *  Mitglied mit gleichem Login erlaubt.
 		 *  \pre Datenbankverbindung muss bestehen
 		 *  \param[in] $login Benutzername des neuen Mitglieds
 		 *  \param[in] $passwort Benutzerpasswort des neuen Mitglieds
@@ -72,6 +75,8 @@ if(!defined("Mitglied"))
 		 *  \param[in] $vorname Vorname des neuen Mitglieds
 		 *  \param[in] $nachname Nachname des neuen Mitglieds
 		 *  \param[in] $email E-Mail-Adresse des neuen Mitglieds
+		 *  \retval true Mitglied wurde eingefügt
+		 *  \retval false Mitglied konnte nicht hinzugefügt werden
 		 */
 		function Insert($login, $passwort, $rechte, $vorname, $nachname, $email)
 		{
@@ -86,7 +91,10 @@ if(!defined("Mitglied"))
 		 *  Nachname ($nachname), E-Mail-Adresse ($email) in
 		 *  Mitglieder. Wenn $passwort nicht die Länge 0 hat, wird es 
 		 *  noch mit Mitglied::PasswortHash gehasht. Andernfalls wird
-		 *  das alte Passwort in Mitglieder beibehalten.
+		 *  das alte Passwort in Mitglieder beibehalten. Sollte ein
+		 *  Mitglied mit gleichem Login existieren wird ein Fehler
+		 *  zurückgegeben, da die Datenbank nur ein Mitglied mit
+		 *  gleichem Login erlaubt.
 		 *  \pre Datenbankverbindung muss bestehen
 		 *  \param[in] $nr Mitglieds_Nr des zu verändernden Mitglieds
 		 *  \param[in] $login neuer Benutzername des Mitglieds
@@ -95,6 +103,8 @@ if(!defined("Mitglied"))
 		 *  \param[in] $vorname neuer Vorname des Mitglieds
 		 *  \param[in] $nachname neuer Nachname des Mitglieds
 		 *  \param[in] $email neue E-Mail-Adresse des Mitglieds
+		 *  \retval true Mitglied wurde geändert
+		 *  \retval false Mitglied konnte nicht geändert werden
 		 */
 		function Update($nr, $login, $passwort, $rechte, $vorname, $nachname, $email)
 		{

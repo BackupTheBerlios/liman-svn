@@ -36,6 +36,7 @@ if(!defined("Literatur"))
 		 */
 		function Literatur($nr)
 		{
+			/// \todo implementieren
 		}
 
 		/*! \brief Exportiert Literatur nach BibTeX
@@ -47,6 +48,7 @@ if(!defined("Literatur"))
 		 */
 		function ToBibtex()
 		{
+			/// \todo implementieren
 		}
 
 		/*! \brief Löscht Literatur
@@ -60,6 +62,7 @@ if(!defined("Literatur"))
 		 */
 		function Delete($nr)
 		{
+			/// \todo implementieren
 		}
 
 		/*! \brief Importiert BibTeX
@@ -73,6 +76,7 @@ if(!defined("Literatur"))
 		 */
 		function InsertBibTeX($bibtex)
 		{
+			/// \todo implementieren
 		}
 
 		/*! \brief Legt Literatur an
@@ -95,6 +99,7 @@ if(!defined("Literatur"))
 		 */
 		function Insert($autoren, $art, $titel, $jahr, $verlag, $isbn, $beschreibung, $ort, $stichworte)
 		{
+			/// \todo implementieren
 		}
 
 		/*! \brief Ändert Literatur
@@ -121,6 +126,7 @@ if(!defined("Literatur"))
 		 */
 		function Update($nr, $autoren, $art, $titel, $jahr, $verlag, $isbn, $beschreibung, $ort, $stichworte)
 		{
+			/// \todo implementieren
 		}
 	}
 }
