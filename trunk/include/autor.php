@@ -8,6 +8,9 @@ if(!defined("Autor"))
 	 *  Stellt Funktionen zum Hinzufügen von Autoren und Bereinigen nicht
 	 *  mehr benutzter Autoren bereit.
 	 *  \pre Datenbankverbindung muss bestehen
+	 *  \sa
+	 *  - SQLDB::Query
+	 *  - SQLDB::Fetch
 	 */
 	class Autor
 	{
@@ -32,17 +35,22 @@ if(!defined("Autor"))
 		/*! \brief Entfernt unnötige Autoren
 		 *
 		 *  Entfernt aus Autoren alle Autoren, die keine Verbindung
-		 *  (Literatur_Autoren-Tabelle) mehr mit Literatur haben.
+		 *  (Literatur_Autor-Tabelle) mehr mit Literatur haben.
 		 *  \pre Datenbankverbindung muss bestehen
 		 */
 		function Clean()
 		{
-			$sql = "DELETE FROM ".$db_config['prefix']."Autoren as autoren
-					WHERE (0 = (SELECT COUNT(*) FROM ".$db_config['prefix']."Literatur_Autoren WHERE (AutorNr = autoren.ID)))";
+			global $db_config, $sqldb;
+
+			$sql = "DELETE autoren, connect
+					FROM ".$db_config['prefix']."Autoren AS autoren
+					LEFT JOIN ".$db_config['prefix']."Literatur_Autor AS connect
+					ON autoren.Autor_Nr = connect.Autor_Nr
+					WHERE connect.Autor_Nr is NULL";
 			$sqldb->Query($sql);
 		}
 
-		/*! \brief Rückgabe eines Feldes von Autoren
+		/*! \brief Gibt Autoren zu bestimmter Literatur zurück
 		 *
 		 *  Liest alle Autoren die einer Literatur ($nr) zugeordnet
 		 *  sind aus Bibliothek aus und gibt sie als Feld des Typs
@@ -91,10 +99,10 @@ if(!defined("Autor"))
 			$authorNumbers = array();
 			$authorNames = split( ",", $autoren );
 			
-			for( $i = 0; i < count($authorNames); $i++ )
+			for( $i = 0; $i < count($authorNames); $i++ )
 			{
 				$sqlSelect = "SELECT Autor_Nr AS Nr FROM ".$db_config['prefix']."Autoren AS autoren
-						      WHERE Autorname = '".trim($authorNames[i])."'";
+						      WHERE Autorname = '".trim($authorNames[$i])."'";
 				$sqldb->Query( $sqlSelect );
 				
 				if( $cur = $sqldb->Fetch() )
@@ -103,7 +111,7 @@ if(!defined("Autor"))
 				}
 				else
 				{
-					$sqlInsert = "INSERT INTO ".$db_config['prefix']."Autoren VALUES ('".trim($authorNames[i])."')";
+					$sqlInsert = "INSERT INTO ".$db_config['prefix']."Autoren VALUES (NULL, '".trim($authorNames[$i])."')";
 					$sqlIdentity = "SELECT @@IDENTITY AS Nr FROM ".$db_config['prefix']."Autoren";
 					$sqldb->Query( $sqlInsert );
 					$sqldb->Query( $sqlIdentity );

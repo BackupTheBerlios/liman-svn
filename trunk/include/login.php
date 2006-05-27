@@ -16,6 +16,9 @@ if(!defined("Login"))
 	 *    welche neue Logininformationen eingetragen werden, wird keine
 	 *    weitere Session angelegt, sondern die alten Informationen in
 	 *    der aktuellen Session überschrieben.
+	 *  \sa
+	 *  - SQLDB::Query
+	 *  - SQLDB::Fetch
 	 */
 	class Login
 	{

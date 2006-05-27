@@ -85,7 +85,7 @@ if(!defined("Literatur"))
 		 *  Parametern ($art, $titel, $jahr, $verlag, $isbn,
 		 *  $beschreibung, $ort, $stichworte) an. Danach werden die
 		 *  Autoren ($autoren) in Autoren geschrieben und mit der
-		 *  Tabelle Literatur_Autoren der Literatur zugeordnet.
+		 *  Tabelle Literatur_Autor der Literatur zugeordnet.
 		 *  \pre Datenbankverbindung muss bestehen
 		 *  \param[in] $autoren String mit kommagetrennter Liste von Autoren
 		 *  \param[in] $art Bezeichner der Literaturart
@@ -109,7 +109,7 @@ if(!defined("Literatur"))
 		 *  Literatur_Nr $nr zu den neuen Werten ($art, $titel, $jahr,
 		 *  $verlag, $isbn, $beschreibung, $ort, $stichworte) zu ändern.
 		 *  Danach werden die Autoren ($autoren) in Autoren geschrieben
-		 *  und mit der Tabelle Literatur_Autoren der Literatur
+		 *  und mit der Tabelle Literatur_Autor der Literatur
 		 *  zugeordnet. Alle jetzt noch nicht zugeordneten Autoren in
 		 *  Autoren werden gelöscht.
 		 *  \pre Datenbankverbindung muss bestehen

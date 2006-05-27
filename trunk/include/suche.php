@@ -11,6 +11,10 @@ if(!defined("Suche"))
 	 *  nach Autor und Titel oder nach den 10 zuletzt hinzugefügten
 	 *  Literatureinträgen und speichert sie in $Treffer zwischen.
 	 *  \pre Datenbankverbindung muss bestehen
+	 *  \sa
+	 *  - Autor::GetAll
+	 *  - SQLDB::Query
+	 *  - SQLDB::Fetch
 	 */
 	class Suche
 	{

@@ -13,7 +13,7 @@ Verwaltet Autoren.
 \hyperlink{classAutor_77b27af7e471abe5a404fc92c7319921}{Clean} ()
 \begin{CompactList}\small\item\em Entfernt unnötige Autoren. \item\end{CompactList}\item 
 \hyperlink{classAutor_79cd90084cab240919a5daecf39156a7}{Get\-All} (\$literatur\_\-nr)
-\begin{CompactList}\small\item\em Rückgabe eines Feldes von Autoren. \item\end{CompactList}\item 
+\begin{CompactList}\small\item\em Gibt Autoren zu bestimmter \hyperlink{classLiteratur}{Literatur} zurück. \item\end{CompactList}\item 
 \hyperlink{classAutor_2ba5418b6622f414fa8a054e6c2a2db8}{Split} (\$autoren)
 \begin{CompactList}\small\item\em Legt neue Autoren aus kommagetrennter Liste an. \item\end{CompactList}\end{CompactItemize}
 \subsubsection*{\"{O}ffentliche Attribute}
@@ -30,6 +30,10 @@ Verwaltet Autoren.
 
 Stellt Funktionen zum Hinzufügen von Autoren und Bereinigen nicht mehr benutzter Autoren bereit. \begin{Desc}
 \item[Vorbedingung:]Datenbankverbindung muss bestehen \end{Desc}
+\begin{Desc}
+\item[Importiert:]\begin{itemize}
+\item \hyperlink{classSQLDB_fc6ffa8df50f68f07d9f5e3385b96d7a}{SQLDB::Query}\item \hyperlink{classSQLDB_a55c00ce1de0e50e0a58cae61892ba35}{SQLDB::Fetch} \end{itemize}
+\end{Desc}
 
 
 
@@ -65,8 +69,8 @@ Legt ein neues Autorenobjekt aus einem Objekt mit den Attributen Nr und Name an.
 
 Entfernt unnötige Autoren. 
 
-Entfernt aus Autoren alle Autoren, die keine Verbindung (Literatur\_\-Autoren-Tabelle) mehr mit \hyperlink{classLiteratur}{Literatur} haben. \begin{Desc}
-\item[Vorbedingung:]Datenbankverbindung muss bestehen\end{Desc}
+Entfernt aus Autoren alle Autoren, die keine Verbindung (Literatur\_\-Autor-Tabelle) mehr mit \hyperlink{classLiteratur}{Literatur} haben. \begin{Desc}
+\item[Vorbedingung:]Datenbankverbindung muss bestehen \end{Desc}
 \hypertarget{classAutor_79cd90084cab240919a5daecf39156a7}{
 \index{Autor@{Autor}!GetAll@{GetAll}}
 \index{GetAll@{GetAll}!Autor@{Autor}}
@@ -74,7 +78,7 @@ Entfernt aus Autoren alle Autoren, die keine Verbindung (Literatur\_\-Autoren-Ta
 \label{classAutor_79cd90084cab240919a5daecf39156a7}
 
 
-Rückgabe eines Feldes von Autoren. 
+Gibt Autoren zu bestimmter \hyperlink{classLiteratur}{Literatur} zurück. 
 
 Liest alle Autoren die einer \hyperlink{classLiteratur}{Literatur} (\$nr) zugeordnet sind aus Bibliothek aus und gibt sie als Feld des Typs \hyperlink{classAutor}{Autor} zurück. \begin{Desc}
 \item[Parameter:]
@@ -102,7 +106,7 @@ Teilt die kommagetrennte Liste von Autoren in einzelne Autorennamen ein und übe
 \item[\mbox{$\leftarrow$} {\em \$autoren}]String mit kommagetrennter Liste von Autoren \end{description}
 \end{Desc}
 \begin{Desc}
-\item[R\"{u}ckgabe:]Feld mit Autor\_\-Nr der Autoren\end{Desc}
+\item[R\"{u}ckgabe:]Feld mit Autor\_\-Nr der Autoren \end{Desc}
 
 
 \subsubsection{Dokumentation der Datenelemente}
