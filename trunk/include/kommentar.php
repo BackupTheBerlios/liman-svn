@@ -9,7 +9,9 @@ if(!defined("Kommentar"))
 	 *  Stellt Funktionen zum Anlegen, Löschen, Bearbeiten von Kommentaren
 	 *  bereit. Es können sowohl einzelne Kommentare oder nach Literatur-
 	 *  bzw. Mitgliederverbundenen Kommentaren gelöscht werden.
-	 *  \pre Datenbankverbindung muss bestehen
+	 *  \pre Datenbankverbindung muss bestehen *  \sa
+	 *  - SQLDB::Query
+	 *  - SQLDB::Fetch
 	 */
 	class Kommentar
 	{
@@ -32,7 +34,10 @@ if(!defined("Kommentar"))
 		 */
 		function Kommentar($data)
 		{
-			/// \todo implementieren
+			$this->Nr = $data->Nr;
+			$this->Text = $data->Text;
+			$this->Verfasser_Nr = $data->Mitglieds_Nr;
+			$this->Verfasser_Name = $data->Vorname." ".$data->Nachname;
 		}
 		
 		/*! \brief Löscht Kommentar
@@ -44,7 +49,12 @@ if(!defined("Kommentar"))
 		 */
 		function Delete($nr)
 		{
-			/// \todo implementieren
+			global $db_config, $sqldb;
+
+			$sql = "DELETE FROM ".$db_config['prefix']."Kommentare
+					WHERE Kommentar_Nr = '$nr'
+					LIMIT 1";
+			$sqldb->Query($sql);
 		}
 		
 		/*! \brief Löscht alle zu einer Literatur gehörenden Kommentare
@@ -56,7 +66,11 @@ if(!defined("Kommentar"))
 		 */
 		function DeleteAll($literatur_nr)
 		{
-			/// \todo implementieren
+			global $db_config, $sqldb;
+
+			$sql = "DELETE FROM ".$db_config['prefix']."Kommentare
+					WHERE Literatur_Nr = '$literatur_nr'";
+			$sqldb->Query($sql);
 		}
 
 		/*! \brief Löscht alle zu einem Mitglied gehörenden Kommentare
@@ -68,7 +82,11 @@ if(!defined("Kommentar"))
 		 */
 		function DeleteAllMember($member_nr)
 		{
-			/// \todo implementieren
+			global $db_config, $sqldb;
+
+			$sql = "DELETE FROM ".$db_config['prefix']."Kommentare
+					WHERE Mitglieds_Nr = '$member_nr'";
+			$sqldb->Query($sql);
 		}
 		
 		/*! \brief Legt Kommentar an
@@ -85,7 +103,11 @@ if(!defined("Kommentar"))
 		 */
 		function Insert($text, $verfasser_nr, $literatur_nr)
 		{
-			/// \todo implementieren
+			global $db_config, $sqldb;
+
+			$sql = "INSERT INTO ".$db_config['prefix']."Kommentare
+					VALUES (NULL, '$text', '$literatur_nr', '$verfasser_nr')";
+			$sqldb->Query($sql);
 		}
 		
 		/*! \brief Ändert einen Kommentar
@@ -100,7 +122,13 @@ if(!defined("Kommentar"))
 		 */
 		function Update($nr, $text)
 		{
-			/// \todo implementieren
+			global $db_config, $sqldb;
+
+			$sql = "UPDATE ".$db_config['prefix']."Kommentare
+					SET Kommentartext='$text'
+					WHERE Kommentar_Nr='$nr'
+					LIMIT 1";
+			$sqldb->Query($sql);
 		}
 	}
 }

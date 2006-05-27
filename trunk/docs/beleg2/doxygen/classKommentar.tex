@@ -37,7 +37,11 @@ Verwaltet Kommentare.
 Verwaltet Kommentare. 
 
 Stellt Funktionen zum Anlegen, Löschen, Bearbeiten von Kommentaren bereit. Es können sowohl einzelne Kommentare oder nach Literatur- bzw. Mitgliederverbundenen Kommentaren gelöscht werden. \begin{Desc}
-\item[Vorbedingung:]Datenbankverbindung muss bestehen \end{Desc}
+\item[Vorbedingung:]Datenbankverbindung muss bestehen $\ast$\end{Desc}
+\begin{Desc}
+\item[Importiert:]\begin{itemize}
+\item \hyperlink{classSQLDB_fc6ffa8df50f68f07d9f5e3385b96d7a}{SQLDB::Query}\item \hyperlink{classSQLDB_a55c00ce1de0e50e0a58cae61892ba35}{SQLDB::Fetch} \end{itemize}
+\end{Desc}
 
 
 
@@ -58,7 +62,7 @@ Legt ein neues Kommentarobjekt aus einem Objekt mit den Attributen Nr, Text, Ver
 \item[Parameter:]
 \begin{description}
 \item[\mbox{$\leftarrow$} {\em \$data}]Objekt mit Kommentardaten der Form\begin{itemize}
-\item Nr\item Text\item Mitglieds\_\-Nr\item Vorname\item Nachname\end{itemize}
+\item Nr\item Text\item Mitglieds\_\-Nr\item Vorname\item Nachname \end{itemize}
 \end{description}
 \end{Desc}
 
@@ -78,7 +82,7 @@ Löscht einen \hyperlink{classKommentar}{Kommentar} aus Kommentare mit der Komme
 \begin{Desc}
 \item[Parameter:]
 \begin{description}
-\item[\mbox{$\leftarrow$} {\em \$nr}]Nummer des zu löschenden Kommentars\end{description}
+\item[\mbox{$\leftarrow$} {\em \$nr}]Nummer des zu löschenden Kommentars \end{description}
 \end{Desc}
 \hypertarget{classKommentar_9903f1df98f71eefa3b44a81d6a8ee5c}{
 \index{Kommentar@{Kommentar}!DeleteAll@{DeleteAll}}
@@ -94,7 +98,7 @@ Löscht alle Kommentare aus Kommentare, die mit \hyperlink{classLiteratur}{Liter
 \begin{Desc}
 \item[Parameter:]
 \begin{description}
-\item[\mbox{$\leftarrow$} {\em \$literatur\_\-nr}]Nummer der \hyperlink{classLiteratur}{Literatur}\end{description}
+\item[\mbox{$\leftarrow$} {\em \$literatur\_\-nr}]Nummer der \hyperlink{classLiteratur}{Literatur} \end{description}
 \end{Desc}
 \hypertarget{classKommentar_92a8fcea1b065341c7c53e8a8464fcf0}{
 \index{Kommentar@{Kommentar}!DeleteAllMember@{DeleteAllMember}}
@@ -110,7 +114,7 @@ Löscht alle Kommentare aus Kommentare, die mit Mitglieder mit der Mitglieds\_\-
 \begin{Desc}
 \item[Parameter:]
 \begin{description}
-\item[\mbox{$\leftarrow$} {\em \$member\_\-nr}]Nummer eines Mitglieds\end{description}
+\item[\mbox{$\leftarrow$} {\em \$member\_\-nr}]Nummer eines Mitglieds \end{description}
 \end{Desc}
 \hypertarget{classKommentar_6119b3c12a61d8d5a41cded165517914}{
 \index{Kommentar@{Kommentar}!Insert@{Insert}}
@@ -126,7 +130,7 @@ Legt einen neuen \hyperlink{classKommentar}{Kommentar} mit Text (\$text) zu eine
 \begin{Desc}
 \item[Parameter:]
 \begin{description}
-\item[\mbox{$\leftarrow$} {\em \$text}]Text des Kommentars \item[\mbox{$\leftarrow$} {\em \$verfasser\_\-nr}]Mitglieds\_\-Nr des Verfassers \item[\mbox{$\leftarrow$} {\em \$literatur\_\-nr}]Nummer der \hyperlink{classLiteratur}{Literatur}\end{description}
+\item[\mbox{$\leftarrow$} {\em \$text}]Text des Kommentars \item[\mbox{$\leftarrow$} {\em \$verfasser\_\-nr}]Mitglieds\_\-Nr des Verfassers \item[\mbox{$\leftarrow$} {\em \$literatur\_\-nr}]Nummer der \hyperlink{classLiteratur}{Literatur} \end{description}
 \end{Desc}
 \hypertarget{classKommentar_0b3e20e910493e67b67b747243f04511}{
 \index{Kommentar@{Kommentar}!Update@{Update}}
@@ -142,7 +146,7 @@ Legt einen neuen \hyperlink{classKommentar}{Kommentar} mit Text (\$text) zu eine
 \begin{Desc}
 \item[Parameter:]
 \begin{description}
-\item[\mbox{$\leftarrow$} {\em \$nr}]Nummer des zu verändernden Kommentars \item[\mbox{$\leftarrow$} {\em \$text}]neuer Text des Kommentars\end{description}
+\item[\mbox{$\leftarrow$} {\em \$nr}]Nummer des zu verändernden Kommentars \item[\mbox{$\leftarrow$} {\em \$text}]neuer Text des Kommentars \end{description}
 \end{Desc}
 
 
