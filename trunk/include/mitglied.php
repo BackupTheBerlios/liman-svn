@@ -9,6 +9,9 @@ if(!defined("Mitglied"))
 	 *  Stellt Funktionen zum Entfernen, Hinzufügen, Ändern und Auflisten
 	 *  von Mitgliedern bereit.
 	 *  \pre Datenbankverbindung muss bestehen
+	 *  \sa
+	 *  - SQLDB::Query
+	 *  - SQLDB::Fetch
 	 */
 	class Mitglied
 	{
@@ -29,7 +32,33 @@ if(!defined("Mitglied"))
 		 */
 		function Mitglied($nr)
 		{
-			/// \todo implementieren
+			global $db_config, $sqldb;
+			$sql = "SELECT Mitglieds_Nr, Login, Passwort, Rechte, Vorname, Name, Email
+					FROM ".$db_config['prefix']."Mitglieder
+					LIMIT 1";
+			$sqldb->Query($sql);
+			
+			if ($cur = $sqldb->Fetch())
+			{
+				$this->Nr = $cur->Mitglieds_Nr;
+				$this->Login = $cur->Login;
+				$this->Passwort = $cur->Passwort;
+				$this->Vorname = $cur->Vorname;
+				$this->Nachname = $cur->Name;
+				$this->Email = $cur->Email;
+
+				switch ($cur->Rechte)
+				{
+				case "Administrator":
+					$this->Rechte = 2;
+					break;
+				case "Benutzer":
+					$this->Rechte = 1;
+					break;
+				default:
+					$this->Rechte = 0;
+				}
+			}
 		}
 		
 		/*! \brief Generiert Passworthash
@@ -55,7 +84,12 @@ if(!defined("Mitglied"))
 		 */
 		function Delete($nr)
 		{
-			/// \todo implementieren
+			global $db_config, $sqldb;
+
+			$sql = "DELETE FROM ".$db_config['prefix']."Mitglieder
+					WHERE Mitglieds_Nr = '$nr'
+					LIMIT 1";
+			$sqldb->Query($sql);
 		}
 		
 		/*! \brief Legt  Mitglied an
@@ -80,7 +114,32 @@ if(!defined("Mitglied"))
 		 */
 		function Insert($login, $passwort, $rechte, $vorname, $nachname, $email)
 		{
-			/// \todo implementieren
+			global $db_config, $sqldb;
+
+			$rechtestring = "";
+			switch ($rechte)
+			{
+			case 2:
+				$rechtestring = "Administrator";
+				break;
+			default:
+			case 1:
+				$rechtestring = "Benutzer";
+				break;
+			}
+
+			$passworthash = Mitglied::PasswordHash($passwort);
+			$sql = "INSERT INTO ".$db_config['prefix']."Mitglieder
+					VALUES (NULL, '$nachname', '$vorname', '$email', '$login', '$passworthash', '$rechtestring')";
+			
+			if ($sqldb->Query($sql) !== false)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		
 		/*! \brief Ändert ein Mitglied
@@ -108,7 +167,46 @@ if(!defined("Mitglied"))
 		 */
 		function Update($nr, $login, $passwort, $rechte, $vorname, $nachname, $email)
 		{
-			/// \todo implementieren
+			global $db_config, $sqldb;
+
+			$rechtestring = "";
+			switch ($rechte)
+			{
+			case 2:
+				$rechtestring = "Administrator";
+				break;
+			default:
+			case 1:
+				$rechtestring = "Benutzer";
+				break;
+			}
+
+			$sql = "";
+			if (empty($passwort) === true)
+			{
+				
+				$sql = "UPDATE ".$db_config['prefix']."Mitglieder
+						SET Login='$login', Rechte='$rechtestring', Vorname='$vorname', Name='$nachname', Email='$email'
+						WHERE Mitglieds_Nr='$nr'
+						LIMIT 1";
+			}
+			else
+			{
+				$passworthash = Mitglied::PasswordHash($passwort);
+				$sql = "UPDATE ".$db_config['prefix']."Mitglieder
+						SET Login='$login', Passwort='$passworthash', Rechte='$rechtestring', Vorname='$vorname', Name='$nachname', Email='$email'
+						WHERE Mitglieds_Nr='$nr'
+						LIMIT 1";
+			}
+
+			if ($sqldb->Query($sql) !== false)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		
 		/*! \brief Rückgabe einer Liste der Mitglieder
@@ -126,22 +224,18 @@ if(!defined("Mitglied"))
 		 */
 		function GetAll()
 		{
-			/// \todo implementieren
+			global $db_config, $sqldb;
+
 			$members = array();
-
-			$cur1->Nr = 1;
-			$cur1->Login = "siwu";
-			$cur1->Vorname = "Simon";
-			$cur1->Nachname = "Wunderlich";
-			$cur1->Email = "siwu@hrz.tu-chemnitz.de";
-			$members[] = $cur1;
-
-			$cur2->Nr = 2;
-			$cur2->Login = "hans";
-			$cur2->Vorname = "Hans";
-			$cur2->Nachname = "Wurst";
-			$cur2->Email = "hans@foobar.de";
-			$members[] = $cur2;
+			
+			$sql = "SELECT Mitglieds_Nr AS Nr, Login, Vorname, Name AS Nachname, Email
+					FROM ".$db_config['prefix']."Mitglieder";
+			$sqldb->Query($sql);
+			
+			while ($cur = $sqldb->Fetch())
+			{
+				$members[] = $cur;
+			}
 
 			return $members;
 		}
