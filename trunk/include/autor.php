@@ -37,7 +37,9 @@ if(!defined("Autor"))
 		 */
 		function Clean()
 		{
-			/// \todo implementieren
+			$sql = "DELETE FROM ".$db_config['prefix']."Autoren as autoren
+					WHERE (0 = (SELECT COUNT(*) FROM ".$db_config['prefix']."Literatur_Autoren WHERE (AutorNr = autoren.ID)))";
+			sqldb->Query($sql);
 		}
 
 		/*! \brief Rückgabe eines Feldes von Autoren
@@ -83,7 +85,33 @@ if(!defined("Autor"))
 		 */
 		function Split($autoren)
 		{
-			/// \todo implementieren
+			global $db_config, $sqldb;
+			
+			$authorNames = array();
+			$authorNumbers = array();
+			$authorNames = split( ",", $autoren );
+			
+			for( $i = 0; i < count($authorNames); i++ )
+			{
+				$sqlSelect = "SELECT Autor_Nr AS Nr FROM ".$db_config['prefix']."Autoren AS autoren
+						      WHERE Autorname = '".trim($authorNames[i])."'";
+				sqldb->Query( $sqlSelect );
+				
+				if( $cur = sqldb->Fetch() )
+				{
+					$authorNumbers[] = $cur->Nr;
+				}
+				else
+				{
+					$sqlInsert = "INSERT INTO ".$db_config['prefix']."Autoren VALUES ('".trim($authorNames[i])."')";
+					$sqlIdentity = "SELECT @@IDENTITY AS Nr FROM ".$db_config['prefix']."Autoren";
+					sqldb->Query( $sqlInsert );
+					sqldb->Query( $sqlIdentity );
+					$authorNumbers[] = sqldb->Fetch()->Nr;
+				}
+			}
+			
+			return $authorNumbers;
 		}
 	}
 }
