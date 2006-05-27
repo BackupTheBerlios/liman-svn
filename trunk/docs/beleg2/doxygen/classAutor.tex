@@ -32,7 +32,7 @@ Stellt Funktionen zum Hinzufügen von Autoren und Bereinigen nicht mehr benutzte
 \item[Vorbedingung:]Datenbankverbindung muss bestehen \end{Desc}
 \begin{Desc}
 \item[Importiert:]\begin{itemize}
-\item \hyperlink{classSQLDB_fc6ffa8df50f68f07d9f5e3385b96d7a}{SQLDB::Query}\item \hyperlink{classSQLDB_a55c00ce1de0e50e0a58cae61892ba35}{SQLDB::Fetch} \end{itemize}
+\item \hyperlink{classLogin_70d2747b0aa454f4203a789afea25318}{Login::Is\-Member}\item \hyperlink{classSQLDB_fc6ffa8df50f68f07d9f5e3385b96d7a}{SQLDB::Query}\item \hyperlink{classSQLDB_a55c00ce1de0e50e0a58cae61892ba35}{SQLDB::Fetch} \end{itemize}
 \end{Desc}
 
 
@@ -71,6 +71,8 @@ Entfernt unnötige Autoren.
 
 Entfernt aus Autoren alle Autoren, die keine Verbindung (Literatur\_\-Autor-Tabelle) mehr mit \hyperlink{classLiteratur}{Literatur} haben. \begin{Desc}
 \item[Vorbedingung:]Datenbankverbindung muss bestehen \end{Desc}
+\begin{Desc}
+\item[Bemerkungen:]Ist der Nutzer nicht eingeloggt, werden keine Operationen ausgeführt. \end{Desc}
 \hypertarget{classAutor_79cd90084cab240919a5daecf39156a7}{
 \index{Autor@{Autor}!GetAll@{GetAll}}
 \index{GetAll@{GetAll}!Autor@{Autor}}
@@ -80,7 +82,7 @@ Entfernt aus Autoren alle Autoren, die keine Verbindung (Literatur\_\-Autor-Tabe
 
 Gibt Autoren zu bestimmter \hyperlink{classLiteratur}{Literatur} zurück. 
 
-Liest alle Autoren die einer \hyperlink{classLiteratur}{Literatur} (\$nr) zugeordnet sind aus Bibliothek aus und gibt sie als Feld des Typs \hyperlink{classAutor}{Autor} zurück. \begin{Desc}
+Liest alle Autoren die einer \hyperlink{classLiteratur}{Literatur} (\$nr) zugeordnet sind aus Kommentare aus und gibt sie als Feld des Typs \hyperlink{classAutor}{Autor} zurück. \begin{Desc}
 \item[Parameter:]
 \begin{description}
 \item[\mbox{$\leftarrow$} {\em \$literatur\_\-nr}]Nr einer \hyperlink{classLiteratur}{Literatur} mit Autoren \end{description}
@@ -107,6 +109,8 @@ Teilt die kommagetrennte Liste von Autoren in einzelne Autorennamen ein und übe
 \end{Desc}
 \begin{Desc}
 \item[R\"{u}ckgabe:]Feld mit Autor\_\-Nr der Autoren \end{Desc}
+\begin{Desc}
+\item[Bemerkungen:]Ist der Nutzer nicht eingeloggt, werden keine Operationen ausgeführt. \end{Desc}
 
 
 \subsubsection{Dokumentation der Datenelemente}

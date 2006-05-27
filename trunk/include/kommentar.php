@@ -9,7 +9,10 @@ if(!defined("Kommentar"))
 	 *  Stellt Funktionen zum Anlegen, Löschen, Bearbeiten von Kommentaren
 	 *  bereit. Es können sowohl einzelne Kommentare oder nach Literatur-
 	 *  bzw. Mitgliederverbundenen Kommentaren gelöscht werden.
-	 *  \pre Datenbankverbindung muss bestehen *  \sa
+	 *  \pre Datenbankverbindung muss bestehen
+	 *  \sa
+	 *  - Login::IsAdministrator
+	 *  - Login::IsMember
 	 *  - SQLDB::Query
 	 *  - SQLDB::Fetch
 	 */
@@ -46,15 +49,30 @@ if(!defined("Kommentar"))
 		 *  $nr.
 		 *  \pre Datenbankverbindung muss bestehen
 		 *  \param[in] $nr Nummer des zu löschenden Kommentars
+		 *  \remarks Ist der Nutzer nicht als Administrator angemeldet,
+		 *    werden keine Operationen ausgeführt, wenn Mitglieds_Nr
+		 *    des Kommentars ungleich der eigenen Mitglieds_Nr ist.
+		 *    Ist der Nutzer nicht angemeldet, werden keine Operationen
+		 *    ausgeführt
 		 */
 		function Delete($nr)
 		{
-			global $db_config, $sqldb;
+			global $db_config, $sqldb, $login;
 
-			$sql = "DELETE FROM ".$db_config['prefix']."Kommentare
-					WHERE Kommentar_Nr = '$nr'
-					LIMIT 1";
-			$sqldb->Query($sql);
+			if ($login->IsAdministrator() === true)
+			{
+				$sql = "DELETE FROM ".$db_config['prefix']."Kommentare
+						WHERE Kommentar_Nr = '$nr'
+						LIMIT 1";
+				$sqldb->Query($sql);
+			}
+			elseif ($login->IsMember() === true)
+			{
+				$sql = "DELETE FROM ".$db_config['prefix']."Kommentare
+						WHERE Kommentar_Nr = '$nr' AND Mitglieds_Nr='".$login->Nr."'
+						LIMIT 1";
+				$sqldb->Query($sql);
+			}
 		}
 		
 		/*! \brief Löscht alle zu einer Literatur gehörenden Kommentare
@@ -63,14 +81,19 @@ if(!defined("Kommentar"))
 		 *  mit der Literaturnummer ($literatur_nr) verbunden sind.
 		 *  \pre Datenbankverbindung muss bestehen
 		 *  \param[in] $literatur_nr Nummer der Literatur
+		 *  \remarks Ist Nutzer nicht eingeloggt, werden keine
+		 *    Operationen ausgeführt.
 		 */
 		function DeleteAll($literatur_nr)
 		{
-			global $db_config, $sqldb;
+			global $db_config, $sqldb, $login;
 
-			$sql = "DELETE FROM ".$db_config['prefix']."Kommentare
-					WHERE Literatur_Nr = '$literatur_nr'";
-			$sqldb->Query($sql);
+			if ($login->IsMember() === true)
+			{
+				$sql = "DELETE FROM ".$db_config['prefix']."Kommentare
+						WHERE Literatur_Nr = '$literatur_nr'";
+				$sqldb->Query($sql);
+			}
 		}
 
 		/*! \brief Löscht alle zu einem Mitglied gehörenden Kommentare
@@ -79,56 +102,109 @@ if(!defined("Kommentar"))
 		 *  mit der Mitglieds_Nr ($member_nr) verbunden sind.
 		 *  \pre Datenbankverbindung muss bestehen
 		 *  \param[in] $member_nr Nummer eines Mitglieds
+		 *  \remarks Ist der Nutzer nicht als Administrator eingeloggt,
+		 *    werden keine Operationen ausgeführt.
 		 */
 		function DeleteAllMember($member_nr)
 		{
+			global $db_config, $sqldb, $login;
+
+			if ($login->IsAdministrator === true)
+			{
+				$sql = "DELETE FROM ".$db_config['prefix']."Kommentare
+						WHERE Mitglieds_Nr = '$member_nr'";
+				$sqldb->Query($sql);
+			}
+		}
+
+		/*! \brief Gibt Kommentare zu bestimmter Literatur zurück
+		 *
+		 *  Liest alle Kommentare die einer Literatur ($nr) zugeordnet
+		 *  sind aus Kommentare aus und gibt sie als Feld des Typs
+		 *  Kommentar zurück.
+		 *  \param[in] $literatur_nr Nr einer Literatur mit Kommentaren
+		 *  \pre Datenbankverbindung muss bestehen
+		 *  \return Feld vom Typ Kommentar
+		 */
+		function GetAll($literatur_nr)
+		{
 			global $db_config, $sqldb;
 
-			$sql = "DELETE FROM ".$db_config['prefix']."Kommentare
-					WHERE Mitglieds_Nr = '$member_nr'";
+			$authors = array();
+			$sql = "SELECT  Kommentar_Nr AS Nr, Kommentartext AS Text, mitglieder.Mitglieds_Nr AS Mitglieds_Nr, Vorname, Name AS Nachname
+					FROM ".$db_config['prefix']."Kommentare AS kommentare
+					INNER JOIN  ".$db_config['prefix']."Mitglieder AS mitglieder
+					ON kommentare.Mitglieds_Nr = mitglieder.Mitglieds_Nr
+					WHERE Literatur_Nr = '$literatur_nr'";
 			$sqldb->Query($sql);
+
+			while ($cur = $sqldb->Fetch())
+			{
+				$authors[] = new Kommentar($cur);
+			}
+			return $authors;
 		}
 		
 		/*! \brief Legt Kommentar an
 		 *
 		 *  Legt einen neuen Kommentar mit Text ($text) zu einer
 		 *  Literatur ($literatur_nr) vom einem Verfasser 
-		 *  ($verfasser_nr) an. Ist das aktuelle Mitglied kein 
-		 *  Administrator, dann muss $verfasser_nr gleich der aktuellen
-		 *  Nummer des Logins sein.
+		 *  ($verfasser_nr) an.
 		 *  \pre Datenbankverbindung muss bestehen
 		 *  \param[in] $text Text des Kommentars
 		 *  \param[in] $verfasser_nr Mitglieds_Nr des Verfassers
 		 *  \param[in] $literatur_nr Nummer der Literatur
+		 *  \remarks Ist das aktuelle Mitglied kein 
+		 *  Administrator, dann muss $verfasser_nr gleich der aktuellen
+		 *  Nummer des Logins sein. Ist der Nutzer nicht eingeloggt,
+		 *  werden keine Operationen ausgeführt.
 		 */
 		function Insert($text, $verfasser_nr, $literatur_nr)
 		{
 			global $db_config, $sqldb;
 
-			$sql = "INSERT INTO ".$db_config['prefix']."Kommentare
-					VALUES (NULL, '$text', '$literatur_nr', '$verfasser_nr')";
-			$sqldb->Query($sql);
+			if ($login->IsAdministrator() === true ||
+				($login->IsMember() === true && $verfasser_nr == $login->Nr))
+			{
+				$sql = "INSERT INTO ".$db_config['prefix']."Kommentare
+						VALUES (NULL, '$text', '$literatur_nr', '$verfasser_nr')";
+				$sqldb->Query($sql);
+			}
 		}
 		
 		/*! \brief Ändert einen Kommentar
 		 *
 		 *  Ändert in Kommentare den Text des Kommentars mit $nr
-		 *  in $text. Ist das aktuelle Mitglied kein Administrator,
-		 *  dann muss die aktuelle Nummer des Mitglieds gleich der
-		 *  Mitglieds_Nr des Kommentars in Kommentare sein.
+		 *  in $text.
 		 *  \pre Datenbankverbindung muss bestehen
 		 *  \param[in] $nr Nummer des zu verändernden Kommentars
 		 *  \param[in] $text neuer Text des Kommentars
+		 *  \remarks Ist das aktuelle Mitglied kein Administrator,
+		 *  dann muss die aktuelle Nummer des Mitglieds gleich der
+		 *  Mitglieds_Nr des Kommentars in Kommentare sein. Ist der
+		 *  Nutzer nicht eingeloggt, werden keine Operationen
+		 *  ausgeführt.
 		 */
 		function Update($nr, $text)
 		{
-			global $db_config, $sqldb;
+			global $db_config, $sqldb, $login;
 
-			$sql = "UPDATE ".$db_config['prefix']."Kommentare
-					SET Kommentartext='$text'
-					WHERE Kommentar_Nr='$nr'
-					LIMIT 1";
-			$sqldb->Query($sql);
+			if ($login->IsAdministrator() === true)
+			{
+				$sql = "UPDATE ".$db_config['prefix']."Kommentare
+						SET Kommentartext='$text'
+						WHERE Kommentar_Nr='$nr'
+						LIMIT 1";
+				$sqldb->Query($sql);
+			}
+			elseif ($login->IsMember() === true)
+			{
+				$sql = "UPDATE ".$db_config['prefix']."Kommentare
+						SET Kommentartext='$text'
+						WHERE Kommentar_Nr='$nr' AND Mitglieds_Nr='".$login->Nr."'
+						LIMIT 1";
+				$sqldb->Query($sql);
+			}
 		}
 	}
 }

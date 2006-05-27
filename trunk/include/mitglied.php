@@ -3,6 +3,7 @@ if(!defined("Mitglied"))
 {
 	define("Mitglied", 1);
 	require_once("include/login.php");
+	require_once("include/kommentar.php");
 
 	/*! \brief Verwaltet Mitglieder
 	 *
@@ -10,6 +11,9 @@ if(!defined("Mitglied"))
 	 *  von Mitgliedern bereit.
 	 *  \pre Datenbankverbindung muss bestehen
 	 *  \sa
+	 *  - Kommentar::DeleteAllMember
+	 *  - Login::IsAdministrator
+	 *  - Login::IsMember
 	 *  - SQLDB::Query
 	 *  - SQLDB::Fetch
 	 */
@@ -35,6 +39,7 @@ if(!defined("Mitglied"))
 			global $db_config, $sqldb;
 			$sql = "SELECT Mitglieds_Nr, Login, Passwort, Rechte, Vorname, Name, Email
 					FROM ".$db_config['prefix']."Mitglieder
+					WHERE Mitglieds_Nr='$nr'
 					LIMIT 1";
 			$sqldb->Query($sql);
 			
@@ -81,15 +86,22 @@ if(!defined("Mitglied"))
 		 *  Kommentare
 		 *  \pre Datenbankverbindung muss bestehen
 		 *  \param[in] $nr Mitglieds_Nr des zu löschenden Mitglieds
+		 *  \remarks Ist der Nutzer nicht als Administrator angemeldet,
+		 *    werden keine Operationen ausgeführt
 		 */
 		function Delete($nr)
 		{
-			global $db_config, $sqldb;
+			global $db_config, $sqldb, $login;
 
-			$sql = "DELETE FROM ".$db_config['prefix']."Mitglieder
-					WHERE Mitglieds_Nr = '$nr'
-					LIMIT 1";
-			$sqldb->Query($sql);
+			if ($login->IsAdministrator() === true)
+			{
+				$sql = "DELETE FROM ".$db_config['prefix']."Mitglieder
+						WHERE Mitglieds_Nr = '$nr'
+						LIMIT 1";
+				$sqldb->Query($sql);
+
+				Kommentar::DeleteAllMember($nr);
+			}
 		}
 		
 		/*! \brief Legt  Mitglied an
@@ -111,30 +123,39 @@ if(!defined("Mitglied"))
 		 *  \param[in] $email E-Mail-Adresse des neuen Mitglieds
 		 *  \retval true Mitglied wurde eingefügt
 		 *  \retval false Mitglied konnte nicht hinzugefügt werden
+		 *  \remarks Ist der Nutzer nicht als Administrator angemeldet,
+		 *    werden keine Operationen ausgeführt.
 		 */
 		function Insert($login, $passwort, $rechte, $vorname, $nachname, $email)
 		{
-			global $db_config, $sqldb;
+			global $db_config, $sqldb, $login;
 
-			$rechtestring = "";
-			switch ($rechte)
+			if ($login->IsAdministrator() === true)
 			{
-			case 2:
-				$rechtestring = "Administrator";
-				break;
-			default:
-			case 1:
-				$rechtestring = "Benutzer";
-				break;
-			}
-
-			$passworthash = Mitglied::PasswordHash($passwort);
-			$sql = "INSERT INTO ".$db_config['prefix']."Mitglieder
-					VALUES (NULL, '$nachname', '$vorname', '$email', '$login', '$passworthash', '$rechtestring')";
-			
-			if ($sqldb->Query($sql) !== false)
-			{
-				return true;
+				$rechtestring = "";
+				switch ($rechte)
+				{
+				case 2:
+					$rechtestring = "Administrator";
+					break;
+				default:
+				case 1:
+					$rechtestring = "Benutzer";
+					break;
+				}
+	
+				$passworthash = Mitglied::PasswordHash($passwort);
+				$sql = "INSERT INTO ".$db_config['prefix']."Mitglieder
+						VALUES (NULL, '$nachname', '$vorname', '$email', '$login', '$passworthash', '$rechtestring')";
+				
+				if ($sqldb->Query($sql) !== false)
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
 			}
 			else
 			{
@@ -164,44 +185,54 @@ if(!defined("Mitglied"))
 		 *  \param[in] $email neue E-Mail-Adresse des Mitglieds
 		 *  \retval true Mitglied wurde geändert
 		 *  \retval false Mitglied konnte nicht geändert werden
+		 *  \remarks Ist der Nutzer nicht als Administrator angemeldet,
+		 *    werden keine Operationen ausgeführt, wenn $nr ungleich
+		 *    der eigenen Mitglieds_Nr is.
 		 */
 		function Update($nr, $login, $passwort, $rechte, $vorname, $nachname, $email)
 		{
-			global $db_config, $sqldb;
+			global $db_config, $sqldb, $login;
 
-			$rechtestring = "";
-			switch ($rechte)
+			if ($login->IsAdministrator() === true || $nr == $login->Nr)
 			{
-			case 2:
-				$rechtestring = "Administrator";
-				break;
-			default:
-			case 1:
-				$rechtestring = "Benutzer";
-				break;
-			}
-
-			$sql = "";
-			if (empty($passwort) === true)
-			{
-				
-				$sql = "UPDATE ".$db_config['prefix']."Mitglieder
-						SET Login='$login', Rechte='$rechtestring', Vorname='$vorname', Name='$nachname', Email='$email'
-						WHERE Mitglieds_Nr='$nr'
-						LIMIT 1";
-			}
-			else
-			{
-				$passworthash = Mitglied::PasswordHash($passwort);
-				$sql = "UPDATE ".$db_config['prefix']."Mitglieder
-						SET Login='$login', Passwort='$passworthash', Rechte='$rechtestring', Vorname='$vorname', Name='$nachname', Email='$email'
-						WHERE Mitglieds_Nr='$nr'
-						LIMIT 1";
-			}
-
-			if ($sqldb->Query($sql) !== false)
-			{
-				return true;
+				$rechtestring = "";
+				switch ($rechte)
+				{
+				case 2:
+					$rechtestring = "Administrator";
+					break;
+				default:
+				case 1:
+					$rechtestring = "Benutzer";
+					break;
+				}
+	
+				$sql = "";
+				if (empty($passwort) === true)
+				{
+					
+					$sql = "UPDATE ".$db_config['prefix']."Mitglieder
+							SET Login='$login', Rechte='$rechtestring', Vorname='$vorname', Name='$nachname', Email='$email'
+							WHERE Mitglieds_Nr='$nr'
+							LIMIT 1";
+				}
+				else
+				{
+					$passworthash = Mitglied::PasswordHash($passwort);
+					$sql = "UPDATE ".$db_config['prefix']."Mitglieder
+							SET Login='$login', Passwort='$passworthash', Rechte='$rechtestring', Vorname='$vorname', Name='$nachname', Email='$email'
+							WHERE Mitglieds_Nr='$nr'
+							LIMIT 1";
+				}
+	
+				if ($sqldb->Query($sql) !== false)
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
 			}
 			else
 			{
@@ -221,20 +252,40 @@ if(!defined("Mitglied"))
 		 *    - Vorname
 		 *    - Nachname
 		 *    - Email
+		 *  \remarks Ist der Nutzer nicht als Administrator, sondern
+		 *    als Mitglied angemeldet, wird nur der eigene Eintrag
+		 *    zurückgegeben. Ist der Nutzer nicht angemeldet werden
+		 *    keine Operationen ausgeführt.
 		 */
 		function GetAll()
 		{
-			global $db_config, $sqldb;
+			global $db_config, $sqldb, $login;
 
 			$members = array();
-			
-			$sql = "SELECT Mitglieds_Nr AS Nr, Login, Vorname, Name AS Nachname, Email
-					FROM ".$db_config['prefix']."Mitglieder";
-			$sqldb->Query($sql);
-			
-			while ($cur = $sqldb->Fetch())
+
+			if ($login->IsAdministrator() === true)
 			{
-				$members[] = $cur;
+				$sql = "SELECT Mitglieds_Nr AS Nr, Login, Vorname, Name AS Nachname, Email
+						FROM ".$db_config['prefix']."Mitglieder";
+				$sqldb->Query($sql);
+				
+				while ($cur = $sqldb->Fetch())
+				{
+					$members[] = $cur;
+				}
+			}
+			elseif ($login->IsMember() === true)
+			{
+				$sql = "SELECT Mitglieds_Nr AS Nr, Login, Vorname, Name AS Nachname, Email
+						FROM ".$db_config['prefix']."Mitglieder
+						WHERE Mitglieds_Nr='".$login->Nr."'
+						LIMIT 1";
+				$sqldb->Query($sql);
+				
+				if ($cur = $sqldb->Fetch())
+				{
+					$members[] = $cur;
+				}
 			}
 
 			return $members;

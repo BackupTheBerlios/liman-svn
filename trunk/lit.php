@@ -3,6 +3,17 @@
 	//$extracss = "home.css";
 
 	require_once("include/header.php");
+	require_once("include/literatur.php");
+
+	$literatur;
+	if (isset($_GET["id"]))
+	{
+		$literatur = new Literatur($_GET["id"]);
+	}
+	else
+	{
+		$literatur = new Literatur(0);
+	}
 ?>
 <div id="cfront" class="content">
 	<hr>
@@ -11,53 +22,48 @@
 		<tbody>
 			<tr>
 				<th scope="row">Titel:</th>	
-				<td>Algorithmen</td>
+				<td><?=htmlspecialchars($literatur->Titel); ?></td>
 			</tr>
 			<tr>
 				<th scope="row">Autor:</th>	
-				<td>Sedgewick</td>
+				<td><?php
+					$autorlist = "";
+					for ($j = 0; $j < count($literatur->Autoren); $j++)
+					{
+						if ($j != 0)
+						{
+							$autorlist .= ", ";
+						}
+						$autorlist .= $literatur->Autoren[$j]->Name;
+					}
+					echo htmlspecialchars($autorlist);
+				?></td>
 			</tr>
 			<tr>
 				<th scope="row">Erscheinungsjahr:</th>	
-				<td>1998</td>
+				<td><?=htmlspecialchars($literatur->Jahr); ?></td>
 			</tr>
 			<tr>
 				<th scope="row">Verlag:</th>	
-				<td>Pearson Studium</td>
+				<td><?=htmlspecialchars($literatur->Verlag); ?></td>
 			</tr>
 			<tr>
 				<th scope="row">Verlagsort:</th>	
-				<td>Bonn ; München ; Paris [u.a.]</td>
+				<td><?=htmlspecialchars($literatur->Ort); ?></td>
 			</tr>
 
 			<tr>
 				<th scope="row">ISBN:</th>	
-				<td>3-8273-7032-9</td>
+				<td><?=htmlspecialchars($literatur->ISBN); ?></td>
 			</tr>
 			<tr>
-				<th scope="row">Bemerkung:</th>	
-				<td>Robert Sedgewicks bekanntes Standardwerk stellt die wichtigsten Algorithmen klar und umfassend dar. Von elementaren Datenstrukturen und Algorithmen wie Such- und Sortieralgorithmen schlägt Sedgewick einen Bogen bis hin zu modernen Ansätzen und vermittelt dem Leser einen fundierten Überblick über die vielfältigen Möglichkeiten der Problemlösung anhand von Datenstrukturen.</td>
+				<th scope="row">Beschreibung:</th>	
+				<td><?=nl2br(htmlspecialchars($literatur->Beschreibung)); ?></td>
 			</tr>
 			<tr>
 				<th scope="row">Bibtex:</th>	
 				<td>
-				<pre><?php
-					require_once($basepath."include/bibtex.php");
-					$example = " aber trotzdem wird dieses kaputte dokument nicht falsch erkannt
-						@article{     lin1973,
-									author = \"Sedgewick\",
-									title = \"Algorithmen\",
-									year = 1998
-								}";
-					if (($asd = BibTeX::parse($example)) !== false)
-					{
-						foreach($asd as $d)
-						{
-							echo htmlspecialchars($d->toString());
-						}
-					}
-					?>
-				</pre>
+					<pre><?= htmlspecialchars($literatur->ToBibtex()); ?></pre>
 				</td>
 			</tr>
 			<tr>
@@ -70,11 +76,19 @@
 
 	<table id="litkommentare">
 		<tbody>
-			<tr>
-				<th scope="row">Hans Wurst:<br></th>	
-				<td>Tolle Dramatik, wirklich fesselnder Storyverlauf, nur das Ende war ein bisschen matt.</td>
-				<td><span style="font-size: xx-small"><a href="loeschen.php">(loeschen)</a></span></td>
-			</tr>
+			<?php
+				for ($i = 0; $i < count($literatur->Kommentare); $i++)
+				{
+					$cur = $literatur->Kommentare[$i];
+			?>
+				<tr>
+					<th scope="row"><?=htmlspecialchars($cur->Verfasser_Name);?>:</th>	
+					<td><?=htmlspecialchars($cur->Text);?></td>
+					<td><span style="font-size: xx-small"><a href="loeschen.php">(loeschen)</a></span></td>
+				</tr>
+			<?
+				}
+			?>
 			<tr>
 				<th scope="row">Neuer Kommentar:</th>	
 				<td>
@@ -82,9 +96,6 @@
 				<input type="submit" value="Kommentar senden"></td>
 				<td>&nbsp;</td>
 			</tr>
-
-
-
 
 		</tbody>
 	</table>

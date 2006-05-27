@@ -16,6 +16,8 @@ Verwaltet Kommentare.
 \begin{CompactList}\small\item\em Löscht alle zu einer \hyperlink{classLiteratur}{Literatur} gehörenden Kommentare. \item\end{CompactList}\item 
 \hyperlink{classKommentar_92a8fcea1b065341c7c53e8a8464fcf0}{Delete\-All\-Member} (\$member\_\-nr)
 \begin{CompactList}\small\item\em Löscht alle zu einem \hyperlink{classMitglied}{Mitglied} gehörenden Kommentare. \item\end{CompactList}\item 
+\hyperlink{classKommentar_33d65db8c526c50017a5fa029bc04416}{Get\-All} (\$literatur\_\-nr)
+\begin{CompactList}\small\item\em Gibt Kommentare zu bestimmter \hyperlink{classLiteratur}{Literatur} zurück. \item\end{CompactList}\item 
 \hyperlink{classKommentar_6119b3c12a61d8d5a41cded165517914}{Insert} (\$text, \$verfasser\_\-nr, \$literatur\_\-nr)
 \begin{CompactList}\small\item\em Legt \hyperlink{classKommentar}{Kommentar} an. \item\end{CompactList}\item 
 \hyperlink{classKommentar_0b3e20e910493e67b67b747243f04511}{Update} (\$nr, \$text)
@@ -37,10 +39,10 @@ Verwaltet Kommentare.
 Verwaltet Kommentare. 
 
 Stellt Funktionen zum Anlegen, Löschen, Bearbeiten von Kommentaren bereit. Es können sowohl einzelne Kommentare oder nach Literatur- bzw. Mitgliederverbundenen Kommentaren gelöscht werden. \begin{Desc}
-\item[Vorbedingung:]Datenbankverbindung muss bestehen $\ast$\end{Desc}
+\item[Vorbedingung:]Datenbankverbindung muss bestehen \end{Desc}
 \begin{Desc}
 \item[Importiert:]\begin{itemize}
-\item \hyperlink{classSQLDB_fc6ffa8df50f68f07d9f5e3385b96d7a}{SQLDB::Query}\item \hyperlink{classSQLDB_a55c00ce1de0e50e0a58cae61892ba35}{SQLDB::Fetch} \end{itemize}
+\item \hyperlink{classLogin_6c120224aa6719f58c6ccd08acc28758}{Login::Is\-Administrator}\item \hyperlink{classLogin_70d2747b0aa454f4203a789afea25318}{Login::Is\-Member}\item \hyperlink{classSQLDB_fc6ffa8df50f68f07d9f5e3385b96d7a}{SQLDB::Query}\item \hyperlink{classSQLDB_a55c00ce1de0e50e0a58cae61892ba35}{SQLDB::Fetch} \end{itemize}
 \end{Desc}
 
 
@@ -84,6 +86,8 @@ Löscht einen \hyperlink{classKommentar}{Kommentar} aus Kommentare mit der Komme
 \begin{description}
 \item[\mbox{$\leftarrow$} {\em \$nr}]Nummer des zu löschenden Kommentars \end{description}
 \end{Desc}
+\begin{Desc}
+\item[Bemerkungen:]Ist der Nutzer nicht als Administrator angemeldet, werden keine Operationen ausgeführt, wenn Mitglieds\_\-Nr des Kommentars ungleich der eigenen Mitglieds\_\-Nr ist. Ist der Nutzer nicht angemeldet, werden keine Operationen ausgeführt \end{Desc}
 \hypertarget{classKommentar_9903f1df98f71eefa3b44a81d6a8ee5c}{
 \index{Kommentar@{Kommentar}!DeleteAll@{DeleteAll}}
 \index{DeleteAll@{DeleteAll}!Kommentar@{Kommentar}}
@@ -100,6 +104,8 @@ Löscht alle Kommentare aus Kommentare, die mit \hyperlink{classLiteratur}{Liter
 \begin{description}
 \item[\mbox{$\leftarrow$} {\em \$literatur\_\-nr}]Nummer der \hyperlink{classLiteratur}{Literatur} \end{description}
 \end{Desc}
+\begin{Desc}
+\item[Bemerkungen:]Ist Nutzer nicht eingeloggt, werden keine Operationen ausgeführt. \end{Desc}
 \hypertarget{classKommentar_92a8fcea1b065341c7c53e8a8464fcf0}{
 \index{Kommentar@{Kommentar}!DeleteAllMember@{DeleteAllMember}}
 \index{DeleteAllMember@{DeleteAllMember}!Kommentar@{Kommentar}}
@@ -116,6 +122,26 @@ Löscht alle Kommentare aus Kommentare, die mit Mitglieder mit der Mitglieds\_\-
 \begin{description}
 \item[\mbox{$\leftarrow$} {\em \$member\_\-nr}]Nummer eines Mitglieds \end{description}
 \end{Desc}
+\begin{Desc}
+\item[Bemerkungen:]Ist der Nutzer nicht als Administrator eingeloggt, werden keine Operationen ausgeführt. \end{Desc}
+\hypertarget{classKommentar_33d65db8c526c50017a5fa029bc04416}{
+\index{Kommentar@{Kommentar}!GetAll@{GetAll}}
+\index{GetAll@{GetAll}!Kommentar@{Kommentar}}
+\paragraph[GetAll]{\setlength{\rightskip}{0pt plus 5cm}Kommentar::Get\-All (\$ {\em literatur\_\-nr})}\hfill}
+\label{classKommentar_33d65db8c526c50017a5fa029bc04416}
+
+
+Gibt Kommentare zu bestimmter \hyperlink{classLiteratur}{Literatur} zurück. 
+
+Liest alle Kommentare die einer \hyperlink{classLiteratur}{Literatur} (\$nr) zugeordnet sind aus Kommentare aus und gibt sie als Feld des Typs \hyperlink{classKommentar}{Kommentar} zurück. \begin{Desc}
+\item[Parameter:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em \$literatur\_\-nr}]Nr einer \hyperlink{classLiteratur}{Literatur} mit Kommentaren \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Vorbedingung:]Datenbankverbindung muss bestehen \end{Desc}
+\begin{Desc}
+\item[R\"{u}ckgabe:]Feld vom Typ \hyperlink{classKommentar}{Kommentar} \end{Desc}
 \hypertarget{classKommentar_6119b3c12a61d8d5a41cded165517914}{
 \index{Kommentar@{Kommentar}!Insert@{Insert}}
 \index{Insert@{Insert}!Kommentar@{Kommentar}}
@@ -125,13 +151,15 @@ Löscht alle Kommentare aus Kommentare, die mit Mitglieder mit der Mitglieds\_\-
 
 Legt \hyperlink{classKommentar}{Kommentar} an. 
 
-Legt einen neuen \hyperlink{classKommentar}{Kommentar} mit Text (\$text) zu einer \hyperlink{classLiteratur}{Literatur} (\$literatur\_\-nr) vom einem Verfasser (\$verfasser\_\-nr) an. Ist das aktuelle \hyperlink{classMitglied}{Mitglied} kein Administrator, dann muss \$verfasser\_\-nr gleich der aktuellen Nummer des Logins sein. \begin{Desc}
+Legt einen neuen \hyperlink{classKommentar}{Kommentar} mit Text (\$text) zu einer \hyperlink{classLiteratur}{Literatur} (\$literatur\_\-nr) vom einem Verfasser (\$verfasser\_\-nr) an. \begin{Desc}
 \item[Vorbedingung:]Datenbankverbindung muss bestehen \end{Desc}
 \begin{Desc}
 \item[Parameter:]
 \begin{description}
 \item[\mbox{$\leftarrow$} {\em \$text}]Text des Kommentars \item[\mbox{$\leftarrow$} {\em \$verfasser\_\-nr}]Mitglieds\_\-Nr des Verfassers \item[\mbox{$\leftarrow$} {\em \$literatur\_\-nr}]Nummer der \hyperlink{classLiteratur}{Literatur} \end{description}
 \end{Desc}
+\begin{Desc}
+\item[Bemerkungen:]Ist das aktuelle \hyperlink{classMitglied}{Mitglied} kein Administrator, dann muss \$verfasser\_\-nr gleich der aktuellen Nummer des Logins sein. Ist der Nutzer nicht eingeloggt, werden keine Operationen ausgeführt. \end{Desc}
 \hypertarget{classKommentar_0b3e20e910493e67b67b747243f04511}{
 \index{Kommentar@{Kommentar}!Update@{Update}}
 \index{Update@{Update}!Kommentar@{Kommentar}}
@@ -141,13 +169,15 @@ Legt einen neuen \hyperlink{classKommentar}{Kommentar} mit Text (\$text) zu eine
 
 Ändert einen \hyperlink{classKommentar}{Kommentar}. 
 
-Ändert in Kommentare den Text des Kommentars mit \$nr in \$text. Ist das aktuelle \hyperlink{classMitglied}{Mitglied} kein Administrator, dann muss die aktuelle Nummer des Mitglieds gleich der Mitglieds\_\-Nr des Kommentars in Kommentare sein. \begin{Desc}
+Ändert in Kommentare den Text des Kommentars mit \$nr in \$text. \begin{Desc}
 \item[Vorbedingung:]Datenbankverbindung muss bestehen \end{Desc}
 \begin{Desc}
 \item[Parameter:]
 \begin{description}
 \item[\mbox{$\leftarrow$} {\em \$nr}]Nummer des zu verändernden Kommentars \item[\mbox{$\leftarrow$} {\em \$text}]neuer Text des Kommentars \end{description}
 \end{Desc}
+\begin{Desc}
+\item[Bemerkungen:]Ist das aktuelle \hyperlink{classMitglied}{Mitglied} kein Administrator, dann muss die aktuelle Nummer des Mitglieds gleich der Mitglieds\_\-Nr des Kommentars in Kommentare sein. Ist der Nutzer nicht eingeloggt, werden keine Operationen ausgeführt. \end{Desc}
 
 
 \subsubsection{Dokumentation der Datenelemente}

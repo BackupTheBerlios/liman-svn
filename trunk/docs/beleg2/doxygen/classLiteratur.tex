@@ -52,6 +52,10 @@ Verwaltet \hyperlink{classLiteratur}{Literatur}.
 
 Stellt Funktionen zum Abruf, Exportieren, Löschen, Importieren, Hinzufügen und Ändern von \hyperlink{classLiteratur}{Literatur} in Bibliothek zur Verfügung. \begin{Desc}
 \item[Vorbedingung:]Datenbankverbindung muss bestehen \end{Desc}
+\begin{Desc}
+\item[Importiert:]\begin{itemize}
+\item \hyperlink{classAutor_77b27af7e471abe5a404fc92c7319921}{Autor::Clean}\item \hyperlink{classAutor_79cd90084cab240919a5daecf39156a7}{Autor::Get\-All}\item \hyperlink{classAutor_2ba5418b6622f414fa8a054e6c2a2db8}{Autor::Split}\item \hyperlink{classKommentar_9903f1df98f71eefa3b44a81d6a8ee5c}{Kommentar::Delete\-All}\item \hyperlink{classKommentar_33d65db8c526c50017a5fa029bc04416}{Kommentar::Get\-All}\item \hyperlink{classLiteraturArt_b3312217430531ed7821a46a39c49af7}{Literatur\-Art::Literatur\-Art}\item \hyperlink{classLogin_6c120224aa6719f58c6ccd08acc28758}{Login::Is\-Administrator}\item \hyperlink{classLogin_70d2747b0aa454f4203a789afea25318}{Login::Is\-Member}\item \hyperlink{classSQLDB_fc6ffa8df50f68f07d9f5e3385b96d7a}{SQLDB::Query}\item \hyperlink{classSQLDB_a55c00ce1de0e50e0a58cae61892ba35}{SQLDB::Fetch} \end{itemize}
+\end{Desc}
 
 
 
@@ -71,7 +75,7 @@ Erstellt aus \hyperlink{classLiteratur}{Literatur} in Bibliothek mit Literatur\_
 \begin{Desc}
 \item[Parameter:]
 \begin{description}
-\item[\mbox{$\leftarrow$} {\em \$nr}]Nummer der zu einlesenden \hyperlink{classLiteratur}{Literatur}\end{description}
+\item[\mbox{$\leftarrow$} {\em \$nr}]Nummer der zu einlesenden \hyperlink{classLiteratur}{Literatur} \end{description}
 \end{Desc}
 
 
@@ -90,8 +94,10 @@ Löscht \hyperlink{classLiteratur}{Literatur} aus Bibliothek mit der Literatur\_
 \begin{Desc}
 \item[Parameter:]
 \begin{description}
-\item[\mbox{$\leftarrow$} {\em \$nr}]Nummer der zu löschenden \hyperlink{classLiteratur}{Literatur}\end{description}
+\item[\mbox{$\leftarrow$} {\em \$nr}]Nummer der zu löschenden \hyperlink{classLiteratur}{Literatur} \end{description}
 \end{Desc}
+\begin{Desc}
+\item[Bemerkungen:]Ist der Nutzer nicht als \hyperlink{classMitglied}{Mitglied} angemeldet, werden keine Operationen ausgeführt \end{Desc}
 \hypertarget{classLiteratur_3347551316e8f73659fc6f32ac6095df}{
 \index{Literatur@{Literatur}!Insert@{Insert}}
 \index{Insert@{Insert}!Literatur@{Literatur}}
@@ -106,8 +112,10 @@ Legt neue \hyperlink{classLiteratur}{Literatur} in Bibliothek mit den übergeben
 \begin{Desc}
 \item[Parameter:]
 \begin{description}
-\item[\mbox{$\leftarrow$} {\em \$autoren}]String mit kommagetrennter Liste von Autoren \item[\mbox{$\leftarrow$} {\em \$art}]Bezeichner der Literaturart \item[\mbox{$\leftarrow$} {\em \$titel}]Titel der \hyperlink{classLiteratur}{Literatur} \item[\mbox{$\leftarrow$} {\em \$jahr}]Erscheinungsjahr der \hyperlink{classLiteratur}{Literatur} \item[\mbox{$\leftarrow$} {\em \$verlag}]Verlag der \hyperlink{classLiteratur}{Literatur} \item[\mbox{$\leftarrow$} {\em \$isbn}]ISBN der \hyperlink{classLiteratur}{Literatur} \item[\mbox{$\leftarrow$} {\em \$beschreibung}]Beschreibung der \hyperlink{classLiteratur}{Literatur} \item[\mbox{$\leftarrow$} {\em \$ort}]Erscheinungsort \item[\mbox{$\leftarrow$} {\em \$stichworte}]Stichworte\end{description}
+\item[\mbox{$\leftarrow$} {\em \$autoren}]String mit kommagetrennter Liste von Autoren \item[\mbox{$\leftarrow$} {\em \$art}]Bezeichner der Literaturart \item[\mbox{$\leftarrow$} {\em \$titel}]Titel der \hyperlink{classLiteratur}{Literatur} \item[\mbox{$\leftarrow$} {\em \$jahr}]Erscheinungsjahr der \hyperlink{classLiteratur}{Literatur} \item[\mbox{$\leftarrow$} {\em \$verlag}]Verlag der \hyperlink{classLiteratur}{Literatur} \item[\mbox{$\leftarrow$} {\em \$isbn}]ISBN der \hyperlink{classLiteratur}{Literatur} \item[\mbox{$\leftarrow$} {\em \$beschreibung}]Beschreibung der \hyperlink{classLiteratur}{Literatur} \item[\mbox{$\leftarrow$} {\em \$ort}]Erscheinungsort \item[\mbox{$\leftarrow$} {\em \$stichworte}]Stichworte \end{description}
 \end{Desc}
+\begin{Desc}
+\item[Bemerkungen:]Ist der Nutzer nicht als \hyperlink{classMitglied}{Mitglied} angemeldet, werden keine Operationen ausgeführt \end{Desc}
 \hypertarget{classLiteratur_d466a307b1971ee736e1d4ba9342dc55}{
 \index{Literatur@{Literatur}!InsertBibTeX@{InsertBibTeX}}
 \index{InsertBibTeX@{InsertBibTeX}!Literatur@{Literatur}}
@@ -136,7 +144,7 @@ Exportiert \hyperlink{classLiteratur}{Literatur} nach \hyperlink{classBibTeX}{Bi
 Exportiert die aktuellen Informationen im Literaturobjekt in das Bib\-Te\-X-Format. \begin{Desc}
 \item[Vorbedingung:]- \end{Desc}
 \begin{Desc}
-\item[R\"{u}ckgabe:]\$string mit Bib\-Te\-X-Eintrag\end{Desc}
+\item[R\"{u}ckgabe:]\$string mit Bib\-Te\-X-Eintrag \end{Desc}
 \hypertarget{classLiteratur_b613c28476ea28058f8fc2bccb57c923}{
 \index{Literatur@{Literatur}!Update@{Update}}
 \index{Update@{Update}!Literatur@{Literatur}}
@@ -151,8 +159,10 @@ Entfernt alle zur Literatur\_\-Nr (\$nr) gehörenden Verbindungen in Autor\_\-Li
 \begin{Desc}
 \item[Parameter:]
 \begin{description}
-\item[\mbox{$\leftarrow$} {\em \$nr}]Nummer der zu verändernden \hyperlink{classLiteratur}{Literatur} \item[\mbox{$\leftarrow$} {\em \$autoren}]String mit kommagetrennter Liste von Autoren \item[\mbox{$\leftarrow$} {\em \$art}]neuer Bezeichner der Literaturart \item[\mbox{$\leftarrow$} {\em \$titel}]neuer Titel der \hyperlink{classLiteratur}{Literatur} \item[\mbox{$\leftarrow$} {\em \$jahr}]neues Erscheinungsjahr der \hyperlink{classLiteratur}{Literatur} \item[\mbox{$\leftarrow$} {\em \$verlag}]neuer Verlag der \hyperlink{classLiteratur}{Literatur} \item[\mbox{$\leftarrow$} {\em \$isbn}]neue ISBN der \hyperlink{classLiteratur}{Literatur} \item[\mbox{$\leftarrow$} {\em \$beschreibung}]neue Beschreibung der \hyperlink{classLiteratur}{Literatur} \item[\mbox{$\leftarrow$} {\em \$ort}]neuer Erscheinungsort \item[\mbox{$\leftarrow$} {\em \$stichworte}]neue Stichworte\end{description}
+\item[\mbox{$\leftarrow$} {\em \$nr}]Nummer der zu verändernden \hyperlink{classLiteratur}{Literatur} \item[\mbox{$\leftarrow$} {\em \$autoren}]String mit kommagetrennter Liste von Autoren \item[\mbox{$\leftarrow$} {\em \$art}]neuer Bezeichner der Literaturart \item[\mbox{$\leftarrow$} {\em \$titel}]neuer Titel der \hyperlink{classLiteratur}{Literatur} \item[\mbox{$\leftarrow$} {\em \$jahr}]neues Erscheinungsjahr der \hyperlink{classLiteratur}{Literatur} \item[\mbox{$\leftarrow$} {\em \$verlag}]neuer Verlag der \hyperlink{classLiteratur}{Literatur} \item[\mbox{$\leftarrow$} {\em \$isbn}]neue ISBN der \hyperlink{classLiteratur}{Literatur} \item[\mbox{$\leftarrow$} {\em \$beschreibung}]neue Beschreibung der \hyperlink{classLiteratur}{Literatur} \item[\mbox{$\leftarrow$} {\em \$ort}]neuer Erscheinungsort \item[\mbox{$\leftarrow$} {\em \$stichworte}]neue Stichworte \end{description}
 \end{Desc}
+\begin{Desc}
+\item[Bemerkungen:]Ist der Nutzer nicht als \hyperlink{classMitglied}{Mitglied} angemeldet, werden keine Operationen ausgeführt \end{Desc}
 
 
 \subsubsection{Dokumentation der Datenelemente}

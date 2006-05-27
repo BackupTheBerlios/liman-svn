@@ -71,7 +71,7 @@ if(!defined("LiteraturArt"))
 				break;
 
 			case "Diplomarbeit":
-			case "mastersthesis":
+			case "masterthesis":
 				$this->value = 6;
 				break;
 
@@ -176,7 +176,7 @@ if(!defined("LiteraturArt"))
 				return "manual";
 
 			case 6:
-				return "mastersthesis";
+				return "masterthesis";
 
 			case 7:
 				return "phdthesis";
