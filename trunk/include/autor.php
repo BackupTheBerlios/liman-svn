@@ -126,7 +126,8 @@ if(!defined("Autor"))
 						$sqlIdentity = "SELECT @@IDENTITY AS Nr FROM ".$db_config['prefix']."Autoren";
 						$sqldb->Query( $sqlInsert );
 						$sqldb->Query( $sqlIdentity );
-						$authorNumbers[] = $sqldb->Fetch()->Nr;
+						$line = $sqldb->Fetch();
+						$authorNumbers[] = $line->Nr;
 					}
 				}
 			}
