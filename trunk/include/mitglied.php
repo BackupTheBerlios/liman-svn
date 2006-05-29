@@ -1,7 +1,4 @@
 <?php
-if(!defined("Mitglied"))
-{
-	define("Mitglied", 1);
 	require_once("include/login.php");
 	require_once("include/kommentar.php");
 
@@ -291,5 +288,4 @@ if(!defined("Mitglied"))
 			return $members;
 		}
 	}
-}
 ?>

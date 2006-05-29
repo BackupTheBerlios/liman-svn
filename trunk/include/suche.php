@@ -1,7 +1,4 @@
 <?php
-if(!defined("Suche"))
-{
-	define("Suche", 1);
 	require_once("include/autor.php");
 	require_once("include/literatur.php");
 
@@ -137,6 +134,9 @@ if(!defined("Suche"))
 		 *  \param[in] $titel String mit Literaturtitel
 		 *  \param[in] $autor String mit Autorname
 		 *  \private
+		 *  \remarks Wird eine kommagetrennte Liste von Autoren als
+		 *    $autor übergeben, muss in Treffern nur einer der
+		 *    genannten Autoren auftreten.
 		 */
 		function AutorTitelSuche($titel, $autor)
 		{
@@ -153,10 +153,25 @@ if(!defined("Suche"))
 							ON bibliothek.Literatur_Nr = connect.Literatur_Nr)
 						INNER JOIN  ".$db_config['prefix']."Autoren AS autoren
 						ON connect.Autor_Nr = autoren.Autor_Nr
-						WHERE bibliothek.Titel like '%".$titel."%' AND
-							autoren.Autorname like '%".$autor."%'";
-				$sqldb->Query($sql);
+						WHERE bibliothek.Titel like '%".$titel."%'";
 
+				if (empty($autor) !== false)
+				{
+					$sql .= " AND (";
+					$authors = array();
+					$authors = split(",", $autor);
+					for($i = 0; $i < count($authors); $i++)
+					{
+						if ($i != 0)
+						{
+							$sql .= " OR ";
+						}
+						$sql .= "autoren.Autorname like '%".trim($authors[$i])."%'";
+					}
+					$sql .= ")";
+				}
+
+				$sqldb->Query($sql);
 				while ($cur = $sqldb->Fetch())
 				{
 					$this->Treffer[] = $cur;	
@@ -205,6 +220,9 @@ if(!defined("Suche"))
 		 *    als als Objekt im Feld $Treffer. Sollte ein Fehler auftreten
 		 *    und ISBN der Treffer oder keine passenden Einträge vorhanden
 		 *    sein, dann wird $Treffer ein Feld der Länge 0.
+		 *  - Wird eine kommagetrennte Liste von Autoren als
+		 *    $autor übergeben, muss in Treffern nur einer der
+		 *    genannten Autoren auftreten.
 		 *
 		 *  \pre Datenbankverbindung muss bestehen.
 		 *  \param[in] $autor String mit Autorname
@@ -227,5 +245,4 @@ if(!defined("Suche"))
 			}
 		}
 	}
-}
 ?>

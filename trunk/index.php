@@ -6,7 +6,6 @@
 ?>
 <div id="cfront" class="content">
 	
-	<br>
 	<table id="searchresult">
 		<thead>
 			<tr>
@@ -35,14 +34,19 @@
 			?>
 		</tbody>
 	</table>
-	<br>
-	<hr>
-	<br>
-	<form action="litmod.php">
-		<div>
-			<input type="submit" value="Literatur hinzuf&uuml;gen">
-		</div>
-	</form>
+	<?php
+		if ($login->IsMember() === true)
+		{
+	?>
+		<hr>
+		<form action="litmod.php">
+			<div>
+				<input type="submit" value="Literatur hinzuf&uuml;gen">
+			</div>
+		</form>
+	<?php
+		}
+	?>
 
 
 </div>

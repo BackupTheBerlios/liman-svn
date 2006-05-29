@@ -1,8 +1,4 @@
 <?php
-if(!defined("Autor"))
-{
-	define("Autor", 1);
-
 	/*! \brief Verwaltet Autoren
 	 *
 	 *  Stellt Funktionen zum Hinzufügen von Autoren und Bereinigen nicht
@@ -135,5 +131,4 @@ if(!defined("Autor"))
 			return $authorNumbers;
 		}
 	}
-}
 ?>

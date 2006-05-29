@@ -1,8 +1,4 @@
 <?php
-if(!defined("LiteraturArt"))
-{
-	define("LiteraturArt", 1);
-
 	/*! \brief Verwaltet Literaturarten
 	 *
 	 *  Verwaltet die aus der Datenbank oder BibTeX-Datei erhaltenen
@@ -193,5 +189,4 @@ if(!defined("LiteraturArt"))
 			};
 		}
 	}
-}
 ?>

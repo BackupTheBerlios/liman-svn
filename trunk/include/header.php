@@ -47,9 +47,9 @@
 
 				<div id="search">
 					<h2><span>Suchen</span></h2>
-					<form action="search.<?=$ext;?>" id="searchform" method="post">
+					<form action="search.<?=$ext;?>" id="searchform" method="get">
 						<div>
-						<input name="search" value="" type="text">
+						<input name="suchbegriff" value="" type="text">
 						<input value="Suche" type="submit">
 						<span style="font-size: xx-small"><a href="searchmore.php">Erweiterte Suche</a></span>
 						</div>

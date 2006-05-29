@@ -15,6 +15,15 @@ h1 {
 	margin-left: 1em;
 }
 
+hr {
+	margin-top: 2em;
+	margin-bottom: 2em;
+}
+
+#content h2 {
+	padding-bottom: 1em;
+}
+
 #sidebar {
 	float: left;
 	width: 11.5em;

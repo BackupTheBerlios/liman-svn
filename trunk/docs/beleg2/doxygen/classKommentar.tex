@@ -159,7 +159,7 @@ Legt einen neuen \hyperlink{classKommentar}{Kommentar} mit Text (\$text) zu eine
 \item[\mbox{$\leftarrow$} {\em \$text}]Text des Kommentars \item[\mbox{$\leftarrow$} {\em \$verfasser\_\-nr}]Mitglieds\_\-Nr des Verfassers \item[\mbox{$\leftarrow$} {\em \$literatur\_\-nr}]Nummer der \hyperlink{classLiteratur}{Literatur} \end{description}
 \end{Desc}
 \begin{Desc}
-\item[Bemerkungen:]Ist das aktuelle \hyperlink{classMitglied}{Mitglied} kein Administrator, dann muss \$verfasser\_\-nr gleich der aktuellen Nummer des Logins sein. Ist der Nutzer nicht eingeloggt, werden keine Operationen ausgeführt. \end{Desc}
+\item[Bemerkungen:]Ist das aktuelle \hyperlink{classMitglied}{Mitglied} kein Administrator, dann muss \$verfasser\_\-nr gleich der aktuellen Nummer des Logins sein. Ist der Nutzer nicht eingeloggt, werden keine Operationen ausgeführt. Ist keine passende \hyperlink{classLiteratur}{Literatur} mit der Literatur\_\-Nr \$literatur\_\-nr vorhanden, wird kein \hyperlink{classKommentar}{Kommentar} angelegt. Existiert schon ein \hyperlink{classKommentar}{Kommentar} zu \hyperlink{classLiteratur}{Literatur} mit \$literatur\_\-nr von \hyperlink{classMitglied}{Mitglied} mit Mitglieds\_\-Nr \$verfasser\_\-nr, wird nur der Text des Kommentars mit \hyperlink{classKommentar_0b3e20e910493e67b67b747243f04511}{Kommentar::Update} geändert. \end{Desc}
 \hypertarget{classKommentar_0b3e20e910493e67b67b747243f04511}{
 \index{Kommentar@{Kommentar}!Update@{Update}}
 \index{Update@{Update}!Kommentar@{Kommentar}}

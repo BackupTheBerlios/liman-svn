@@ -1,7 +1,4 @@
 <?php
-if(!defined("Login"))
-{
-	define("Login", 1);
 	require_once("include/mitglied.php");
 
 	/*! \brief Verwaltet Logininformationen
@@ -179,5 +176,4 @@ if(!defined("Login"))
 
 	// Globales Loginobjekt erstellen
 	$login = new Login();
-}
 ?>

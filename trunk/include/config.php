@@ -10,6 +10,4 @@
 	$db_config['prefix'] = "liman_";
 
 	$ext = "php";	// Endung der von den Usern abrufbaren Dateien
-
-	$smilies_path = $basepath."images/smilies";
 ?>

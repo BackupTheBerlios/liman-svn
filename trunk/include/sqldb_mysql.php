@@ -1,8 +1,5 @@
 <?php
-if(!defined("SQLDB"))
-{
 	define("SQLDB", "mysql");
-	
 
 	/*! \brief Datenbankzugriff über MySQL
 	 *
@@ -231,5 +228,4 @@ if(!defined("SQLDB"))
 			}
 		}
 	}
-}
 ?>

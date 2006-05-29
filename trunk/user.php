@@ -5,7 +5,6 @@
 	require_once("include/header.php");
 ?>
 <div id="cfront" class="content">
-	<br>
 	<form action="usermod.php">
 	
 	<table id="bookdetails">
@@ -35,7 +34,7 @@
 				<th scope="row">Aktionen:</th>	
 				<td>
 				<input type="submit" value="Bearbeiten">
-				<br> </td>
+				</td>
 			</tr>
 		</tbody>
 	</table>

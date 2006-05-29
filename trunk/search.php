@@ -1,12 +1,23 @@
 <?php
-	$title = "Suchergebnisse f&uuml;r \"Algorithmen\"";
 	//$extracss = "home.css";
+
+	if (isset($_GET["suchbegriff"]) === true)
+	{
+		$title = "Suchergebnisse f&uuml;r \"".htmlspecialchars(addslashes($_GET["suchbegriff"]))."\"";
+	}
+	elseif (isset($_GET["autor"]) === true && isset($_GET["titel"]) === true)
+	{
+		$title = "Suchergebnisse f&uuml;r \"".htmlspecialchars(addslashes($_GET["autor"]))."\" und \"".htmlspecialchars(addslashes($_GET["titel"]))."\"";
+	}
+	else
+	{
+		$title = "Letzte Literatur";
+	}
 
 	require_once("include/header.php");
 ?>
 <div id="cfront" class="content">
 	
-	<br>
 	<table id="searchresult">
 		<thead>
 			<tr>
@@ -19,8 +30,20 @@
 		<tbody>
 			<?php
 				require_once("include/suche.php");
-				/// \todo richtig implementieren
-				$search = new Suche("  python ");
+
+				if (isset($_GET["suchbegriff"]) === true)
+				{
+					$search = new Suche($_GET["suchbegriff"]);
+				}
+				elseif (isset($_GET["autor"]) === true && isset($_GET["titel"]) === true)
+				{
+					$search = new Suche($_GET["titel"], $_GET["autor"]);
+				}
+				else
+				{
+					$search = new Suche();
+				}
+
 				for ($i = 0; $i < count($search->Treffer); $i++)
 				{
 					$cur = $search->Treffer[$i];
@@ -36,16 +59,19 @@
 			?>
 		</tbody>
 	</table>
-	<br>
-	<hr>
-	<br>
-	<form action="litadd.php">
-		<div>
-			<input type="submit" value="Literatur hinzuf&uuml;gen">
-		</div>
-	</form>
 
-
+	<?php
+		if ($login->IsMember() === true)
+		{
+	?>
+		<hr>
+		<form action="litmod.php">
+			<div>
+				<input type="submit" value="Literatur hinzuf&uuml;gen">
+			</div>
+		</form>
+	<?php
+		}
+	?>
 </div>
 <?php	require_once("include/footer.php"); ?>
-

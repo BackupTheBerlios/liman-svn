@@ -1,7 +1,4 @@
 <?php
-if(!defined("Kommentar"))
-{
-	define("Kommentar", 1);
 	require_once("include/login.php");
 
 	/*! \brief Verwaltet Kommentare
@@ -157,18 +154,41 @@ if(!defined("Kommentar"))
 		 *  \remarks Ist das aktuelle Mitglied kein 
 		 *  Administrator, dann muss $verfasser_nr gleich der aktuellen
 		 *  Nummer des Logins sein. Ist der Nutzer nicht eingeloggt,
-		 *  werden keine Operationen ausgeführt.
+		 *  werden keine Operationen ausgeführt. Ist keine passende
+		 *  Literatur mit der Literatur_Nr $literatur_nr vorhanden,
+		 *  wird kein Kommentar angelegt. Existiert schon ein Kommentar
+		 *  zu Literatur mit $literatur_nr von Mitglied mit Mitglieds_Nr
+		 *  $verfasser_nr, wird nur der Text des Kommentars mit
+		 *  Kommentar::Update geändert.
 		 */
 		function Insert($text, $verfasser_nr, $literatur_nr)
 		{
-			global $db_config, $sqldb;
+			global $db_config, $sqldb, $login;
 
 			if ($login->IsAdministrator() === true ||
 				($login->IsMember() === true && $verfasser_nr == $login->Nr))
 			{
-				$sql = "INSERT INTO ".$db_config['prefix']."Kommentare
-						VALUES (NULL, '$text', '$literatur_nr', '$verfasser_nr')";
-				$sqldb->Query($sql);
+				$sqlExists = "SELECT Literatur_Nr FROM ".$db_config['prefix']."Bibliothek
+						WHERE Literatur_Nr='$literatur_nr'";
+				$sqldb->Query($sqlExists);
+
+				if ($sqldb->Fetch() !== false)
+				{
+					$sqlAlready = "SELECT Kommentar_Nr FROM ".$db_config['prefix']."Kommentare
+							WHERE Literatur_Nr='$literatur_nr' AND Mitglieds_Nr='$verfasser_nr'";
+					$sqldb->Query($sqlAlready);
+
+					if (($cur = $sqldb->Fetch()) === false)
+					{
+						$sql = "INSERT INTO ".$db_config['prefix']."Kommentare
+								VALUES (NULL, '$text', '$literatur_nr', '$verfasser_nr')";
+						$sqldb->Query($sql);
+					}
+					else
+					{
+						Kommentar::Update($cur->Kommentar_Nr, $text);
+					}
+				}
 			}
 		}
 		
@@ -207,5 +227,4 @@ if(!defined("Kommentar"))
 			}
 		}
 	}
-}
 ?>

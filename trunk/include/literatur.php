@@ -1,7 +1,4 @@
 <?php
-if(!defined("Literatur"))
-{
-	define("Literatur", 1);
 	require_once("include/login.php");
 	require_once("include/kommentar.php");
 	require_once("include/literaturart.php");
@@ -269,5 +266,4 @@ if(!defined("Literatur"))
 			}
 		}
 	}
-}
 ?>

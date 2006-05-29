@@ -1,8 +1,4 @@
 <?php
-if (!defined("global"))
-{
-	define("global", 1);
-	
 	if (empty($basepath))
 	{
 		$basepath = "./";
@@ -76,5 +72,4 @@ if (!defined("global"))
 	require_once($basepath."include/config.php");
 	require_once($basepath."include/sqldb.php");
 	require_once($basepath."include/login.php");
-}
 ?>
