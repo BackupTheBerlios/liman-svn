@@ -8,7 +8,6 @@
 	 *  bzw. Mitgliederverbundenen Kommentaren gelöscht werden.
 	 *  \pre Datenbankverbindung muss bestehen
 	 *  \sa
-	 *  - Kommentar::Kommentar
 	 *  - Login::IsAdministrator
 	 *  - Login::IsMember
 	 *  - SQLDB::Query

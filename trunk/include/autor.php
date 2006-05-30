@@ -5,7 +5,6 @@
 	 *  mehr benutzter Autoren bereit.
 	 *  \pre Datenbankverbindung muss bestehen
 	 *  \sa
-	 *  - Autor::Autor
 	 *  - Login::IsMember
 	 *  - SQLDB::Query
 	 *  - SQLDB::Fetch
