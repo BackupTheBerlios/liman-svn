@@ -8,10 +8,14 @@
 	 *  bzw. Mitgliederverbundenen Kommentaren gelöscht werden.
 	 *  \pre Datenbankverbindung muss bestehen
 	 *  \sa
+	 *  - Kommentar::Kommentar
 	 *  - Login::IsAdministrator
 	 *  - Login::IsMember
 	 *  - SQLDB::Query
 	 *  - SQLDB::Fetch
+	 *
+	 *  \author Frank Wilhelm
+	 *  \date 30.05.2006
 	 */
 	class Kommentar
 	{

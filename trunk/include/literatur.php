@@ -16,10 +16,14 @@
 	 *  - Kommentar::DeleteAll
 	 *  - Kommentar::GetAll
 	 *  - LiteraturArt::LiteraturArt
+	 *  - LiteraturArt::GetBibTexText
 	 *  - Login::IsAdministrator
 	 *  - Login::IsMember
 	 *  - SQLDB::Query
 	 *  - SQLDB::Fetch
+	 *
+	 *  \author Sven Eckelmann
+	 *  \date 30.05.2006
 	 */
 	class Literatur
 	{

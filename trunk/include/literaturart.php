@@ -6,6 +6,9 @@
 	 *  können wieder als BibTeX- oder als der in Datenbank/Benutzeroberfläche
 	 *  verwendeten Namen zurückgegeben werden.
 	 *  \pre -
+	 *
+	 *  \author Frank Wilhelm
+	 *  \date 30.05.2006
 	 */
 	class LiteraturArt
 	{

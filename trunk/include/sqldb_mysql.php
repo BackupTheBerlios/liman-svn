@@ -6,6 +6,9 @@
 	 *  Erlaubt den abstrahierten Zugriff über SQL auf eine
 	 *  Datenbank (hier MySQL).
 	 *  \pre -
+	 *
+	 *  \author Sven Eckelmann
+	 *  \date 30.05.2006
 	 */
 	class SQLDB
 	{

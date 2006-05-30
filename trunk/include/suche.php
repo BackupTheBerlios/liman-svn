@@ -12,6 +12,9 @@
 	 *  - Autor::GetAll
 	 *  - SQLDB::Query
 	 *  - SQLDB::Fetch
+	 *
+	 *  \author Sven Eckelmann
+	 *  \date 30.05.2006
 	 */
 	class Suche
 	{

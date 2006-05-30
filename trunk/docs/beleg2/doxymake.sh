@@ -3,3 +3,4 @@
 doxygen Doxyfile
 sed -i "s/\\\~{A}/Ã/g" doxygen/*.tex
 sed -i "s/Siehe auch:/Importiert:/g" doxygen/*.tex
+sed -i "s/\[Datum:\]/\[Ã„nderungsstand:\]/g" doxygen/*.tex

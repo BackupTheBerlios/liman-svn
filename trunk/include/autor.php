@@ -5,9 +5,13 @@
 	 *  mehr benutzter Autoren bereit.
 	 *  \pre Datenbankverbindung muss bestehen
 	 *  \sa
+	 *  - Autor::Autor
 	 *  - Login::IsMember
 	 *  - SQLDB::Query
 	 *  - SQLDB::Fetch
+	 *
+	 *  \author Frank Wilhelm
+	 *  \date 30.05.2006
 	 */
 	class Autor
 	{

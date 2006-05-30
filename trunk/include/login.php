@@ -14,8 +14,12 @@
 	 *    weitere Session angelegt, sondern die alten Informationen in
 	 *    der aktuellen Session überschrieben.
 	 *  \sa
+	 *  - Mitglied::PasswordHash
 	 *  - SQLDB::Query
 	 *  - SQLDB::Fetch
+	 *
+	 *  \author Frank Wilhelm
+	 *  \date 30.05.2006
 	 */
 	class Login
 	{
