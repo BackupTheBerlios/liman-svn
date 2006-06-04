@@ -64,7 +64,7 @@
 					?>
 						<form action="login.<?=$ext;?>" id="loginform" method="post">
 							<div>
-							<label for="login">Login:</label><input id="login" name="login" value="" type="text">
+							<label for="benutzername">Login:</label><input id="benutzername" name="benutzername" value="" type="text">
 							<label for="password">Passwort:</label><input id="password" name="password" type="password">
 							<input type="submit" value="Login">
 							</div>

@@ -4,8 +4,12 @@
 
 	require_once("include/header.php");
 
-	if ($login->IsMember() === false)
+	if ($login->IsMember() === false
+		|| ($login->IsAdministrator() === false
+			&& (isset($_GET["delete"]) === true || isset($_GET["insert"]) === true)
+		))
 	{
+		echo "<div id=\"error\">Sie sind für diese Aktion nicht berechtigt</div>";
 		require_once("include/footer.php");
 		die();
 	}
@@ -265,12 +269,12 @@
 		}
 		elseif  (isset($_GET["insert"]) === true)
 		{
-			/// \todo überhaupt die Rechte dazu?
+			/// \todo gab es den Login vielleicht schon?
 			Mitglied::Insert($_POST["benutzername"], $_POST["password"], $_POST["rechte"], $_POST["vorname"], $_POST["nachname"], $_POST["email"]);
 		}
 		elseif (isset($_GET["update"]) === true)
 		{
-			/// \todo beide passwörter gleich?
+			/// \todo gab es den Login vielleicht schon?
 			Mitglied::Update($_POST["id"], $_POST["benutzername"], $_POST["password"], $_POST["rechte"], $_POST["vorname"], $_POST["nachname"], $_POST["email"]);
 		}
 	}

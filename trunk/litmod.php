@@ -6,6 +6,7 @@
 
 	if ($login->IsMember() === false)
 	{
+		echo "<div id=\"error\">Sie sind für diese Aktion nicht berechtigt</div>";
 		require_once("include/footer.php");
 		die();
 	}
@@ -262,21 +263,93 @@
 		require_once("include/literatur.php");
 		if (isset($_GET["delete"]) === true)
 		{
-			/// \todo Hier erstmal nachfragen, ob überhaupt Löschen
-			
-			Literatur::Delete($_GET["id"]);
+			if (isset($_POST["accept"]) === true)
+			{
+				Literatur::Delete($_POST["id"]);
+				echo "<p style=\"text-align: center\">Literatur wurde entfernt</p>";
+			}
+			else
+			{
+				require_once("include/form_helper.php");
+				echo "<div id=\"warning\" style=\"margin-top: 2em\">";
+				echo "Trotzdem entfernen?";
+				echo "<form action=\"litmod.".$ext."?delete\" id=\"litupdateform\" method=\"post\">";
+				echo form_input("hidden", "id", $_GET["id"]);
+				echo form_input("hidden", "accept", "true");
+				echo "<input type=\"submit\" value=\"Bestätigen\">";
+				echo "</form></div>";
+			}
 		}
 		elseif  (isset($_GET["insert"]) === true)
 		{
-			/// \todo Hier erstmal schauen, ob Literatur mit Titel und Autor existiert und entsprechend Nachfragen
-			Literatur::Insert($_POST["autor"], $_POST["art"], $_POST["titel"], $_POST["jahr"], $_POST["verlag"], $_POST["isbn"], $_POST["beschreibung"], $_POST["ort"], $_POST["stichworte"]);
+			if (isset($_POST["accept"]) === false)
+			{
+				require_once("include/suche.php");
+				$search = new Suche($_POST["titel"], $_POST["autor"]);
+				if (empty($search->Treffer) === false)
+				{
+				?>
+					Es wurde ähnliche Literatur gefunden:
+					<table id="searchresult">
+				
+						<thead>
+							<tr>
+								<th scope="col">Titel</th>
+								<th scope="col">Autor</th>
+								<th scope="col">Verlag</th>
+								<th scope="col">ISBN</th>
+							</tr>
+						</thead>
+					<tbody>
+				<?php
+			
+					for ($i = 0; $i < count($search->Treffer); $i++)
+					{
+						$cur = $search->Treffer[$i];
+				?>
+					<tr>
+						<td><a href="lit.<?=$ext;?>?id=<?=htmlspecialchars($cur->Nr);?>"><?=htmlspecialchars($cur->Titel);?></a></td>
+						<td><?=htmlspecialchars($cur->Autor);?></td>
+						<td><?=htmlspecialchars($cur->Verlag);?></td>
+						<td><?=htmlspecialchars($cur->ISBN);?></td>
+					</tr>
+				<?php
+					}
+				?>
+						</tbody>
+					</table>
+				<?php
+					require_once("include/form_helper.php");
+					echo "<div id=\"warning\" style=\"margin-top: 2em\">";
+					echo "Trotzdem hinzufügen?";
+					echo "<form action=\"litmod.".$ext."?insert\" id=\"litupdateform\" method=\"post\">";
+					echo form_input("hidden", "accept", "true");
+					echo form_input("hidden", "titel", $_POST["titel"]);
+					echo form_input("hidden", "autor", $_POST["autor"]);
+					echo form_input("hidden", "jahr", $_POST["jahr"]);
+					echo form_input("hidden", "stichworte", $_POST["stichworte"]);
+					echo form_input("hidden", "art", $_POST["art"]);
+					echo form_input("hidden", "verlag", $_POST["verlag"]);
+					echo form_input("hidden", "ort", $_POST["ort"]);
+					echo form_input("hidden", "isbn", $_POST["isbn"]);
+					echo form_input("hidden", "beschreibung", $_POST["beschreibung"]);
+					echo "<input type=\"submit\" value=\"Bestätigen\">";
+					echo "</form></div>";
+				}
+			}
+
+			if (isset($_POST["accept"]) === true || empty($search->Treffer) === true)
+			{
+				Literatur::Insert($_POST["autor"], $_POST["art"], $_POST["titel"], $_POST["jahr"], $_POST["verlag"], $_POST["isbn"], $_POST["beschreibung"], $_POST["ort"], $_POST["stichworte"]);
+				echo "<p style=\"text-align: center\">Literatur wurde hinzugefügt</p>";
+			}
 		}
 		elseif (isset($_GET["update"]) === true)
 		{
 			Literatur::Update($_POST["id"], $_POST["autor"], $_POST["art"], $_POST["titel"], $_POST["jahr"], $_POST["verlag"], $_POST["isbn"], $_POST["beschreibung"], $_POST["ort"], $_POST["stichworte"]);
+			echo "<p style=\"text-align: center\">Literatur wurde geändert</p>";
 		}
 	}
 ?>
 </div>
 <?php	require_once("include/footer.php"); ?>
-

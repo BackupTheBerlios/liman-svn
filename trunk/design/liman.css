@@ -54,7 +54,7 @@ hr {
 	list-style: none;
 }
 
-#search input, #loginform #login, #loginform #password {
+#search input, #loginform #benutzername, #loginform #password {
 	margin: 0 auto;
 	font-size: 1em;
 	width: 10.8em;
@@ -122,13 +122,18 @@ hr {
 	vertical-align: top;
 }
 
-#error_list {
+#error_list, #error {
 	padding: 0.5em;
 	border: 2px solid red;
 	margin: 0 auto;
 	margin-bottom: 1em;
 	background-color: #ffeaea;
 }
+
+#error, #warning {
+	text-align: center;
+}
+
 .input_failure {
 	border-color: red;
 	background-color: red;

@@ -66,11 +66,11 @@
 		}
 		elseif ($login->IsMember() === true)
 		{
-			echo "<p style=\"text-align: center\">Sie sind nicht berechtigt alle Nutzerinformationen einzusehen</p>";
+			echo "<p id=\"warning\">Sie sind nicht berechtigt alle Nutzerinformationen einzusehen</p>";
 		}
 		else
 		{
-			echo "<p style=\"text-align: center\">Sie sind nicht berechtigt Nutzerinformationen einzusehen</p>";
+			echo "<p id=\"warning\">Sie sind nicht berechtigt Nutzerinformationen einzusehen</p>";
 		}
 	?>
 
