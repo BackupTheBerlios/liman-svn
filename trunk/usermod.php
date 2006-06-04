@@ -264,18 +264,45 @@
 		require_once("include/mitglied.php");
 		if (isset($_GET["delete"]) === true)
 		{
-			/// \todo Hier erstmal nachfragen, ob überhaupt Löschen
-			Mitglied::Delete($_GET["id"]);
+			if (isset($_POST["accept"]) === true)
+			{
+				Mitglied::Delete($_POST["id"]);
+				echo "<p style=\"text-align: center\">Nutzer wurde entfernt</p>";
+			}
+			else
+			{
+				require_once("include/form_helper.php");
+				echo "<div id=\"warning\" style=\"margin-top: 2em\">";
+				echo "Wollen sie den Nutzer wirklich entfernen?";
+				echo "<form action=\"usermod.".$ext."?delete\" id=\"userupdateform\" method=\"post\">";
+				echo form_input("hidden", "id", $_GET["id"]);
+				echo form_input("hidden", "accept", "true");
+				echo "<input type=\"submit\" value=\"Bestätigen\">";
+				echo "</form></div>";
+			}
 		}
 		elseif  (isset($_GET["insert"]) === true)
 		{
-			/// \todo gab es den Login vielleicht schon?
-			Mitglied::Insert($_POST["benutzername"], $_POST["password"], $_POST["rechte"], $_POST["vorname"], $_POST["nachname"], $_POST["email"]);
+			if (Mitglied::Insert($_POST["benutzername"], $_POST["password"], $_POST["rechte"], $_POST["vorname"], $_POST["nachname"], $_POST["email"]) === true)
+			{
+				echo "<p style=\"text-align: center\">Nutzer wurde geändert</p>";
+			}
+			else
+			{
+				
+				echo "<p id=\"warning\">Nutzer konnte nicht angelegt werden. Ist Login vielleicht schon vergeben?</p>";
+			}
 		}
 		elseif (isset($_GET["update"]) === true)
 		{
-			/// \todo gab es den Login vielleicht schon?
-			Mitglied::Update($_POST["id"], $_POST["benutzername"], $_POST["password"], $_POST["rechte"], $_POST["vorname"], $_POST["nachname"], $_POST["email"]);
+			if (Mitglied::Update($_POST["id"], $_POST["benutzername"], $_POST["password"], $_POST["rechte"], $_POST["vorname"], $_POST["nachname"], $_POST["email"]) === true)
+			{
+				echo "<p style=\"text-align: center\">Nutzer wurde geändert</p>";
+			}
+			else
+			{
+				echo "<p id=\"warning\">Nutzer konnte nicht geändert werden. Ist Login vielleicht schon vergeben?</p>";
+			}
 		}
 	}
 ?>

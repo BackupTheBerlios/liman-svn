@@ -272,7 +272,7 @@
 			{
 				require_once("include/form_helper.php");
 				echo "<div id=\"warning\" style=\"margin-top: 2em\">";
-				echo "Trotzdem entfernen?";
+				echo "Wollen sie die Literatur wirklich entfernen?";
 				echo "<form action=\"litmod.".$ext."?delete\" id=\"litupdateform\" method=\"post\">";
 				echo form_input("hidden", "id", $_GET["id"]);
 				echo form_input("hidden", "accept", "true");
