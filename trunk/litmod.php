@@ -1,5 +1,16 @@
 <?php
-	$title = "Literatur bearbeiten/hinzuf&uuml;gen";
+	if (isset($_GET["delete"]) === true)
+	{
+		$title = "Literatur löschen";
+	}
+	elseif (isset($_GET["id"]) === true || isset($_POST["id"]) === true)
+	{
+		$title = "Literatur ändern";
+	}
+	else
+	{
+		$title = "Literatur hinzufügen";
+	}
 	//$extracss = "home.css";
 
 	require_once("include/header.php");

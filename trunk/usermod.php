@@ -1,5 +1,16 @@
 <?php
-	$title = "Nutzer bearbeiten/hinzuf&uuml;gen";
+	if (isset($_GET["delete"]) === true)
+	{
+		$title = "Nutzer löschen";
+	}
+	elseif (isset($_GET["id"]) === true || isset($_POST["id"]) === true)
+	{
+		$title = "Nutzer ändern";
+	}
+	else
+	{
+		$title = "Nutzer hinzufügen";
+	}
 	//$extracss = "home.css";
 
 	require_once("include/header.php");
@@ -54,6 +65,9 @@
 		{
 			$error_email = true;
 			$error_occurred = true;
+		}
+		elseif ()
+		{
 		}
 
 		if (empty($_POST["password"]) === true && isset($_GET["insert"]) === true)
@@ -285,7 +299,7 @@
 		{
 			if (Mitglied::Insert($_POST["benutzername"], $_POST["password"], $_POST["rechte"], $_POST["vorname"], $_POST["nachname"], $_POST["email"]) === true)
 			{
-				echo "<p style=\"text-align: center\">Nutzer wurde geändert</p>";
+				echo "<p style=\"text-align: center\">Nutzer wurde angelegt</p>";
 			}
 			else
 			{
