@@ -14,9 +14,9 @@ Verwaltet Mitglieder.
 \begin{CompactList}\small\item\em Generiert Passworthash. \item\end{CompactList}\item 
 \hyperlink{classMitglied_c6900c12663e9b228bf9942fc045b8b4}{Delete} (\$nr)
 \begin{CompactList}\small\item\em Entfernt \hyperlink{classMitglied}{Mitglied}. \item\end{CompactList}\item 
-\hyperlink{classMitglied_a856527798258505adf9eb08b79fd9fc}{Insert} (\$login, \$passwort, \$rechte, \$vorname, \$nachname, \$email)
+\hyperlink{classMitglied_5d9d5d087779303f002cbbcfcf1735c1}{Insert} (\$loginname, \$passwort, \$rechte, \$vorname, \$nachname, \$email)
 \begin{CompactList}\small\item\em Legt \hyperlink{classMitglied}{Mitglied} an. \item\end{CompactList}\item 
-\hyperlink{classMitglied_0d173487bebdd0579a70ea007b37b5ec}{Update} (\$nr, \$login, \$passwort, \$rechte, \$vorname, \$nachname, \$email)
+\hyperlink{classMitglied_5bd2a31b6aeea5c69de9b6de825e11c2}{Update} (\$nr, \$loginname, \$passwort, \$rechte, \$vorname, \$nachname, \$email)
 \begin{CompactList}\small\item\em Ändert ein \hyperlink{classMitglied}{Mitglied}. \item\end{CompactList}\item 
 \hyperlink{classMitglied_70ce63c9c9a7159966dc9e80a7f726a2}{Get\-All} ()
 \begin{CompactList}\small\item\em Rückgabe einer Liste der Mitglieder. \item\end{CompactList}\end{CompactItemize}
@@ -111,21 +111,21 @@ Liest alle Mitglieder mit Nr, \hyperlink{classLogin}{Login}, Vorname, Nachname u
 \end{Desc}
 \begin{Desc}
 \item[Bemerkungen:]Ist der Nutzer nicht als Administrator, sondern als \hyperlink{classMitglied}{Mitglied} angemeldet, wird nur der eigene Eintrag zurückgegeben. Ist der Nutzer nicht angemeldet werden keine Operationen ausgeführt. \end{Desc}
-\hypertarget{classMitglied_a856527798258505adf9eb08b79fd9fc}{
+\hypertarget{classMitglied_5d9d5d087779303f002cbbcfcf1735c1}{
 \index{Mitglied@{Mitglied}!Insert@{Insert}}
 \index{Insert@{Insert}!Mitglied@{Mitglied}}
-\paragraph[Insert]{\setlength{\rightskip}{0pt plus 5cm}Mitglied::Insert (\$ {\em login}, \$ {\em passwort}, \$ {\em rechte}, \$ {\em vorname}, \$ {\em nachname}, \$ {\em email})}\hfill}
-\label{classMitglied_a856527798258505adf9eb08b79fd9fc}
+\paragraph[Insert]{\setlength{\rightskip}{0pt plus 5cm}Mitglied::Insert (\$ {\em loginname}, \$ {\em passwort}, \$ {\em rechte}, \$ {\em vorname}, \$ {\em nachname}, \$ {\em email})}\hfill}
+\label{classMitglied_5d9d5d087779303f002cbbcfcf1735c1}
 
 
 Legt \hyperlink{classMitglied}{Mitglied} an. 
 
-Fügt neues \hyperlink{classMitglied}{Mitglied} mit Benutzernamen (\$login), Passwort (\$passwort), Benutzerrechten (\$rechte), Vorname (\$vorname), Nachname (\$nachname), E-Mail-Adresse (\$email) in Mitglieder ein. Dazu wird das Passwort noch mit Mitglied::Passwort\-Hash gehasht. Sollte ein \hyperlink{classMitglied}{Mitglied} mit gleichem \hyperlink{classLogin}{Login} existieren wird ein Fehler zurückgegeben, da die Datenbank nur ein \hyperlink{classMitglied}{Mitglied} mit gleichem \hyperlink{classLogin}{Login} erlaubt. \begin{Desc}
+Fügt neues \hyperlink{classMitglied}{Mitglied} mit Benutzernamen (\$loginname), Passwort (\$passwort), Benutzerrechten (\$rechte), Vorname (\$vorname), Nachname (\$nachname), E-Mail-Adresse (\$email) in Mitglieder ein. Dazu wird das Passwort noch mit Mitglied::Passwort\-Hash gehasht. Sollte ein \hyperlink{classMitglied}{Mitglied} mit gleichem \hyperlink{classLogin}{Login} existieren wird ein Fehler zurückgegeben, da die Datenbank nur ein \hyperlink{classMitglied}{Mitglied} mit gleichem \hyperlink{classLogin}{Login} erlaubt. \begin{Desc}
 \item[Vorbedingung:]Datenbankverbindung muss bestehen \end{Desc}
 \begin{Desc}
 \item[Parameter:]
 \begin{description}
-\item[\mbox{$\leftarrow$} {\em \$login}]Benutzername des neuen Mitglieds \item[\mbox{$\leftarrow$} {\em \$passwort}]Benutzerpasswort des neuen Mitglieds \item[\mbox{$\leftarrow$} {\em \$rechte}]Rechte des neuen Mitglieds (1 - \hyperlink{classMitglied}{Mitglied}, 2 - Passwort) \item[\mbox{$\leftarrow$} {\em \$vorname}]Vorname des neuen Mitglieds \item[\mbox{$\leftarrow$} {\em \$nachname}]Nachname des neuen Mitglieds \item[\mbox{$\leftarrow$} {\em \$email}]E-Mail-Adresse des neuen Mitglieds \end{description}
+\item[\mbox{$\leftarrow$} {\em \$loginname}]Benutzername des neuen Mitglieds \item[\mbox{$\leftarrow$} {\em \$passwort}]Benutzerpasswort des neuen Mitglieds \item[\mbox{$\leftarrow$} {\em \$rechte}]Rechte des neuen Mitglieds (Benutzer, Administrator) \item[\mbox{$\leftarrow$} {\em \$vorname}]Vorname des neuen Mitglieds \item[\mbox{$\leftarrow$} {\em \$nachname}]Nachname des neuen Mitglieds \item[\mbox{$\leftarrow$} {\em \$email}]E-Mail-Adresse des neuen Mitglieds \end{description}
 \end{Desc}
 \begin{Desc}
 \item[R\"{u}ckgabewerte:]
@@ -150,21 +150,21 @@ Aus übergebenes Klartextpasswort wird ein 40 Byte großer hexkodierter Hash gen
 \begin{description}
 \item[\mbox{$\leftarrow$} {\em \$pass}]zu hashendes Klartextpasswort \end{description}
 \end{Desc}
-\hypertarget{classMitglied_0d173487bebdd0579a70ea007b37b5ec}{
+\hypertarget{classMitglied_5bd2a31b6aeea5c69de9b6de825e11c2}{
 \index{Mitglied@{Mitglied}!Update@{Update}}
 \index{Update@{Update}!Mitglied@{Mitglied}}
-\paragraph[Update]{\setlength{\rightskip}{0pt plus 5cm}Mitglied::Update (\$ {\em nr}, \$ {\em login}, \$ {\em passwort}, \$ {\em rechte}, \$ {\em vorname}, \$ {\em nachname}, \$ {\em email})}\hfill}
-\label{classMitglied_0d173487bebdd0579a70ea007b37b5ec}
+\paragraph[Update]{\setlength{\rightskip}{0pt plus 5cm}Mitglied::Update (\$ {\em nr}, \$ {\em loginname}, \$ {\em passwort}, \$ {\em rechte}, \$ {\em vorname}, \$ {\em nachname}, \$ {\em email})}\hfill}
+\label{classMitglied_5bd2a31b6aeea5c69de9b6de825e11c2}
 
 
 Ändert ein \hyperlink{classMitglied}{Mitglied}. 
 
-Ändert die Daten das Mitglieds mit der Mitglieds\_\-Nr (\$nr), in neuen Benutzernamen (\$login), Passwort (\$passwort), Benutzerrechten (\$rechte), Vorname (\$vorname), Nachname (\$nachname), E-Mail-Adresse (\$email) in Mitglieder. Wenn \$passwort nicht die Länge 0 hat, wird es noch mit Mitglied::Passwort\-Hash gehasht. Andernfalls wird das alte Passwort in Mitglieder beibehalten. Sollte ein \hyperlink{classMitglied}{Mitglied} mit gleichem \hyperlink{classLogin}{Login} existieren wird ein Fehler zurückgegeben, da die Datenbank nur ein \hyperlink{classMitglied}{Mitglied} mit gleichem \hyperlink{classLogin}{Login} erlaubt. \begin{Desc}
+Ändert die Daten das Mitglieds mit der Mitglieds\_\-Nr (\$nr), in neuen Benutzernamen (\$loginname), Passwort (\$passwort), Benutzerrechten (\$rechte), Vorname (\$vorname), Nachname (\$nachname), E-Mail-Adresse (\$email) in Mitglieder. Wenn \$passwort nicht die Länge 0 hat, wird es noch mit Mitglied::Passwort\-Hash gehasht. Andernfalls wird das alte Passwort in Mitglieder beibehalten. Sollte ein \hyperlink{classMitglied}{Mitglied} mit gleichem \hyperlink{classLogin}{Login} existieren wird ein Fehler zurückgegeben, da die Datenbank nur ein \hyperlink{classMitglied}{Mitglied} mit gleichem \hyperlink{classLogin}{Login} erlaubt. \begin{Desc}
 \item[Vorbedingung:]Datenbankverbindung muss bestehen \end{Desc}
 \begin{Desc}
 \item[Parameter:]
 \begin{description}
-\item[\mbox{$\leftarrow$} {\em \$nr}]Mitglieds\_\-Nr des zu verändernden Mitglieds \item[\mbox{$\leftarrow$} {\em \$login}]neuer Benutzername des Mitglieds \item[\mbox{$\leftarrow$} {\em \$passwort}]neues Passwort des Mitglieds \item[\mbox{$\leftarrow$} {\em \$rechte}]neuen Rechte des Mitglieds \item[\mbox{$\leftarrow$} {\em \$vorname}]neuer Vorname des Mitglieds \item[\mbox{$\leftarrow$} {\em \$nachname}]neuer Nachname des Mitglieds \item[\mbox{$\leftarrow$} {\em \$email}]neue E-Mail-Adresse des Mitglieds \end{description}
+\item[\mbox{$\leftarrow$} {\em \$nr}]Mitglieds\_\-Nr des zu verändernden Mitglieds \item[\mbox{$\leftarrow$} {\em \$loginname}]neuer Benutzername des Mitglieds \item[\mbox{$\leftarrow$} {\em \$passwort}]neues Passwort des Mitglieds \item[\mbox{$\leftarrow$} {\em \$rechte}]neuen Rechte des Mitglieds (Benutzer, Administrator) \item[\mbox{$\leftarrow$} {\em \$vorname}]neuer Vorname des Mitglieds \item[\mbox{$\leftarrow$} {\em \$nachname}]neuer Nachname des Mitglieds \item[\mbox{$\leftarrow$} {\em \$email}]neue E-Mail-Adresse des Mitglieds \end{description}
 \end{Desc}
 \begin{Desc}
 \item[R\"{u}ckgabewerte:]

@@ -1,5 +1,5 @@
 <?php
-	$title = "Literaturliste";
+	$title = "Letzte Literatur";
 	//$extracss = "home.css";
 
 	require_once("include/header.php");

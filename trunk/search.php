@@ -3,11 +3,11 @@
 
 	if (isset($_GET["suchbegriff"]) === true)
 	{
-		$title = "Suchergebnisse f&uuml;r \"".htmlspecialchars(addslashes($_GET["suchbegriff"]))."\"";
+		$title = "Suchergebnisse f&uuml;r \"".htmlspecialchars($_GET["suchbegriff"])."\"";
 	}
 	elseif (isset($_GET["autor"]) === true && isset($_GET["titel"]) === true)
 	{
-		$title = "Suchergebnisse f&uuml;r \"".htmlspecialchars(addslashes($_GET["autor"]))."\" und \"".htmlspecialchars(addslashes($_GET["titel"]))."\"";
+		$title = "Suchergebnisse f&uuml;r \"".htmlspecialchars($_GET["autor"])."\" und \"".htmlspecialchars($_GET["titel"])."\"";
 	}
 	else
 	{

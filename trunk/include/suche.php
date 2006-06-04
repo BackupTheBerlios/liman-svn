@@ -98,8 +98,8 @@
 							ON bibliothek.Literatur_Nr = connect.Literatur_Nr)
 						INNER JOIN  ".$db_config['prefix']."Autoren AS autoren
 						ON connect.Autor_Nr = autoren.Autor_Nr
-						WHERE MATCH (Titel, Verlag, ISBN, Beschreibung, Ort, Stichworte) AGAINST ('$volltext')
-						OR MATCH (Autorname) AGAINST ('$volltext')";
+						WHERE MATCH (Titel, Verlag, ISBN, Beschreibung, Ort, Stichworte) AGAINST ('$volltext' IN BOOLEAN MODE)
+						OR MATCH (Autorname) AGAINST ('$volltext' IN BOOLEAN MODE)";
 				$sqldb->Query($sql);
 				
 				while ($cur = $sqldb->Fetch())

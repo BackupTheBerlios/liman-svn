@@ -5,7 +5,6 @@
 	require_once("include/header.php");
 ?>
 <div id="cfront" class="content">
-	<form action="usermod.php">
 	<table id="userlist">
 		<thead>
 			<tr>
@@ -34,11 +33,15 @@
 					<?php
 						if ($login->IsAdministrator() === true || $login->Nr == $cur->Nr)
 						{
+							echo "<form style=\"display: inline\" method=\"post\" action=\"usermod.$ext?id=".htmlspecialchars($cur->Nr)."\">";
 							echo "<input type=\"submit\" value=\"Bearbeiten\">";
+							echo "</form>";
 						}
-						else
+						if ($login->IsAdministrator() === true)
 						{
-							echo "<input type=\"submit\" value=\"Details\">";
+							echo "<form style=\"display: inline\" method=\"post\" action=\"usermod.$ext?delete=&id=".htmlspecialchars($cur->Nr)."\">";
+							echo "<input type=\"submit\" value=\"Löschen\">";
+							echo "</form>";
 						}
 					?>
 				</td>
@@ -48,7 +51,6 @@
 			?>
 		</tbody>
 	</table>
-	</form>
 
 	<?php
 		if ($login->IsAdministrator() === true)

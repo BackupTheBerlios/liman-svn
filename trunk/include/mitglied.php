@@ -106,7 +106,7 @@
 		
 		/*! \brief Legt  Mitglied an
 		 *
-		 *  Fügt neues Mitglied mit Benutzernamen ($login), Passwort
+		 *  Fügt neues Mitglied mit Benutzernamen ($loginname), Passwort
 		 *  ($passwort), Benutzerrechten ($rechte), Vorname ($vorname),
 		 *  Nachname ($nachname), E-Mail-Adresse ($email) in Mitglieder
 		 *  ein. Dazu wird das Passwort noch mit Mitglied::PasswortHash
@@ -114,10 +114,10 @@
 		 *  wird ein Fehler zurückgegeben, da die Datenbank nur ein
 		 *  Mitglied mit gleichem Login erlaubt.
 		 *  \pre Datenbankverbindung muss bestehen
-		 *  \param[in] $login Benutzername des neuen Mitglieds
+		 *  \param[in] $loginname Benutzername des neuen Mitglieds
 		 *  \param[in] $passwort Benutzerpasswort des neuen Mitglieds
 		 *  \param[in] $rechte Rechte des neuen Mitglieds
-		 *     (1 - Mitglied, 2 - Passwort)
+		 *     (Benutzer, Administrator)
 		 *  \param[in] $vorname Vorname des neuen Mitglieds
 		 *  \param[in] $nachname Nachname des neuen Mitglieds
 		 *  \param[in] $email E-Mail-Adresse des neuen Mitglieds
@@ -126,27 +126,15 @@
 		 *  \remarks Ist der Nutzer nicht als Administrator angemeldet,
 		 *    werden keine Operationen ausgeführt.
 		 */
-		function Insert($login, $passwort, $rechte, $vorname, $nachname, $email)
+		function Insert($loginname, $passwort, $rechte, $vorname, $nachname, $email)
 		{
 			global $db_config, $sqldb, $login;
 
 			if ($login->IsAdministrator() === true)
 			{
-				$rechtestring = "";
-				switch ($rechte)
-				{
-				case 2:
-					$rechtestring = "Administrator";
-					break;
-				default:
-				case 1:
-					$rechtestring = "Benutzer";
-					break;
-				}
-	
 				$passworthash = Mitglied::PasswordHash($passwort);
 				$sql = "INSERT INTO ".$db_config['prefix']."Mitglieder
-						VALUES (NULL, '$nachname', '$vorname', '$email', '$login', '$passworthash', '$rechtestring')";
+						VALUES (NULL, '$nachname', '$vorname', '$email', '$loginname', '$passworthash', '$rechte')";
 				
 				if ($sqldb->Query($sql) !== false)
 				{
@@ -166,7 +154,7 @@
 		/*! \brief Ändert ein Mitglied
 		 *
 		 *  Ändert die Daten das Mitglieds mit der Mitglieds_Nr ($nr),
-		 *  in neuen Benutzernamen ($login), Passwort ($passwort),
+		 *  in neuen Benutzernamen ($loginname), Passwort ($passwort),
 		 *  Benutzerrechten ($rechte), Vorname ($vorname),
 		 *  Nachname ($nachname), E-Mail-Adresse ($email) in
 		 *  Mitglieder. Wenn $passwort nicht die Länge 0 hat, wird es 
@@ -177,9 +165,10 @@
 		 *  gleichem Login erlaubt.
 		 *  \pre Datenbankverbindung muss bestehen
 		 *  \param[in] $nr Mitglieds_Nr des zu verändernden Mitglieds
-		 *  \param[in] $login neuer Benutzername des Mitglieds
+		 *  \param[in] $loginname neuer Benutzername des Mitglieds
 		 *  \param[in] $passwort neues Passwort des Mitglieds
 		 *  \param[in] $rechte neuen Rechte des Mitglieds
+		 *    (Benutzer, Administrator)
 		 *  \param[in] $vorname neuer Vorname des Mitglieds
 		 *  \param[in] $nachname neuer Nachname des Mitglieds
 		 *  \param[in] $email neue E-Mail-Adresse des Mitglieds
@@ -189,30 +178,23 @@
 		 *    werden keine Operationen ausgeführt, wenn $nr ungleich
 		 *    der eigenen Mitglieds_Nr is.
 		 */
-		function Update($nr, $login, $passwort, $rechte, $vorname, $nachname, $email)
+		function Update($nr, $loginname, $passwort, $rechte, $vorname, $nachname, $email)
 		{
 			global $db_config, $sqldb, $login;
 
 			if ($login->IsAdministrator() === true || $nr == $login->Nr)
 			{
-				$rechtestring = "";
-				switch ($rechte)
+				if ($login->IsAdministrator() === false)
 				{
-				case 2:
-					$rechtestring = "Administrator";
-					break;
-				default:
-				case 1:
-					$rechtestring = "Benutzer";
-					break;
+					$rechte = "Benutzer";
 				}
-	
+
 				$sql = "";
 				if (empty($passwort) === true)
 				{
 					
 					$sql = "UPDATE ".$db_config['prefix']."Mitglieder
-							SET Login='$login', Rechte='$rechtestring', Vorname='$vorname', Name='$nachname', Email='$email'
+							SET Login='$loginname', Rechte='$rechte', Vorname='$vorname', Name='$nachname', Email='$email'
 							WHERE Mitglieds_Nr='$nr'
 							LIMIT 1";
 				}
@@ -220,7 +202,7 @@
 				{
 					$passworthash = Mitglied::PasswordHash($passwort);
 					$sql = "UPDATE ".$db_config['prefix']."Mitglieder
-							SET Login='$login', Passwort='$passworthash', Rechte='$rechtestring', Vorname='$vorname', Name='$nachname', Email='$email'
+							SET Login='$loginname', Passwort='$passworthash', Rechte='$rechte', Vorname='$vorname', Name='$nachname', Email='$email'
 							WHERE Mitglieds_Nr='$nr'
 							LIMIT 1";
 				}

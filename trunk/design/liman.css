@@ -83,6 +83,19 @@ hr {
 	margin-left: 1em;
 }
 
+#content form td {
+	width: 99%;
+}
+
+#content form th {
+	width: 20em;
+}
+
+#content input[type="text"],
+#content input[type="password"],
+#content form textarea {
+	width: 99%;
+}
 
 #searchresult, #userlist {
 	
@@ -90,7 +103,7 @@ hr {
 	border: 1px solid black;
 	border-collapse: collapse;
 }
-.searchmore td {
+.searchmore th label {
 	width:9em;
 }
 
@@ -107,4 +120,17 @@ hr {
 #litdetails th {
 	text-align: left;
 	vertical-align: top;
+}
+
+#error_list {
+	padding: 0.5em;
+	border: 2px solid red;
+	margin: 0 auto;
+	margin-bottom: 1em;
+	background-color: #ffeaea;
+}
+.input_failure {
+	border-color: red;
+	background-color: red;
+	color: black;
 }

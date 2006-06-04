@@ -109,7 +109,7 @@
 		{
 			global $db_config, $sqldb, $login;
 
-			if ($login->IsAdministrator === true)
+			if ($login->IsAdministrator() === true)
 			{
 				$sql = "DELETE FROM ".$db_config['prefix']."Kommentare
 						WHERE Mitglieds_Nr = '$member_nr'";

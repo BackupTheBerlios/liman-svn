@@ -70,7 +70,12 @@
 			?>
 				<tr>
 					<th scope="row">Aktionen:</th>	
-					<td><input type="submit" value="Bearbeiten"><input type="submit" value="L&ouml;schen"></td>
+					<td><form style="display:inline" action="litmod.<?=$ext;?>?id=<?=htmlspecialchars($_GET["id"]);?>" method="post">
+							<span><input type="submit" value="Bearbeiten"></span>
+						</form>
+						<form style="display:inline" action="litmod.<?=$ext;?>?delete=&amp;id=<?=htmlspecialchars($_GET["id"]);?>" method="post">
+							<span><input type="submit" value="L&ouml;schen"></span>
+					</form></td>
 				</tr>
 			<?php
 				}

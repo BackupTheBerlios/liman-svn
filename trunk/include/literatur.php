@@ -17,7 +17,6 @@
 	 *  - Kommentar::GetAll
 	 *  - LiteraturArt::LiteraturArt
 	 *  - LiteraturArt::GetBibTexText
-	 *  - Login::IsAdministrator
 	 *  - Login::IsMember
 	 *  - SQLDB::Query
 	 *  - SQLDB::Fetch
@@ -79,49 +78,53 @@
 		 */
 		function ToBibtex()
 		{
-			$str = "@".$this->Art->GetBibtexText()."{".$this->Art->GetBibtexText().$this->Nr;
+			$str = "";
+			if (is_object($this->Art) === true)
+			{
+				$str = "@".$this->Art->GetBibtexText()."{".$this->Art->GetBibtexText().$this->Nr;
 				
-			if (!empty($this->Titel))
-			{
-				$str .= ",\n\ttitle = \"".addslashes($this->Titel)."\"";
-			}
-
-			if (count($this->Autoren) > 0)
-			{
-				$autorlist = "";
-				for ($j = 0; $j < count($this->Autoren); $j++)
+				if (!empty($this->Titel))
 				{
-					if ($j != 0)
-					{
-						$autorlist .= " and ";
-					}
-					$autorlist .= $this->Autoren[$j]->Name;
+					$str .= ",\n\ttitle = \"".addslashes($this->Titel)."\"";
 				}
-
-				$str .= ",\n\tauthor = \"".addslashes($autorlist)."\"";
+	
+				if (count($this->Autoren) > 0)
+				{
+					$autorlist = "";
+					for ($j = 0; $j < count($this->Autoren); $j++)
+					{
+						if ($j != 0)
+						{
+							$autorlist .= " and ";
+						}
+						$autorlist .= $this->Autoren[$j]->Name;
+					}
+	
+					$str .= ",\n\tauthor = \"".addslashes($autorlist)."\"";
+				}
+	
+				if (!empty($this->Jahr))
+				{
+					$str .= ",\n\tyear = \"".addslashes($this->Jahr)."\"";
+				}
+	
+				if (!empty($this->Verlag))
+				{
+					$str .= ",\n\tpublisher = \"".addslashes($this->Verlag)."\"";
+				}
+	
+				if (!empty($this->ISBN))
+				{
+					$str .= ",\n\tisbn = \"".addslashes($this->ISBN)."\"";
+				}
+	
+				if (!empty($this->Ort))
+				{
+					$str .= ",\n\taddress = \"".addslashes($this->Ort)."\"";
+				}
+				
+				$str .= "\n}\n";
 			}
-
-			if (!empty($this->Jahr))
-			{
-				$str .= ",\n\tyear = \"".addslashes($this->Jahr)."\"";
-			}
-
-			if (!empty($this->Verlag))
-			{
-				$str .= ",\n\tpublisher = \"".addslashes($this->Verlag)."\"";
-			}
-
-			if (!empty($this->ISBN))
-			{
-				$str .= ",\n\tisbn = \"".addslashes($this->ISBN)."\"";
-			}
-
-			if (!empty($this->Ort))
-			{
-				$str .= ",\n\taddress = \"".addslashes($this->Ort)."\"";
-			}
-			
-			$str .= "\n}\n";
 			return $str;
 		}
 
@@ -195,7 +198,7 @@
 		{
 			global $db_config, $sqldb, $login;
 
-			if ($login->IsAdministrator() === true)
+			if ($login->IsMember() === true)
 			{
 				$sql = "INSERT INTO ".$db_config['prefix']."Bibliothek
 						VALUES (NULL, '$art', '$titel', '$jahr', '$verlag', '$isbn', '$beschreibung', '$ort', '$stichworte')";
@@ -246,7 +249,7 @@
 		{
 			global $db_config, $sqldb, $login;
 
-			if ($login->IsAdministrator() === true)
+			if ($login->IsMember() === true)
 			{
 				$sql = "DELETE FROM ".$db_config['prefix']."Literatur_Autor
 						WHERE Literatur_Nr='$nr'";

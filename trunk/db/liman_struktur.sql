@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS `liman_Bibliothek` (
   `Literatur_Nr` int(11) NOT NULL auto_increment,
   `Art` enum('Buch','Artikel','Broschüre','Protokoll','Anleitung','Diplomarbeit','Dissertation','Techn. Bericht','Unveröffentlicht','Sonstiges') NOT NULL,
   `Titel` varchar(40) NOT NULL,
-  `Jahr` year(4) NOT NULL,
+  `Jahr` int(11) NOT NULL,
   `Verlag` varchar(40) NOT NULL,
   `ISBN` varchar(20) NOT NULL,
   `Beschreibung` text NOT NULL,

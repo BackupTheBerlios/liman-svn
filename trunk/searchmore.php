@@ -5,36 +5,49 @@
 	require_once("include/header.php");
 ?>
 <div id="cfront" class="content">
-	<h3>Autoren- und Titelsuche</h3>
-	<form action="search.<?=$ext;?>" id="searchform" method="get">
-	<table class="searchmore">
-		<tbody>
-			<tr>
-				<td scope=row><label for="autor">Autor:</label></td>
-				<td><input id="autor" name="autor"></td>
-				<td>&nbsp;</td>
-			</tr>
-			<tr>
-				<td scope=row><label for="titel">Titel:</label></td>
-				<td><input type="text" id="titel" name="titel"></td>
-				<td><input type="submit" value="Suche"></td>
-			</tr>
-		</tbody>
-	</table>
+
+	<form action="search.<?=$ext;?>" id="extrasearchform" method="get">
+	<fieldset>
+   		 <legend><b>Autoren- und Titelsuche</b></legend>
+	
+	
+		<table class="searchmore">
+			<tbody>
+				<tr>
+					<th scope=row><label for="autor">Autor:</label></th>
+					<td><input type="text" id="autor" name="autor"></td>
+				</tr>
+				<tr>
+					<th scope=row><label for="titel">Titel:</label></th>
+					<td><input type="text" id="titel" name="titel"></td>
+				</tr>
+				<tr>
+					<th></th>
+					<td><input type="submit" value="Suche"></td>
+				</tr>
+			</tbody>
+		</table>
+	</fieldset>
 	</form>
+
 	<hr>
 	
-	<h3>Volltextsuche</h3>
-	<form action="search.<?=$ext;?>" id="searchform" method="get">
-	<table class="searchmore">
-		<tbody>
-			<tr>
-				<td scope=row><label for="suchbegriff">Suchbegriff:</label></td>
-				<td><input type="text" id="suchbegriff" name="suchbegriff"></td>
-				<td><input type="submit" value="Suche"></td>
-			</tr>
-		</tbody>
-	</table>
+	<form action="search.<?=$ext;?>" id="fulltextform" method="get">
+	<fieldset>
+   		<legend><b>Volltextsuche</b></legend>
+		<table class="searchmore">
+			<tbody>
+				<tr>
+					<th scope=row><label for="suchbegriff">Suchbegriff:</label></th>
+					<td><input type="text" id="suchbegriff" name="suchbegriff"></td>
+				</tr>
+				<tr>
+					<th></th>
+					<td><input type="submit" value="Suche"></td>
+				</tr>
+			</tbody>
+		</table>
+	</fieldset>
 	</form>
 </div>
 <?php	require_once("include/footer.php"); ?>
