@@ -66,9 +66,6 @@
 			$error_email = true;
 			$error_occurred = true;
 		}
-		elseif ()
-		{
-		}
 
 		if (empty($_POST["password"]) === true && isset($_GET["insert"]) === true)
 		{
