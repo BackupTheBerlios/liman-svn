@@ -1,0 +1,42 @@
+\documentclass[a4paper]{scrreprt}
+
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{pslatex}
+\usepackage{amssymb}
+\usepackage{textcomp}
+\usepackage{parskip}
+\usepackage{graphicx}
+\usepackage{txfonts}
+\usepackage[T1]{fontenc}
+\usepackage{user} % eigene Befehle
+\usepackage{longtable}
+\usepackage{floatflt}
+\usepackage{listings}
+
+\ifpdf
+  \usepackage[ps2pdf]{thumbpdf}
+  \usepackage[pdftex]{hyperref}
+\else
+  \usepackage[active]{srcltx}
+\fi
+
+% Einstellung für Listings
+\lstset{numbers=left, numberstyle=\tiny, numbersep=5pt, basicstyle=\scriptsize, showstringspaces=false}
+\lstset{language=PHP, inputencoding=latin1, breaklines=true, breakatwhitespace=true}
+
+\include{meta} % Metainformationen wie Titel, Autoren,...
+
+\begin{document}
+\include{titel} % Titel des Dokuments mit Informationen aus meta
+\cleardoublepage
+\tableofcontents
+\cleardoublepage
+
+%Kapitel
+\input{programmdokumentation}
+\input{systemhandbuch}
+\input{anwenderdokumentation}
+\input{arbeitsaufgaben}
+
+\end{document}
