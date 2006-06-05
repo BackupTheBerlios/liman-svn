@@ -4,7 +4,7 @@
 
 	/*! \brief Suche Literaturdaten
 	 *
-	 *  Durchsucht die Literatur- und Autorentabelle über Volltextsuche,
+	 *  Durchsucht die Tabelle Bibliothek und Autoren über Volltextsuche,
 	 *  nach Autor und Titel oder nach den 10 zuletzt hinzugefügten
 	 *  Literatureinträgen und speichert sie in $Treffer zwischen.
 	 *  \pre Datenbankverbindung muss bestehen
@@ -31,9 +31,9 @@
 
 		/*! \brief Sucht zuletzt hinzugefügte Literatur
 		 *
-		 *  Sucht in Literaturtabelle nach den 10 zuletzt hinzugefügten
+		 *  Sucht in Tabelle Bibliothek nach den 10 zuletzt hinzugefügten
 		 *  Literatureinträgen und speichert Nr, Titel, Autor, Verlag
-		 *  und ISBN als als Objekt im Feld $Treffer. Sollte ein Fehler
+		 *  und ISBN als Objekt im Feld $Treffer. Sollte ein Fehler
 		 *  auftreten oder bisher keine Einträge vorhanden sein, dann
 		 *  wird $Treffer ein Feld der Länge 0.
 		 *  \pre Datenbankverbindung muss bestehen.
@@ -74,9 +74,9 @@
 
 		/*! \brief Sucht nach Literatur mit Suchbegriff
 		 *
-		 *  Sucht in Literatur und Autortabelle nach dem Auftreten
+		 *  Sucht in Tabelle Bibliothek und Autor nach dem Auftreten
 		 *  des übergebenen Textes in  Literatureinträgen und speichert
-		 *  Nr, Titel, Autor, Verlag und ISBN als als Objekt im Feld
+		 *  Nr, Titel, Autor, Verlag und ISBN als Objekt im Feld
 		 *  $Treffer. Sollte ein Fehler auftreten oder keine passenden
 		 *  Einträge vorhanden sein, dann wird $Treffer ein Feld der
 		 *  Länge 0.
@@ -127,10 +127,10 @@
 		
 		/*! \brief Sucht Literatur mit Autor und Titel
 		 *
-		 *  Sucht in Literatur und Autortabelle nach dem Auftreten
+		 *  Sucht in Tabelle Bibliothek und Autoren nach dem Auftreten
 		 *  von $autor in Autor und $titel im Titel des Literatureintrags
 		 *  und speichert Nr, Titel, Autor, Verlag und ISBN der Treffer
-		 *  als als Objekt im Feld $Treffer. Sollte ein Fehler auftreten
+		 *  als Objekt im Feld $Treffer. Sollte ein Fehler auftreten
 		 *  oder keine passenden Einträge vorhanden sein, dann wird
 		 *  $Treffer ein Feld der Länge 0.
 		 *  \pre Datenbankverbindung muss bestehen.
@@ -202,25 +202,25 @@
 		/*! \brief Sucht Literatur
 		 *
 		 *  Wenn keine Parameter übergeben werden:
-		 *  - Sucht in Literaturtabelle nach den 10 zuletzt hinzugefügten
-		 *    Literatureinträgen und speichert Nr, Titel, Autor, Verlag
-		 *    und ISBN als als Objekt im Feld $Treffer. Sollte ein Fehler
-		 *    auftreten oder bisher keine Einträge vorhanden sein, dann
-		 *    wird $Treffer ein Feld der Länge 0.
+		 *  - Sucht in Tabelle Bibliothek nach den 10 zuletzt
+		 *    hinzugefügten Literatureinträgen und speichert Nr, Titel,
+		 *    Autor, Verlag und ISBN als Objekt im Feld $Treffer.
+		 *    Sollte ein Fehler auftreten oder bisher keine Einträge
+		 *    vorhanden sein, dann wird $Treffer ein Feld der Länge 0.
 		 *
 		 *  Wenn ein $suchbegriff übergeben wird:
-		 *  - Sucht in Literatur und Autortabelle nach dem Auftreten
+		 *  - Sucht in Tabelle Literatur und Autoren nach dem Auftreten
 		 *    des übergebenen Textes in  Literatureinträgen und speichert
-		 *    Nr, Titel, Autor, Verlag und ISBN als als Objekt im Feld
+		 *    Nr, Titel, Autor, Verlag und ISBN als Objekt im Feld
 		 *    $Treffer. Sollte ein Fehler auftreten oder keine passenden
 		 *    Einträge vorhanden sein, dann wird $Treffer ein Feld der
 		 *    Länge 0.
 		 *
 		 *  Wenn $suchbegriff und $autor übergeben werden:
-		 *  - Sucht in Literatur und Autortabelle nach dem Auftreten
+		 *  - Sucht in Tabelle Bibliothek und Autoren nach dem Auftreten
 		 *    von $autor in Autor und $suchbegriff im Titel des 
 		 *    Literatureintrags und speichert Nr, Titel, Autor, Verlag
-		 *    als als Objekt im Feld $Treffer. Sollte ein Fehler auftreten
+		 *    als Objekt im Feld $Treffer. Sollte ein Fehler auftreten
 		 *    und ISBN der Treffer oder keine passenden Einträge vorhanden
 		 *    sein, dann wird $Treffer ein Feld der Länge 0.
 		 *  - Wird eine kommagetrennte Liste von Autoren als

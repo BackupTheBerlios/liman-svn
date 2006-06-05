@@ -24,7 +24,7 @@ Verwaltet \hyperlink{classLiteratur}{Literatur}.
 \begin{CompactItemize}
 \item 
 \hyperlink{classLiteratur_036a682a93a5d50839c1ebc70a79d4b6}{\$Nr}
-\begin{CompactList}\small\item\em Buchidentifikationsnummer. \item\end{CompactList}\item 
+\begin{CompactList}\small\item\em Literaturidentifikationsnummer. \item\end{CompactList}\item 
 \hyperlink{classLiteratur_e30f9e9db9b396e6f87adfdb94e12ba0}{\$Titel}
 \begin{CompactList}\small\item\em Titel der \hyperlink{classLiteratur}{Literatur}. \item\end{CompactList}\item 
 \hyperlink{classLiteratur_2cb6f40a8757a0edd5da32385ad009c9}{\$Jahr}
@@ -75,7 +75,9 @@ Stellt Funktionen zum Abruf, Exportieren, Löschen, Importieren, Hinzufügen und
 Liest \hyperlink{classLiteratur}{Literatur} ein. 
 
 Erstellt aus \hyperlink{classLiteratur}{Literatur} in Bibliothek mit Literatur\_\-Nr (\$nr) neues Literaturobjekt. \begin{Desc}
-\item[Vorbedingung:]Datenbankverbindung muss bestehen \end{Desc}
+\item[Vorbedingung:]Datenbankverbindung muss bestehen 
+
+\hyperlink{classLiteratur}{Literatur} in Bibliothek mit Literatur\_\-Nr \$nr muss existieren \end{Desc}
 \begin{Desc}
 \item[Parameter:]
 \begin{description}
@@ -94,7 +96,9 @@ Erstellt aus \hyperlink{classLiteratur}{Literatur} in Bibliothek mit Literatur\_
 Löscht \hyperlink{classLiteratur}{Literatur}. 
 
 Löscht \hyperlink{classLiteratur}{Literatur} aus Bibliothek mit der Literatur\_\-Nr \$nr. Alle verbundenen Kommentare werden aus Kommentare gelöscht. Außerdem werden alle nun nicht mehr gebrauchten Autoren in Autoren gelöscht. \begin{Desc}
-\item[Vorbedingung:]Datenbankverbindung muss bestehen \end{Desc}
+\item[Vorbedingung:]Datenbankverbindung muss bestehen 
+
+\hyperlink{classLiteratur}{Literatur} in Bibliothek mit Literatur\_\-Nr \$nr muss existieren \end{Desc}
 \begin{Desc}
 \item[Parameter:]
 \begin{description}
@@ -137,7 +141,7 @@ Importiert \hyperlink{classLiteratur}{Literatur} nach Bibliothek aus einem Bib\-
 \item[\mbox{$\leftarrow$} {\em \$bibtex}]String mit Inhalt einer Bib\-Te\-X-Datei \end{description}
 \end{Desc}
 \begin{Desc}
-\item[R\"{u}ckgabe:]Anzahl der importierten Bücher\end{Desc}
+\item[R\"{u}ckgabe:]Anzahl der importierten \hyperlink{classLiteratur}{Literatur}\end{Desc}
 \hypertarget{classLiteratur_11f6d1a4409c41638ff6693f65699ff3}{
 \index{Literatur@{Literatur}!ToBibtex@{ToBibtex}}
 \index{ToBibtex@{ToBibtex}!Literatur@{Literatur}}
@@ -161,7 +165,9 @@ Exportiert die aktuellen Informationen im Literaturobjekt in das Bib\-Te\-X-Form
 Ändert \hyperlink{classLiteratur}{Literatur}. 
 
 Entfernt alle zur Literatur\_\-Nr (\$nr) gehörenden Verbindungen in Autor\_\-Literatur um danach die \hyperlink{classLiteratur}{Literatur} mit Literatur\_\-Nr \$nr zu den neuen Werten (\$art, \$titel, \$jahr, \$verlag, \$isbn, \$beschreibung, \$ort, \$stichworte) zu ändern. Danach werden die Autoren (\$autoren) in Autoren geschrieben und mit der Tabelle Literatur\_\-Autor der \hyperlink{classLiteratur}{Literatur} zugeordnet. Alle jetzt noch nicht zugeordneten Autoren in Autoren werden gelöscht. \begin{Desc}
-\item[Vorbedingung:]Datenbankverbindung muss bestehen \end{Desc}
+\item[Vorbedingung:]Datenbankverbindung muss bestehen 
+
+\hyperlink{classLiteratur}{Literatur} in Bibliothek mit Literatur\_\-Nr \$nr muss existieren \end{Desc}
 \begin{Desc}
 \item[Parameter:]
 \begin{description}
@@ -233,7 +239,7 @@ Feld mit Kommentaren der \hyperlink{classLiteratur}{Literatur}.
 \label{classLiteratur_036a682a93a5d50839c1ebc70a79d4b6}
 
 
-Buchidentifikationsnummer. 
+Literaturidentifikationsnummer. 
 
 \hypertarget{classLiteratur_da6c458bb229187efea8e8f144a1d279}{
 \index{Literatur@{Literatur}!$Ort@{\$Ort}}

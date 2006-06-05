@@ -20,7 +20,7 @@
 \subsubsection{Ausf\"{u}hrliche Beschreibung}
 \hyperlink{classSuche}{Suche} Literaturdaten. 
 
-Durchsucht die Literatur- und Autorentabelle über Volltextsuche, nach \hyperlink{classAutor}{Autor} und Titel oder nach den 10 zuletzt hinzugefügten Literatureinträgen und speichert sie in \$Treffer zwischen. \begin{Desc}
+Durchsucht die Tabelle Bibliothek und Autoren über Volltextsuche, nach \hyperlink{classAutor}{Autor} und Titel oder nach den 10 zuletzt hinzugefügten Literatureinträgen und speichert sie in \$Treffer zwischen. \begin{Desc}
 \item[Vorbedingung:]Datenbankverbindung muss bestehen \end{Desc}
 \begin{Desc}
 \item[Importiert:]\begin{itemize}
@@ -45,15 +45,15 @@ Durchsucht die Literatur- und Autorentabelle über Volltextsuche, nach \hyperlin
 Sucht \hyperlink{classLiteratur}{Literatur}. 
 
 Wenn keine Parameter übergeben werden:\begin{itemize}
-\item Sucht in Literaturtabelle nach den 10 zuletzt hinzugefügten Literatureinträgen und speichert Nr, Titel, \hyperlink{classAutor}{Autor}, Verlag und ISBN als als Objekt im Feld \$Treffer. Sollte ein Fehler auftreten oder bisher keine Einträge vorhanden sein, dann wird \$Treffer ein Feld der Länge 0.\end{itemize}
+\item Sucht in Tabelle Bibliothek nach den 10 zuletzt hinzugefügten Literatureinträgen und speichert Nr, Titel, \hyperlink{classAutor}{Autor}, Verlag und ISBN als Objekt im Feld \$Treffer. Sollte ein Fehler auftreten oder bisher keine Einträge vorhanden sein, dann wird \$Treffer ein Feld der Länge 0.\end{itemize}
 
 
 Wenn ein \$suchbegriff übergeben wird:\begin{itemize}
-\item Sucht in \hyperlink{classLiteratur}{Literatur} und Autortabelle nach dem Auftreten des übergebenen Textes in Literatureinträgen und speichert Nr, Titel, \hyperlink{classAutor}{Autor}, Verlag und ISBN als als Objekt im Feld \$Treffer. Sollte ein Fehler auftreten oder keine passenden Einträge vorhanden sein, dann wird \$Treffer ein Feld der Länge 0.\end{itemize}
+\item Sucht in Tabelle \hyperlink{classLiteratur}{Literatur} und Autoren nach dem Auftreten des übergebenen Textes in Literatureinträgen und speichert Nr, Titel, \hyperlink{classAutor}{Autor}, Verlag und ISBN als Objekt im Feld \$Treffer. Sollte ein Fehler auftreten oder keine passenden Einträge vorhanden sein, dann wird \$Treffer ein Feld der Länge 0.\end{itemize}
 
 
 Wenn \$suchbegriff und \$autor übergeben werden:\begin{itemize}
-\item Sucht in \hyperlink{classLiteratur}{Literatur} und Autortabelle nach dem Auftreten von \$autor in \hyperlink{classAutor}{Autor} und \$suchbegriff im Titel des Literatureintrags und speichert Nr, Titel, \hyperlink{classAutor}{Autor}, Verlag als als Objekt im Feld \$Treffer. Sollte ein Fehler auftreten und ISBN der Treffer oder keine passenden Einträge vorhanden sein, dann wird \$Treffer ein Feld der Länge 0.\item Wird eine kommagetrennte Liste von Autoren als \$autor übergeben, muss in Treffern nur einer der genannten Autoren auftreten.\end{itemize}
+\item Sucht in Tabelle Bibliothek und Autoren nach dem Auftreten von \$autor in \hyperlink{classAutor}{Autor} und \$suchbegriff im Titel des Literatureintrags und speichert Nr, Titel, \hyperlink{classAutor}{Autor}, Verlag als Objekt im Feld \$Treffer. Sollte ein Fehler auftreten und ISBN der Treffer oder keine passenden Einträge vorhanden sein, dann wird \$Treffer ein Feld der Länge 0.\item Wird eine kommagetrennte Liste von Autoren als \$autor übergeben, muss in Treffern nur einer der genannten Autoren auftreten.\end{itemize}
 
 
 \begin{Desc}

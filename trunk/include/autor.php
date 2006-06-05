@@ -57,9 +57,9 @@
 
 		/*! \brief Gibt Autoren zu bestimmter Literatur zurück
 		 *
-		 *  Liest alle Autoren die einer Literatur ($nr) zugeordnet
-		 *  sind aus Kommentare aus und gibt sie als Feld des Typs
-		 *  Autor zurück.
+		 *  Liest alle Autoren die einer Literatur ($literatur_nr)
+		 *  zugeordnet sind aus Kommentare aus und gibt sie als Feld des
+		 *  Typs Autor zurück.
 		 *  \param[in] $literatur_nr Nr einer Literatur mit Autoren
 		 *  \pre Datenbankverbindung muss bestehen
 		 *  \return Feld vom Typ Autor
@@ -90,7 +90,7 @@
 		 *  schon existieren, dann wird Autor_Nr ausgelesen und zum
 		 *  Feld hinzugefügt. Sollten diese noch nicht existieren,
 		 *  werden sie hinzugefügt und die neuen Autor_Nr zum Feld
-		 *  hinzugefügt. Das komplette Feld vom Typ Autor_Nr wird
+		 *  hinzugefügt. Das komplette Feld mit Autor_Nr wird
 		 *  zurückgegeben.
 		 *  \pre Datenbankverbindung muss bestehen
 		 *  \param[in] $autoren String mit kommagetrennter Liste von Autoren

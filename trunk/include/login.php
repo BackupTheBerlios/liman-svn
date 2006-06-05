@@ -6,9 +6,9 @@
 	 *  Verwaltet die aus der sich aktuellen Anmeldung ergebenen Session
 	 *  des Users und der damit entstehenden Rechte
 	 *  \pre Das Loginobjekt muss vor einer Übertragung von Inhaltsdaten zum 
-	 *    User angelegt werden, um ein Cookie anlegen zu können. Es sollte
-	 *    kein zweites Objekt vom Typ Login existieren.
-	 *    Datenbankverbindung muss bestehen.
+	 *    User angelegt werden, um ein Cookie anlegen zu können.
+	 *  \pre Es sollte kein zweites Objekt vom Typ Login existieren.
+	 *  \pre Datenbankverbindung muss bestehen.
 	 *  \remarks Sollte ein weiteres Objekt vom Typ Login existieren, in
 	 *    welche neue Logininformationen eingetragen werden, wird keine
 	 *    weitere Session angelegt, sondern die alten Informationen in
@@ -44,17 +44,17 @@
 		 *  mit Mitglied::PasswordHash gehasht, um diese mit
 		 *  Benutzernamen ($benutzer) gegen die Einträge in Mitglieder
 		 *  zu prüfen. Ist diese erfolgreich, wird eine neue Session
-		 *  mit gehashtem Passwort, Benuternamen und
-		 *  Verbindungsinformationen erstellt. Sollte irgendwo ein
-		 *  Fehler bei der Anmeldung auftreten, erhält er Nutzerrechte
+		 *  mit gehashtem Passwort, Benutzernamen und
+		 *  Verbindungsinformationen erstellt. Sollte ein Fehler 
+		 *  bei der Anmeldung auftreten, erhält er Nutzerrechte
 		 *  (wird also nicht zum Mitglied). Sonst erhält er die Rechte
 		 *  und Mitglieds_Nr aus dem gefundenem Eintrag in Mitglieder.
 		 *  \param[in] $benutzer neuer Benutzername
 		 *  \param[in] $passwort Passwort in Klartext des Nutzers
 		 *  \pre Eine Verbindung zur Datenbank muss bestehen.
-		 *    Der Konstruktor muss vor dem Senden von Inhaltsdaten
-		 *    aufgerufen werden, um ein Cookie erstellen zu können.\n
-		 *    Zum Einloggen mit Daten darf kein Parameter leer sein
+		 *  \pre Der Konstruktor muss vor dem Senden von Inhaltsdaten
+		 *    aufgerufen werden, um ein Cookie erstellen zu können.
+		 *  \pre Zum Einloggen mit Daten darf kein Parameter leer sein
 		 */
 		function Login($benutzer = "", $passwort = "")
 		{

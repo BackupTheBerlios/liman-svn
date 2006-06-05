@@ -127,7 +127,7 @@
 		 *  Entfernt Datensätze der letzten Anfrage und gibt deren
 		 *  Speicher frei.
 		 *  \pre -
-		 *  \remarks Funktion wird vor jedem query aufgerufen
+		 *  \remarks Funktion wird vor jedem Query() aufgerufen
 		 */
 		function FreeResult()
 		{
@@ -149,7 +149,7 @@
 		 *  Anweisung geänderten Datensätze.
 		 *  \pre Datenbankverbindung muss bestehen
 		 *  \return Anzahl der Datensätze
-		 *  \remarks Für gefundene Datensätze sollte num_rows() genutzt werden
+		 *  \remarks Für gefundene Datensätze sollte GetNumRows() genutzt werden
 		 */
 		function GetAffectedRows()
 		{
@@ -195,7 +195,7 @@
 		 *  \pre Datenbankverbindung muss mit einer Abfrage bestehen
 		 *  \return bei Erfolg Anzahl der Datensätze
 		 *  \retval false bei Misserfolg
-		 *  \remarks Für geänderte Datensätze sollte affected_rows() genutzt werden
+		 *  \remarks Für geänderte Datensätze sollte GetAffectedRows() genutzt werden
 		 */
 		function GetNumRows()
 		{

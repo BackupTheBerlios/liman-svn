@@ -38,7 +38,7 @@ Verwaltet Kommentare.
 \subsubsection{Ausf\"{u}hrliche Beschreibung}
 Verwaltet Kommentare. 
 
-Stellt Funktionen zum Anlegen, Löschen, Bearbeiten von Kommentaren bereit. Es können sowohl einzelne Kommentare oder nach Literatur- bzw. Mitgliederverbundenen Kommentaren gelöscht werden. \begin{Desc}
+Stellt Funktionen zum Anlegen, Löschen, Bearbeiten von Kommentaren bereit. Es können sowohl einzelne Kommentare oder Kommentare nach ihrer Verbindung zur \hyperlink{classLiteratur}{Literatur} bzw. Mitgliedern gelöscht werden. \begin{Desc}
 \item[Vorbedingung:]Datenbankverbindung muss bestehen \end{Desc}
 \begin{Desc}
 \item[Importiert:]\begin{itemize}
@@ -84,7 +84,9 @@ Legt ein neues Kommentarobjekt aus einem Objekt mit den Attributen Nr, Text, Ver
 Löscht \hyperlink{classKommentar}{Kommentar}. 
 
 Löscht einen \hyperlink{classKommentar}{Kommentar} aus Kommentare mit der Kommentar\_\-Nr \$nr. \begin{Desc}
-\item[Vorbedingung:]Datenbankverbindung muss bestehen \end{Desc}
+\item[Vorbedingung:]Datenbankverbindung muss bestehen 
+
+\hyperlink{classKommentar}{Kommentar} in Kommentare mit Kommentar\_\-Nr \$nr muss existieren \end{Desc}
 \begin{Desc}
 \item[Parameter:]
 \begin{description}
@@ -137,7 +139,7 @@ Löscht alle Kommentare aus Kommentare, die mit Mitglieder mit der Mitglieds\_\-
 
 Gibt Kommentare zu bestimmter \hyperlink{classLiteratur}{Literatur} zurück. 
 
-Liest alle Kommentare die einer \hyperlink{classLiteratur}{Literatur} (\$nr) zugeordnet sind aus Kommentare aus und gibt sie als Feld des Typs \hyperlink{classKommentar}{Kommentar} zurück. \begin{Desc}
+Liest alle Kommentare die einer \hyperlink{classLiteratur}{Literatur} (\$literatur\_\-nr) zugeordnet sind aus Kommentare aus und gibt sie als Feld des Typs \hyperlink{classKommentar}{Kommentar} zurück. \begin{Desc}
 \item[Parameter:]
 \begin{description}
 \item[\mbox{$\leftarrow$} {\em \$literatur\_\-nr}]Nr einer \hyperlink{classLiteratur}{Literatur} mit Kommentaren \end{description}
@@ -156,7 +158,9 @@ Liest alle Kommentare die einer \hyperlink{classLiteratur}{Literatur} (\$nr) zug
 Legt \hyperlink{classKommentar}{Kommentar} an. 
 
 Legt einen neuen \hyperlink{classKommentar}{Kommentar} mit Text (\$text) zu einer \hyperlink{classLiteratur}{Literatur} (\$literatur\_\-nr) vom einem Verfasser (\$verfasser\_\-nr) an. \begin{Desc}
-\item[Vorbedingung:]Datenbankverbindung muss bestehen \end{Desc}
+\item[Vorbedingung:]Datenbankverbindung muss bestehen 
+
+Text (\$text) darf nicht leer sein \end{Desc}
 \begin{Desc}
 \item[Parameter:]
 \begin{description}
@@ -174,14 +178,16 @@ Legt einen neuen \hyperlink{classKommentar}{Kommentar} mit Text (\$text) zu eine
 Ändert einen \hyperlink{classKommentar}{Kommentar}. 
 
 Ändert in Kommentare den Text des Kommentars mit \$nr in \$text. \begin{Desc}
-\item[Vorbedingung:]Datenbankverbindung muss bestehen \end{Desc}
+\item[Vorbedingung:]Datenbankverbindung muss bestehen 
+
+\hyperlink{classKommentar}{Kommentar} in Kommentare mit Kommentar\_\-Nr \$nr muss existieren \end{Desc}
 \begin{Desc}
 \item[Parameter:]
 \begin{description}
 \item[\mbox{$\leftarrow$} {\em \$nr}]Nummer des zu verändernden Kommentars \item[\mbox{$\leftarrow$} {\em \$text}]neuer Text des Kommentars \end{description}
 \end{Desc}
 \begin{Desc}
-\item[Bemerkungen:]Ist das aktuelle \hyperlink{classMitglied}{Mitglied} kein Administrator, dann muss die aktuelle Nummer des Mitglieds gleich der Mitglieds\_\-Nr des Kommentars in Kommentare sein. Ist der Nutzer nicht eingeloggt, werden keine Operationen ausgeführt. \end{Desc}
+\item[Bemerkungen:]Ist das aktuelle \hyperlink{classMitglied}{Mitglied} kein Administrator, dann muss die aktuelle Nummer des Mitglieds gleich der Mitglieds\_\-Nr des Kommentars in Kommentare sein. Ist der Nutzer nicht eingeloggt, werden keine Operationen ausgeführt. Wird kein Text (\$text) angegeben, wird der \hyperlink{classKommentar}{Kommentar} mit \hyperlink{classKommentar_31c1fdfb4fb8f24e0016c8ddb98ddcdc}{Kommentar::Delete} gelöscht. \end{Desc}
 
 
 \subsubsection{Dokumentation der Datenelemente}

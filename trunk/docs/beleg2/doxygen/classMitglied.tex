@@ -86,7 +86,9 @@ Liest \hyperlink{classMitglied}{Mitglied} mit Mitglied\_\-Nr (\$nr) und setzt Fe
 Entfernt \hyperlink{classMitglied}{Mitglied}. 
 
 Entfernt \hyperlink{classMitglied}{Mitglied} mit Mitgliedsnummer (\$nr) aus Mitglieder und löscht zusätzlich die Kommentare des Mitglieds in Kommentare \begin{Desc}
-\item[Vorbedingung:]Datenbankverbindung muss bestehen \end{Desc}
+\item[Vorbedingung:]Datenbankverbindung muss bestehen 
+
+\hyperlink{classMitglied}{Mitglied} in Mitglieder mit Mitglieds\_\-Nr \$nr muss existieren \end{Desc}
 \begin{Desc}
 \item[Parameter:]
 \begin{description}
@@ -103,7 +105,7 @@ Entfernt \hyperlink{classMitglied}{Mitglied} mit Mitgliedsnummer (\$nr) aus Mitg
 
 Rückgabe einer Liste der Mitglieder. 
 
-Liest alle Mitglieder mit Nr, \hyperlink{classLogin}{Login}, Vorname, Nachname und Email aus Mitgliedertabelle und gibt die ausgelesenen Objekte in einem Feld zurück \begin{Desc}
+Liest alle Mitglieder mit Nr, \hyperlink{classLogin}{Login}, Vorname, Nachname und Email aus Tabelle Mitglieder und gibt die ausgelesenen Objekte in einem Feld zurück \begin{Desc}
 \item[Vorbedingung:]Datenbankverbindung muss bestehen \end{Desc}
 \begin{Desc}
 \item[R\"{u}ckgabe:]Feld mit Objekten der Form\begin{itemize}
@@ -120,7 +122,7 @@ Liest alle Mitglieder mit Nr, \hyperlink{classLogin}{Login}, Vorname, Nachname u
 
 Legt \hyperlink{classMitglied}{Mitglied} an. 
 
-Fügt neues \hyperlink{classMitglied}{Mitglied} mit Benutzernamen (\$loginname), Passwort (\$passwort), Benutzerrechten (\$rechte), Vorname (\$vorname), Nachname (\$nachname), E-Mail-Adresse (\$email) in Mitglieder ein. Dazu wird das Passwort noch mit Mitglied::Passwort\-Hash gehasht. Sollte ein \hyperlink{classMitglied}{Mitglied} mit gleichem \hyperlink{classLogin}{Login} existieren wird ein Fehler zurückgegeben, da die Datenbank nur ein \hyperlink{classMitglied}{Mitglied} mit gleichem \hyperlink{classLogin}{Login} erlaubt. \begin{Desc}
+Fügt neues \hyperlink{classMitglied}{Mitglied} mit Benutzernamen (\$loginname), Passwort (\$passwort), Benutzerrechten (\$rechte), Vorname (\$vorname), Nachname (\$nachname), E-Mail-Adresse (\$email) in Mitglieder ein. Dazu wird das Passwort noch mit \hyperlink{classMitglied_9b13db80866c22bf992e73f2eb75e369}{Mitglied::Password\-Hash} gehasht. Sollte ein \hyperlink{classMitglied}{Mitglied} mit gleichem \hyperlink{classLogin}{Login} existieren wird ein Fehler zurückgegeben, da die Datenbank nur ein \hyperlink{classMitglied}{Mitglied} mit gleichem \hyperlink{classLogin}{Login} erlaubt. \begin{Desc}
 \item[Vorbedingung:]Datenbankverbindung muss bestehen \end{Desc}
 \begin{Desc}
 \item[Parameter:]
@@ -159,8 +161,10 @@ Aus übergebenes Klartextpasswort wird ein 40 Byte großer hexkodierter Hash gen
 
 Ändert ein \hyperlink{classMitglied}{Mitglied}. 
 
-Ändert die Daten das Mitglieds mit der Mitglieds\_\-Nr (\$nr), in neuen Benutzernamen (\$loginname), Passwort (\$passwort), Benutzerrechten (\$rechte), Vorname (\$vorname), Nachname (\$nachname), E-Mail-Adresse (\$email) in Mitglieder. Wenn \$passwort nicht die Länge 0 hat, wird es noch mit Mitglied::Passwort\-Hash gehasht. Andernfalls wird das alte Passwort in Mitglieder beibehalten. Sollte ein \hyperlink{classMitglied}{Mitglied} mit gleichem \hyperlink{classLogin}{Login} existieren wird ein Fehler zurückgegeben, da die Datenbank nur ein \hyperlink{classMitglied}{Mitglied} mit gleichem \hyperlink{classLogin}{Login} erlaubt. \begin{Desc}
-\item[Vorbedingung:]Datenbankverbindung muss bestehen \end{Desc}
+Ändert die Daten des Mitglieds mit der Mitglieds\_\-Nr (\$nr), in neuen Benutzernamen (\$loginname), Passwort (\$passwort), Benutzerrechten (\$rechte), Vorname (\$vorname), Nachname (\$nachname), E-Mail-Adresse (\$email) in Mitglieder. Wenn \$passwort nicht die Länge 0 hat, wird es noch mit Mitglied::Passwort\-Hash gehasht. Andernfalls wird das alte Passwort in Mitglieder beibehalten. Sollte ein \hyperlink{classMitglied}{Mitglied} mit gleichem \hyperlink{classLogin}{Login} existieren wird ein Fehler zurückgegeben, da die Datenbank nur ein \hyperlink{classMitglied}{Mitglied} mit gleichem \hyperlink{classLogin}{Login} erlaubt. \begin{Desc}
+\item[Vorbedingung:]Datenbankverbindung muss bestehen 
+
+\hyperlink{classMitglied}{Mitglied} in Mitglieder mit Mitglieds\_\-Nr \$nr muss existieren \end{Desc}
 \begin{Desc}
 \item[Parameter:]
 \begin{description}

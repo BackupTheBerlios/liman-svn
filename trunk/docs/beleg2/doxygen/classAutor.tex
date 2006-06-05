@@ -86,7 +86,7 @@ Entfernt aus Autoren alle Autoren, die keine Verbindung (Literatur\_\-Autor-Tabe
 
 Gibt Autoren zu bestimmter \hyperlink{classLiteratur}{Literatur} zurück. 
 
-Liest alle Autoren die einer \hyperlink{classLiteratur}{Literatur} (\$nr) zugeordnet sind aus Kommentare aus und gibt sie als Feld des Typs \hyperlink{classAutor}{Autor} zurück. \begin{Desc}
+Liest alle Autoren die einer \hyperlink{classLiteratur}{Literatur} (\$literatur\_\-nr) zugeordnet sind aus Kommentare aus und gibt sie als Feld des Typs \hyperlink{classAutor}{Autor} zurück. \begin{Desc}
 \item[Parameter:]
 \begin{description}
 \item[\mbox{$\leftarrow$} {\em \$literatur\_\-nr}]Nr einer \hyperlink{classLiteratur}{Literatur} mit Autoren \end{description}
@@ -104,7 +104,7 @@ Liest alle Autoren die einer \hyperlink{classLiteratur}{Literatur} (\$nr) zugeor
 
 Legt neue Autoren aus kommagetrennter Liste an. 
 
-Teilt die kommagetrennte Liste von Autoren in einzelne Autorennamen ein und überprüft gegen Autorentabelle, ob diese schon in der Datenbank existieren. Sollten diese schon existieren, dann wird Autor\_\-Nr ausgelesen und zum Feld hinzugefügt. Sollten diese noch nicht existieren, werden sie hinzugefügt und die neuen Autor\_\-Nr zum Feld hinzugefügt. Das komplette Feld vom Typ Autor\_\-Nr wird zurückgegeben. \begin{Desc}
+Teilt die kommagetrennte Liste von Autoren in einzelne Autorennamen ein und überprüft gegen Autorentabelle, ob diese schon in der Datenbank existieren. Sollten diese schon existieren, dann wird Autor\_\-Nr ausgelesen und zum Feld hinzugefügt. Sollten diese noch nicht existieren, werden sie hinzugefügt und die neuen Autor\_\-Nr zum Feld hinzugefügt. Das komplette Feld mit Autor\_\-Nr wird zurückgegeben. \begin{Desc}
 \item[Vorbedingung:]Datenbankverbindung muss bestehen \end{Desc}
 \begin{Desc}
 \item[Parameter:]

@@ -26,7 +26,7 @@
 	 */
 	class Literatur
 	{
-		var $Nr = 0; ///< Buchidentifikationsnummer
+		var $Nr = 0; ///< Literaturidentifikationsnummer
 		var $Titel = ""; ///< Titel der Literatur
 		var $Jahr = 0; ///< Erscheinungsjahr
 		var $Verlag = ""; ///< Verlag/Herausgeber
@@ -43,6 +43,8 @@
 		 *  Erstellt aus Literatur in Bibliothek mit Literatur_Nr
 		 *  ($nr) neues Literaturobjekt.
 		 *  \pre Datenbankverbindung muss bestehen
+		 *  \pre Literatur in Bibliothek mit Literatur_Nr $nr muss
+		 *    existieren
 		 *  \param[in] $nr Nummer der zu einlesenden Literatur
 		 */
 		function Literatur($nr)
@@ -135,6 +137,8 @@
 		 *  Außerdem werden alle nun nicht mehr gebrauchten Autoren in
 		 *  Autoren gelöscht.
 		 *  \pre Datenbankverbindung muss bestehen
+		 *  \pre Literatur in Bibliothek mit Literatur_Nr $nr muss
+		 *    existieren
 		 *  \param[in] $nr Nummer der zu löschenden Literatur
 		 *  \remarks Ist der Nutzer nicht als Mitglied angemeldet,
 		 *    werden keine Operationen ausgeführt
@@ -168,10 +172,12 @@
 		 *  in die Datenbank zu schreiben.
 		 *  \pre Datenbankverbindung muss bestehen
 		 *  \param[in] $bibtex String mit Inhalt einer BibTeX-Datei
+		 *  \return Anzahl der importierten Literatur
 		 */
 		function InsertBibTeX($bibtex)
 		{
 			/// \todo implementieren
+			return 0;
 		}
 
 		/*! \brief Legt Literatur an
@@ -232,6 +238,8 @@
 		 *  zugeordnet. Alle jetzt noch nicht zugeordneten Autoren in
 		 *  Autoren werden gelöscht.
 		 *  \pre Datenbankverbindung muss bestehen
+		 *  \pre Literatur in Bibliothek mit Literatur_Nr $nr muss
+		 *    existieren
 		 *  \param[in] $nr Nummer der zu verändernden Literatur
 		 *  \param[in] $autoren String mit kommagetrennter Liste von Autoren
 		 *  \param[in] $art neuer Bezeichner der Literaturart

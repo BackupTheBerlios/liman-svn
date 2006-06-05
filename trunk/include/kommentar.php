@@ -4,8 +4,8 @@
 	/*! \brief Verwaltet Kommentare
 	 *
 	 *  Stellt Funktionen zum Anlegen, Löschen, Bearbeiten von Kommentaren
-	 *  bereit. Es können sowohl einzelne Kommentare oder nach Literatur-
-	 *  bzw. Mitgliederverbundenen Kommentaren gelöscht werden.
+	 *  bereit. Es können sowohl einzelne Kommentare oder Kommentare nach
+	 *  ihrer Verbindung zur Literatur bzw. Mitgliedern gelöscht werden.
 	 *  \pre Datenbankverbindung muss bestehen
 	 *  \sa
 	 *  - Login::IsAdministrator
@@ -48,6 +48,8 @@
 		 *  Löscht einen Kommentar aus Kommentare mit der Kommentar_Nr
 		 *  $nr.
 		 *  \pre Datenbankverbindung muss bestehen
+		 *  \pre Kommentar in Kommentare mit Kommentar_Nr $nr muss
+		 *    existieren
 		 *  \param[in] $nr Nummer des zu löschenden Kommentars
 		 *  \remarks Ist der Nutzer nicht als Administrator angemeldet,
 		 *    werden keine Operationen ausgeführt, wenn Mitglieds_Nr
@@ -119,9 +121,9 @@
 
 		/*! \brief Gibt Kommentare zu bestimmter Literatur zurück
 		 *
-		 *  Liest alle Kommentare die einer Literatur ($nr) zugeordnet
-		 *  sind aus Kommentare aus und gibt sie als Feld des Typs
-		 *  Kommentar zurück.
+		 *  Liest alle Kommentare die einer Literatur ($literatur_nr)
+		 *  zugeordnet sind aus Kommentare aus und gibt sie als Feld des
+		 *  Typs Kommentar zurück.
 		 *  \param[in] $literatur_nr Nr einer Literatur mit Kommentaren
 		 *  \pre Datenbankverbindung muss bestehen
 		 *  \return Feld vom Typ Kommentar
@@ -151,6 +153,7 @@
 		 *  Literatur ($literatur_nr) vom einem Verfasser 
 		 *  ($verfasser_nr) an.
 		 *  \pre Datenbankverbindung muss bestehen
+		 *  \pre Text ($text) darf nicht leer sein
 		 *  \param[in] $text Text des Kommentars
 		 *  \param[in] $verfasser_nr Mitglieds_Nr des Verfassers
 		 *  \param[in] $literatur_nr Nummer der Literatur
@@ -183,9 +186,12 @@
 
 					if (($cur = $sqldb->Fetch()) === false)
 					{
-						$sql = "INSERT INTO ".$db_config['prefix']."Kommentare
+						if (empty($text) === false)
+						{
+							$sql = "INSERT INTO ".$db_config['prefix']."Kommentare
 								VALUES (NULL, '$text', '$literatur_nr', '$verfasser_nr')";
-						$sqldb->Query($sql);
+							$sqldb->Query($sql);
+						}
 					}
 					else
 					{
@@ -200,33 +206,43 @@
 		 *  Ändert in Kommentare den Text des Kommentars mit $nr
 		 *  in $text.
 		 *  \pre Datenbankverbindung muss bestehen
+		 *  \pre Kommentar in Kommentare mit Kommentar_Nr $nr muss
+		 *    existieren
 		 *  \param[in] $nr Nummer des zu verändernden Kommentars
 		 *  \param[in] $text neuer Text des Kommentars
 		 *  \remarks Ist das aktuelle Mitglied kein Administrator,
 		 *  dann muss die aktuelle Nummer des Mitglieds gleich der
 		 *  Mitglieds_Nr des Kommentars in Kommentare sein. Ist der
 		 *  Nutzer nicht eingeloggt, werden keine Operationen
-		 *  ausgeführt.
+		 *  ausgeführt. Wird kein Text ($text) angegeben, wird der
+		 *  Kommentar mit Kommentar::Delete gelöscht.
 		 */
 		function Update($nr, $text)
 		{
 			global $db_config, $sqldb, $login;
 
-			if ($login->IsAdministrator() === true)
+			if (empty($text) === true)
 			{
-				$sql = "UPDATE ".$db_config['prefix']."Kommentare
-						SET Kommentartext='$text'
-						WHERE Kommentar_Nr='$nr'
-						LIMIT 1";
-				$sqldb->Query($sql);
+				Kommentar::Delete($nr);
 			}
-			elseif ($login->IsMember() === true)
+			else
 			{
-				$sql = "UPDATE ".$db_config['prefix']."Kommentare
-						SET Kommentartext='$text'
-						WHERE Kommentar_Nr='$nr' AND Mitglieds_Nr='".$login->Nr."'
-						LIMIT 1";
-				$sqldb->Query($sql);
+				if ($login->IsAdministrator() === true)
+				{
+					$sql = "UPDATE ".$db_config['prefix']."Kommentare
+							SET Kommentartext='$text'
+							WHERE Kommentar_Nr='$nr'
+							LIMIT 1";
+					$sqldb->Query($sql);
+				}
+				elseif ($login->IsMember() === true)
+				{
+					$sql = "UPDATE ".$db_config['prefix']."Kommentare
+							SET Kommentartext='$text'
+							WHERE Kommentar_Nr='$nr' AND Mitglieds_Nr='".$login->Nr."'
+							LIMIT 1";
+					$sqldb->Query($sql);
+				}
 			}
 		}
 	}

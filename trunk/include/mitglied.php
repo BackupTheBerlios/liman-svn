@@ -85,6 +85,8 @@
 		 *  und löscht zusätzlich die Kommentare des Mitglieds in
 		 *  Kommentare
 		 *  \pre Datenbankverbindung muss bestehen
+		 *  \pre Mitglied in Mitglieder mit Mitglieds_Nr $nr muss
+		 *    existieren
 		 *  \param[in] $nr Mitglieds_Nr des zu löschenden Mitglieds
 		 *  \remarks Ist der Nutzer nicht als Administrator angemeldet,
 		 *    werden keine Operationen ausgeführt
@@ -109,7 +111,7 @@
 		 *  Fügt neues Mitglied mit Benutzernamen ($loginname), Passwort
 		 *  ($passwort), Benutzerrechten ($rechte), Vorname ($vorname),
 		 *  Nachname ($nachname), E-Mail-Adresse ($email) in Mitglieder
-		 *  ein. Dazu wird das Passwort noch mit Mitglied::PasswortHash
+		 *  ein. Dazu wird das Passwort noch mit Mitglied::PasswordHash
 		 *  gehasht. Sollte ein Mitglied mit gleichem Login existieren
 		 *  wird ein Fehler zurückgegeben, da die Datenbank nur ein
 		 *  Mitglied mit gleichem Login erlaubt.
@@ -153,7 +155,7 @@
 		
 		/*! \brief Ändert ein Mitglied
 		 *
-		 *  Ändert die Daten das Mitglieds mit der Mitglieds_Nr ($nr),
+		 *  Ändert die Daten des Mitglieds mit der Mitglieds_Nr ($nr),
 		 *  in neuen Benutzernamen ($loginname), Passwort ($passwort),
 		 *  Benutzerrechten ($rechte), Vorname ($vorname),
 		 *  Nachname ($nachname), E-Mail-Adresse ($email) in
@@ -164,6 +166,8 @@
 		 *  zurückgegeben, da die Datenbank nur ein Mitglied mit
 		 *  gleichem Login erlaubt.
 		 *  \pre Datenbankverbindung muss bestehen
+		 *  \pre Mitglied in Mitglieder mit Mitglieds_Nr $nr muss
+		 *    existieren
 		 *  \param[in] $nr Mitglieds_Nr des zu verändernden Mitglieds
 		 *  \param[in] $loginname neuer Benutzername des Mitglieds
 		 *  \param[in] $passwort neues Passwort des Mitglieds
@@ -225,7 +229,7 @@
 		/*! \brief Rückgabe einer Liste der Mitglieder
 		 *
 		 *  Liest alle Mitglieder mit Nr, Login, Vorname, Nachname und
-		 *  Email aus Mitgliedertabelle und gibt die ausgelesenen
+		 *  Email aus Tabelle Mitglieder und gibt die ausgelesenen
 		 *  Objekte in einem Feld zurück
 		 *  \pre Datenbankverbindung muss bestehen
 		 *  \return Feld mit Objekten der Form
