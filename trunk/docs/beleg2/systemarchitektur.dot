@@ -21,7 +21,7 @@ digraph G
 		Kommentarverwaltung
 		Mitgliedsverwaltung
 		Literaturinformation
-		Suchen
+		Suchsystem
 	}
 
 	subgraph Klassen
@@ -60,7 +60,7 @@ digraph G
 	Literaturverwaltung -> Kommentarverwaltung
 	Literaturverwaltung -> Mitgliedsverwaltung
 	Literaturverwaltung -> Literaturinformation
-	Literaturverwaltung -> Suchen
+	Literaturverwaltung -> Suchsystem
 
 	// Prozesse zu Klassen
 	Bibliotheksverwaltung -> Literatur
@@ -71,7 +71,7 @@ digraph G
 
 	Mitgliedsverwaltung -> Mitglied
 
-	Suchen -> Suche
+	Suchsystem -> Suche
 
 	// Klassen auf Datenbank
 	Autor -> SQLDB
