@@ -91,8 +91,8 @@ hr {
 	width: 20em;
 }
 
-#content input[type="text"],
-#content input[type="password"],
+#content .input_text,
+#content .input_password,
 #content form textarea {
 	width: 99%;
 }

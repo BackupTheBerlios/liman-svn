@@ -76,21 +76,25 @@
 	if ((isset($_GET["delete"]) === false && isset($_GET["insert"]) === false && isset($_GET["update"]) === false)
 		|| $error_occurred === true)
 	{
+		if (isset($_POST["id"]) === true)
+		{
+			$id = $_POST["id"];
+		}
+		elseif (isset($_GET["id"]) === true)
+		{
+			$id = $_GET["id"];
+		}
+		else
+		{
+			unset($id);
+		}
+
 		require_once("include/form_helper.php");
-		if (isset($_GET["id"]) === true || isset($_POST["id"]) === true)
+		if ($error_occurred === false && (isset($_GET["id"]) === true || isset($_POST["id"]) === true))
 		{
 			require_once("include/literatur.php");
 
-			if (isset($_POST["id"]) === true)
-			{
-				$id = $_POST["id"];
-			}
-			else
-			{
-				$id = $_GET["id"];
-			}
-
-			$lit = new Literatur($_GET["id"]);
+			$lit = new Literatur($id);
 			$titel = $lit->Titel;
 			$autor = "";
 			$jahr = $lit->Jahr;

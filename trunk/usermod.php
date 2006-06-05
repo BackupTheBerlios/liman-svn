@@ -125,21 +125,24 @@
 	if ((isset($_GET["delete"]) === false && isset($_GET["insert"]) === false && isset($_GET["update"]) === false)
 		|| $error_occurred === true)
 	{
+		if (isset($_POST["id"]) === true)
+		{
+			$id = $_POST["id"];
+		}
+		elseif (isset($_GET["id"]) === true)
+		{
+			$id = $_GET["id"];
+		}
+		else
+		{
+			unset($id);
+		}
+
 		require_once("include/form_helper.php");
-		if (isset($_GET["id"]) === true || isset($_POST["id"]) === true)
+		if ($error_occurred === false && (isset($_GET["id"]) === true || isset($_POST["id"]) === true))
 		{
 			require_once("include/mitglied.php");
-
-			if (isset($_POST["id"]) === true)
-			{
-				$id = $_POST["id"];
-			}
-			else
-			{
-				$id = $_GET["id"];
-			}
-
-			$mitglied = new Mitglied($_GET["id"]);
+			$mitglied = new Mitglied($id);
 			$benutzername = $mitglied->Login;
 
 			if (isset($mitglied->Rechte) === true)

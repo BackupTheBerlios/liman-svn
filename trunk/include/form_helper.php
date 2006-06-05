@@ -8,7 +8,7 @@
 	 */
 	function form_input($type, $name, $value = "", $failure = false)
 	{
-		$str = "<input type=\"".htmlspecialchars($type)."\" name=\"".htmlspecialchars($name)."\" id=\"".htmlspecialchars($name)."\" ";
+		$str = "<input class=\"input_".$type."\" type=\"".htmlspecialchars($type)."\" name=\"".htmlspecialchars($name)."\" id=\"".htmlspecialchars($name)."\" ";
 
 		if (empty($value) === false)
 		{
