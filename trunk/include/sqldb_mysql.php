@@ -195,7 +195,7 @@
 		 *  \pre Datenbankverbindung muss bestehen
 		 *  \pre INSERT-Query muss gemacht worden sein
 		 *  \return ID des zuletzt hinzugefügten Datensatzes
-		 *  \retval bei Misserfolg
+		 *  \retval false bei Misserfolg
 		 */
 		function GetInsertID()
 		{
