@@ -20,9 +20,10 @@
 	 *  - Login::IsMember
 	 *  - SQLDB::Query
 	 *  - SQLDB::Fetch
+	 *  - SQLDB::GetInsertID
 	 *
 	 *  \author Sven Eckelmann
-	 *  \date 30.05.2006
+	 *  \date 06.06.2006
 	 */
 	class Literatur
 	{
@@ -210,12 +211,8 @@
 						VALUES (NULL, '$art', '$titel', '$jahr', '$verlag', '$isbn', '$beschreibung', '$ort', '$stichworte')";
 				$sqldb->Query($sql);
 
-				$sqlIdentity = "SELECT @@IDENTITY AS Nr FROM ".$db_config['prefix']."Bibliothek";
-				$sqldb->Query($sqlIdentity);
-
-				if ($identity = $sqldb->Fetch())
+				if ($nr = $sqldb->GetInsertID())
 				{
-					$nr = $identity->Nr;
 					$autorlist = Autor::Split($autoren);
 					for ($i = 0; $i < count($autorlist); $i++)
 					{

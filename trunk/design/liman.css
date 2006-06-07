@@ -54,7 +54,7 @@ hr {
 	list-style: none;
 }
 
-#search input, #loginform #benutzername, #loginform #password {
+#search input, #loginform #loginname, #loginform #passwort {
 	margin: 0 auto;
 	font-size: 1em;
 	width: 10.8em;

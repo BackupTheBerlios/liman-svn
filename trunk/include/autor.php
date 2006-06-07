@@ -8,9 +8,10 @@
 	 *  - Login::IsMember
 	 *  - SQLDB::Query
 	 *  - SQLDB::Fetch
+	 *  - SQLDB::GetInsertID
 	 *
 	 *  \author Frank Wilhelm
-	 *  \date 30.05.2006
+	 *  \date 6.06.2006
 	 */
 	class Autor
 	{
@@ -52,6 +53,8 @@
 						ON autoren.Autor_Nr = connect.Autor_Nr
 						WHERE connect.Autor_Nr is NULL";
 				$sqldb->Query($sql);
+				print_r($sqldb->GetError());
+				print_r($sql);
 			}
 		}
 
@@ -101,7 +104,6 @@
 		function Split($autoren)
 		{
 			global $db_config, $sqldb, $login;
-			
 			$authorNumbers = array();
 
 			if ($login->IsMember() === true)
@@ -122,11 +124,8 @@
 					else
 					{
 						$sqlInsert = "INSERT INTO ".$db_config['prefix']."Autoren VALUES (NULL, '".trim($authorNames[$i])."')";
-						$sqlIdentity = "SELECT @@IDENTITY AS Nr FROM ".$db_config['prefix']."Autoren";
 						$sqldb->Query( $sqlInsert );
-						$sqldb->Query( $sqlIdentity );
-						$line = $sqldb->Fetch();
-						$authorNumbers[] = $line->Nr;
+						$authorNumbers[] = $sqldb->GetInsertID();
 					}
 				}
 			}

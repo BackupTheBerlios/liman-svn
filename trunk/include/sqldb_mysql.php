@@ -8,7 +8,7 @@
 	 *  \pre -
 	 *
 	 *  \author Sven Eckelmann
-	 *  \date 30.05.2006
+	 *  \date 06.06.2006
 	 */
 	class SQLDB
 	{
@@ -186,6 +186,27 @@
 			}
 
 			return $error;
+		}
+
+		/*! \brief Liefert die ID des letzten INSERTS
+		 *
+		 *  Liefert die ID des bei den letzten INSERT angelegten
+		 *  Datensatzes zurück
+		 *  \pre Datenbankverbindung muss bestehen
+		 *  \pre INSERT-Query muss gemacht worden sein
+		 *  \return ID des zuletzt hinzugefügten Datensatzes
+		 *  \retval bei Misserfolg
+		 */
+		function GetInsertID()
+		{
+			if ($this->db_id !== false)
+			{
+				return @mysql_insert_id($this->db_id);
+			}
+			else
+			{
+				return false;
+			}
 		}
 		
 		/*! \brief Anzahl zuletzt gefundener Datensätze

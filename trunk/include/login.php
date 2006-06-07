@@ -68,30 +68,30 @@
 			// Neue Session starten?
 			if (empty($benutzer) === false && empty($passwort) === false)
 			{
-				session_register("benutzer");
-				session_register("passwort");
+				session_register("login_benutzer");
+				session_register("login_passwort");
 				session_register("ip");
 
-				$_SESSION["benutzer"] = $benutzer;
-				$_SESSION["passwort"] = Mitglied::PasswordHash($passwort);
+				$_SESSION["login_benutzer"] = $benutzer;
+				$_SESSION["login_passwort"] = Mitglied::PasswordHash($passwort);
 				$_SESSION["ip"] = $_SERVER['REMOTE_ADDR'];
 				
 			}
 
 			// Korrekt eingeloggt?
 			if (isset($_SESSION["ip"]) && $_SESSION["ip"] == $_SERVER['REMOTE_ADDR'] &&
-				!empty($_SESSION["benutzer"]) && !empty($_SESSION["passwort"]))
+				!empty($_SESSION["login_benutzer"]) && !empty($_SESSION["login_passwort"]))
 			{
 				// Hole, Nr, Passwort und Rechte zu Loginnamen
 				$sql = "SELECT Mitglieds_Nr AS Nr, Passwort AS passwort, Rechte
 					FROM ".$db_config['prefix']."Mitglieder AS members
-					WHERE members.Login = '".$_SESSION["benutzer"]."'
+					WHERE members.Login = '".$_SESSION["login_benutzer"]."'
 					LIMIT 1";
 			
 				$sqldb->Query($sql);
 				if ($line = $sqldb->Fetch())
 				{
-					if ($line->passwort === $_SESSION["passwort"])
+					if ($line->passwort === $_SESSION["login_passwort"])
 					{
 						$this->Nr = $line->Nr;
 						switch ($line->Rechte)

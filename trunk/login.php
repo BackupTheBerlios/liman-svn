@@ -5,9 +5,9 @@
 	
 	require_once("include/global.php");
 
-	if (empty($_POST["benutzername"]) === false && empty($_POST["password"]) === false)
+	if (empty($_POST["loginname"]) === false && empty($_POST["passwort"]) === false)
 	{
-		$login = new Login($_POST["benutzername"], $_POST["password"]);
+		$login = new Login($_POST["loginname"], $_POST["passwort"]);
 	}
 	elseif (isset($_GET["logout"]) === true)
 	{

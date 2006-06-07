@@ -98,8 +98,8 @@
 							ON bibliothek.Literatur_Nr = connect.Literatur_Nr)
 						INNER JOIN  ".$db_config['prefix']."Autoren AS autoren
 						ON connect.Autor_Nr = autoren.Autor_Nr
-						WHERE MATCH (Titel, Verlag, ISBN, Beschreibung, Ort, Stichworte) AGAINST ('$volltext' IN BOOLEAN MODE)
-						OR MATCH (Autorname) AGAINST ('$volltext' IN BOOLEAN MODE)";
+						WHERE MATCH (Titel, Verlag, ISBN, Beschreibung, Ort, Stichworte) AGAINST ('$volltext')
+						OR MATCH (Autorname) AGAINST ('$volltext')";
 				$sqldb->Query($sql);
 				
 				while ($cur = $sqldb->Fetch())
@@ -148,7 +148,7 @@
 
 			$titel = trim($titel);
 			$autor = trim($autor);
-			if (empty($titel) === false || !empty($autor) === false)
+			if (empty($titel) === false || empty($autor) === false)
 			{
 				$sql = "SELECT DISTINCT bibliothek.Literatur_Nr AS Nr, Titel, Verlag, ISBN
 						FROM (".$db_config['prefix']."Bibliothek AS bibliothek
@@ -158,7 +158,7 @@
 						ON connect.Autor_Nr = autoren.Autor_Nr
 						WHERE bibliothek.Titel like '%".$titel."%'";
 
-				if (empty($autor) !== false)
+				if (empty($autor) === false)
 				{
 					$sql .= " AND (";
 					$authors = array();

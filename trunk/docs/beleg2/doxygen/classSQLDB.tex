@@ -22,6 +22,8 @@ Datenbankzugriff über My\-SQL.
 \begin{CompactList}\small\item\em Anzahl zuletzt geänderter Datensätze. \item\end{CompactList}\item 
 \hyperlink{classSQLDB_efc9afe11649d6cdae21575717ec3436}{Get\-Error} ()
 \begin{CompactList}\small\item\em Liefert Fehlerinformationen. \item\end{CompactList}\item 
+\hyperlink{classSQLDB_094a5b811d412900f2435cabb2194fb8}{Get\-Insert\-ID} ()
+\begin{CompactList}\small\item\em Liefert die ID des letzten INSERTS. \item\end{CompactList}\item 
 \hyperlink{classSQLDB_15b181251b309ab55331be29fa33ac9f}{Get\-Num\-Rows} ()
 \begin{CompactList}\small\item\em Anzahl zuletzt gefundener Datensätze. \item\end{CompactList}\item 
 \hyperlink{classSQLDB_fc6ffa8df50f68f07d9f5e3385b96d7a}{Query} (\$query)
@@ -43,7 +45,7 @@ Erlaubt den abstrahierten Zugriff über SQL auf eine Datenbank (hier My\-SQL). \
 \begin{Desc}
 \item[Autor:]Sven Eckelmann \end{Desc}
 \begin{Desc}
-\item[Änderungsstand:]30.05.2006 \end{Desc}
+\item[Änderungsstand:]06.06.2006 \end{Desc}
 
 
 
@@ -161,6 +163,26 @@ Liefert Feld mit Fehlernachricht und interner Fehlernummer zurück. \begin{Desc}
 \item[Vorbedingung:]Datenbankverbindung muss bestehen \end{Desc}
 \begin{Desc}
 \item[R\"{u}ckgabe:]Feld mit feld\mbox{[}0\mbox{]} als Fehlernachricht und feld\mbox{[}1\mbox{]} als Fehlernummer \end{Desc}
+\hypertarget{classSQLDB_094a5b811d412900f2435cabb2194fb8}{
+\index{SQLDB@{SQLDB}!GetInsertID@{GetInsertID}}
+\index{GetInsertID@{GetInsertID}!SQLDB@{SQLDB}}
+\paragraph[GetInsertID]{\setlength{\rightskip}{0pt plus 5cm}SQLDB::Get\-Insert\-ID ()}\hfill}
+\label{classSQLDB_094a5b811d412900f2435cabb2194fb8}
+
+
+Liefert die ID des letzten INSERTS. 
+
+Liefert die ID des bei den letzten INSERT angelegten Datensatzes zurück \begin{Desc}
+\item[Vorbedingung:]Datenbankverbindung muss bestehen 
+
+INSERT-Query muss gemacht worden sein \end{Desc}
+\begin{Desc}
+\item[R\"{u}ckgabe:]ID des zuletzt hinzugefügten Datensatzes \end{Desc}
+\begin{Desc}
+\item[R\"{u}ckgabewerte:]
+\begin{description}
+\item[{\em bei}]Misserfolg \end{description}
+\end{Desc}
 \hypertarget{classSQLDB_15b181251b309ab55331be29fa33ac9f}{
 \index{SQLDB@{SQLDB}!GetNumRows@{GetNumRows}}
 \index{GetNumRows@{GetNumRows}!SQLDB@{SQLDB}}
