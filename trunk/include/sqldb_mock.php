@@ -1,7 +1,9 @@
 <?php
+	require_once("include/tests/framework.php");
+	
 	class SQLDB_Mock
 	{
-		var $query_result = false; ///< Identifikation der letzten Datenbankabfrage
+		var $query_result = false;
 		var $fetch_index = 0;
 		var $isOpen = false;
 		
@@ -98,7 +100,7 @@
 			}
 		}
 		
-		var $error_msgs = array();
+		var $error = false;
 		var $patterns = array();
 		var $results = array();
 		var $queryCounter = 0;
@@ -118,7 +120,7 @@
 		 */
 		function ExpectQuery( $pattern, $result )
 		{
-			if( !is_int($result) && !is_array($result) )
+			if( !is_int($result) && !is_array($result) && ($result !== false) )
 			{
 				$buff = $result;
 				$result = array();
@@ -131,42 +133,34 @@
 		
 		function Verify()
 		{
-			if( $this->queryCounter != count($this->results) )
+			$ret = $this->error;
+			if( $ret === false )
 			{
-				$this->error_msgs[] = "Nicht alle Queries wurden ausgeführt - erwartet: ".count($this->results)." tatsächlich: ".$this->queryCounter;
+				$ret = new ErrorMessage( null, null, "Anzahl Queries", count($this->results), $this->queryCounter );
 			}
 			
-			$ret = $this->error_msgs;
-			
 			// reset
-			$this->error_msgs = array();
+			$this->error_msg = false;
 			$this->patterns = array();
 			$this->results = array();
 			$this->queryCounter = 0;
 			
-			if( count($ret) == 0)
-			{
-				return true;
-			}
-			else
-			{
-				return $ret;
-			}
+			return $ret;
 		}
 		
 		function Query($query)
 		{
-			if( $this->isOpen )
+			if( $this->isOpen && ($this->error_msg === false) )
 			{
 				if( count($this->patterns) <= $this->queryCounter )
 				{
 					$this->queryCounter++;
-					$this->error_msgs[] = "Unerwartete Anzahl an Queries - erwartet ".count($this->patterns)." tatsächlich: ".$this->queryCounter;
+					this->error = new ErrorMessage( null, null, "Anzahl an Queries", count($this->patterns), $this->queryCounter );
 					return false;
 				}
 				else if( !preg_match($this->patterns[$this->queryCounter],$query) )
 				{
-					$this->error_msgs[] = "Unerwartete Query - erwartet: ".$this->patterns[$this->queryCounter]." tatsächlich: ".$query;
+					this->error = new ErrorMessage( null, null, "Unerwartete Query", $this->patterns[$this->queryCounter], $query );
 					return false;
 				}
 				
