@@ -1,5 +1,5 @@
-<?php
-	require_once("include/tests/framework.php");
+﻿<?php
+	require_once("include/tests/errormessage.php");
 	
 	class SQLDB_Mock
 	{
