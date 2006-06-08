@@ -5,10 +5,36 @@
 	class SucheTest
 	{
 		var $suche;
+		var $testHits;
+		
+		function CreateResult( $nr, $titel, $verlag, $isbn )
+		{
+			$result = new stdObject();
+			$result->Nr = $nr;
+			$result->Titel = $titel;
+			$result->Verlag = $verlag;
+			$result->ISBN = $isbn;
+			return $result;
+		}
+		
+		function CompareResults( $realHits )
+		{
+			if( count($realHits) != count($this->testHits) )
+				return new ErrorMessage( 'Suche', null, 'Anzahl Treffer', count($this->testHits), count($realHits) );
+			
+			for( $i = 0; $i < count($this->testHits); $i++ )
+			{
+				
+			}
+		}
 		
 		function Setup()
 		{
 			$suche = new Suche();
+			
+			$this->testHits = array();
+			$this->testHits[] = CreateResult( 1, 'Nachtvogel', 'Blanvalet', '3-442-24258-4' );
+			$this->testHits[] = CreateResult( 2, 'Dämonensommer', 'Blanvalet', '3-422-24257-6' );
 		}
 		
 		function TearDown()
@@ -22,13 +48,10 @@
 		{
 			global $sqldb;
 			
-			$testHits = array();
-			$testHits[] = 1;
-			$testHits[] = 2;
-			$sqldb->ExpectQuery( '.*SELECT Literatur_Nr.*Bibliothek.*LIMIT.*', $testHits );
+			$sqldb->ExpectQuery( '.*SELECT Literatur_Nr.*Bibliothek.*LIMIT.*', $this->testHits );
 			
 			// keine Autoren, Autor::GetAll soll in Autor Unit getestet werden
-			for( $i = 0; $i < count($testHits); $i++ )
+			for( $i = 0; $i < count($this->testHits); $i++ )
 			{
 				$sqldb->ExpectQuery( '.*SELECT.*Autor_Nr.*Autorname.*Literatur_Autor.*', false );
 			}
@@ -44,16 +67,8 @@
 				return $result;
 			}
 			
-			if( count($testHits) != count($this->suche->Treffer) )
-				return new ErrorMessage( "Suche", "LetzteLiteratur", "Zahl der Treffer", count($testHits), count($this->suche->Treffer) );
-			
-			for( $i = 0; $i < count($testHits); $i++ )
-			{
-				if( $testHits[$i] != $this->suche->Treffer[$i] )
-				{
-					return new ErrorMessage( "Suche", "LetzteLiteratur", "Zahl der Treffer", $testHits[$i], $this->suche->Treffer[$i] );
-				}
-			}
+			if( count($this->testHits) != count($this->suche->Treffer) )
+				return new ErrorMessage( "Suche", "LetzteLiteratur", "Zahl der Treffer", count($this->testHits), count($this->suche->Treffer) );
 			
 			return true;
 		}
@@ -64,13 +79,9 @@
 			
 			$volltext = 'Prädikat';
 			
-			$testHits = array();
-			$testHits[] = 1;
-			$testHits[] = 2;
+			$sqldb->ExpectQuery( '.*SELECT.*Bibliothek.*WHERE.*MATCH.*AGAINST.*', $this->testHits );
 			
-			$sqldb->ExpectQuery( '.*SELECT.*Bibliothek.*WHERE.*MATCH.*AGAINST.*', $testHits );
-			
-			for( $i = 0; $i < count($testHits); $i++ )
+			for( $i = 0; $i < count($this->testHits); $i++ )
 			{
 				$sqldb->ExpectQuery( '.*SELECT.*Autor_Nr.*Autorname.*Literatur_Autor.*', false );
 			}
@@ -86,16 +97,9 @@
 				return $result;
 			}
 			
-			if( count($testHits) != count($this->suche->Treffer) )
-				return new ErrorMessage( "Suche", "LetzteLiteratur", "Zahl der Treffer", count($testHits), count($this->suche->Treffer) );
+			if( count($this->testHits) != count($this->suche->Treffer) )
+				return new ErrorMessage( "Suche", "LetzteLiteratur", "Zahl der Treffer", count($this->testHits), count($this->suche->Treffer) );
 			
-			for( $i = 0; $i < count($testHits); $i++ )
-			{
-				if( $testHits[$i] != $this->suche->Treffer[$i] )
-				{
-					return new ErrorMessage( "Suche", "LetzteLiteratur", "Zahl der Treffer", $testHits[$i], $this->suche->Treffer[$i] );
-				}
-			}
 			
 			return true;
 		}
@@ -107,13 +111,9 @@
 			$titel = 'Ein Titel';
 			$autor = 'Niemand';
 			
-			$testHits = array();
-			$testHits[] = 1;
-			$testHits[] = 2;
+			$sqldb->ExpectQuery( '.*SELECT.*Bibliothek.*WHERE.*LIKE.*', $this->testHits );
 			
-			$sqldb->ExpectQuery( '.*SELECT.*Bibliothek.*WHERE.*LIKE.*', $testHits );
-			
-			for( $i = 0; $i < count($testHits); $i++ )
+			for( $i = 0; $i < count($this->testHits); $i++ )
 			{
 				$sqldb->ExpectQuery( '.*SELECT.*Autor_Nr.*Autorname.*Literatur_Autor.*', false );
 			}
@@ -129,16 +129,8 @@
 				return $result;
 			}
 			
-			if( count($testHits) != count($this->suche->Treffer) )
-				return new ErrorMessage( "Suche", "LetzteLiteratur", "Zahl der Treffer", count($testHits), count($this->suche->Treffer) );
-			
-			for( $i = 0; $i < count($testHits); $i++ )
-			{
-				if( $testHits[$i] != $this->suche->Treffer[$i] )
-				{
-					return new ErrorMessage( "Suche", "LetzteLiteratur", "Zahl der Treffer", $testHits[$i], $this->suche->Treffer[$i] );
-				}
-			}
+			if( count($this->testHits) != count($this->suche->Treffer) )
+				return new ErrorMessage( "Suche", "LetzteLiteratur", "Zahl der Treffer", count($this->testHits), count($this->suche->Treffer) );
 			
 			return true;
 		}
