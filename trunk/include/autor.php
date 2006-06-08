@@ -52,9 +52,34 @@
 						LEFT JOIN ".$db_config['prefix']."Literatur_Autor AS connect
 						ON autoren.Autor_Nr = connect.Autor_Nr
 						WHERE connect.Autor_Nr is NULL";
-				$sqldb->Query($sql);
-				print_r($sqldb->GetError());
-				print_r($sql);
+
+				if ($sqldb->Query($sql) === false)
+				{
+					// Workaround für MySQL < 4
+					$sql = "SELECT autoren.Autor_Nr AS Nr
+							FROM ".$db_config['prefix']."Autoren AS autoren
+							LEFT JOIN ".$db_config['prefix']."Literatur_Autor AS connect
+							ON autoren.Autor_Nr = connect.Autor_Nr
+							WHERE connect.Autor_Nr is NULL";
+					$sqldb->Query($sql);
+					
+					if (($numrows = $sqldb->GetNumRows()) >= 1)
+					{
+						$sqlDelete = "DELETE FROM ".$db_config['prefix']."Autoren
+								WHERE ";
+						for ($i = 1; $i <= $numrows; $i++)
+						{
+							$line = $sqldb->Fetch();
+							$sqlDelete .= "Autor_Nr = '".$line->Nr."' ";
+
+							if ($i < $numrows)
+							{
+								$sqlDelete .= " OR ";
+							}
+						}
+						$sqldb->Query($sqlDelete);
+					}
+				}
 			}
 		}
 
