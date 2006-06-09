@@ -92,6 +92,7 @@ hr {
 }
 
 #content .input_text,
+#content .input_file,
 #content .input_password,
 #content form textarea {
 	width: 99%;

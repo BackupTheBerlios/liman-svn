@@ -177,8 +177,127 @@
 		 */
 		function InsertBibTeX($bibtex)
 		{
-			/// \todo implementieren
-			return 0;
+			$allowed_entries = array('book', 'article', 'booklet',
+					'conference', 'inbook', 'incollection', 'inproceedings', 'manual',
+					'mastersthesis', 'misc', 'phdthesis', 'proceedings', 'techreport',
+					'unpublished');
+
+			// Funktioniert nicht bei Argumenten über mehrere Zeilen
+			if (preg_match_all('/@([\w]+[\s]*)\{[\s]*([-\d\w]+)(([\s]*,[\s]*[\w]*[\s]*=[\s]*([\w]+|\{.*\}|".*")[\s]*)+)\}/', $bibtex, $regexp_entries) !== false)
+			{
+				$num_entries = sizeof($regexp_entries[0]);
+			}
+			else
+			{
+				$num_entries = 0;
+			}
+
+			$entries = false;
+			
+			for ($i = 0; $i < $num_entries; $i++)
+			{
+				$cur = new stdClass;
+				$cur->autoren = "";
+				$cur->art = new LiteraturArt("book");
+				$cur->titel = "";
+				$cur->jahr = date("Y");
+				$cur->verlag = "";
+				$cur->isbn = "";
+				$cur->beschreibung = "";
+				$cur->ort = "";
+
+				// Lese Typ vom Eintrag
+				$type = trim($regexp_entries[1][$i]);
+				
+				// Haben wir überhaupt den Anfang eines Eintrags gefunden?
+				if (in_array($type, $allowed_entries) === false)
+				{
+					continue;
+				}
+				else
+				{
+					$cur->art = new LiteraturArt($type);
+				}
+				
+
+				// Lese Kürzel
+				$cur->id = trim($regexp_entries[2][$i]);
+
+				// Extrahiere "Optionen"
+				if (preg_match_all('/(([\w]*)[\s]*=[\s]*([\w]+|\{.*\}|".*")[\s]*(,|\}))+/', $regexp_entries[3][$i], $regexp_options) !== false)
+				{
+					$num_options = sizeof($regexp_options[0]);
+					for ($j = 0; $j < $num_options; $j++)
+					{
+						// Name des Arguments der "Option" auslesen und bereinigen
+						$argument = trim($regexp_options[3][$j]);
+
+						if ($argument[0] == "{" && $argument[strlen($argument)-1] == "}")
+						{
+							$argument = substr($argument, 1, strlen($argument)-2);
+						}
+						if ($argument[0] == "\"" && $argument[strlen($argument)-1] == "\"")
+						{
+							$argument = substr($argument, 1, strlen($argument)-2);
+						}
+
+						switch (strtolower(trim($regexp_options[2][$j])))
+						{
+						case "title":
+							$cur->titel = $argument;
+							break;
+						case "author":
+							$cur->autoren = preg_replace("/ AND /i", ", ", $argument);
+							break;
+						case "year":
+							$cur->jahr = $argument;
+							break;
+						case "publisher":
+							$cur->verlag = $argument;
+							break;
+						case "isbn":
+							$cur->isbn = $argument;
+							break;
+						case "address":
+							$cur->ort = $argument;
+							break;
+						case "note":
+						case "annote":
+							$cur->beschreibung = $argument;
+							break;
+						}
+					}
+				}
+				else
+				{
+					continue;
+				}
+				
+				// Erzeuge array, wenn noch nicht geschehen
+				if ($entries === false)
+				{
+					$entries = array();
+				}
+				$entries[] = $cur;
+			}
+
+
+			$imported = 0;
+			if ($entries !== false && empty($entries) === false)
+			{
+				foreach ($entries as $entry)
+				{
+					if (empty($entry->titel) === false && empty($entry->autoren) === false)
+					{
+						$imported++;
+						Literatur::Insert($entry->autoren, $entry->art->GetDisplayText(),
+							$entry->titel, $entry->jahr, $entry->verlag, $entry->isbn,
+							$entry->beschreibung, $entry->ort, "");
+					}
+				}
+			}
+
+			return $imported;
 		}
 
 		/*! \brief Legt Literatur an

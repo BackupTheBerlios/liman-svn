@@ -77,10 +77,15 @@
 	{
 ?>
 	<hr>
-	<form action="litmod.php">
-		<div>
+	<form style="display:inline" action="litmod.php">
+		<span>
 			<input type="submit" value="Literatur hinzuf&uuml;gen">
-		</div>
+		</span>
+	</form>
+	<form style="display:inline" action="bibtex.php">
+		<span>
+			<input type="submit" value="BibTeX importieren">
+		</span>
 	</form>
 <?php
 	}

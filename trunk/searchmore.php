@@ -15,11 +15,11 @@
 			<tbody>
 				<tr>
 					<th scope=row><label for="autor">Autor:</label></th>
-					<td><input type="text" id="autor" name="autor"></td>
+					<td><input class="input_text" type="text" id="autor" name="autor"></td>
 				</tr>
 				<tr>
 					<th scope=row><label for="titel">Titel:</label></th>
-					<td><input type="text" id="titel" name="titel"></td>
+					<td><input class="input_text" type="text" id="titel" name="titel"></td>
 				</tr>
 				<tr>
 					<th></th>
@@ -39,7 +39,7 @@
 			<tbody>
 				<tr>
 					<th scope=row><label for="suchbegriff">Suchbegriff:</label></th>
-					<td><input type="text" id="suchbegriff" name="suchbegriff"></td>
+					<td><input class="input_text" type="text" id="suchbegriff" name="suchbegriff"></td>
 				</tr>
 				<tr>
 					<th></th>
