@@ -9,7 +9,7 @@
 		
 		function CreateResult( $nr, $titel, $verlag, $isbn )
 		{
-			$result = new stdObject();
+			$result = new stdClass();
 			$result->Nr = $nr;
 			$result->Titel = $titel;
 			$result->Verlag = $verlag;
@@ -30,11 +30,9 @@
 		
 		function Setup()
 		{
-			$suche = new Suche();
-			
 			$this->testHits = array();
-			$this->testHits[] = CreateResult( 1, 'Nachtvogel', 'Blanvalet', '3-442-24258-4' );
-			$this->testHits[] = CreateResult( 2, 'Dämonensommer', 'Blanvalet', '3-422-24257-6' );
+			$this->testHits[] = SucheTest::CreateResult( 1, 'Nachtvogel', 'Blanvalet', '3-442-24258-4' );
+			$this->testHits[] = SucheTest::CreateResult( 2, 'Dämonensommer', 'Blanvalet', '3-422-24257-6' );
 		}
 		
 		function TearDown()
@@ -56,7 +54,7 @@
 				$sqldb->ExpectQuery( '.*SELECT.*Autor_Nr.*Autorname.*Literatur_Autor.*', false );
 			}
 			
-			$this->suche->LetzteLiteratur();
+			$this->suche = new Suche();
 			
 			$result = $sqldb->Verify();
 			
@@ -86,7 +84,7 @@
 				$sqldb->ExpectQuery( '.*SELECT.*Autor_Nr.*Autorname.*Literatur_Autor.*', false );
 			}
 			
-			$suche->VolltextSuche( $volltext );
+			$this->suche = new Suche($volltext);
 			
 			$result = $sqldb->Verify();
 			
@@ -118,7 +116,7 @@
 				$sqldb->ExpectQuery( '.*SELECT.*Autor_Nr.*Autorname.*Literatur_Autor.*', false );
 			}
 				
-			$suche->AutorTitelSuche( $titel, $autor );
+			$this->suche = new Suche($titel, $autor);
 			
 			$result = $sqldb->Verify();
 			

@@ -38,7 +38,7 @@
 			$testAutoren = array();
 			for( $i = 0; $i < 3; $i++ )
 			{
-				$autor = new stdObject();
+				$autor = new stdClass();
 				$autor->Nr = $i;
 				$autor->Name = "Autor $i";
 				$testAutoren[] = $autor;
@@ -76,8 +76,8 @@
 			$testAutorNamen = "Schon Vorhanden, Wird Hinzugefügt";
 			
 			$testAutoren = array();
-			$testAutoren[] = new stdObject();
-			$testAutoren[] = new stdObject();
+			$testAutoren[] = new stdClass();
+			$testAutoren[] = new stdClass();
 			
 			$testAutoren[0]->Nr = 1;
 			$testAutoren[1]->Nr = 2;
@@ -85,7 +85,7 @@
 			$sqldb->ExpectQuery( 'SELECT.*Autor_Nr.*WHERE.*Autorname', $testAutoren[0] );
 			$sqldb->ExpectQuery( 'SELECT.*Autor_Nr.*WHERE.*Autorname', false  );
 			$sqldb->ExpectQuery( 'INSERT INTO.*', 1 );
-			$sqldb->ExpectQuery( 'SELECT @@IDENTITY.*', $testAutoren[1] );
+			$sqldb->ExpectQuery( 'SELECT @@IDENTITY.*', $testAutoren[1] ); /// \todo Das funktioniert weg MySQL3 nicht -> GetInsertID
 			
 			$autoren = Autor::Split( $testAutorNamen );
 			

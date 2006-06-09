@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 	require_once("include/tests/errormessage.php");
 	
 	class SQLDB_Mock
@@ -6,6 +6,7 @@
 		var $query_result = false;
 		var $fetch_index = 0;
 		var $isOpen = false;
+		var $error_msg = false;
 		
 		function SQLDB_Mock()
 		{
@@ -87,6 +88,18 @@
 
 			return $error;
 		}
+
+		function GetInsertID()
+		{
+			if ($this->isOpen)
+			{
+				return rand();
+			}
+			else
+			{
+				return false;
+			}
+		}
 		
 		function GetNumRows()
 		{
@@ -126,7 +139,6 @@
 				$result = array();
 				$result[] = $buff;
 			}
-			
 			$this->patterns[] = $pattern;
 			$this->results[] = $result;
 		}
@@ -134,6 +146,7 @@
 		function Verify()
 		{
 			$ret = $this->error;
+			/// \todo: Wieso darf man nicht auch mal ohne Fehlermeldung auskommen? :(
 			if( $ret === false )
 			{
 				$ret = new ErrorMessage( null, null, "Anzahl Queries", count($this->results), $this->queryCounter );
@@ -155,12 +168,12 @@
 				if( count($this->patterns) <= $this->queryCounter )
 				{
 					$this->queryCounter++;
-					this->error = new ErrorMessage( null, null, "Anzahl an Queries", count($this->patterns), $this->queryCounter );
+					$this->error = new ErrorMessage( null, null, "Anzahl an Queries", count($this->patterns), $this->queryCounter );
 					return false;
 				}
-				else if( !preg_match($this->patterns[$this->queryCounter],$query) )
+				elseif( preg_match("/".$this->patterns[$this->queryCounter]."/",$query) === false)
 				{
-					this->error = new ErrorMessage( null, null, "Unerwartete Query", $this->patterns[$this->queryCounter], $query );
+					$this->error = new ErrorMessage( null, null, "Unerwartete Query", $this->patterns[$this->queryCounter], $query );
 					return false;
 				}
 				
