@@ -280,8 +280,15 @@
 		{
 			if (isset($_POST["accept"]) === true)
 			{
-				Literatur::Delete($_POST["id"]);
-				echo "<p style=\"text-align: center\">Literatur wurde entfernt</p>";
+				if (empty($_POST["id"]) === true || is_numeric($_POST["id"]) === false)
+				{
+					echo "<p id=\"error\">Literatur konnte nicht gelöscht werden, da es ein Fehler bei der Übertragung der Informationen der Literatur gab</p>";
+				}
+				else
+				{
+					Literatur::Delete($_POST["id"]);
+					echo "<p style=\"text-align: center\">Literatur wurde entfernt</p>";
+				}
 			}
 			else
 			{
@@ -355,14 +362,33 @@
 
 			if (isset($_POST["accept"]) === true || empty($search->Treffer) === true)
 			{
-				Literatur::Insert($_POST["autor"], $_POST["art"], $_POST["titel"], $_POST["jahr"], $_POST["verlag"], $_POST["isbn"], $_POST["beschreibung"], $_POST["ort"], $_POST["stichworte"]);
-				echo "<p style=\"text-align: center\">Literatur wurde hinzugefügt</p>";
+				if (isset($_POST["art"]) === false || isset($_POST["verlag"]) === false ||
+					isset($_POST["isbn"]) === false || isset($_POST["beschreibung"]) === false ||
+					isset($_POST["ort"]) === false || isset($_POST["stichworte"]) === false)
+				{
+					echo "<p id=\"error\">Literatur konnte nicht angelegt werden, da es ein Fehler bei der Übertragung der Informationen der Literatur gab</p>";
+				}
+				else
+				{
+					Literatur::Insert($_POST["autor"], $_POST["art"], $_POST["titel"], $_POST["jahr"], $_POST["verlag"], $_POST["isbn"], $_POST["beschreibung"], $_POST["ort"], $_POST["stichworte"]);
+					echo "<p style=\"text-align: center\">Literatur wurde hinzugefügt</p>";
+				}
 			}
 		}
 		elseif (isset($_GET["update"]) === true)
 		{
-			Literatur::Update($_POST["id"], $_POST["autor"], $_POST["art"], $_POST["titel"], $_POST["jahr"], $_POST["verlag"], $_POST["isbn"], $_POST["beschreibung"], $_POST["ort"], $_POST["stichworte"]);
-			echo "<p style=\"text-align: center\">Literatur wurde geändert</p>";
+			if (empty($_POST["id"]) === true || is_numeric($_POST["id"]) === false ||
+				isset($_POST["art"]) === false || isset($_POST["verlag"]) === false ||
+				isset($_POST["isbn"]) === false || isset($_POST["beschreibung"]) === false ||
+				isset($_POST["ort"]) === false || isset($_POST["stichworte"]) === false)
+			{
+					echo "<p id=\"error\">Literatur konnte nicht geändert werden, da es ein Fehler bei der Übertragung der Informationen der Literatur gab</p>";
+			}
+			else
+			{
+				Literatur::Update($_POST["id"], $_POST["autor"], $_POST["art"], $_POST["titel"], $_POST["jahr"], $_POST["verlag"], $_POST["isbn"], $_POST["beschreibung"], $_POST["ort"], $_POST["stichworte"]);
+				echo "<p style=\"text-align: center\">Literatur wurde geändert</p>";
+			}
 		}
 	}
 ?>

@@ -35,8 +35,15 @@
 	{
 		if (isset($_POST["accept"]) === true)
 		{
-			Kommentar::Delete($_POST["id"]);
-			echo "<p style=\"text-align: center\">Kommentar wurde entfernt</p>";
+			if (empty($_POST["id"]) === true || is_numeric($_POST["id"]) === false)
+			{
+				echo "<p id=\"error\">Kommentar konnte nicht gelöscht werden, da es ein Fehler bei der Übertragung der Informationen des Kommentars gab</p>";
+			}
+			else
+			{
+				Kommentar::Delete($_POST["id"]);
+				echo "<p style=\"text-align: center\">Kommentar wurde entfernt</p>";
+			}
 
 			if (empty($_POST["litid"]) === false)
 			{
@@ -62,8 +69,17 @@
 	}
 	elseif  (isset($_GET["insert"]) === true)
 	{
-		Kommentar::Insert($_POST["text"], $_POST["userid"], $_POST["litid"]);
-		echo "<p style=\"text-align: center\">Kommentar wurde angelegt</p>";
+		if (isset($_POST["text"]) === false ||
+			empty($_POST["userid"]) === true || is_numeric($_POST["userid"]) === false ||
+			empty($_POST["litid"]) === true || is_numeric($_POST["litid"]) === false)
+		{
+			echo "<p id=\"error\">Kommentar konnte nicht angelegt werden, da es ein Fehler bei der Übertragung der Informationen des Kommentars gab</p>";
+		}
+		else
+		{
+			Kommentar::Insert($_POST["text"], $_POST["userid"], $_POST["litid"]);
+			echo "<p style=\"text-align: center\">Kommentar wurde angelegt</p>";
+		}
 
 		if (empty($_POST["litid"]) === false)
 		{
@@ -72,8 +88,16 @@
 	}
 	elseif (isset($_GET["update"]) === true)
 	{
-		Kommentar::Update($_POST["id"], $_POST["text"]);
-		echo "<p style=\"text-align: center\">Kommentar wurde geändert</p>";
+		if (isset($_POST["text"]) === false ||
+			empty($_POST["id"]) === true || is_numeric($_POST["id"]) === false)
+		{
+			echo "<p id=\"error\">Kommentar konnte nicht geändert werden, da es ein Fehler bei der Übertragung der Informationen des Kommentars gab</p>";
+		}
+		else
+		{
+			Kommentar::Update($_POST["id"], $_POST["text"]);
+			echo "<p style=\"text-align: center\">Kommentar wurde geändert</p>";
+		}
 
 		if (empty($_POST["litid"]) === false)
 		{

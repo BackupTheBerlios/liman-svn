@@ -280,8 +280,15 @@
 		{
 			if (isset($_POST["accept"]) === true)
 			{
-				Mitglied::Delete($_POST["id"]);
-				echo "<p style=\"text-align: center\">Nutzer wurde entfernt</p>";
+				if (empty($_POST["id"]) === true || is_numeric($_POST["id"]) === false)
+				{
+					echo "<p id=\"error\">Nutzer konnte nicht gelöscht werden, da es ein Fehler bei der Übertragung der Informationen des Nutzers gab</p>";
+				}
+				else
+				{
+					Mitglied::Delete($_POST["id"]);
+					echo "<p style=\"text-align: center\">Nutzer wurde entfernt</p>";
+				}
 			}
 			else
 			{
@@ -309,7 +316,11 @@
 		}
 		elseif (isset($_GET["update"]) === true)
 		{
-			if (Mitglied::Update($_POST["id"], $_POST["benutzername"], $_POST["password"], $_POST["rechte"], $_POST["vorname"], $_POST["nachname"], $_POST["email"]) === true)
+			if (empty($_POST["id"]) === true || is_numeric($_POST["id"]) === false)
+			{
+				echo "<p id=\"error\">Nutzer konnte nicht geändert werden, da es ein Fehler bei der Übertragung der Informationen des Nutzers gab</p>";
+			}
+			elseif (Mitglied::Update($_POST["id"], $_POST["benutzername"], $_POST["password"], $_POST["rechte"], $_POST["vorname"], $_POST["nachname"], $_POST["email"]) === true)
 			{
 				echo "<p style=\"text-align: center\">Nutzer wurde geändert</p>";
 			}
