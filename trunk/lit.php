@@ -87,13 +87,16 @@
 	<table id="litkommentare">
 		<tbody>
 			<?php
-				$nocomment = false; // hat der user schon etwas kommentiert?
+				require_once("include/form_helper.php");
+				$owncomment = ""; // hat der user schon etwas kommentiert?
 				for ($i = 0; $i < count($literatur->Kommentare); $i++)
 				{
 					$cur = $literatur->Kommentare[$i];
 					if ($login->Nr == $cur->Verfasser_Nr)
 					{
-						$nocomment = true;
+						$owncomment->Text = $cur->Text;
+						$owncomment->Nr = $cur->Nr;
+						
 					}
 			?>
 				<tr>
@@ -103,30 +106,75 @@
 						// Darf der User löschen?
 						if ($login->Nr == $cur->Verfasser_Nr || $login->IsAdministrator() === true)
 						{
-							echo "<span style=\"font-size: xx-small\"><a href=\"loeschen.php?id=".$cur->Nr."\">(loeschen)</a></span>";
+							echo "<span style=\"font-size: xx-small\">";
+							echo "<a href=\"commentmod.php?delete&amp;id=".$cur->Nr."&amp;litid=".htmlspecialchars($_GET["id"])."\">(löschen)</a></span>";
 						}
 					?></td>
-				</tr>
-			<?
-				}
-
-				// Soll Kommentar-Hinzufügen-Box erscheinen?
-				if ($login->IsMember() === true && 
-					($login->IsAdministrator() === true || $nocomment === false))
-				{
-			?>
-				<tr>
-					<th scope="row">Neuer Kommentar:</th>	
-					<td>
-					<textarea cols=40 rows=10></textarea><br>
-					<input type="submit" value="Kommentar senden"></td>
-					<td>&nbsp;</td>
 				</tr>
 			<?php
 				}
 			?>
-
 		</tbody>
 	</table>
+
+	<?php
+		if ($login->IsMember() === true)
+		{
+			require_once("include/form_helper.php");
+			// Soll Kommentar-Hinzufügen-Box erscheinen oder Update-Box?
+			if (empty($owncomment) === true)
+			{
+		?>
+			<form action="commentmod.<?=$ext;?>?insert=" method="post">
+			<span>
+				<?=form_input("hidden", "litid", $_GET["id"]);?>
+				<?=form_input("hidden", "userid", $login->Nr);?>
+			</span>
+			<table id="litkommentaradd">
+				<tbody>
+					<tr>
+						<th scope="row">Neuer Kommentar:</th>	
+						<td>
+							<textarea id="text" name="text" cols=40 rows=10></textarea>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row"></th>
+						<td><input type="submit" value="Kommentar senden"></td>
+						
+					</tr>
+				</tbody>
+			</table>
+			</form>
+		<?php
+			}
+			else
+			{
+		?>
+			<form action="commentmod.<?=$ext;?>?update" method="post">
+			<span>
+				<?=form_input("hidden", "litid", $_GET["id"]);?>
+				<?=form_input("hidden", "id", $owncomment->Nr);?>
+			</span>
+			<table id="litkommentarmod">
+				<tbody>
+					<tr>
+						<th scope="row"><label for="text">Kommentar ändern:</label></th>	
+						<td>
+							<textarea id="text" name="text" cols=40 rows=10><?=htmlspecialchars($owncomment->Text);?></textarea>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row"></th>
+						<td><input type="submit" value="Kommentar senden"></td>
+						
+					</tr>
+				</tbody>
+			</table>
+			</form>
+		<?php
+			}
+		}
+	?>
 </div>
 <?php	require_once("include/footer.php"); ?>

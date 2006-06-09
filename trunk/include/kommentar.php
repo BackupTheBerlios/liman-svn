@@ -137,7 +137,8 @@
 					FROM ".$db_config['prefix']."Kommentare AS kommentare
 					INNER JOIN  ".$db_config['prefix']."Mitglieder AS mitglieder
 					ON kommentare.Mitglieds_Nr = mitglieder.Mitglieds_Nr
-					WHERE Literatur_Nr = '$literatur_nr'";
+					WHERE Literatur_Nr = '$literatur_nr'
+					ORDER BY Nr ASC";
 			$sqldb->Query($sql);
 
 			while ($cur = $sqldb->Fetch())
@@ -184,7 +185,8 @@
 							WHERE Literatur_Nr='$literatur_nr' AND Mitglieds_Nr='$verfasser_nr'";
 					$sqldb->Query($sqlAlready);
 
-					if (($cur = $sqldb->Fetch()) === false)
+					$cur = $sqldb->Fetch();
+					if ($cur === false)
 					{
 						if (empty($text) === false)
 						{
