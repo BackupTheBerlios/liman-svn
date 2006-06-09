@@ -8,9 +8,10 @@
 	 *  - Login::IsMember
 	 *  - SQLDB::Query
 	 *  - SQLDB::Fetch
+	 *  - SQLDB::GetInsertID
 	 *
 	 *  \author Frank Wilhelm
-	 *  \date 30.05.2006
+	 *  \date 6.06.2006
 	 */
 	class Autor
 	{
