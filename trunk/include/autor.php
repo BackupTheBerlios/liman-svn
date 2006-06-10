@@ -62,21 +62,20 @@
 							ON autoren.Autor_Nr = connect.Autor_Nr
 							WHERE connect.Autor_Nr is NULL";
 					$sqldb->Query($sql);
-					
-					if (($numrows = $sqldb->GetNumRows()) >= 1)
+
+					$authorid = array();
+					while ($line = $sqldb->Fetch())
+					{
+						$authorid[] = $line->Nr;
+					}
+
+					if (empty($authorid) === false)
 					{
 						$sqlDelete = "DELETE FROM ".$db_config['prefix']."Autoren
-								WHERE ";
-						for ($i = 1; $i <= $numrows; $i++)
-						{
-							$line = $sqldb->Fetch();
-							$sqlDelete .= "Autor_Nr = '".$line->Nr."' ";
+								WHERE Autor_Nr IN (";
+						$idlist = implode(", ", $authorid);
+						$sqlDelete .= $idlist.")";
 
-							if ($i < $numrows)
-							{
-								$sqlDelete .= " OR ";
-							}
-						}
 						$sqldb->Query($sqlDelete);
 					}
 				}

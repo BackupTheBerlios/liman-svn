@@ -59,14 +59,17 @@
 			{
 				// Kommagetrennte Autorenliste erstellen
 				$authors = Autor::GetAll($this->Treffer[$i]->Nr);
+
 				$autorlist = "";
-				for ($j = 0; $j < count($authors); $j++)
+				if (empty($authors) === false)
 				{
-					if ($j != 0)
+					$autornamen = array();
+					foreach ($authors as $cur)
 					{
-						$autorlist .= ", ";
+						$autornamen[] = $cur->Name;
 					}
-					$autorlist .= $authors[$j]->Name;
+	
+					$autorlist = implode(", ", $autornamen);
 				}
 				$this->Treffer[$i]->Autor = $autorlist;
 			}
@@ -111,14 +114,17 @@
 				{
 					// Kommagetrennte Autorenliste erstellen
 					$authors = Autor::GetAll($this->Treffer[$i]->Nr);
+	
 					$autorlist = "";
-					for ($j = 0; $j < count($authors); $j++)
+					if (empty($authors) === false)
 					{
-						if ($j != 0)
+						$autornamen = array();
+						foreach ($authors as $cur)
 						{
-							$autorlist .= ", ";
+							$autornamen[] = $cur->Name;
 						}
-						$autorlist .= $authors[$j]->Name;
+		
+						$autorlist = implode(", ", $autornamen);
 					}
 					$this->Treffer[$i]->Autor = $autorlist;
 				}
@@ -184,14 +190,17 @@
 				{
 					// Kommagetrennte Autorenliste erstellen
 					$authors = Autor::GetAll($this->Treffer[$i]->Nr);
+	
 					$autorlist = "";
-					for ($j = 0; $j < count($authors); $j++)
+					if (empty($authors) === false)
 					{
-						if ($j != 0)
+						$autornamen = array();
+						foreach ($authors as $cur)
 						{
-							$autorlist .= ", ";
+							$autornamen[] = $cur->Name;
 						}
-						$autorlist .= $authors[$j]->Name;
+		
+						$autorlist = implode(", ", $autornamen);
 					}
 					$this->Treffer[$i]->Autor = $autorlist;
 				}

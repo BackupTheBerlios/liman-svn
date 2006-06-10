@@ -19,9 +19,8 @@
 			<?php
 				require_once("include/suche.php");
 				$search = new Suche();
-				for ($i = 0; $i < count($search->Treffer); $i++)
+				foreach ($search->Treffer as $cur)
 				{
-					$cur = $search->Treffer[$i];
 			?>
 				<tr>
 					<td><a href="lit.<?=$ext;?>?id=<?=htmlspecialchars($cur->Nr);?>"><?=htmlspecialchars($cur->Titel);?></a></td>

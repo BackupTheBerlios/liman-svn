@@ -110,16 +110,15 @@
 			}
 
 			$autor = "";
-			if (isset($lit->Autoren) === true)
+			if (empty($lit->Autoren) === false)
 			{
-				for ($j = 0; $j < count($lit->Autoren); $j++)
+				$autornamen = array();
+				foreach ($lit->Autoren as $cur)
 				{
-					if ($j != 0)
-					{
-						$autor .= ", ";
-					}
-					$autor .= $lit->Autoren[$j]->Name;
+					$autornamen[] = $cur->Name;
 				}
+
+				$autor = implode(", ", $autornamen);
 			}
 
 			$verlag = $lit->Verlag;
@@ -153,7 +152,7 @@
 			}
 			else
 			{
-				$jahr = "";
+				$jahr = date("Y");
 			}
 
 			if (isset($_POST["stichworte"]) === true)
@@ -325,9 +324,8 @@
 					<tbody>
 				<?php
 			
-					for ($i = 0; $i < count($search->Treffer); $i++)
+					foreach ($search->Treffer as $cur)
 					{
-						$cur = $search->Treffer[$i];
 				?>
 					<tr>
 						<td><a href="lit.<?=$ext;?>?id=<?=htmlspecialchars($cur->Nr);?>"><?=htmlspecialchars($cur->Titel);?></a></td>

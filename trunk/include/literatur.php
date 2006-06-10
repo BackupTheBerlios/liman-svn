@@ -91,18 +91,15 @@
 					$str .= ",\n\ttitle = \"".addslashes($this->Titel)."\"";
 				}
 	
-				if (count($this->Autoren) > 0)
+				if (empty($this->Autoren) === false)
 				{
-					$autorlist = "";
-					for ($j = 0; $j < count($this->Autoren); $j++)
+					$autornamen = array();
+					foreach ($this->Autoren as $autor)
 					{
-						if ($j != 0)
-						{
-							$autorlist .= " and ";
-						}
-						$autorlist .= $this->Autoren[$j]->Name;
+						$autornamen[] = $autor->Name;
 					}
-	
+
+					$autorlist = implode(" and ", $autornamen);
 					$str .= ",\n\tauthor = \"".addslashes($autorlist)."\"";
 				}
 	
@@ -333,10 +330,10 @@
 				if ($nr = $sqldb->GetInsertID())
 				{
 					$autorlist = Autor::Split($autoren);
-					for ($i = 0; $i < count($autorlist); $i++)
+					foreach ($autorlist as $cur)
 					{
 						$sql = "INSERT INTO ".$db_config['prefix']."Literatur_Autor
-							VALUES ('".$autorlist[$i]."', '$nr')";
+							VALUES ('".$cur."', '$nr')";
 						$sqldb->Query($sql);
 					}
 				}
@@ -386,10 +383,10 @@
 				$sqldb->Query($sql);
 
 				$autorlist = Autor::Split($autoren);
-				for ($i = 0; $i < count($autorlist); $i++)
+				foreach ($autorlist as $cur)
 				{
 					$sql = "INSERT INTO ".$db_config['prefix']."Literatur_Autor
-						VALUES ('".$autorlist[$i]."', '$nr')";
+						VALUES ('".$cur."', '$nr')";
 					$sqldb->Query($sql);
 				}
 

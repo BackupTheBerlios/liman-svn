@@ -17,12 +17,10 @@
 		</thead>
 		<tbody>
 			<?php
-				/// \todo richtig implementieren
 				require_once("include/mitglied.php");
 				$members = Mitglied::GetAll();
-				for ($i = 0; $i < count($members); $i++)
+				foreach ($members as $cur)
 				{
-					$cur = $members[$i];
 			?>
 			<tr>
 				<td><a href="user.<?=$ext;?>?id=<?=htmlspecialchars($cur->Nr); ?>"><?=htmlspecialchars($cur->Login); ?></a></td>

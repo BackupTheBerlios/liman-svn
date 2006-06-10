@@ -26,13 +26,16 @@
 				<th scope="row">Autor:</th>	
 				<td><?php
 					$autorlist = "";
-					for ($j = 0; $j < count($literatur->Autoren); $j++)
+
+					if (count($literatur->Autoren) > 0)
 					{
-						if ($j != 0)
+						$autornamen = array();
+						foreach ($literatur->Autoren as $autor)
 						{
-							$autorlist .= ", ";
+							$autornamen[] = $autor->Name;
 						}
-						$autorlist .= $literatur->Autoren[$j]->Name;
+	
+						$autorlist = implode(", ", $autornamen);
 					}
 					echo htmlspecialchars($autorlist);
 				?></td>
@@ -89,9 +92,8 @@
 			<?php
 				require_once("include/form_helper.php");
 				$owncomment = ""; // hat der user schon etwas kommentiert?
-				for ($i = 0; $i < count($literatur->Kommentare); $i++)
+				foreach ($literatur->Kommentare as $cur)
 				{
-					$cur = $literatur->Kommentare[$i];
 					if ($login->Nr == $cur->Verfasser_Nr)
 					{
 						$owncomment->Text = $cur->Text;
@@ -101,7 +103,7 @@
 			?>
 				<tr>
 					<th scope="row"><?=htmlspecialchars($cur->Verfasser_Name);?>:</th>	
-					<td><?=htmlspecialchars($cur->Text);?></td>
+					<td class="kommentar"><?=htmlspecialchars($cur->Text);?></td>
 					<td><?php
 						// Darf der User löschen?
 						if ($login->Nr == $cur->Verfasser_Nr || $login->IsAdministrator() === true)
