@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 	require_once("include/tests/errormessage.php");
 	
 	class AutorTest
@@ -85,18 +85,19 @@
 			$sqldb->ExpectQuery( 'SELECT.*Autor_Nr.*WHERE.*Autorname', $testAutoren[0] );
 			$sqldb->ExpectQuery( 'SELECT.*Autor_Nr.*WHERE.*Autorname', false  );
 			$sqldb->ExpectQuery( 'INSERT INTO.*', 1 );
-			$sqldb->ExpectQuery( 'SELECT @@IDENTITY.*', $testAutoren[1] ); /// \todo Das funktioniert weg MySQL3 nicht -> GetInsertID
 			
 			$autoren = Autor::Split( $testAutorNamen );
+
+			$result = $sqldb->Verify();
+			if( $result !== false )
+			{
+				$result->Unit = 'Autor';
+				$result->Test = 'Split';
+				return $result;
+			}
 			
 			if( count($autoren) != count($testAutoren) )
 				return new ErrorMessage( 'Autor', 'Split', 'Anzahl Autoren', count($testAutoren), count($autoren) );
-				
-			for( $i = 0; $i < count($autoren); $i++ )
-			{
-				if( $autoren[$i]->Nr != $testAutoren[$i]->Nr )
-					return new ErrorMessage( 'Autor', 'Split', "Autor[$i]->Nr", $testAutoren[$i]->Nr, $autoren[$i]->Nr );
-			}
 			
 			return true;
 		}

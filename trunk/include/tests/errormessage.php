@@ -33,8 +33,11 @@
 				}
 			}
 			
-			return "Test".$testcase." Fehlgeschlagen. Grund: ".$this->Message.
-			       " - Erwartet: <".$this->Expected."> Ist: <".$this->Actual.">";
+			$values = "";
+			if( $this->Actual != $this->Expected )
+				$values = " - Erwartet: <".$this->Expected."> Ist: <".$this->Actual.">";
+			
+			return "Test".$testcase." Fehlgeschlagen. Grund: ".$this->Message.$values;
 		}
 	}
 ?>

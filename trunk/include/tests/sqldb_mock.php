@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 	require_once("include/tests/errormessage.php");
 	
 	class SQLDB_Mock
@@ -147,12 +147,13 @@
 		{
 			$ret = $this->error;
 			/// \todo: Wieso darf man nicht auch mal ohne Fehlermeldung auskommen? :(
-			if( $ret === false )
+			if( ($ret === false) && (count($this->results) != $this->queryCounter) )
 			{
 				$ret = new ErrorMessage( null, null, "Anzahl Queries", count($this->results), $this->queryCounter );
 			}
 			
 			// reset
+			$this->error = false;
 			$this->error_msg = false;
 			$this->patterns = array();
 			$this->results = array();
