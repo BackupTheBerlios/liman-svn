@@ -3,7 +3,7 @@
 	{
 		default:
 		case "mysql":
-			require_once($basepath."include/sqldb_mysql.php");
+			require_once("include/sqldb_mysql.php");
 			break;
 	}
 	

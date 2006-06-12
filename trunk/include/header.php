@@ -1,16 +1,14 @@
-<?php
-	
-	ob_start('ob_gzhandler'); 
+<?php 
 	header("Content-Language: de");
-
 	header("Content-type: text/html; charset=UTF-8");
 
-	if (empty($basepath))
-                $basepath = "./";
-	elseif (isset($_GET["basepath"]) || isset($_POST["basepath"]))
-		die("Don't send basepath with request");
+	require_once("include/global.php");
 
-	require_once($basepath."include/global.php");
+	// Aktiviere GZIP-Kompression, wenn gewünscht
+	if (isset($gz_enable) === true && $gz_enable === true)
+	{
+		ob_start('ob_gzhandler');
+	}
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
@@ -18,8 +16,8 @@
 		<title><?=empty($title)?"":$title." :: "; ?>LiMan</title>
 		<link rel="SHORTCUT ICON" href="favicon.ico">
 		<style type="text/css" title="LiMan 1.0" media="screen,projection">
-			@import "<?=$basepath;?>design/liman.css";
-			<?=empty($extracss)?"":"@import \"$basepath/design/".$extracss."\";\n"; ?>
+			@import "design/liman.css";
+			<?=empty($extracss)?"":"@import \"design/".$extracss."\";\n"; ?>
 		</style>
 		<?=empty($extrahead)?"":$extrahead."\n"; ?>
 		<meta name="description" content="Literature Manager">
@@ -28,7 +26,7 @@
 		<meta name="robots" content="follow">
 		<meta http-equiv="content-language" content="de">
 		<meta name="author" content="Simon Wunderlich">
-		<link rel="home" title="Home" href="<?=$basepath."index.".$ext;?>">
+		<link rel="home" title="Home" href="index.<?=$ext;?>">
 	</head>
 	<body id="liman">
 		<div id="container">
@@ -61,24 +59,24 @@
 					<?php
 						if ($login->IsMember() === false)
 						{
-					?>
-						<form action="login.<?=$ext;?>" id="loginform" method="post">
-							<div>
-							<label for="loginname">Login:</label><input id="loginname" name="loginname" value="" type="text">
-							<label for="passwort">Passwort:</label><input id="passwort" name="passwort" type="password">
-							<input type="submit" value="Login">
-							</div>
-						</form>
-					<?php
+						?>
+							<form action="login.<?=$ext;?>" id="loginform" method="post">
+								<div>
+								<label for="loginname">Login:</label><input id="loginname" name="loginname" value="" type="text">
+								<label for="passwort">Passwort:</label><input id="passwort" name="passwort" type="password">
+								<input type="submit" value="Login">
+								</div>
+							</form>
+						<?php
 						}
 						else
 						{
-					?>
-						<form action="login.<?=$ext;?>?logout" id="loginform" method="post">
-							<div><input type="submit" value="Logout">
-							</div>
-						</form>
-					<?php
+						?>
+							<form action="login.<?=$ext;?>?logout" id="loginform" method="post">
+								<div><input type="submit" value="Logout">
+								</div>
+							</form>
+						<?php
 						}
 					?>
 				</div>

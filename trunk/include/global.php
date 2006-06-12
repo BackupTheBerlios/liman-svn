@@ -1,9 +1,4 @@
 <?php
-	if (empty($basepath))
-	{
-		$basepath = "./";
-	}
-
 	// Benutze Backslashes, wenn dies nicht automatisch gemacht wird
 	if( !get_magic_quotes_gpc())
 	{
@@ -30,11 +25,8 @@
 			}
 		}
 	
-		//quote_array($HTTP_GET_VARS);
 		quote_array($_GET);
-		//quote_array($HTTP_POST_VARS);
 		quote_array($_POST);
-		//quote_array($HTTP_COOKIE_VARS);
 		quote_array($_COOKIE);
 	}
 
@@ -69,7 +61,7 @@
 		return $str;
 	}
 
-	require_once($basepath."include/config.php");
-	require_once($basepath."include/sqldb.php");
-	require_once($basepath."include/login.php");
+	require_once("include/config.php");
+	require_once("include/sqldb.php");
+	require_once("include/login.php");
 ?>

@@ -63,6 +63,8 @@
 
 			if ($login->IsAdministrator() === true)
 			{
+				// Wenn Administratorrechte vorliegen,
+				// Lösche Kommentar mit Kommentar_Nr = $nr
 				$sql = "DELETE FROM ".$db_config['prefix']."Kommentare
 						WHERE Kommentar_Nr = '$nr'
 						LIMIT 1";
@@ -70,6 +72,8 @@
 			}
 			elseif ($login->IsMember() === true)
 			{
+				// Wenn Mitgliedsrechte vorliegen, lösche Kommentar mit Kommentar_Nr = $nr
+				// nur wenn Mitglieds_Nr des aktuellen Nutzers
 				$sql = "DELETE FROM ".$db_config['prefix']."Kommentare
 						WHERE Kommentar_Nr = '$nr' AND Mitglieds_Nr='".$login->Nr."'
 						LIMIT 1";
@@ -90,8 +94,10 @@
 		{
 			global $db_config, $sqldb, $login;
 
+			// Nur wenn wir als Mitglied angemeldet sind
 			if ($login->IsMember() === true)
 			{
+				// Lösche alle Kommentare zu bestimmten Literatur
 				$sql = "DELETE FROM ".$db_config['prefix']."Kommentare
 						WHERE Literatur_Nr = '$literatur_nr'";
 				$sqldb->Query($sql);
@@ -111,8 +117,10 @@
 		{
 			global $db_config, $sqldb, $login;
 
+			// Nur wenn wir als Mitglied angemeldet sind
 			if ($login->IsAdministrator() === true)
 			{
+				// Lösche alle Kommentare von bestimmten Mitglied
 				$sql = "DELETE FROM ".$db_config['prefix']."Kommentare
 						WHERE Mitglieds_Nr = '$member_nr'";
 				$sqldb->Query($sql);
@@ -132,7 +140,7 @@
 		{
 			global $db_config, $sqldb;
 
-			$authors = array();
+			// Lese alle Kommentare zu bestimmter Literatur
 			$sql = "SELECT  Kommentar_Nr AS Nr, Kommentartext AS Text, mitglieder.Mitglieds_Nr AS Mitglieds_Nr, Vorname, Name AS Nachname
 					FROM ".$db_config['prefix']."Kommentare AS kommentare
 					INNER JOIN  ".$db_config['prefix']."Mitglieder AS mitglieder
@@ -141,6 +149,8 @@
 					ORDER BY Nr ASC";
 			$sqldb->Query($sql);
 
+			// Lese Kommentare aus und erstelle Array aus gefundenen Kommentaren
+			$authors = array();
 			while ($cur = $sqldb->Fetch())
 			{
 				$authors[] = new Kommentar($cur);
@@ -172,22 +182,29 @@
 		{
 			global $db_config, $sqldb, $login;
 
+			// Liegen Administratorrechte vor? Alternativ Mitgliedsrechte
+			// (aber nur, wenn der Verfasser gleich der eingeloggte User ist)
 			if ($login->IsAdministrator() === true ||
 				($login->IsMember() === true && $verfasser_nr == $login->Nr))
 			{
+				// Suche nach Literatureintrag mit übergebener Literatur_Nr $literatur_nr
 				$sqlExists = "SELECT Literatur_Nr FROM ".$db_config['prefix']."Bibliothek
 						WHERE Literatur_Nr='$literatur_nr'";
 				$sqldb->Query($sqlExists);
 
+				// Existiert eine Literatur mit $literatur_nr?
 				if ($sqldb->Fetch() !== false)
 				{
+					// Suche ob schon Kommentar von Mitglied zur Literatur existiert
 					$sqlAlready = "SELECT Kommentar_Nr FROM ".$db_config['prefix']."Kommentare
 							WHERE Literatur_Nr='$literatur_nr' AND Mitglieds_Nr='$verfasser_nr'";
 					$sqldb->Query($sqlAlready);
 
 					$cur = $sqldb->Fetch();
+					// Existiert noch kein Kommentar zur Literatur von Mitglied?
 					if ($cur === false)
 					{
+						// Wenn ja, füge neuen Kommentar hinzu, wenn Text angegeben wurde
 						if (empty($text) === false)
 						{
 							$sql = "INSERT INTO ".$db_config['prefix']."Kommentare
@@ -197,6 +214,7 @@
 					}
 					else
 					{
+						// Existiert schon ein Kommentar, dann ändere diesen
 						Kommentar::Update($cur->Kommentar_Nr, $text);
 					}
 				}
@@ -223,14 +241,20 @@
 		{
 			global $db_config, $sqldb, $login;
 
+			// Wurde kein Text angegeben?
 			if (empty($text) === true)
 			{
+				// Wenn ja, lösche Kommentar
 				Kommentar::Delete($nr);
 			}
 			else
 			{
+				// Wenn nicht, ändere Kommentar
+
 				if ($login->IsAdministrator() === true)
 				{
+					// Wenn Administratorrechte vorliegen,
+					// Ändere Kommentar mit Kommentar_Nr = $nr
 					$sql = "UPDATE ".$db_config['prefix']."Kommentare
 							SET Kommentartext='$text'
 							WHERE Kommentar_Nr='$nr'
@@ -239,6 +263,8 @@
 				}
 				elseif ($login->IsMember() === true)
 				{
+					// Wenn Mitgliedsrechte vorliegen, ändere Kommentar mit Kommentar_Nr = $nr
+					// nur wenn Mitglieds_Nr des aktuellen Nutzers
 					$sql = "UPDATE ".$db_config['prefix']."Kommentare
 							SET Kommentartext='$text'
 							WHERE Kommentar_Nr='$nr' AND Mitglieds_Nr='".$login->Nr."'

@@ -51,11 +51,15 @@
 		function Literatur($nr)
 		{
 			global $db_config, $sqldb;
+
+			// Suche Literatur mit Literatur_Nr = $nr heraus
 			$sql = "SELECT Literatur_Nr, Art, Titel, Jahr, Verlag, ISBN, Beschreibung, Ort, Stichworte
 					FROM ".$db_config['prefix']."Bibliothek
 					WHERE Literatur_Nr='$nr'
 					LIMIT 1";
 			$sqldb->Query($sql);
+
+			// Lese gefundene Daten aus
 			if ($cur = $sqldb->Fetch())
 			{
 				$this->Nr = $cur->Literatur_Nr;
@@ -82,17 +86,23 @@
 		function ToBibtex()
 		{
 			$str = "";
+
+			// Wurde ein LiteraturArt-Objekt angelegt?
 			if (is_object($this->Art) === true)
 			{
+				// Lege Kopf des BibTeX-Eintrags an
 				$str = "@".$this->Art->GetBibtexText()."{".$this->Art->GetBibtexText().$this->Nr;
 				
-				if (!empty($this->Titel))
+				// Titel hinzufügen, wenn vorhanden
+				if (empty($this->Titel) === false)
 				{
 					$str .= ",\n\ttitle = \"".addslashes($this->Titel)."\"";
 				}
 	
+				// Autoren hinzufügen, wenn vorhanden
 				if (empty($this->Autoren) === false)
 				{
+					// Erstelle and-getrennte Liste der Autorennamen
 					$autornamen = array();
 					foreach ($this->Autoren as $autor)
 					{
@@ -103,26 +113,31 @@
 					$str .= ",\n\tauthor = \"".addslashes($autorlist)."\"";
 				}
 	
-				if (!empty($this->Jahr))
+				// Jahr hinzufügen, wenn vorhanden
+				if (empty($this->Jahr) === false)
 				{
 					$str .= ",\n\tyear = \"".addslashes($this->Jahr)."\"";
 				}
 	
-				if (!empty($this->Verlag))
+				// Verlag hinzufügen, wenn vorhanden
+				if (empty($this->Verlag) === false)
 				{
 					$str .= ",\n\tpublisher = \"".addslashes($this->Verlag)."\"";
 				}
 	
-				if (!empty($this->ISBN))
+				// ISBN hinzufügen, wenn vorhanden
+				if (empty($this->ISBN) === false)
 				{
 					$str .= ",\n\tisbn = \"".addslashes($this->ISBN)."\"";
 				}
 	
-				if (!empty($this->Ort))
+				// Ort hinzufügen, wenn vorhanden
+				if (empty($this->Ort) === false)
 				{
 					$str .= ",\n\taddress = \"".addslashes($this->Ort)."\"";
 				}
 				
+				// Beende BibTeX-Eintrag
 				$str .= "\n}\n";
 			}
 			return $str;
@@ -145,19 +160,24 @@
 		{
 			global $db_config, $sqldb, $login;
 
+			// Nur wenn wir als Mitglied angemeldet sind
 			if ($login->IsMember() === true)
 			{
+				// Lösche Literatur aus Bibliothek
 				$sql = "DELETE FROM ".$db_config['prefix']."Bibliothek
 						WHERE Literatur_Nr = '$nr'
 						LIMIT 1";
 				$sqldb->Query($sql);
 
+				// Entferne alle Verbindugnen zwischen Literatur und Autoren
 				$sql = "DELETE FROM ".$db_config['prefix']."Literatur_Autor
 						WHERE Literatur_Nr = '$nr'";
 				$sqldb->Query($sql);
 
+				// Lösche nun alle freigewordenen Autoren
 				Autor::Clean();
 
+				// Lösche alle zur Literatur gehördenden Kommentare
 				Kommentar::DeleteAll($nr);
 			}
 		}
@@ -179,6 +199,7 @@
 					'mastersthesis', 'misc', 'phdthesis', 'proceedings', 'techreport',
 					'unpublished');
 
+			// Finde alle BibTeX-Einträge
 			// Funktioniert nicht bei Argumenten über mehrere Zeilen
 			if (preg_match_all('/@([\w]+[\s]*)\{[\s]*([-\d\w]+)(([\s]*,[\s]*[\w]*[\s]*=[\s]*([\w]+|\{.*\}|".*")[\s]*)+)\}/', $bibtex, $regexp_entries) !== false)
 			{
@@ -191,6 +212,7 @@
 
 			$entries = false;
 			
+			// Extrahiere alle Einträge
 			for ($i = 0; $i < $num_entries; $i++)
 			{
 				$cur = new stdClass;
@@ -223,6 +245,7 @@
 				// Extrahiere "Optionen"
 				if (preg_match_all('/(([\w]*)[\s]*=[\s]*([\w]+|\{.*\}|".*")[\s]*(,|\}))+/', $regexp_entries[3][$i], $regexp_options) !== false)
 				{
+					// Lese die Optionen des aktuellen BibTeX-Eintrags einzeln
 					$num_options = sizeof($regexp_options[0]);
 					for ($j = 0; $j < $num_options; $j++)
 					{
@@ -238,6 +261,7 @@
 							$argument = substr($argument, 1, strlen($argument)-2);
 						}
 
+						// Weiße Daten der aktuellen Option zu
 						switch (strtolower(trim($regexp_options[2][$j])))
 						{
 						case "title":
@@ -282,6 +306,8 @@
 			$imported = 0;
 			if ($entries !== false && empty($entries) === false)
 			{
+				// Importiere die einzelnen Einträge in Bibliothek
+				// wenn Titel und Autor vorhanden sind
 				foreach ($entries as $entry)
 				{
 					if (empty($entry->titel) === false && empty($entry->autoren) === false)
@@ -321,12 +347,16 @@
 		{
 			global $db_config, $sqldb, $login;
 
+			// Nur wenn wir als Mitglied angemeldet sind
 			if ($login->IsMember() === true)
 			{
+				// Füge Literatur in Bibliothek ein
 				$sql = "INSERT INTO ".$db_config['prefix']."Bibliothek
 						VALUES (NULL, '$art', '$titel', '$jahr', '$verlag', '$isbn', '$beschreibung', '$ort', '$stichworte')";
 				$sqldb->Query($sql);
 
+				// Importiere jeden Autor und füge Verbindung zur
+				// zur Literatur in Literatur_Autor an
 				if ($nr = $sqldb->GetInsertID())
 				{
 					$autorlist = Autor::Split($autoren);
@@ -370,18 +400,22 @@
 		{
 			global $db_config, $sqldb, $login;
 
+			// Nur wenn wir als Mitglied angemeldet sind
 			if ($login->IsMember() === true)
 			{
+				// Lösche jede Verbindung zu Autoren in Literatur_Autor mit aktueller Literatur
 				$sql = "DELETE FROM ".$db_config['prefix']."Literatur_Autor
 						WHERE Literatur_Nr='$nr'";
 				$sqldb->Query($sql);
 
+				// Ändere aktuellen Literatureintrag
 				$sql = "UPDATE ".$db_config['prefix']."Bibliothek
 							SET Art='$art', Titel='$titel', Jahr='$jahr', Verlag='$verlag', ISBN='$isbn', Beschreibung='$beschreibung', Ort='$ort', Stichworte='$stichworte'
 							WHERE Literatur_Nr='$nr'
 							LIMIT 1";
 				$sqldb->Query($sql);
 
+				// Füge neue Autoren hinzu und verbinde sie mit Literatur durch Literatur_Autor
 				$autorlist = Autor::Split($autoren);
 				foreach ($autorlist as $cur)
 				{

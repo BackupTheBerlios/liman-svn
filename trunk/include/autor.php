@@ -45,8 +45,10 @@
 		{
 			global $db_config, $sqldb, $login;
 
+			// Nur wenn wir als Mitglied angemeldet sind
 			if ($login->IsMember() === true)
 			{
+				// Entferne Autoren ohne Verbindung in Literatur_Autor zur Literatur
 				$sql = "DELETE autoren, connect
 						FROM ".$db_config['prefix']."Autoren AS autoren
 						LEFT JOIN ".$db_config['prefix']."Literatur_Autor AS connect
@@ -56,6 +58,7 @@
 				if ($sqldb->Query($sql) === false)
 				{
 					// Workaround für MySQL < 4
+					// Finde Autoren ohne Verbindung in Literatur_Autor zur Literatur
 					$sql = "SELECT autoren.Autor_Nr AS Nr
 							FROM ".$db_config['prefix']."Autoren AS autoren
 							LEFT JOIN ".$db_config['prefix']."Literatur_Autor AS connect
@@ -63,19 +66,23 @@
 							WHERE connect.Autor_Nr is NULL";
 					$sqldb->Query($sql);
 
+					// Lese alle Autorennummern aus
 					$authorid = array();
 					while ($line = $sqldb->Fetch())
 					{
 						$authorid[] = $line->Nr;
 					}
 
+					// Wenn Autoren gefunden worden
 					if (empty($authorid) === false)
 					{
+						// Erstelle Kommagetrennte Liste der Autorennummern
+						$idlist = implode(", ", $authorid);
+
+						// Lösche gefundene Autoren
 						$sqlDelete = "DELETE FROM ".$db_config['prefix']."Autoren
 								WHERE Autor_Nr IN (";
-						$idlist = implode(", ", $authorid);
-						$sqlDelete .= $idlist.")";
-
+								$sqlDelete .= $idlist.")";
 						$sqldb->Query($sqlDelete);
 					}
 				}
@@ -95,13 +102,16 @@
 		{
 			global $db_config, $sqldb;
 
-			$authors = array();
+			// Lese alle Autoren mit Verbindung zu Literatur in Literatur_Autor
 			$sql = "SELECT  autoren.Autor_Nr AS Nr, Autorname AS Name
 					FROM ".$db_config['prefix']."Literatur_Autor AS connect
 					INNER JOIN  ".$db_config['prefix']."Autoren AS autoren
 					ON connect.Autor_Nr = autoren.Autor_Nr
 					WHERE Literatur_Nr = '$literatur_nr'";
 			$sqldb->Query($sql);
+
+			// Lese Autoren aus und erstelle Array aus gefundenen Autoren
+			$authors = array();
 			while ($cur = $sqldb->Fetch())
 			{
 				$authors[] = new Autor($cur);
@@ -130,25 +140,34 @@
 			global $db_config, $sqldb, $login;
 			$authorNumbers = array();
 
+			// Nur wenn wir als Mitglied angemeldet sind
 			if ($login->IsMember() === true)
 			{
+				// Trenne kommagetrennte Liste der Autoren an Kommas auf
 				$authorNames = array();
-				$authorNames = split( ",", $autoren );
-			
-				for( $i = 0; $i < count($authorNames); $i++ )
+				$authorNames = split(",", $autoren);
+
+				// Suche ob jeder Autorname in kommagetrennter Liste in Autoren steht
+				foreach ($authorNames as $autor)
 				{
+					// Suche nach Autoreintrag
 					$sqlSelect = "SELECT Autor_Nr AS Nr FROM ".$db_config['prefix']."Autoren AS autoren
-							WHERE Autorname = '".trim($authorNames[$i])."'";
+							WHERE Autorname = '".trim($autor)."'";
 					$sqldb->Query( $sqlSelect );
 					
-					if( $cur = $sqldb->Fetch() )
+					// Existiert der Eintrag?
+					if ($cur = $sqldb->Fetch())
 					{
+						// Wenn ja, speichere Autornummer für Rückgabe
 						$authorNumbers[] = $cur->Nr;
 					}
 					else
 					{
-						$sqlInsert = "INSERT INTO ".$db_config['prefix']."Autoren VALUES (NULL, '".trim($authorNames[$i])."')";
-						$sqldb->Query( $sqlInsert );
+						// Wenn nicht, dann füge Autorname in Datenbank ein
+						$sqlInsert = "INSERT INTO ".$db_config['prefix']."Autoren VALUES (NULL, '".trim($autor)."')";
+						$sqldb->Query($sqlInsert);
+
+						// Speichere neue Autornummer für Rückgabe
 						$authorNumbers[] = $sqldb->GetInsertID();
 					}
 				}

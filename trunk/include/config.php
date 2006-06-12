@@ -10,4 +10,5 @@
 	$db_config['prefix'] = "liman_";
 
 	$ext = "php";	// Endung der von den Usern abrufbaren Dateien
+	$gz_enable = true; // aktiviere GZIP-Kompression der HTML-Dateien
 ?>

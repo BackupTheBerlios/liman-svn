@@ -39,6 +39,7 @@
 		 */
 		function LiteraturArt($text)
 		{
+			// Suche Zahlenrepräsentation des übergebenen Texts heraus
 			switch ($text)
 			{
 			case "book":
@@ -109,6 +110,7 @@
 		 */
 		function GetDisplayText()
 		{
+			// Suche Datenbank-/Benutzeroberflächetext herau
 			switch ($this->value)
 			{
 			case 1:
@@ -157,6 +159,7 @@
 		 */
 		function GetBibtexText()
 		{
+			// Suche BibTeX-Text heraus
 			switch ($this->value)
 			{
 			case 1:
