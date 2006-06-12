@@ -82,11 +82,9 @@
 		
 		function GetError()
 		{
-			$error = array();
-
 			// was könnte hier rein?
 
-			return $error;
+			return $this->error_msg;
 		}
 
 		function GetInsertID()
