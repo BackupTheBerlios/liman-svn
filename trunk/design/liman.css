@@ -4,7 +4,7 @@ html, body {
 	font: x-small sans-serif;
 	margin: 0;
 	padding: 0;
-} 
+}
 
 abbr, acronym {
 	border-bottom: 1px dotted black;
@@ -24,7 +24,6 @@ hr {
 	margin: 0;
 	padding: 3px;
 	border-bottom: 1px solid #000000;
-	font-size: 0.8em;
 	background-color: #ffffdc;
 }
 
