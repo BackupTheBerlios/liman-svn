@@ -150,7 +150,7 @@
 			{
 				$ret = new ErrorMessage( null, null, "Anzahl Queries", count($this->results), $this->queryCounter );
 			}
-			else
+			elseif ($ret === false)
 			{
 				$ret = true;
 			}
