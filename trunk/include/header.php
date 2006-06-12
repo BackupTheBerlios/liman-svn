@@ -29,6 +29,17 @@
 		<link rel="home" title="Home" href="index.<?=$ext;?>">
 	</head>
 	<body id="liman">
+		<?php
+			// Gebe Warnung aus, wenn install.php nicht gelöscht wurde und es nicht unterdrückt wird
+			if (file_exists("install.php") === true && 
+				((empty($disable_installwarning) === false && $disable_installwarning === false)
+				|| empty($disable_installwarning) === true))
+			{
+				echo "<div id=\"installerror\">
+					install.php wurde nicht gelöscht. Erledigen sie dies so schnell wie möglich
+					</div>";
+			}
+		?>
 		<div id="container">
 			<div id="header">
 				<h1><span><acronym title="Literature Manager">LiMan</acronym></span></h1>

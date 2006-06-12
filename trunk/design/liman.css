@@ -20,6 +20,14 @@ hr {
 	margin-bottom: 2em;
 }
 
+#installerror {
+	margin: 0;
+	padding: 3px;
+	border-bottom: 1px solid #000000;
+	font-size: 0.8em;
+	background-color: #ffffdc;
+}
+
 #content h2 {
 	padding-bottom: 1em;
 }
