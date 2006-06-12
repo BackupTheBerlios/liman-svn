@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS `liman_Autoren` (
   PRIMARY KEY  (`Autor_Nr`),
   UNIQUE KEY `Autorname` (`Autorname`),
   FULLTEXT KEY `Autorname_2` (`Autorname`)
-);
+) DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `liman_Bibliothek` (
   `Stichworte` varchar(100) NOT NULL,
   PRIMARY KEY  (`Literatur_Nr`),
   FULLTEXT KEY `Titel` (`Titel`,`Verlag`,`ISBN`,`Beschreibung`,`Ort`,`Stichworte`)
-);
+) DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `liman_Kommentare` (
   PRIMARY KEY  (`Kommentar_Nr`),
   KEY `Literatur_Nr` (`Literatur_Nr`,`Mitglieds_Nr`),
   FULLTEXT KEY `Kommentartext` (`Kommentartext`)
-);
+) DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `liman_Literatur_Autor` (
   `Autor_Nr` int(11) NOT NULL,
   `Literatur_Nr` int(11) NOT NULL,
   KEY `Autor_Nr` (`Autor_Nr`,`Literatur_Nr`)
-) COMMENT='n-m-Relationstabelle Literatur-Autor';
+) DEFAULT CHARSET=utf8 COMMENT='n-m-Relationstabelle Literatur-Autor';
 
 -- --------------------------------------------------------
 
@@ -79,7 +79,7 @@ CREATE TABLE IF NOT EXISTS `liman_Mitglieder` (
   `Rechte` enum('Benutzer','Administrator') NOT NULL,
   PRIMARY KEY  (`Mitglieds_Nr`),
   UNIQUE KEY `Login` (`Login`)
-);
+) DEFAULT CHARSET=utf8;
 
 -- 
 -- Daten für Tabelle `liman_Mitglieder`
