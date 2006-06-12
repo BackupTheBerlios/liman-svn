@@ -18,13 +18,13 @@
 		{
 			global $sqldb;
 			
-			$testData = new stdObject();
-			$testData->Nr = 1;
+			$testData = new stdClass();
+			$testData->Mitglieds_Nr = 1;
 			$testData->Login = "Maximator";
 			$testData->Passwort = Mitglied::PasswordHash("passwort");
 			$testData->Vorname = "Max";
-			$testData->Nachname = "Mustermann";
-			$testData->Email != "max.mustermann@gmx.de";
+			$testData->Name = "Mustermann";
+			$testData->Email = "max.mustermann@gmx.de";
 			$testData->Rechte = "Benutzer";
 			
 			$sqldb->ExpectQuery("SELECT.*FROM.*Mitglieder.*WHERE.*Mitglieds_Nr.*LIMIT 1", $testData );
@@ -40,7 +40,7 @@
 			}
 			
 			if( $mitglied->Nr != $testData->Mitglieds_Nr )
-				return new ErrorMessage( 'Mitglied', 'ctor', 'Mitgliedsnummer falsch', $testData->Mitglieds_Nr, $mitglied->Mitglieds_Nr );
+				return new ErrorMessage( 'Mitglied', 'ctor', 'Mitgliedsnummer falsch', $testData->Mitglieds_Nr, $mitglied->Nr );
 				
 			if( $mitglied->Login != $testData->Login )
 				return new ErrorMessage( 'Mitglied', 'ctor', 'Login falsch', $testData->Login, $mitglied->Login );
@@ -52,13 +52,13 @@
 				return new ErrorMessage( 'Mitglied', 'ctor', 'Vorname falsch', $testData->Vorname, $mitglied->Vorname );
 				
 			if( $mitglied->Nachname != $testData->Name )
-				return new ErrorMessage( 'Mitglied', 'ctor', 'Name falsch', $testData->Name, $mitglied->Name );
+				return new ErrorMessage( 'Mitglied', 'ctor', 'Name falsch', $testData->Name, $mitglied->Nachname );
 				
 			if( $mitglied->Email != $testData->Email )
 				return new ErrorMessage( 'Mitglied', 'ctor', 'Email falsch', $testData->Email, $mitglied->Email );
 				
 			if( $mitglied->Rechte != 1 )
-				return new ErrorMessage( 'Mitglied', 'ctor', 'Email falsch', 1, $mitglied->Rechte );
+				return new ErrorMessage( 'Mitglied', 'ctor', 'Rechte falsch', 1, $mitglied->Rechte );
 				
 			return true;
 		}

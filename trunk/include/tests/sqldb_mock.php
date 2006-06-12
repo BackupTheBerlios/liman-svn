@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 	require_once("include/tests/errormessage.php");
 	
 	class SQLDB_Mock
@@ -146,10 +146,13 @@
 		function Verify()
 		{
 			$ret = $this->error;
-			/// \todo: Wieso darf man nicht auch mal ohne Fehlermeldung auskommen? :(
 			if( ($ret === false) && (count($this->results) != $this->queryCounter) )
 			{
 				$ret = new ErrorMessage( null, null, "Anzahl Queries", count($this->results), $this->queryCounter );
+			}
+			else
+			{
+				$ret = true;
 			}
 			
 			// reset

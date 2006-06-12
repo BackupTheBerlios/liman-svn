@@ -16,7 +16,7 @@
 		
 		function ConstructorTest()
 		{
-			$testData = new stdObject();
+			$testData = new stdClass();
 			$testData->Nr = 1;
 			$testData->Text = "Das ist ein Kommentar";
 			$testData->Mitglieds_Nr = 2;
