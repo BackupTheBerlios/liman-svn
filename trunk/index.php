@@ -39,7 +39,7 @@
 		</tbody>
 	</table>
 	<?php
-		// Sind Mitgliedsrechte vorhanden, gebe Hinzufüge- und Importierknopf an
+		// Sind Mitgliedsrechte vorhanden, gebe Hinzufüge- und Importierknopf aus
 		if ($login->IsMember() === true)
 		{
 		?>

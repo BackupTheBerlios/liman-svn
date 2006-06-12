@@ -63,7 +63,7 @@
 		}
 		else
 		{
-			// Frage ob gelöscht Kommentar werden soll
+			// Frage ob Kommentar gelöscht werden soll
 			require_once("include/form_helper.php");
 			echo "<div id=\"warning\" style=\"margin-top: 2em\">";
 			echo "Wollen sie den Kommentar wirklich entfernen?";

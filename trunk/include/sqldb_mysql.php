@@ -69,8 +69,12 @@
 		{
 			if ($this->db_id !== false)
 			{
+				// Wenn Datenbankverbindung besteht,
+				// gebe Resourcen frei und schließe Verbindung
 				$this->FreeResult();
-				return @mysql_close($this->db_id);
+				$dbid = $this->db_id;
+				$this->db_id = false;
+				return @mysql_close($dbid);
 			}
 			else
 			{
@@ -93,6 +97,8 @@
 		{
 			if ($this->db_id !== false && $this->query_result !== false)
 			{
+				// Wenn Datenbankverbindung und Ergebnis eines Querys
+				// besteht, bewege Zeiger auf angegebenes Ergebnis
 				return @mysql_data_seek($this->query_result, $row_number);
 			}
 			else
@@ -114,6 +120,8 @@
 		{
 			if ($this->db_id !== false && $this->query_result !== false)
 			{
+				// Wenn Datenbankverbindung und Ergebnis eines Querys
+				// besteht, gebe aktuelles Ergebnis zurück
 				return @mysql_fetch_object($this->query_result);
 			}
 			else
@@ -133,7 +141,11 @@
 		{
 			if ($this->query_result !== false)
 			{
-				return @mysql_free_result($this->query_result);;
+				// Wenn rgebnis eines Querys existiert, gebe
+				// es frei
+				$queryresult = $this->query_result;
+				$this->query_result = false;
+				return @mysql_free_result($queryresult);
 			}
 			else
 			{
@@ -155,6 +167,8 @@
 		{
 			if ($this->db_id !== false)
 			{
+				// Wenn Datenbankverbindung besteht, gebe
+				// Anzahl zuletzt geänderter Datensätze zurück
 				return @mysql_affected_rows($this->db_id);
 			}
 			else
@@ -201,6 +215,9 @@
 		{
 			if ($this->db_id !== false)
 			{
+				// Wenn Datenbankverbindung besteht, gebe 
+				// ID des zuletzt hinzugefügten Datensatzes
+				// zurück
 				return @mysql_insert_id($this->db_id);
 			}
 			else
@@ -222,6 +239,8 @@
 		{
 			if ($this->db_id !== false && $this->query_result !== false)
 			{
+				// Wenn Datenbankverbindung und Ergebnis eines Querys
+				// besteht, gebe Anzahl gefundener Datensätze zurück
 				return @mysql_num_rows($this->query_result);
 			}
 			else
@@ -243,6 +262,8 @@
 		{
 			if ($this->db_id !== false)
 			{
+				// Wenn Datenbankverbindung besteht, sende
+				// Abfrage an Datenbank
 				$this->FreeResult();
 				return $this->query_result = @mysql_query($query, $this->db_id);
 			}

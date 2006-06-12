@@ -37,12 +37,15 @@
 		function Mitglied($nr)
 		{
 			global $db_config, $sqldb;
+			
+			// Suche Mitglied mit Mitglied_Nr = $nr heraus
 			$sql = "SELECT Mitglieds_Nr, Login, Passwort, Rechte, Vorname, Name, Email
 					FROM ".$db_config['prefix']."Mitglieder
 					WHERE Mitglieds_Nr='$nr'
 					LIMIT 1";
 			$sqldb->Query($sql);
 			
+			// Lese gefundene Daten aus
 			if ($cur = $sqldb->Fetch())
 			{
 				$this->Nr = $cur->Mitglieds_Nr;
@@ -52,6 +55,7 @@
 				$this->Nachname = $cur->Name;
 				$this->Email = $cur->Email;
 
+				// Wandle Rechtebezeichner in numerische Repräsentation um
 				switch ($cur->Rechte)
 				{
 				case "Administrator":
@@ -95,13 +99,16 @@
 		{
 			global $db_config, $sqldb, $login;
 
+			// Nur wenn wir als Administrator angemeldet sind
 			if ($login->IsAdministrator() === true)
 			{
+				// Entferne Mitglied mit Mitglieds_Nr $nr aus Mitglieder
 				$sql = "DELETE FROM ".$db_config['prefix']."Mitglieder
 						WHERE Mitglieds_Nr = '$nr'
 						LIMIT 1";
 				$sqldb->Query($sql);
 
+				// Löscht alle zu Mitglied gehörenden Kommentare
 				Kommentar::DeleteAllMember($nr);
 			}
 		}
@@ -132,12 +139,15 @@
 		{
 			global $db_config, $sqldb, $login;
 
+			// Nur wenn wir als Administrator angemeldet sind
 			if ($login->IsAdministrator() === true)
 			{
+				// Erzeuge Passworthash
 				$passworthash = Mitglied::PasswordHash($passwort);
+
+				// Füge neues Mitglied hinzu
 				$sql = "INSERT INTO ".$db_config['prefix']."Mitglieder
 						VALUES (NULL, '$nachname', '$vorname', '$email', '$loginname', '$passworthash', '$rechte')";
-				
 				if ($sqldb->Query($sql) !== false)
 				{
 					return true;
@@ -186,17 +196,21 @@
 		{
 			global $db_config, $sqldb, $login;
 
+			// Nur wenn wir als Administrator angemeldet sind
 			if ($login->IsAdministrator() === true || $nr == $login->Nr)
 			{
+				// Erlaube nicht, dass einfache Mitglieder ihre
+				// Rechte erhöhen
 				if ($login->IsAdministrator() === false)
 				{
 					$rechte = "Benutzer";
 				}
 
 				$sql = "";
+				// Wurde neues Passwort angegeben?
 				if (empty($passwort) === true)
 				{
-					
+					// wenn nicht, aktualisiere nur die anderen Daten
 					$sql = "UPDATE ".$db_config['prefix']."Mitglieder
 							SET Login='$loginname', Rechte='$rechte', Vorname='$vorname', Name='$nachname', Email='$email'
 							WHERE Mitglieds_Nr='$nr'
@@ -204,13 +218,16 @@
 				}
 				else
 				{
+					// wenn ja, erzeuge neuen Hash und aktualisiere
+					// ihn mit den anderen Daten
 					$passworthash = Mitglied::PasswordHash($passwort);
 					$sql = "UPDATE ".$db_config['prefix']."Mitglieder
 							SET Login='$loginname', Passwort='$passworthash', Rechte='$rechte', Vorname='$vorname', Name='$nachname', Email='$email'
 							WHERE Mitglieds_Nr='$nr'
 							LIMIT 1";
 				}
-	
+
+				// Ändere Daten des Mitglieds
 				if ($sqldb->Query($sql) !== false)
 				{
 					return true;
@@ -249,12 +266,15 @@
 
 			$members = array();
 
+			// Wenn wir als Administrator angemeldet sind
 			if ($login->IsAdministrator() === true)
 			{
+				// Suche alle Mitglieder
 				$sql = "SELECT Mitglieds_Nr AS Nr, Login, Vorname, Name AS Nachname, Email
 						FROM ".$db_config['prefix']."Mitglieder";
 				$sqldb->Query($sql);
 				
+				// Lese Mitglieder aus
 				while ($cur = $sqldb->Fetch())
 				{
 					$members[] = $cur;
@@ -262,12 +282,14 @@
 			}
 			elseif ($login->IsMember() === true)
 			{
+				// Suche eigene Daten in Mitglied
 				$sql = "SELECT Mitglieds_Nr AS Nr, Login, Vorname, Name AS Nachname, Email
 						FROM ".$db_config['prefix']."Mitglieder
 						WHERE Mitglieds_Nr='".$login->Nr."'
 						LIMIT 1";
 				$sqldb->Query($sql);
 				
+				// Lese Mitglied aus
 				if ($cur = $sqldb->Fetch())
 				{
 					$members[] = $cur;

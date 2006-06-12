@@ -5,6 +5,7 @@
 	require_once("include/header.php");
 	require_once("include/mitglied.php");
 
+	// Abbruch wenn keine Mitgliedsrechte vorhanden
 	if ($login->IsMember() === false)
 	{
 		require_once("include/footer.php");
@@ -12,10 +13,13 @@
 	}
 	elseif ($login->IsAdministrator() === false)
 	{
+		// Wenn keine Administratorrechte vorhanden sind
+		// dürfen nur die eigenen Daten angesehen werden
 		$_GET["id"] = $login->Nr;
 		$_POST["id"] = $login->Nr;
 	}
 
+	// Lese Mitglied aus, wenn id übergeben wurde
 	if (isset($_GET["id"]))
 	{
 		$mitglied = new Mitglied($_GET["id"]);
@@ -24,6 +28,8 @@
 	{
 		$mitglied = new Mitglied(0);
 	}
+
+	// gebe Informationen zu Mitglied aus
 ?>
 <div id="cfront" class="content">
 	<form action="usermod.php">
@@ -45,6 +51,8 @@
 			<tr>
 				<th scope="row">Rechte:</th>	
 				<td><?php
+					// Wandle Zahlenrepräsentation der Rechte
+					// in textuelle Repräsentation um
 					switch ($mitglied->Rechte)
 					{
 					case 2:

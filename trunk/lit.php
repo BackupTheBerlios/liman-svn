@@ -5,6 +5,7 @@
 	require_once("include/header.php");
 	require_once("include/literatur.php");
 
+	// Lese Literatur aus, wenn id übergeben wurde
 	if (isset($_GET["id"]))
 	{
 		$literatur = new Literatur($_GET["id"]);
@@ -13,6 +14,8 @@
 	{
 		$literatur = new Literatur(0);
 	}
+
+	// gebe Literatur aus
 ?>
 <div id="cfront" class="content">
 	
@@ -68,6 +71,7 @@
 				</td>
 			</tr>
 			<?php
+				// Sind Mitgliedsrechte vorhanden, gebe Bearbeiten- und Löschenknopf aus
 				if ($login->IsMember() === true)
 				{
 			?>
@@ -94,6 +98,7 @@
 				$owncomment = ""; // hat der user schon etwas kommentiert?
 				foreach ($literatur->Kommentare as $cur)
 				{
+					// Suche ob schon ein Kommentar des aktuellen Mitglieds existiert
 					if ($login->Nr == $cur->Verfasser_Nr)
 					{
 						$owncomment->Text = $cur->Text;
@@ -123,9 +128,12 @@
 		if ($login->IsMember() === true)
 		{
 			require_once("include/form_helper.php");
+
 			// Soll Kommentar-Hinzufügen-Box erscheinen oder Update-Box?
+			// (abhängig ob schon Kommentar das Mitglieds existiert)
 			if (empty($owncomment) === true)
 			{
+				// Zeige Hinzufügen-Formular
 		?>
 			<form action="commentmod.<?=$ext;?>?insert=" method="post">
 			<span>
@@ -152,6 +160,7 @@
 			}
 			else
 			{
+				// Zeige Ändern-Formular
 		?>
 			<form action="commentmod.<?=$ext;?>?update" method="post">
 			<span>

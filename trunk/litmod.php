@@ -1,4 +1,5 @@
 <?php
+	// Wähle Seitentitel nach ausgewählter Aktion
 	if (isset($_GET["delete"]) === true)
 	{
 		$title = "Literatur löschen";
@@ -15,6 +16,7 @@
 
 	require_once("include/header.php");
 
+	// Abbruch wenn keine Mitgliedsrechte vorhanden
 	if ($login->IsMember() === false)
 	{
 		echo "<div id=\"error\">Sie sind für diese Aktion nicht berechtigt</div>";
@@ -29,6 +31,7 @@
 	$error_autor = false;
 	$error_jahr = false;
 
+	// Überprüfe wichtige Parameter bei Insert und Update auf Vorhandensein
 	if (isset($_GET["insert"]) === true || isset($_GET["update"]) === true)
 	{
 		if (empty($_POST["titel"]) === true)
@@ -50,6 +53,7 @@
 		}
 	}
 
+	// Gebe Fehler bei Parameterüberprüfung aus
 	if ($error_occurred == true)
 	{
 		echo "<div id=\"error_list\">Es scheinen Fehler bei der Verarbeitung aufgetreten zu sein:<ul>";
@@ -72,10 +76,11 @@
 		echo "</ul></div>";
 	}
 
-
+	// Gebe Formular aus, wenn keine Schreibaktionen ausgeführt werden
 	if ((isset($_GET["delete"]) === false && isset($_GET["insert"]) === false && isset($_GET["update"]) === false)
 		|| $error_occurred === true)
 	{
+		// Lese id aus, wenn vorhanden
 		if (isset($_POST["id"]) === true)
 		{
 			$id = $_POST["id"];
@@ -90,6 +95,7 @@
 		}
 
 		require_once("include/form_helper.php");
+		// Lese Literatur aus, wenn id bekannt ist und vorher kein Fehler aufgetreten ist
 		if ($error_occurred === false && (isset($_GET["id"]) === true || isset($_POST["id"]) === true))
 		{
 			require_once("include/literatur.php");
@@ -128,6 +134,11 @@
 		}
 		else
 		{
+			// Sollte vorher Fehler aufgetreten sein, lese Parameter aus.
+			// Sollten vorher keine Fehler aufgetreten sein (keine
+			// id bekannt), setze Default Wert
+
+			// Setze Titel
 			if (isset($_POST["titel"]) === true)
 			{
 				$titel = stripslashes($_POST["titel"]);
@@ -137,6 +148,7 @@
 				$titel = "";
 			}
 
+			// Setze Autoren
 			if (isset($_POST["autor"]) === true)
 			{
 				$autor = stripslashes($_POST["autor"]);
@@ -146,6 +158,7 @@
 				$autor = "";
 			}
 
+			// Setze Jahr
 			if (isset($_POST["jahr"]) === true)
 			{
 				$jahr = stripslashes($_POST["jahr"]);
@@ -155,6 +168,7 @@
 				$jahr = date("Y");
 			}
 
+			// Setze Stichworte
 			if (isset($_POST["stichworte"]) === true)
 			{
 				$stichworte = stripslashes($_POST["stichworte"]);
@@ -164,6 +178,7 @@
 				$stichworte = "";
 			}
 
+			// Setze Art
 			if (isset($_POST["art"]) === true)
 			{
 				$art = stripslashes($_POST["art"]);
@@ -173,6 +188,7 @@
 				$art = "Buch";
 			}
 
+			// Setze Verlag
 			if (isset($_POST["verlag"]) === true)
 			{
 				$verlag = stripslashes($_POST["verlag"]);
@@ -182,6 +198,7 @@
 				$verlag = "";
 			}
 
+			// Setze Ort
 			if (isset($_POST["ort"]) === true)
 			{
 				$ort = stripslashes($_POST["ort"]);
@@ -191,6 +208,7 @@
 				$ort = "";
 			}
 
+			// Setze ISBN
 			if (isset($_POST["isbn"]) === true)
 			{
 				$isbn = stripslashes($_POST["isbn"]);
@@ -200,6 +218,7 @@
 				$isbn = "";
 			}
 
+			// Setze Beschreibung
 			if (isset($_POST["beschreibung"]) === true)
 			{
 				$beschreibung = stripslashes($_POST["beschreibung"]);
@@ -212,13 +231,17 @@
 
 		if (empty($id) === true)
 		{
+			// Gebe Hinzufügen-Formular aus
 			echo "<form action=\"litmod.".$ext."?insert\" id=\"litaddform\" method=\"post\">";
 		}
 		else
 		{
+			// Gebe Update-Formular aus
 			echo "<form action=\"litmod.".$ext."?update\" id=\"litupdateform\" method=\"post\">";
 			echo form_input("hidden", "id", $id);
 		}
+
+		// Gebe Formular mit vorher bestimmten Werten aus
 	?>
 		<table id="litadd">
 			<tbody>
@@ -274,23 +297,32 @@
 	}
 	else
 	{
+		// Führe Schreibaktionen aus
 		require_once("include/literatur.php");
+
+
+		// Suche gewählte Aktion
 		if (isset($_GET["delete"]) === true)
 		{
+			// Löschen wenn akzeptiert wurde
 			if (isset($_POST["accept"]) === true)
 			{
+				// Fehlerhafte Daten zum Löschen übertragen?
 				if (empty($_POST["id"]) === true || is_numeric($_POST["id"]) === false)
 				{
+					// Wenn ja, gebe Fehler aus
 					echo "<p id=\"error\">Literatur konnte nicht gelöscht werden, da es ein Fehler bei der Übertragung der Informationen der Literatur gab</p>";
 				}
 				else
 				{
+					// Wenn nicht, lösche Literatur und gebe Erfolgsmeldung aus
 					Literatur::Delete($_POST["id"]);
 					echo "<p style=\"text-align: center\">Literatur wurde entfernt</p>";
 				}
 			}
 			else
 			{
+				// Frage ob Literatur gelöscht werden soll
 				require_once("include/form_helper.php");
 				echo "<div id=\"warning\" style=\"margin-top: 2em\">";
 				echo "Wollen sie die Literatur wirklich entfernen?";
@@ -305,6 +337,7 @@
 		{
 			if (isset($_POST["accept"]) === false)
 			{
+				// Suche ob ähnliche Literatur existiert
 				require_once("include/suche.php");
 				$search = new Suche($_POST["titel"], $_POST["autor"]);
 				if (empty($search->Treffer) === false)
@@ -323,7 +356,7 @@
 						</thead>
 					<tbody>
 				<?php
-			
+					// Gebe gefundene Literatur zurück
 					foreach ($search->Treffer as $cur)
 					{
 				?>
@@ -339,6 +372,7 @@
 						</tbody>
 					</table>
 				<?php
+					// Frage nach Bestätigung zum Hinzufügen
 					require_once("include/form_helper.php");
 					echo "<div id=\"warning\" style=\"margin-top: 2em\">";
 					echo "Trotzdem hinzufügen?";
@@ -358,16 +392,20 @@
 				}
 			}
 
+			// Anlegen, wenn keine ähnlichen Bücher gefunden wurden oder wenn akzeptiert wurde
 			if (isset($_POST["accept"]) === true || empty($search->Treffer) === true)
 			{
+				// Fehlerhafte Daten zum Anlegen übertragen?
 				if (isset($_POST["art"]) === false || isset($_POST["verlag"]) === false ||
 					isset($_POST["isbn"]) === false || isset($_POST["beschreibung"]) === false ||
 					isset($_POST["ort"]) === false || isset($_POST["stichworte"]) === false)
 				{
+					// Wenn ja, gebe Fehler aus
 					echo "<p id=\"error\">Literatur konnte nicht angelegt werden, da es ein Fehler bei der Übertragung der Informationen der Literatur gab</p>";
 				}
 				else
 				{
+					// Wenn nicht, lege Literatur an und gebe Erfolgsmeldung aus
 					Literatur::Insert($_POST["autor"], $_POST["art"], $_POST["titel"], $_POST["jahr"], $_POST["verlag"], $_POST["isbn"], $_POST["beschreibung"], $_POST["ort"], $_POST["stichworte"]);
 					echo "<p style=\"text-align: center\">Literatur wurde hinzugefügt</p>";
 				}
@@ -375,15 +413,18 @@
 		}
 		elseif (isset($_GET["update"]) === true)
 		{
+			// Fehlerhafte Daten zum Ändern übertragen?
 			if (empty($_POST["id"]) === true || is_numeric($_POST["id"]) === false ||
 				isset($_POST["art"]) === false || isset($_POST["verlag"]) === false ||
 				isset($_POST["isbn"]) === false || isset($_POST["beschreibung"]) === false ||
 				isset($_POST["ort"]) === false || isset($_POST["stichworte"]) === false)
 			{
-					echo "<p id=\"error\">Literatur konnte nicht geändert werden, da es ein Fehler bei der Übertragung der Informationen der Literatur gab</p>";
+				// Wenn ja, gebe Fehler aus
+				echo "<p id=\"error\">Literatur konnte nicht geändert werden, da es ein Fehler bei der Übertragung der Informationen der Literatur gab</p>";
 			}
 			else
 			{
+				// Wenn nicht, ändere Literatur und gebe Erfolgsmeldung aus
 				Literatur::Update($_POST["id"], $_POST["autor"], $_POST["art"], $_POST["titel"], $_POST["jahr"], $_POST["verlag"], $_POST["isbn"], $_POST["beschreibung"], $_POST["ort"], $_POST["stichworte"]);
 				echo "<p style=\"text-align: center\">Literatur wurde geändert</p>";
 			}

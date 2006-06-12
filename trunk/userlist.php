@@ -18,6 +18,9 @@
 		<tbody>
 			<?php
 				require_once("include/mitglied.php");
+
+				// Lese alle Mitglieder aus (wenn Administrator)
+				// oder eigene Daten (wenn Mitglied)
 				$members = Mitglied::GetAll();
 				foreach ($members as $cur)
 				{
@@ -29,12 +32,16 @@
 				<td><?=htmlspecialchars($cur->Email); ?></td>
 				<td>
 					<?php
+						// Sind Mitgliedsrechte vorhanden, gebe Bearbeitenknopf bei eigenem Eintrag aus
+						// bei Administratoren immer
 						if ($login->IsAdministrator() === true || $login->Nr == $cur->Nr)
 						{
 							echo "<form style=\"display: inline\" method=\"post\" action=\"usermod.$ext?id=".htmlspecialchars($cur->Nr)."\">";
 							echo "<input type=\"submit\" value=\"Bearbeiten\">";
 							echo "</form>";
 						}
+						
+						// Sind Administratorrechte vorhanden, gebe Löschknopf aus
 						if ($login->IsAdministrator() === true)
 						{
 							echo "<form style=\"display: inline\" method=\"post\" action=\"usermod.$ext?delete=&id=".htmlspecialchars($cur->Nr)."\">";
@@ -51,6 +58,7 @@
 	</table>
 
 	<?php
+		// Sind Administratorrechte vorhanden, gebe Hinzufüge aus
 		if ($login->IsAdministrator() === true)
 		{
 	?>

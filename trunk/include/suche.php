@@ -43,23 +43,27 @@
 		{
 			global $sqldb, $db_config;
 
+			// Finde die 10 zuletzt hinzugefügten Literatureinträge
 			$sql = "SELECT Literatur_Nr AS Nr, Titel, Verlag, ISBN
 					FROM ".$db_config['prefix']."Bibliothek AS bibliothek
 					ORDER BY `Literatur_Nr` DESC
 					LIMIT 10";
 			$sqldb->Query($sql);
 
+			// Lese Treffer aus
 			$this->Treffer = array();
 			while ($cur = $sqldb->Fetch())
 			{
 				$this->Treffer[] = $cur;	
 			}
 
+			// Lese zu jedem Treffer Autoren
 			for ($i = 0; $i < count($this->Treffer); $i++)
 			{
 				// Kommagetrennte Autorenliste erstellen
 				$authors = Autor::GetAll($this->Treffer[$i]->Nr);
 
+				// Erstelle kommagetrennte Liste der Autoren
 				$autorlist = "";
 				if (empty($authors) === false)
 				{
@@ -95,6 +99,7 @@
 			$volltext = trim($volltext);
 			if (empty($volltext) === false)
 			{
+				// Finde Literatur mit Suchbegriff
 				$sql = "SELECT DISTINCT bibliothek.Literatur_Nr AS Nr, Titel, Verlag, ISBN
 						FROM (".$db_config['prefix']."Bibliothek AS bibliothek
 							INNER JOIN  ".$db_config['prefix']."Literatur_Autor AS connect
@@ -105,16 +110,19 @@
 						OR MATCH (Autorname) AGAINST ('$volltext')";
 				$sqldb->Query($sql);
 				
+				// Lese Treffer aus
 				while ($cur = $sqldb->Fetch())
 				{
 					$this->Treffer[] = $cur;	
 				}
 	
+				// Lese zu jedem Treffer Autoren
 				for ($i = 0; $i < count($this->Treffer); $i++)
 				{
 					// Kommagetrennte Autorenliste erstellen
 					$authors = Autor::GetAll($this->Treffer[$i]->Nr);
 	
+					// Erstelle kommagetrennte Liste der Autoren
 					$autorlist = "";
 					if (empty($authors) === false)
 					{
@@ -156,6 +164,7 @@
 			$autor = trim($autor);
 			if (empty($titel) === false || empty($autor) === false)
 			{
+				// Finde Literatur mit Titel und Autor
 				$sql = "SELECT DISTINCT bibliothek.Literatur_Nr AS Nr, Titel, Verlag, ISBN
 						FROM (".$db_config['prefix']."Bibliothek AS bibliothek
 							INNER JOIN  ".$db_config['prefix']."Literatur_Autor AS connect
@@ -164,6 +173,8 @@
 						ON connect.Autor_Nr = autoren.Autor_Nr
 						WHERE bibliothek.Titel like '%".$titel."%'";
 
+				// Trenne kommagetrennte Autorenliste und
+				// füge es Suche hinzu
 				if (empty($autor) === false)
 				{
 					$sql .= " AND (";
@@ -179,18 +190,21 @@
 					}
 					$sql .= ")";
 				}
-
 				$sqldb->Query($sql);
+
+				// Lese Treffer aus
 				while ($cur = $sqldb->Fetch())
 				{
 					$this->Treffer[] = $cur;	
 				}
 	
+				// Lese zu jedem Treffer Autoren
 				for ($i = 0; $i < count($this->Treffer); $i++)
 				{
 					// Kommagetrennte Autorenliste erstellen
 					$authors = Autor::GetAll($this->Treffer[$i]->Nr);
 	
+					// Erstelle kommagetrennte Liste der Autoren
 					$autorlist = "";
 					if (empty($authors) === false)
 					{
@@ -243,6 +257,7 @@
 		 */
 		function Suche($suchbegriff="", $autor="")
 		{
+			// Wähle nach Parameteranzahl die richtige Suchfunktion
 			switch (func_num_args())
 			{
 			case 0:

@@ -89,11 +89,16 @@
 					LIMIT 1";
 			
 				$sqldb->Query($sql);
+
+				// Existiert das Mitglied?
 				if ($line = $sqldb->Fetch())
 				{
+					// Hat er das richtige Passwort?
 					if ($line->passwort === $_SESSION["login_passwort"])
 					{
 						$this->Nr = $line->Nr;
+
+						// Setze Benuterrechte nach Rechtename
 						switch ($line->Rechte)
 						{
 						case "Administrator":
@@ -129,6 +134,7 @@
 		 */
 		function Logout()
 		{
+			// Entferne Session und die Informationen zu dieser
 			session_unset();
 			session_destroy();
 			$this->Level = 0;
