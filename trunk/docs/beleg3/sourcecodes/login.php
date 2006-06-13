@@ -3,18 +3,18 @@
 	
 	require_once("include/global.php");
 
-	// Suche gewÃ¤hlte Aktion
+	// Suche gewählte Aktion
 	if (empty($_POST["loginname"]) === false && empty($_POST["passwort"]) === false)
 	{
-		// Fehlerhafte Daten zum LÃ¶schen Ã¼bertragen?
+		// Fehlerhafte Daten zum Löschen übertragen?
 		if (empty($_POST["loginname"]) === true || empty($_POST["passwort"]) === true)
 		{
 			// Wenn ja, gebe Fehler aus
-			echo "<p id=\"error\">Sie konnte nicht angemeldet werden, da es ein Fehler bei der Ãœbertragung der Informationen des Logins gab</p>";
+			echo "<p id=\"error\">Sie konnte nicht angemeldet werden, da es ein Fehler bei der Übertragung der Informationen des Logins gab</p>";
 		}
 		else
 		{
-			// Logge Mitglied mit Ã¼bergebenen Parametern ein
+			// Logge Mitglied mit übergebenen Parametern ein
 			$login = new Login($_POST["loginname"], $_POST["passwort"]);
 		}
 	}
@@ -36,7 +36,7 @@
 		}
 		elseif ($login->IsMember() === true)
 		{
-			// BegrÃ¼ÃŸe Nutzer beim Anmelden
+			// Begrüße Nutzer beim Anmelden
 			require_once("include/mitglied.php");
 			$mitglied = new Mitglied($login->Nr);
 			echo "Willkommen ".$mitglied->Vorname." ".$mitglied->Nachname;

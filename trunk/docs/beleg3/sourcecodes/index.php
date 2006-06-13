@@ -16,7 +16,7 @@
 		</thead>
 		<tbody>
 			<?php
-				// Suche zuletzt hinzugefÃ¼gte Literatur
+				// Suche zuletzt hinzugefügte Literatur
 				require_once("include/suche.php");
 				$search = new Suche();
 
@@ -38,7 +38,7 @@
 		</tbody>
 	</table>
 	<?php
-		// Sind Mitgliedsrechte vorhanden, gebe HinzufÃ¼ge- und Importierknopf aus
+		// Sind Mitgliedsrechte vorhanden, gebe Hinzufüge- und Importierknopf aus
 		if ($login->IsMember() === true)
 		{
 		?>

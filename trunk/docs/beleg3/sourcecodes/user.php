@@ -13,12 +13,12 @@
 	elseif ($login->IsAdministrator() === false)
 	{
 		// Wenn keine Administratorrechte vorhanden sind
-		// dÃ¼rfen nur die eigenen Daten angesehen werden
+		// dürfen nur die eigenen Daten angesehen werden
 		$_GET["id"] = $login->Nr;
 		$_POST["id"] = $login->Nr;
 	}
 
-	// Lese Mitglied aus, wenn id Ã¼bergeben wurde
+	// Lese Mitglied aus, wenn id übergeben wurde
 	if (isset($_GET["id"]))
 	{
 		$mitglied = new Mitglied($_GET["id"]);
@@ -50,8 +50,8 @@
 			<tr>
 				<th scope="row">Rechte:</th>	
 				<td><?php
-					// Wandle ZahlenreprÃ¤sentation der Rechte
-					// in textuelle ReprÃ¤sentation um
+					// Wandle Zahlenrepräsentation der Rechte
+					// in textuelle Repräsentation um
 					switch ($mitglied->Rechte)
 					{
 					case 2:

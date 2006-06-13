@@ -1,16 +1,16 @@
 <?php
-	// WÃ¤hle Seitentitel nach ausgewÃ¤hlter Aktion
+	// Wähle Seitentitel nach ausgewählter Aktion
 	if (isset($_GET["delete"]) === true)
 	{
-		$title = "Kommentar lÃ¶schen";
+		$title = "Kommentar löschen";
 	}
 	elseif (isset($_GET["id"]) === true || isset($_POST["id"]) === true)
 	{
-		$title = "Kommentar Ã¤ndern";
+		$title = "Kommentar ändern";
 	}
 	else
 	{
-		$title = "Kommentar hinzufÃ¼gen";
+		$title = "Kommentar hinzufügen";
 	}
 
 	require_once("include/header.php");
@@ -18,14 +18,14 @@
 	// Abbruch wenn keine Mitgliedsrechte vorhanden
 	if ($login->IsMember() === false)
 	{
-		echo "<div id=\"error\">Sie sind fÃ¼r diese Aktion nicht berechtigt</div>";
+		echo "<div id=\"error\">Sie sind für diese Aktion nicht berechtigt</div>";
 		require_once("include/footer.php");
 		die();
 	}
 	elseif ($login->IsAdministrator() === false)
 	{
 		// Wenn keine Administratorrechte vorhanden sind
-		// dÃ¼rfen nur die eigenen Daten geÃ¤ndert werden
+		// dürfen nur die eigenen Daten geändert werden
 		$_GET["userid"] = $login->Nr;
 		$_POST["userid"] = $login->Nr;
 	}
@@ -35,26 +35,26 @@
 	require_once("include/kommentar.php");
 	require_once("include/form_helper.php");
 
-	// Suche gewÃ¤hlte Aktion
+	// Suche gewählte Aktion
 	if (isset($_GET["delete"]) === true)
 	{
-		// LÃ¶schen wenn akzeptiert wurde
+		// Löschen wenn akzeptiert wurde
 		if (isset($_POST["accept"]) === true)
 		{
-			// Fehlerhafte Daten zum LÃ¶schen Ã¼bertragen?
+			// Fehlerhafte Daten zum Löschen übertragen?
 			if (empty($_POST["id"]) === true || is_numeric($_POST["id"]) === false)
 			{
 				// Wenn ja, gebe Fehler aus
-				echo "<p id=\"error\">Kommentar konnte nicht gelÃ¶scht werden, da es ein Fehler bei der Ãœbertragung der Informationen des Kommentars gab</p>";
+				echo "<p id=\"error\">Kommentar konnte nicht gelöscht werden, da es ein Fehler bei der Übertragung der Informationen des Kommentars gab</p>";
 			}
 			else
 			{
-				// Wenn nicht, lÃ¶sche Kommentar und gebe Erfolgsmeldung aus
+				// Wenn nicht, lösche Kommentar und gebe Erfolgsmeldung aus
 				Kommentar::Delete($_POST["id"]);
 				echo "<p style=\"text-align: center\">Kommentar wurde entfernt</p>";
 			}
 
-			// Wurde eine Literaturnummer Ã¼bergeben, gebe ZurÃ¼ckbutton aus
+			// Wurde eine Literaturnummer übergeben, gebe Zurückbutton aus
 			if (empty($_POST["litid"]) === false)
 			{
 				echo form_back("lit.$ext", $_POST["litid"]);
@@ -62,7 +62,7 @@
 		}
 		else
 		{
-			// Frage ob Kommentar gelÃ¶scht werden soll
+			// Frage ob Kommentar gelöscht werden soll
 			require_once("include/form_helper.php");
 			echo "<div id=\"warning\" style=\"margin-top: 2em\">";
 			echo "Wollen sie den Kommentar wirklich entfernen?";
@@ -74,19 +74,19 @@
 				echo form_input("hidden", "litid", $_GET["litid"]);
 			}
 
-			echo "<input type=\"submit\" value=\"BestÃ¤tigen\">";
+			echo "<input type=\"submit\" value=\"Bestätigen\">";
 			echo "</form></div>";
 		}
 	}
 	elseif  (isset($_GET["insert"]) === true)
 	{
-		// Fehlerhafte Daten zum Anlegen Ã¼bertragen?
+		// Fehlerhafte Daten zum Anlegen übertragen?
 		if (isset($_POST["text"]) === false ||
 			empty($_POST["userid"]) === true || is_numeric($_POST["userid"]) === false ||
 			empty($_POST["litid"]) === true || is_numeric($_POST["litid"]) === false)
 		{
 			// Wenn ja, gebe Fehler aus
-			echo "<p id=\"error\">Kommentar konnte nicht angelegt werden, da es ein Fehler bei der Ãœbertragung der Informationen des Kommentars gab</p>";
+			echo "<p id=\"error\">Kommentar konnte nicht angelegt werden, da es ein Fehler bei der Übertragung der Informationen des Kommentars gab</p>";
 		}
 		else
 		{
@@ -95,7 +95,7 @@
 			echo "<p style=\"text-align: center\">Kommentar wurde angelegt</p>";
 		}
 
-		// Wurde eine Literaturnummer Ã¼bergeben, gebe ZurÃ¼ckbutton aus
+		// Wurde eine Literaturnummer übergeben, gebe Zurückbutton aus
 		if (empty($_POST["litid"]) === false)
 		{
 			echo form_back("lit.$ext", $_POST["litid"]);
@@ -103,21 +103,21 @@
 	}
 	elseif (isset($_GET["update"]) === true)
 	{
-		// Fehlerhafte Daten zum Ã„ndern Ã¼bertragen?
+		// Fehlerhafte Daten zum Ändern übertragen?
 		if (isset($_POST["text"]) === false ||
 			empty($_POST["id"]) === true || is_numeric($_POST["id"]) === false)
 		{
 			// Wenn ja, gebe Fehler aus
-			echo "<p id=\"error\">Kommentar konnte nicht geÃ¤ndert werden, da es ein Fehler bei der Ãœbertragung der Informationen des Kommentars gab</p>";
+			echo "<p id=\"error\">Kommentar konnte nicht geändert werden, da es ein Fehler bei der Übertragung der Informationen des Kommentars gab</p>";
 		}
 		else
 		{
-			// Wenn nicht, Ã¤ndere Kommentar und gebe Erfolgsmeldung aus
+			// Wenn nicht, ändere Kommentar und gebe Erfolgsmeldung aus
 			Kommentar::Update($_POST["id"], $_POST["text"]);
-			echo "<p style=\"text-align: center\">Kommentar wurde geÃ¤ndert</p>";
+			echo "<p style=\"text-align: center\">Kommentar wurde geändert</p>";
 		}
 
-		// Wurde eine Literaturnummer Ã¼bergeben, gebe ZurÃ¼ckbutton aus
+		// Wurde eine Literaturnummer übergeben, gebe Zurückbutton aus
 		if (empty($_POST["litid"]) === false)
 		{
 			echo form_back("lit.$ext", $_POST["litid"]);

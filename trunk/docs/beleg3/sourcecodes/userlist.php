@@ -40,11 +40,11 @@
 							echo "</form>";
 						}
 						
-						// Sind Administratorrechte vorhanden, gebe LÃ¶schknopf aus
+						// Sind Administratorrechte vorhanden, gebe Löschknopf aus
 						if ($login->IsAdministrator() === true)
 						{
 							echo "<form style=\"display: inline\" method=\"post\" action=\"usermod.$ext?delete=&id=".htmlspecialchars($cur->Nr)."\">";
-							echo "<input type=\"submit\" value=\"LÃ¶schen\">";
+							echo "<input type=\"submit\" value=\"Löschen\">";
 							echo "</form>";
 						}
 					?>
@@ -57,7 +57,7 @@
 	</table>
 
 	<?php
-		// Sind Administratorrechte vorhanden, gebe HinzufÃ¼ge aus
+		// Sind Administratorrechte vorhanden, gebe Hinzufüge aus
 		if ($login->IsAdministrator() === true)
 		{
 	?>

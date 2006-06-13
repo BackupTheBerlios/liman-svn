@@ -6,7 +6,7 @@
 	// Abbruch wenn keine Mitgliedsrechte vorhanden
 	if ($login->IsMember() === false)
 	{
-		echo "<div id=\"error\">Sie sind fÃ¼r diese Aktion nicht berechtigt</div>";
+		echo "<div id=\"error\">Sie sind für diese Aktion nicht berechtigt</div>";
 		require_once("include/footer.php");
 		die();
 	}
@@ -60,7 +60,7 @@
 	}
 	else
 	{
-		// BibTeX-Daten entweder von Dateiupload oder Ã¼bergebenen Textdaten
+		// BibTeX-Daten entweder von Dateiupload oder übergebenen Textdaten
 		$bibtex = "";
 		if (empty($_FILES["bibtexfile"]) === false)
 		{
@@ -70,11 +70,11 @@
 		elseif (empty($_POST["bibtextext"]) === false)
 		{
 			// Wenn Textdaten hochgeladen wurden, entferne automatisch
-			// hinzugefÃ¼gte Backslashes vor Zeichen mit besonderer Bedeutung
+			// hinzugefügte Backslashes vor Zeichen mit besonderer Bedeutung
 			$bibtex = stripslashes($_POST["bibtextext"]);
 		}
 
-		// Fehler, wenn "nichts" hochgeladen/Ã¼bergeben wurde
+		// Fehler, wenn "nichts" hochgeladen/übergeben wurde
 		if ($bibtex === false || empty($bibtex) === true)
 		{
 			echo "<div id=\"error\">Konnte nichts zum importieren lesen</div>";
@@ -85,7 +85,7 @@
 			require_once("include/literatur.php");
 			$imported = Literatur::InsertBibTeX($bibtex);
 
-			// Gebe je nach Anzahl importierter LiteratureintrÃ¤ge Text aus
+			// Gebe je nach Anzahl importierter Literatureinträge Text aus
 			switch ($imported)
 			{
 			case 0:
@@ -95,7 +95,7 @@
 				echo "<p style=\"text-align: center\">Ein Literatureintrag wurde importiert</p>";
 				break;
 			default:
-				echo "<p style=\"text-align: center\">$imported LiteratureintrÃ¤ge wurden importiert</p>";
+				echo "<p style=\"text-align: center\">$imported Literatureinträge wurden importiert</p>";
 			}
 		}
 	}

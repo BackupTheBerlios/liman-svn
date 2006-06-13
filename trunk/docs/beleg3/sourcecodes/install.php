@@ -27,7 +27,7 @@
 	<body id="liman_install">
 		<h1>LiMan Installation</h1>
 <?php
-	// Lese Ã¼bergebene Variablen aus bzw. setzte Standardwerte
+	// Lese übergebene Variablen aus bzw. setzte Standardwerte
 	if (empty($_POST["dbms"]) === false)
 	{
 		$db_config['dbms'] = "mysql";
@@ -101,7 +101,7 @@
 	}
 	elseif (isset($_GET["install"]) === true)
 	{
-		die("Sie mÃ¼ssen ein Loginname angeben");
+		die("Sie müssen ein Loginname angeben");
 		echo "</body></html>";
 	}
 	else
@@ -116,7 +116,7 @@
 	elseif (isset($_GET["install"]) === true)
 	{
 		$passworthash = "";
-		die("Sie mÃ¼ssen ein Passwort angeben");
+		die("Sie müssen ein Passwort angeben");
 		echo "</body></html>";
 	}
 	else
@@ -131,7 +131,7 @@
 		// Wenn ja, verbinde mit Datenbank
 		require_once("include/sqldb.php");
 
-		// Erstelle SQL-Befehle zum LÃ¶schen alter Tabellen
+		// Erstelle SQL-Befehle zum Löschen alter Tabellen
 		$sqlDrop["Autoren"] = "DROP TABLE IF EXISTS `".$db_config['prefix']."Autoren`";
 		$sqlDrop["Bibliothek"] = "DROP TABLE IF EXISTS `".$db_config['prefix']."Bibliothek`";
 		$sqlDrop["Kommentare"] = "DROP TABLE IF EXISTS `".$db_config['prefix']."Kommentare`";
@@ -148,7 +148,7 @@
 			)";
 		$sqlCreate["Bibliothek"] = "CREATE TABLE `".$db_config['prefix']."Bibliothek` (
 			`Literatur_Nr` int(11) NOT NULL auto_increment,
-			`Art` enum('Buch','Artikel','BroschÃ¼re','Protokoll','Anleitung','Diplomarbeit','Dissertation','Techn. Bericht','UnverÃ¶ffentlicht','Sonstiges') NOT NULL,
+			`Art` enum('Buch','Artikel','Broschüre','Protokoll','Anleitung','Diplomarbeit','Dissertation','Techn. Bericht','Unveröffentlicht','Sonstiges') NOT NULL,
 			`Titel` varchar(40) NOT NULL,
 			`Jahr` int(11) NOT NULL,
 			`Verlag` varchar(40) NOT NULL,
@@ -199,12 +199,12 @@
 		$sqlInsertMitglied = "INSERT INTO ".$db_config['prefix']."Mitglieder
 				VALUES (NULL, 'Istrator', 'Admin', 'foo@bar.de', '$loginname', '$passworthash', 'Administrator')";
 	
-		// LÃ¶sche alte Tabellen in Datenbank
+		// Lösche alte Tabellen in Datenbank
 		foreach ($sqlDrop as $drop)
 		{
 			if ($sqldb->Query($drop) === false)
 			{
-				echo "<div class=\"error\">Es trat ein Fehler bei dem LÃ¶schen alter Tabellen auf:<pre>";
+				echo "<div class=\"error\">Es trat ein Fehler bei dem Löschen alter Tabellen auf:<pre>";
 				$error = $sqldb->GetError();
 				echo htmlspecialchars($error[0])."<br>";
 				echo "SQL-Befehl: <br>".htmlspecialchars($drop);
@@ -229,10 +229,10 @@
 			}
 		}
 	
-		// EinfÃ¼gen erstes Mitglied (Administrator)
+		// Einfügen erstes Mitglied (Administrator)
 		if ($sqldb->Query($sqlInsertMitglied) === false)
 		{
-			echo "<div class=\"error\">Es trat ein Fehler bei dem EinfÃ¼gen des ersten Mitglieds auf:<pre>";
+			echo "<div class=\"error\">Es trat ein Fehler bei dem Einfügen des ersten Mitglieds auf:<pre>";
 			$error = $sqldb->GetError();
 			echo htmlspecialchars($error[0])."<br>";
 			echo "SQL-Befehl: <br>".htmlspecialchars($sqlInsertMitglied);

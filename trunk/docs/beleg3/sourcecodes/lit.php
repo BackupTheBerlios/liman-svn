@@ -4,7 +4,7 @@
 	require_once("include/header.php");
 	require_once("include/literatur.php");
 
-	// Lese Literatur aus, wenn id Ã¼bergeben wurde
+	// Lese Literatur aus, wenn id übergeben wurde
 	if (isset($_GET["id"]))
 	{
 		$literatur = new Literatur($_GET["id"]);
@@ -70,7 +70,7 @@
 				</td>
 			</tr>
 			<?php
-				// Sind Mitgliedsrechte vorhanden, gebe Bearbeiten- und LÃ¶schenknopf aus
+				// Sind Mitgliedsrechte vorhanden, gebe Bearbeiten- und Löschenknopf aus
 				if ($login->IsMember() === true)
 				{
 			?>
@@ -109,11 +109,11 @@
 					<th scope="row"><?=htmlspecialchars($cur->Verfasser_Name);?>:</th>	
 					<td class="kommentar"><?=htmlspecialchars($cur->Text);?></td>
 					<td><?php
-						// Darf der User lÃ¶schen?
+						// Darf der User löschen?
 						if ($login->Nr == $cur->Verfasser_Nr || $login->IsAdministrator() === true)
 						{
 							echo "<span style=\"font-size: xx-small\">";
-							echo "<a href=\"commentmod.php?delete&amp;id=".$cur->Nr."&amp;litid=".htmlspecialchars($_GET["id"])."\">(lÃ¶schen)</a></span>";
+							echo "<a href=\"commentmod.php?delete&amp;id=".$cur->Nr."&amp;litid=".htmlspecialchars($_GET["id"])."\">(löschen)</a></span>";
 						}
 					?></td>
 				</tr>
@@ -128,11 +128,11 @@
 		{
 			require_once("include/form_helper.php");
 
-			// Soll Kommentar-HinzufÃ¼gen-Box erscheinen oder Update-Box?
-			// (abhÃ¤ngig ob schon Kommentar das Mitglieds existiert)
+			// Soll Kommentar-Hinzufügen-Box erscheinen oder Update-Box?
+			// (abhängig ob schon Kommentar das Mitglieds existiert)
 			if (empty($owncomment) === true)
 			{
-				// Zeige HinzufÃ¼gen-Formular
+				// Zeige Hinzufügen-Formular
 		?>
 			<form action="commentmod.<?=$ext;?>?insert=" method="post">
 			<span>
@@ -159,7 +159,7 @@
 			}
 			else
 			{
-				// Zeige Ã„ndern-Formular
+				// Zeige Ändern-Formular
 		?>
 			<form action="commentmod.<?=$ext;?>?update" method="post">
 			<span>
@@ -169,7 +169,7 @@
 			<table id="litkommentarmod">
 				<tbody>
 					<tr>
-						<th scope="row"><label for="text">Kommentar Ã¤ndern:</label></th>	
+						<th scope="row"><label for="text">Kommentar ändern:</label></th>	
 						<td>
 							<textarea id="text" name="text" cols=40 rows=10><?=htmlspecialchars($owncomment->Text);?></textarea>
 						</td>

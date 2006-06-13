@@ -1,5 +1,5 @@
 <?php
-	// WÃ¤hle Seitentitel nach ausgewÃ¤hlter Aktion
+	// Wähle Seitentitel nach ausgewählter Aktion
 	if (isset($_GET["suchbegriff"]) === true)
 	{
 		$title = "Suchergebnisse f&uuml;r \"".htmlspecialchars($_GET["suchbegriff"])."\"";
@@ -32,7 +32,7 @@
 	}
 	else
 	{
-		// Suche zuletzt hinzugefÃ¼gte Literatur
+		// Suche zuletzt hinzugefügte Literatur
 		$search = new Suche();
 	}
 
@@ -77,7 +77,7 @@
 
 
 <?php
-	// Sind Mitgliedsrechte vorhanden, gebe HinzufÃ¼ge- und Importierknopf aus
+	// Sind Mitgliedsrechte vorhanden, gebe Hinzufüge- und Importierknopf aus
 	if ($login->IsMember() === true)
 	{
 	?>

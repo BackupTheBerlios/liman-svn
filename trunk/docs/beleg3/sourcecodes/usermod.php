@@ -1,35 +1,35 @@
 <?php
-	// WÃ¤hle Seitentitel nach ausgewÃ¤hlter Aktion
+	// Wähle Seitentitel nach ausgewählter Aktion
 	if (isset($_GET["delete"]) === true)
 	{
-		$title = "Nutzer lÃ¶schen";
+		$title = "Nutzer löschen";
 	}
 	elseif (isset($_GET["id"]) === true || isset($_POST["id"]) === true)
 	{
-		$title = "Nutzer Ã¤ndern";
+		$title = "Nutzer ändern";
 	}
 	else
 	{
-		$title = "Nutzer hinzufÃ¼gen";
+		$title = "Nutzer hinzufügen";
 	}
 
 	require_once("include/header.php");
 
 	// Abbruch wenn keine Mitgliedsrechte vorhanden
-	// oder gelÃ¶scht und hinzugefÃ¼gt werden soll und keine Administratorrechte vorliegen
+	// oder gelöscht und hinzugefügt werden soll und keine Administratorrechte vorliegen
 	if ($login->IsMember() === false
 		|| ($login->IsAdministrator() === false
 			&& (isset($_GET["delete"]) === true || isset($_GET["insert"]) === true)
 		))
 	{
-		echo "<div id=\"error\">Sie sind fÃ¼r diese Aktion nicht berechtigt</div>";
+		echo "<div id=\"error\">Sie sind für diese Aktion nicht berechtigt</div>";
 		require_once("include/footer.php");
 		die();
 	}
 	elseif ($login->IsAdministrator() === false)
 	{
 		// Wenn keine Administratorrechte vorhanden sind
-		// dÃ¼rfen nur die eigenen Daten geÃ¤ndert werden
+		// dürfen nur die eigenen Daten geändert werden
 		$_GET["id"] = $login->Nr;
 		$_POST["id"] = $login->Nr;
 	}
@@ -45,7 +45,7 @@
 	$error_password_missing = false;
 	$error_password_different = false;
 
-	// ÃœberprÃ¼fe wichtige Parameter bei Insert und Update auf Vorhandensein
+	// Überprüfe wichtige Parameter bei Insert und Update auf Vorhandensein
 	if (isset($_GET["insert"]) === true || isset($_GET["update"]) === true)
 	{
 		if (empty($_POST["benutzername"]) === true)
@@ -72,7 +72,7 @@
 			$error_occurred = true;
 		}
 
-		// Teste ob Passwort beim hinzufÃ¼gen vergessen wurde
+		// Teste ob Passwort beim hinzufügen vergessen wurde
 		if (empty($_POST["password"]) === true && isset($_GET["insert"]) === true)
 		{
 			$error_password = true;
@@ -82,7 +82,7 @@
 
 		if (empty($_POST["password"]) === false || empty($_POST["password_check"]) === false)
 		{
-			// Teste ob PasswÃ¶rter unterschiedlich sind
+			// Teste ob Passwörter unterschiedlich sind
 			if ($_POST["password"] != $_POST["password_check"])
 			{
 				$error_password = true;
@@ -92,24 +92,24 @@
 		}
 	}
 
-	// Gebe Fehler bei ParameterÃ¼berprÃ¼fung aus
+	// Gebe Fehler bei Parameterüberprüfung aus
 	if ($error_occurred == true)
 	{
 		echo "<div id=\"error_list\">Es scheinen Fehler bei der Verarbeitung aufgetreten zu sein:<ul>";
 		
 		if ($error_benutzername === true)
 		{
-			echo "<li>Sie mÃ¼ssen ein Login angeben</li>";
+			echo "<li>Sie müssen ein Login angeben</li>";
 		}
 		
 		if ($error_vorname === true)
 		{
-			echo "<li>Sie mÃ¼ssen einen Vornamen angeben</li>";
+			echo "<li>Sie müssen einen Vornamen angeben</li>";
 		}
 		
 		if ($error_nachname === true)
 		{
-			echo "<li>Sie mÃ¼ssen ein Nachnamen angeben</li>";
+			echo "<li>Sie müssen ein Nachnamen angeben</li>";
 		}
 		
 		if ($error_email === true)
@@ -119,18 +119,18 @@
 		
 		if ($error_password_missing === true)
 		{
-			echo "<li>Sie mÃ¼ssen ein Passwort angeben</li>";
+			echo "<li>Sie müssen ein Passwort angeben</li>";
 		}
 		elseif ($error_password_different === true)
 		{
-			echo "<li>PasswÃ¶rter stimmen nicht Ã¼berein</li>";
+			echo "<li>Passwörter stimmen nicht überein</li>";
 		}
 
 		echo "</ul></div>";
 	}
 
 
-	// Gebe Formular aus, wenn keine Schreibaktionen ausgefÃ¼hrt werden
+	// Gebe Formular aus, wenn keine Schreibaktionen ausgeführt werden
 	if ((isset($_GET["delete"]) === false && isset($_GET["insert"]) === false && isset($_GET["update"]) === false)
 		|| $error_occurred === true)
 	{
@@ -234,13 +234,13 @@
 				$email = "";
 			}
 
-			// Ãœbernehme nie das Passwort
+			// Übernehme nie das Passwort
 			$passwort = "";
 		}
 
 	if (empty($id) === true)
 	{
-		// Gebe HinzufÃ¼gen-Formular aus
+		// Gebe Hinzufügen-Formular aus
 			echo "<form action=\"usermod.".$ext."?insert\" id=\"useraddform\" method=\"post\">";
 	}
 	else
@@ -300,39 +300,39 @@
 	}
 	else
 	{
-		// FÃ¼hre Schreibaktionen aus
+		// Führe Schreibaktionen aus
 		
 		require_once("include/mitglied.php");
 		
-		// Suche gewÃ¤hlte Aktion
+		// Suche gewählte Aktion
 		if (isset($_GET["delete"]) === true)
 		{
-			// LÃ¶schen wenn akzeptiert wurde
+			// Löschen wenn akzeptiert wurde
 			if (isset($_POST["accept"]) === true)
 			{
-				// Fehlerhafte Daten zum LÃ¶schen Ã¼bertragen?
+				// Fehlerhafte Daten zum Löschen übertragen?
 				if (empty($_POST["id"]) === true || is_numeric($_POST["id"]) === false)
 				{
 					// Wenn ja, gebe Fehler aus
-					echo "<p id=\"error\">Nutzer konnte nicht gelÃ¶scht werden, da es ein Fehler bei der Ãœbertragung der Informationen des Nutzers gab</p>";
+					echo "<p id=\"error\">Nutzer konnte nicht gelöscht werden, da es ein Fehler bei der Übertragung der Informationen des Nutzers gab</p>";
 				}
 				else
 				{
-					// Wenn nicht, lÃ¶sche Mitglied und gebe Erfolgsmeldung aus
+					// Wenn nicht, lösche Mitglied und gebe Erfolgsmeldung aus
 					Mitglied::Delete($_POST["id"]);
 					echo "<p style=\"text-align: center\">Nutzer wurde entfernt</p>";
 				}
 			}
 			else
 			{
-				// Frage ob Mitglied gelÃ¶scht werden soll
+				// Frage ob Mitglied gelöscht werden soll
 				require_once("include/form_helper.php");
 				echo "<div id=\"warning\" style=\"margin-top: 2em\">";
 				echo "Wollen sie den Nutzer wirklich entfernen?";
 				echo "<form action=\"usermod.".$ext."?delete\" id=\"userupdateform\" method=\"post\">";
 				echo form_input("hidden", "id", $_GET["id"]);
 				echo form_input("hidden", "accept", "true");
-				echo "<input type=\"submit\" value=\"BestÃ¤tigen\">";
+				echo "<input type=\"submit\" value=\"Bestätigen\">";
 				echo "</form></div>";
 			}
 		}
@@ -352,21 +352,21 @@
 		}
 		elseif (isset($_GET["update"]) === true)
 		{
-			// Fehlerhafte Daten zum Ã„ndern Ã¼bertragen?
+			// Fehlerhafte Daten zum Ändern übertragen?
 			if (empty($_POST["id"]) === true || is_numeric($_POST["id"]) === false)
 			{
 				// Wenn ja, gebe Fehler aus
-				echo "<p id=\"error\">Nutzer konnte nicht geÃ¤ndert werden, da es ein Fehler bei der Ãœbertragung der Informationen des Nutzers gab</p>";
+				echo "<p id=\"error\">Nutzer konnte nicht geändert werden, da es ein Fehler bei der Übertragung der Informationen des Nutzers gab</p>";
 			}
 			elseif (Mitglied::Update($_POST["id"], $_POST["benutzername"], $_POST["password"], $_POST["rechte"], $_POST["vorname"], $_POST["nachname"], $_POST["email"]) === true)
 			{
 				// Wenn ok, gebe Erfolgsmeldung aus
-				echo "<p style=\"text-align: center\">Nutzer wurde geÃ¤ndert</p>";
+				echo "<p style=\"text-align: center\">Nutzer wurde geändert</p>";
 			}
 			else
 			{
 				// Wenn nicht, gebe Fehler aus
-				echo "<p id=\"warning\">Nutzer konnte nicht geÃ¤ndert werden. Ist Login vielleicht schon vergeben?</p>";
+				echo "<p id=\"warning\">Nutzer konnte nicht geändert werden. Ist Login vielleicht schon vergeben?</p>";
 			}
 		}
 	}
