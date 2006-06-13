@@ -72,11 +72,13 @@
 						{
 						?>
 							<form action="login.<?=$ext;?>" id="loginform" method="post">
-								<div>
-								<label for="loginname">Login:</label><input id="loginname" name="loginname" value="" type="text">
-								<label for="passwort">Passwort:</label><input id="passwort" name="passwort" type="password">
-								<input type="submit" value="Login">
-								</div>
+							<div>
+							<label for="loginname">Login:</label>
+							<input id="loginname" name="loginname" value="" type="text">
+							<label for="passwort">Passwort:</label>
+							<input id="passwort" name="passwort" type="password">
+							<input type="submit" value="Login">
+							</div>
 							</form>
 						<?php
 						}
@@ -84,8 +86,8 @@
 						{
 						?>
 							<form action="login.<?=$ext;?>?logout" id="loginform" method="post">
-								<div><input type="submit" value="Logout">
-								</div>
+							<div><input type="submit" value="Logout">
+							</div>
 							</form>
 						<?php
 						}

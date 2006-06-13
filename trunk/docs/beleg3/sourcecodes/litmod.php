@@ -282,7 +282,7 @@
 				</tr>
 				<tr>
 					<th scope="row">Bemerkung:</th>	
-					<td><textarea cols="20" rows="10" name="beschreibung" id="beschreibung"><?=htmlspecialchars($beschreibung);?></textarea></td>
+					<td><textarea cols="20" rows="10" name="beschreibung" id="beschreibung"><?=htmlspecialchars($beschreibung); ?></textarea></td>
 				</tr>
 				<tr>
 					<th scope="row">Aktionen:</th>	
@@ -360,7 +360,7 @@
 					{
 				?>
 					<tr>
-						<td><a href="lit.<?=$ext;?>?id=<?=htmlspecialchars($cur->Nr);?>"><?=htmlspecialchars($cur->Titel);?></a></td>
+						<td><a href="lit.<?=$ext; ?>?id=<?=htmlspecialchars($cur->Nr); ?>"><?=htmlspecialchars($cur->Titel); ?></a></td>
 						<td><?=htmlspecialchars($cur->Autor);?></td>
 						<td><?=htmlspecialchars($cur->Verlag);?></td>
 						<td><?=htmlspecialchars($cur->ISBN);?></td>

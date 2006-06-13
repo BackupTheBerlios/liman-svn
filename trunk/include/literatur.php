@@ -91,7 +91,7 @@
 			if (is_object($this->Art) === true)
 			{
 				// Lege Kopf des BibTeX-Eintrags an
-				$str = "@".$this->Art->GetBibtexText()."{".$this->Art->GetBibtexText().$this->Nr;
+				$str = "@".$this->Art->GetBibtexText()."{". $this->Art->GetBibtexText().$this->Nr;
 				
 				// Titel hinzufügen, wenn vorhanden
 				if (empty($this->Titel) === false)

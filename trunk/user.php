@@ -75,7 +75,7 @@
 				<td>
 					<form style="display:inline" action="usermod.<?=$ext;?>" method="post">
 						<span>
-							<input type="hidden" id="id" name="id" value="<?=htmlspecialchars($_GET["id"]);?>">
+							<input type="hidden" id="id" name="id" value="<?= htmlspecialchars($_GET["id"]); ?>">
 							<input type="submit" value="Bearbeiten">
 						</span>
 					</form>

@@ -60,8 +60,8 @@
 					// Workaround für MySQL < 4
 					// Finde Autoren ohne Verbindung in Literatur_Autor zur Literatur
 					$sql = "SELECT autoren.Autor_Nr AS Nr
-							FROM ".$db_config['prefix']."Autoren AS autoren
-							LEFT JOIN ".$db_config['prefix']."Literatur_Autor AS connect
+							FROM ". $db_config['prefix'] ."Autoren AS autoren
+							LEFT JOIN ". $db_config['prefix'] ."Literatur_Autor AS connect
 							ON autoren.Autor_Nr = connect.Autor_Nr
 							WHERE connect.Autor_Nr is NULL";
 					$sqldb->Query($sql);

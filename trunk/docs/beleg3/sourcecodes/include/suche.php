@@ -102,7 +102,7 @@
 				// Finde Literatur mit Suchbegriff
 				$sql = "SELECT DISTINCT bibliothek.Literatur_Nr AS Nr, Titel, Verlag, ISBN
 						FROM (".$db_config['prefix']."Bibliothek AS bibliothek
-							INNER JOIN  ".$db_config['prefix']."Literatur_Autor AS connect
+							INNER JOIN  ". $db_config['prefix'] ."Literatur_Autor AS connect
 							ON bibliothek.Literatur_Nr = connect.Literatur_Nr)
 						INNER JOIN  ".$db_config['prefix']."Autoren AS autoren
 						ON connect.Autor_Nr = autoren.Autor_Nr
@@ -167,7 +167,7 @@
 				// Finde Literatur mit Titel und Autor
 				$sql = "SELECT DISTINCT bibliothek.Literatur_Nr AS Nr, Titel, Verlag, ISBN
 						FROM (".$db_config['prefix']."Bibliothek AS bibliothek
-							INNER JOIN  ".$db_config['prefix']."Literatur_Autor AS connect
+							INNER JOIN  ". $db_config['prefix'] ."Literatur_Autor AS connect
 							ON bibliothek.Literatur_Nr = connect.Literatur_Nr)
 						INNER JOIN  ".$db_config['prefix']."Autoren AS autoren
 						ON connect.Autor_Nr = autoren.Autor_Nr

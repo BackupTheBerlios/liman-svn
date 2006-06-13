@@ -76,10 +76,10 @@
 			?>
 				<tr>
 					<th scope="row">Aktionen:</th>	
-					<td><form style="display:inline" action="litmod.<?=$ext;?>?id=<?=htmlspecialchars($_GET["id"]);?>" method="post">
+					<td><form style="display:inline" action="litmod.<?=$ext; ?>?id=<?=htmlspecialchars($_GET["id"]); ?>" method="post">
 							<span><input type="submit" value="Bearbeiten"></span>
 						</form>
-						<form style="display:inline" action="litmod.<?=$ext;?>?delete=&amp;id=<?=htmlspecialchars($_GET["id"]);?>" method="post">
+						<form style="display:inline" action="litmod.<?=$ext; ?>?delete=&amp;id=<?=htmlspecialchars($_GET["id"]); ?>" method="post">
 							<span><input type="submit" value="L&ouml;schen"></span>
 					</form></td>
 				</tr>
@@ -106,14 +106,14 @@
 					}
 			?>
 				<tr>
-					<th scope="row"><?=htmlspecialchars($cur->Verfasser_Name);?>:</th>	
-					<td class="kommentar"><?=htmlspecialchars($cur->Text);?></td>
+					<th scope="row"><?= htmlspecialchars($cur->Verfasser_Name); ?>:</th>	
+					<td class="kommentar"><?= htmlspecialchars($cur->Text); ?></td>
 					<td><?php
 						// Darf der User löschen?
 						if ($login->Nr == $cur->Verfasser_Nr || $login->IsAdministrator() === true)
 						{
 							echo "<span style=\"font-size: xx-small\">";
-							echo "<a href=\"commentmod.php?delete&amp;id=".$cur->Nr."&amp;litid=".htmlspecialchars($_GET["id"])."\">(löschen)</a></span>";
+							echo "<a href=\"commentmod.php?delete&amp;id=". $cur->Nr ."&amp;litid=". htmlspecialchars($_GET["id"]) ."\">(löschen)</a></span>";
 						}
 					?></td>
 				</tr>
@@ -171,7 +171,7 @@
 					<tr>
 						<th scope="row"><label for="text">Kommentar ändern:</label></th>	
 						<td>
-							<textarea id="text" name="text" cols=40 rows=10><?=htmlspecialchars($owncomment->Text);?></textarea>
+							<textarea id="text" name="text" cols=40 rows=10><?= htmlspecialchars($owncomment->Text); ?></textarea>
 						</td>
 					</tr>
 					<tr>

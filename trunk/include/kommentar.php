@@ -207,7 +207,7 @@
 						// Wenn ja, füge neuen Kommentar hinzu, wenn Text angegeben wurde
 						if (empty($text) === false)
 						{
-							$sql = "INSERT INTO ".$db_config['prefix']."Kommentare
+							$sql = "INSERT INTO ". $db_config['prefix'] ."Kommentare
 								VALUES (NULL, '$text', '$literatur_nr', '$verfasser_nr')";
 							$sqldb->Query($sql);
 						}

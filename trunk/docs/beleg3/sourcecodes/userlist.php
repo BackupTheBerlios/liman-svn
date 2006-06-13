@@ -35,7 +35,7 @@
 						// bei Administratoren immer
 						if ($login->IsAdministrator() === true || $login->Nr == $cur->Nr)
 						{
-							echo "<form style=\"display: inline\" method=\"post\" action=\"usermod.$ext?id=".htmlspecialchars($cur->Nr)."\">";
+							echo "<form style=\"display: inline\" method=\"post\" action=\"usermod.$ext?id=". htmlspecialchars($cur->Nr) ."\">";
 							echo "<input type=\"submit\" value=\"Bearbeiten\">";
 							echo "</form>";
 						}
@@ -43,7 +43,7 @@
 						// Sind Administratorrechte vorhanden, gebe Löschknopf aus
 						if ($login->IsAdministrator() === true)
 						{
-							echo "<form style=\"display: inline\" method=\"post\" action=\"usermod.$ext?delete=&id=".htmlspecialchars($cur->Nr)."\">";
+							echo "<form style=\"display: inline\" method=\"post\" action=\"usermod.$ext?delete=&id=". htmlspecialchars($cur->Nr) ."\">";
 							echo "<input type=\"submit\" value=\"Löschen\">";
 							echo "</form>";
 						}

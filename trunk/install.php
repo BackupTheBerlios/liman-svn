@@ -148,7 +148,7 @@
 			)";
 		$sqlCreate["Bibliothek"] = "CREATE TABLE `".$db_config['prefix']."Bibliothek` (
 			`Literatur_Nr` int(11) NOT NULL auto_increment,
-			`Art` enum('Buch','Artikel','Broschüre','Protokoll','Anleitung','Diplomarbeit','Dissertation','Techn. Bericht','Unveröffentlicht','Sonstiges') NOT NULL,
+			`Art` enum('Buch', 'Artikel', 'Broschüre', 'Protokoll', 'Anleitung', 'Diplomarbeit', 'Dissertation', 'Techn. Bericht', 'Unveröffentlicht', 'Sonstiges') NOT NULL,
 			`Titel` varchar(40) NOT NULL,
 			`Jahr` int(11) NOT NULL,
 			`Verlag` varchar(40) NOT NULL,

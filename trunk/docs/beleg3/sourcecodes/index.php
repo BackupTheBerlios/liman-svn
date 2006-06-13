@@ -25,7 +25,7 @@
 				{
 				?>
 					<tr>
-					<td><a href="lit.<?=$ext;?>?id=<?=htmlspecialchars($cur->Nr);?>">
+					<td><a href="lit.<?=$ext; ?>?id=<?=htmlspecialchars($cur->Nr); ?>">
 						<?=htmlspecialchars($cur->Titel);?></a>
 					</td>
 					<td><?=htmlspecialchars($cur->Autor);?></td>
