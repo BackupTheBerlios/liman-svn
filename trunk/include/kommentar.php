@@ -134,7 +134,7 @@
 		 *  Typs Kommentar zurück.
 		 *  \param[in] $literatur_nr Nr einer Literatur mit Kommentaren
 		 *  \pre Datenbankverbindung muss bestehen
-		 *  \return Feld vom Typ Kommentar
+		 *  \return Feld mit Elementen vom Typ Kommentar
 		 */
 		function GetAll($literatur_nr)
 		{

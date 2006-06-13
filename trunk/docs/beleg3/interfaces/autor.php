@@ -46,7 +46,7 @@
 		 *  Typs Autor zurück.
 		 *  \param[in] $literatur_nr Nr einer Literatur mit Autoren
 		 *  \pre Datenbankverbindung muss bestehen
-		 *  \return Feld vom Typ Autor
+		 *  \return Feld mit Elementen vom Typ Autor
 		 */
 		function GetAll($literatur_nr);
 
