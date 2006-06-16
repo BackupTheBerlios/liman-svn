@@ -1,12 +1,14 @@
 MAIN = teilbeleg3
-DEPENDS =	Makefile\
-		teilbeleg3.tex\
-		meta.tex\
-		titel.tex\
-		anwenderdokumentation.tex\
-		arbeitsaufgaben.tex\
-		programmdokumentation.tex\
-		systemhandbuch.tex
+DEPENDS =	Makefile \
+		teilbeleg3.tex \
+		meta.tex \
+		titel.tex \
+		anwenderdokumentation.tex \
+		arbeitsaufgaben.tex \
+		interfaces_code.tex \
+		programmdokumentation.tex \
+		systemhandbuch.tex \
+		tests.tex
 
 # Standard pdf
 all: pdf

@@ -1,7 +1,123 @@
 \section{Testplan}
 \subsection{Testfälle}
 
+TODO: Fall 1 - Unittests
+
+\subsubsection{Fall 2: Installation}
+\begin{enumerate}
+\item Systemzustand vor dem Test:\\
+	1. Durchlauf: Alle Speicher sind nicht vorhanden, aber die Datenbank. 2. Durchlauf: Speicher sind vorhanden und mit zufälligen Werten gefüllt.
+\item Eingabedaten:\\
+	install.php wird aufgerufen und die verlangten Daten eingegeben.
+\item Erwartete Ereignisse:\
+	Verbindung mit Datenbank wird erstellt, schon vorhandene Speicher gelöscht, Speicher neu angelegt und neuer Administrator angelegt
+\item Systemzustand nach Test:\\
+	Leere Speicher Autoren, Bibliothek, Kommentare und Literatur\_Autoren bestehen. Außerdem existiert Speicher Mitglieder mit einem Datensatz (Administrator Admin Istrator mit angegebenen Login und gehashtem Passwort)
+\end{enumerate}
+
+\subsubsection{Fall 3: Test des Nutzerinterfaces -- Administrator}
+\begin{enumerate}
+\item Systemzustand vor dem Test:\\
+	Alle Speicher sind bis auf Mitglieder leer. In Mitglieder ist nur der Datensatz des ersten Administrators.
+\item Eingabedaten:\\
+	Begonnen wird der Test mit dem einloggen als Administrator. Alle Funktionen des Systems werden nacheinander aktiviert, ohne Eintragungen vorzunehmen. Beendet wird der Test mit dem Ausloggen.
+\item Erwartete Ereignisse:\
+	Korrekte Anzeige der entsprechend der aktivierten Aktion laut Layoutentwurf zugeordneten Ansicht.
+\item Systemzustand nach Test:\\
+	Unverändert, wie vor dem Test.
+\end{enumerate}
+
+\subsubsection{Fall 4: Test des Nutzerinterfaces -- Benutzer}
+\begin{enumerate}
+\item Systemzustand vor dem Test:\\
+	Alle Speicher sind bis auf Mitglieder leer. In Mitglieder ist neben dem Datensatz des ersten Administrators ein Mitglied ohne Administratorrechte vorhanden.
+\item Eingabedaten:\\
+	Begonnen wird der Test mit dem einloggen als Mitglied. Alle Funktionen des Systems werden nacheinander aktiviert, ohne Eintragungen vorzunehmen. Beendet wird der Test mit dem Ausloggen.
+\item Erwartete Ereignisse:\
+	Korrekte Anzeige der entsprechend der aktivierten Aktion laut Layoutentwurf zugeordneten Ansicht. Die Nutzerliste zeigt nur den eigenen Nutzereintrag an. Jegliche Provokation des Systems (Löschen und Hinzufügen eines Mitglieds und das Bearbeiten eines fremden Mitglieds) wird abgewiesen bzw. auf die eigenen Nutzerdaten umgeleitet.
+\item Systemzustand nach Test:\\
+	Unverändert, wie vor dem Test.
+\end{enumerate}
+
+\subsubsection{Fall 5: Test des Nutzerinterfaces -- Gast}
+\begin{enumerate}
+\item Systemzustand vor dem Test:\\
+	Alle Speicher sind bis auf Mitglieder leer. In Mitglieder ist nur der Datensatz des ersten Administrators.
+\item Eingabedaten:\\
+	Nutzer ist nicht angemeldet. Alle Funktionen des Systems werden nacheinander aktiviert, ohne Eintragungen vorzunehmen.
+\item Erwartete Ereignisse:\
+	Korrekte Anzeige der entsprechend der aktivierten Aktion laut Layoutentwurf zugeordneten Ansicht. Es sind keine Elemente zum Hinzufügen, Ändern oder Löschen von Daten vorhanden. Die Nutzerliste zeigt keinen Nutzereintrag an. Jegliche Provokation des Systems (Löschen und Hinzufügen, Ändern eines Mitglieds, Kommentars, Literatur) wird abgewiesen.
+\item Systemzustand nach Test:\\
+	Unverändert, wie vor dem Test.
+\end{enumerate}
+
+\subsubsection{Fall 6: Anlegen neue Literatur}
+TODO
+
+\subsubsection{Fall 7: Ändern Literatur}
+TODO
+
+\subsubsection{Fall 8: Löschen Literatur}
+TODO
+
+\subsubsection{Fall 9: Anlegen neues Mitglied}
+TODO
+
+\subsubsection{Fall 10: Ändern Mitglied}
+TODO
+
+\subsubsection{Fall 11: Löschen Mitglied}
+TODO
+
+\subsubsection{Fall 12: Anlegen Kommentar}
+TODO
+
+\subsubsection{Fall 13: Ändern Kommentar}
+TODO
+
+\subsubsection{Fall 14: Löschen Kommentar}
+TODO
+
+\subsubsection{Fall 15: Löschen Kommentar -- Administrator}
+TODO
+
+\subsubsection{Fall 16: Volltextsuche}
+TODO
+
+\subsubsection{Fall 17: Erweiterte Suche}
+TODO
+
 \subsection{Testmatrix}
+\begin{longtable}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline
+ & \multicolumn{15}{c|}{dabei getestete Systemkomponenten} \\\hline
+	% Titel
+	Testfall & 
+	% grobe ``Module''
+	\multicolumn{1}{R{6em}|}{Nutzerinterface} &
+	\multicolumn{1}{R{6em}|}{Bibliotheksverwaltung} &
+	\multicolumn{1}{R{6em}|}{Kommentarverwaltung} &
+	\multicolumn{1}{R{6em}|}{Literaturinformation} &
+	\multicolumn{1}{R{6em}|}{Mitgliedsverwaltung} &
+	\multicolumn{1}{R{6em}|}{Suchsystem} &
+	% Klassen
+	\multicolumn{1}{R{6em}|}{Autor} &
+	\multicolumn{1}{R{6em}|}{Kommentar} &
+	\multicolumn{1}{R{6em}|}{Literatur} &
+	\multicolumn{1}{R{6em}|}{LiteraturArt} &
+	\multicolumn{1}{R{6em}|}{Login} &
+	\multicolumn{1}{R{6em}|}{Mitglied} &
+	\multicolumn{1}{R{6em}|}{Suche} &
+	\multicolumn{1}{R{6em}|}{SQLDB} &
+	\multicolumn{1}{R{6em}|}{Installation}\\
+\hline\hline
+\endhead
+1 &   &   &   &   &   &   & x & x & x & x &   & x & x &   &  \\\hline
+2 & x &   &   &   &   &   &   &   &   &   &   &   &   &   & x\\\hline
+3 & x & x & x & x & x & x & x & x & x & x & x & x & x & x &  \\\hline
+4 & x & x & x & x & x & x & x & x & x & x & x & x & x & x &  \\\hline
+5 & x & x & x & x & x & x & x & x & x & x & x & x & x & x &  \\\hline
+\end{longtable}
 
 \section{Systemtest}
 
