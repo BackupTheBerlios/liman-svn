@@ -1,5 +1,37 @@
 \chapter{Systemhandbuch}
 \section{Installationsanleitung}
+Das System ist vollkommen frei und kostenlos "uber das Internet von http://liman.berlios.de/ 
+bzw. direkt der 
+Downloadseite http://developer.berlios.de/project/showfiles.php?group\_id=6441 
+zu beziehen.
+
+Je nach verf"ugbarem Entpackprogramm sollte man die neuste Version im .tar.gz, 
+.tar.bz2 (zu entpacken mit z.b. GNU tar, http://www.gnu.org/software/tar/) oder .zip-Format 
+(zu entpacken mit z.b. WinZIP, http://www.winzip.de/) herunterladen und entpacken.
+
+Nun muss der Inhalt des Archivs auf das Server in einen vom Webserver verwalteten Ordner 
+abgelegt werden, z.b. in (oder unterhalb) von /var/www auf einem Standard-Debian System.
+
+Befindet man sich nicht direkt auf dem Webserver, k"onnen die Dateien beispielsweise mit 
+einem FTP-Programm oder einem SCP-Programm hochgeladen werden, jenachdem was der Server 
+unterst"utzt.
+
+Die Datenbankverbindung und der erste Administrator werden "uber das Installationskript 
+festgelegt. Dazu ist es notwendig dass der Webserver Schreibzugriff auf include/config.php
+hat, es sollte also ggf. noch schreibbar gesetzt werden. Richten sie nun Ihren Webbrowser 
+(je nach Installationsort) auf http://ihr.server.de/liman/install.php und tragen sie die 
+Verbindungsdaten zum MySQL-Server ein.
+Prefix beschreibt die ersten Zeichen der Tabellennamen und sollte im Allgemeinen so belassen
+werden.
+
+Mit dem Best"atigen des Formulares werden automatisch die ben"otigten Tabellen in der Datenbank 
+und der Administrator angelegt. Sie k"onnen ihre Einstellungen auch sp"ater noch in der Datei
+include/config.php anpassen.
+
+"Uberpr"ufen sie Ihre Einstellungen mit einem Login auf http://ihr.server.de/liman/ .
+Wenn alles korrekt installiert wurde sollten Sie abschliessend noch die Datei install.php 
+aus dem Webserver-Verzeichnis gel"oscht werden, damit niemand die Datenbankverbindungsdaten neu 
+setzen kann.
 
 \section{Programm-Filesystem}
 
