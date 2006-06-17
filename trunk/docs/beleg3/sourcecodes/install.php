@@ -241,23 +241,49 @@
 			die();
 		}
 
-		?>
-			<p>Datenbank wurde erfolgreich eingerichtet.</p>
-			<p>Erstellen sie in ihrem Installationsordner unter "include" eine Datei mit dem Namen "config.php" und folgendem Inhalt:
-			<pre>
-&lt;?php
-	// Datenbankeinstellungen
-	$db_config['dbms'] = "<?=htmlspecialchars($db_config['dbms']);?>";
-	$db_config['user'] = "<?=htmlspecialchars($db_config['user']);?>";
-	$db_config['pass'] = "<?=htmlspecialchars($db_config['pass']);?>";
-	$db_config['name'] = "<?=htmlspecialchars($db_config['name']);?>";
-	$db_config['host'] = "<?=htmlspecialchars($db_config['host']);?>";
-	$db_config['prefix'] = "<?=htmlspecialchars($db_config['prefix']);?>";
 
-	$ext = "php";	// Endung der von den Usern abrufbaren Dateien
-	$gz_enable = false; // aktiviere GZIP-Kompression der HTML-Dateien
-?&gt;
-			</pre></p>
+		// Erstelle Konfigurationsdatei
+		$config = 
+			"<?php\n".
+			"	// Datenbankeinstellungen\n".
+			"	\$db_config['dbms'] = \"".$db_config['dbms']."\";\n".
+			"	\$db_config['user'] = \"".$db_config['user']."\";\n".
+			"	\$db_config['pass'] = \"".$db_config['pass']."\";\n".
+			"	\$db_config['name'] = \"".$db_config['name']."\";\n".
+			"	\$db_config['host'] = \"".$db_config['host']."\";\n".
+			"	\$db_config['prefix'] = \"".$db_config['prefix']."\";\n".
+			"\n".
+			"	\$ext = \"php\";	// Endung der von den Usern abrufbaren Dateien\n".
+			"	\$gz_enable = false; // aktiviere GZIP-Kompression der HTML-Dateien\n".
+			"?>\n";
+
+		$written = false;
+		if (is_writable("include/config.php") === true)
+		{
+			$handle = fopen("include/config.php", "w");
+			if ($handle !== false)
+			{
+				if (fwrite($handle, $config) !== false)
+				{
+					$written = true;
+					fclose($handle);
+				}
+			}
+		}
+
+		echo "<p>Datenbank wurde erfolgreich eingerichtet.</p>";
+		if ($written === false)
+		{
+		?>
+			<p>Erstellen sie in ihrem Installationsordner unter "include" eine Datei mit dem Namen "config.php" und folgendem Inhalt:
+			<pre><?=htmlspecialchars($config);?></pre></p>
+		<?php
+		}
+		else
+		{
+			echo "<p>Die Einstellungen wurden unter include/config.php gespeichert. Um weitere Schreibvorgänge von unpriviligierten Nutzern darauf zu verhindern, sollten sie die Schreibrechte außer für den eigenen Nutzer entfernen.</p>";
+		}
+		?>
 		<?php
 	}
 	else

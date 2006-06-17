@@ -34,3 +34,11 @@
   >{\begin{turn}{90}\begin{minipage}{#1}\footnotesize\raggedright\hspace{0pt}}l%
   <{\end{minipage}\end{turn}}%
 }
+
+\newcommand{\pdfurl}[1]{
+	\ifpdf
+		\url{#1}
+	\else
+		#1
+	\fi
+}
