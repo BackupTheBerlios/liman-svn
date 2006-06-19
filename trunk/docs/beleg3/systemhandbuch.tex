@@ -29,10 +29,70 @@ und der Administrator angelegt. Sie k"onnen ihre Einstellungen auch sp"ater noch
 include/config.php anpassen.
 
 "Uberpr"ufen sie Ihre Einstellungen mit einem Login auf http://ihr.server.de/liman/ .
-Wenn alles korrekt installiert wurde, sollten abschlie√üend noch die Datei install.php 
+Wenn alles korrekt installiert wurde, sollten abschlieﬂend noch die Datei install.php 
 aus dem Webserver-Verzeichnis gel"oscht werden, damit niemand die Datenbankverbindungsdaten neu 
 setzen kann.
 
 \section{Programm-Filesystem}
+{TODO}
+\begin{longtable}{|l|p{6.0cm}|p{2cm}|}
+\hline
+{\bf Bezeichnung der Datei} & {\bf Bedeutung} & {\bf Anzahl Bytes}\\
+\hline
+\endhead
+
+index.php & Startseite mit Letzte Literatur & 1196\\
+\hline
+login.php & login/logout mit Begr"u"sungstext & 836\\
+\hline
+user.php & Nutzerdetails & 1680\\
+\hline
+usermode.php & Nutzer l"oschen/"andern/hinzuf"ugen & 7892\\
+\hline
+userlist.php & Nutzerdaten anzeigen & 1924\\
+\hline
+search.php & Suche (Ergebnisse) & 1893\\
+\hline
+searchmore.php & Suche (Formular) & 1284\\
+\hline
+litmod.php & Literatur l"oschen / "andern / hinzuf"ugen & 10056\\
+\hline
+commentmod.php & Kommentar l"oschen / "andern / hinzuf"ugen & 3089\\
+\hline
+lit.php & Literaturdetails & 4436\\
+\hline
+bibtex.php & BibTeX Importieren & 2318\\
+\hline
+include$\backslash$config.php & Datenbankkonfiguration & 362\\
+\hline
+include$\backslash$global.php & Einrichtung Prog. - Umgebung & 1557\\
+\hline
+include$\backslash$literatur.php & Stellt Funktionen f"ur Literatur in Bibliothek zur Verf"ugung & 11846\\
+\hline
+include$\backslash$mitglied.php & Stellt Funktionen f"ur Mitglieder bereit & 8436\\
+\hline
+include$\backslash$suche.php & Durchsucht die Tabelle Bibliothek und Autoren "uber Volltextsuche & 7852\\
+\hline
+include$\backslash$footer.php & Ende jeder Html - Datei & 36 \\
+\hline
+include$\backslash$header.php & Kopf jeder Html-Datei & 2885 \\
+\hline
+include$\backslash$literaturart.php & Speicherung aus der Datenbank oder BibTeX-Datei erhaltenen Art von Informationen & 3811\\
+\hline
+include$\backslash$sqldb.php & Datenbankzugriffsauswahl & 354 \\
+\hline
+include$\backslash$autor.php & Stellt Funktionen f"ur Autoren bereit & 4608\\
+\hline
+include$\backslash$formhelper.php & Hilfsfunktionen f"ur Formulare & 2278\\
+\hline
+include$\backslash$kommentar.php & Stellt Funktionen f"ur Kommentare bereit & 7911\\
+\hline   
+include$\backslash$login.php &  Verwaltet die Session des Users und der damit entstehenden Rechte & 5243\\
+\hline
+include$\backslash$sqldbmysql.php & Startet eine Verbindung zum Datenbanksystem her und w"ahlt eine Datenbank & 6323\\
+\hline
+
+\end{longtable}
+
 
 \section{Administrationsanleitung}
