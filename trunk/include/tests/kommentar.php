@@ -3,25 +3,43 @@
 	
 	class KommentarTest
 	{
+		var $login;
+		
 		function Setup()
 		{
+			global $login;
+			
+			$this->login = new stdClass();
+			$this->login->Level = $login->Level;
+			$this->login->Nr = $login->Nr;
 		}
 		
 		function TearDown()
 		{
-			global $sqldb;
+			global $sqldb, $login;
+			
+			$sqldb->Verify();
+			$login->Level = $this->login->Level;
+			$login->Nr = $this->login->Nr;
 			
 			$sqldb->Verify();
 		}
 		
+		function CreateKommentarData( $nr, $text, $mitglieds_nr, $vorname, $nachname )
+		{
+			$data = new stdClass();
+			$data->Nr = $nr;
+			$data->Text = $text;
+			$data->Mitglieds_Nr = $mitglieds_nr;
+			$data->Vorname = $vorname;
+			$data->Nachname = $nachname;
+			
+			return $data;
+		}
+		
 		function ConstructorTest()
 		{
-			$testData = new stdClass();
-			$testData->Nr = 1;
-			$testData->Text = "Das ist ein Kommentar";
-			$testData->Mitglieds_Nr = 2;
-			$testData->Vorname = "Max";
-			$testData->Nachname = "Mustermann";
+			$testData = CreateKommentarData( 1, "Das ist ein Kommentar", 2, "Max", "Mustermann" );
 			
 			$kommentar = new Kommentar($testData);
 			
@@ -40,9 +58,79 @@
 			return true; 
 		}
 		
+		function Delete()
+		{
+			global $sqldb, $login;
+			
+			$login->Rechte = 0;
+			
+			Kommentar::Delete( 0 );
+			
+			$dbResult = $sqldb->Verify();
+			
+			if( $dbResult !== true )
+			{
+				$dbResult->Unit = 'Kommentar';
+				$dbResult->Test = 'Delete (Gast)';
+				return $dbResult;
+			}
+			
+			$login->Rechte = 1;
+			
+			$sqldb->ExpectQuery( 'DELETE FROM.*Kommentare.*WHERE.*Mitglieds_Nr.*', 1 );
+			
+			Kommentar::Delete( 0 );
+			
+			$dbResult = $sqldb->Verify();
+			
+			if( $dbResult !== true )
+			{
+				$dbResult->Unit = 'Kommentar';
+				$dbResult->Test = 'Delete (Mitglied)';
+				return $dbResult;
+			}
+			
+			$login->Rechte = 2;
+			
+			$sqldb->ExpectQuery( 'DELETE FROM.*Kommentare.*WHERE.*', 1 );
+			
+			Kommentar::Delete( 0 );
+			
+			$dbResult = $sqldb->Verify();
+			
+			if( $dbResult !== true )
+			{
+				$dbResult->Unit = 'Kommentar';
+				$dbResult->Test = 'Delete (Admin)';
+				return $dbResult;
+			}
+			
+			return true;
+		}
+		
 		function GetAll()
 		{
-			return new ErrorMessage( 'Kommentar', 'GetAll', 'Test nicht implementiert', null, null  );
+			global $sqldb;
+			
+			$testData = array();
+			$testData[] = CreateKommentarData( 1, "Das ist ein Kommentar", 1, "Max", "Mustermann" );
+			$testData[] = CreateKommentarData( 2, "Noch ein Kommentar", 2, "Fritz", "Fischer" );
+			
+			$sqldb->ExpectQuery( 'SELECT.*FROM.*Kommentare', $testData );
+			$result = Kommentar::GetAll();
+			
+			$dbResult = $sqldb->Verify();
+			if( $dbResult !== true )
+			{
+				$dbResult->Unit = 'Kommentar';
+				$dbResult->Test = 'GetAll';
+				return $dbResult;
+			}
+
+			if( count($testData) != count($result) )
+				return new ErrorMessage( 'Kommentar', 'GetAll', 'Anzahl Kommentare', count($testData), count($result) );
+			
+			return true;
 		}
 		
 		function Insert()
@@ -52,7 +140,43 @@
 		
 		function Update()
 		{
-			return new ErrorMessage( 'Kommentar', 'Update', 'Test nicht implementiert', null, null  );
+			global $login, $sqldb;
+			
+			$login->Rechte = 1;
+			
+			$sqldb->ExpectQuery( 'DELETE FROM.*Kommentare', 1 );
+			Kommentar::Update( 1, "" );		// Wenn Text leer ist, soll Kommentar gel�scht werden
+			$dbResult = $sqldb->Verify();
+			if( $dbResult !== true )
+			{
+				$dbResult->Unit = 'Kommentar';
+				$dbResult->Test = 'Update (leer)';
+				return $dbResult; 
+			}
+			
+			$sqldb->ExpectQuery( 'UPDATE.*Kommentare.*WHERE.*Mitglieds_Nr', 1 );
+			Kommentar::Update( 1, "Neuer Text" );
+			$dbResult = $sqldb->Verify();
+			if( $dbResult !== true )
+			{
+				$dbResult->Unit = 'Kommentar';
+				$dbResult->Test = 'Update (Mitglied)';
+				return $dbResult; 
+			}
+			
+			$login->Rechte = 2;
+			
+			$sqldb->ExpectQuery( 'UPDATE.*Kommentare.*WHERE', 1 );
+			Kommentar::Update( 1, "Neuer Text" );
+			$dbResult = $sqldb->Verify();
+			if( $dbResult !== true )
+			{
+				$dbResult->Unit = 'Kommentar';
+				$dbResult->Test = 'Update (Admin)';
+				return $dbResult; 
+			}
+			
+			return true;
 		}
 	}
 ?>

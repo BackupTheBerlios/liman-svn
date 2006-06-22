@@ -3,13 +3,24 @@
 	
 	class AutorTest
 	{
+		var $login;
+		
 		function Setup()
 		{
+			global $login;
+			
+			$this->login = new stdClass();
+			$this->login->Level = $login->Level;
+			$this->login->Nr = $login->Nr;
 		}
 		
 		function TearDown()
 		{
-			global $sqldb;
+			global $login, $sqldb;
+			
+			$sqldb->Verify();
+			$login->Level = $this->login->Level;
+			$login->Nr = $this->login->Nr;
 			
 			$sqldb->Verify();
 		}
@@ -71,9 +82,21 @@
 		
 		function Split()
 		{
-			global $sqldb;
+			global $sqldb, $login;
+			
+			$login->Level = 0;	// Gast
 			
 			$testAutorNamen = "Schon Vorhanden, Wird Hinzugefügt";
+			
+			$autoren = Autor::Split( $testAutorNamen );
+			
+			$result = $sqldb->Verify();
+			if( $result !== false )
+			{
+				$result->Unit = 'Autor';
+				$result->Test = 'Split (Gast)';
+				return $result;
+			}
 			
 			$testAutoren = array();
 			$testAutoren[] = new stdClass();
@@ -81,6 +104,8 @@
 			
 			$testAutoren[0]->Nr = 1;
 			$testAutoren[1]->Nr = 2;
+			
+			$login->Level = 1;	// Mitglied
 			 
 			$sqldb->ExpectQuery( 'SELECT.*Autor_Nr.*WHERE.*Autorname', $testAutoren[0] );
 			$sqldb->ExpectQuery( 'SELECT.*Autor_Nr.*WHERE.*Autorname', false  );
@@ -92,12 +117,12 @@
 			if( $result !== false )
 			{
 				$result->Unit = 'Autor';
-				$result->Test = 'Split';
+				$result->Test = 'Split (Mitglied)';
 				return $result;
 			}
 			
 			if( count($autoren) != count($testAutoren) )
-				return new ErrorMessage( 'Autor', 'Split', 'Anzahl Autoren', count($testAutoren), count($autoren) );
+				return new ErrorMessage( 'Autor', 'Split (Mitglied)', 'Anzahl Autoren', count($testAutoren), count($autoren) );
 			
 			return true;
 		}
