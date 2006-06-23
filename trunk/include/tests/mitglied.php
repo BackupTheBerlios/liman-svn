@@ -40,7 +40,7 @@
 		{
 			global $sqldb;
 			
-			$testData = CreateMemberData( 1, "Maximator", "passwort","Max", "Mustermann", "max.mustermann@gmx.de", "Benutzer" );
+			$testData = $this->CreateMemberData( 1, "Maximator", "passwort","Max", "Mustermann", "max.mustermann@gmx.de", "Benutzer" );
 			
 			$sqldb->ExpectQuery("SELECT.*FROM.*Mitglieder.*WHERE.*Mitglieds_Nr.*LIMIT 1", $testData );
 			

@@ -39,7 +39,7 @@
 		
 		function ConstructorTest()
 		{
-			$testData = CreateKommentarData( 1, "Das ist ein Kommentar", 2, "Max", "Mustermann" );
+			$testData = $this->CreateKommentarData( 1, "Das ist ein Kommentar", 2, "Max", "Mustermann" );
 			
 			$kommentar = new Kommentar($testData);
 			
@@ -113,11 +113,11 @@
 			global $sqldb;
 			
 			$testData = array();
-			$testData[] = CreateKommentarData( 1, "Das ist ein Kommentar", 1, "Max", "Mustermann" );
-			$testData[] = CreateKommentarData( 2, "Noch ein Kommentar", 2, "Fritz", "Fischer" );
+			$testData[] = $this->CreateKommentarData( 1, "Das ist ein Kommentar", 1, "Max", "Mustermann" );
+			$testData[] = $this->CreateKommentarData( 2, "Noch ein Kommentar", 2, "Fritz", "Fischer" );
 			
 			$sqldb->ExpectQuery( 'SELECT.*FROM.*Kommentare', $testData );
-			$result = Kommentar::GetAll();
+			$result = Kommentar::GetAll(1);
 			
 			$dbResult = $sqldb->Verify();
 			if( $dbResult !== true )
