@@ -111,7 +111,7 @@
 			}
 		}
 		
-		var $error = false;
+		var $error = true;
 		var $patterns = array();
 		var $results = array();
 		var $queryCounter = 0;
@@ -144,7 +144,7 @@
 		function Verify()
 		{
 			$ret = $this->error;
-			if( ($ret === false) && (count($this->results) != $this->queryCounter) )
+			if( ($ret === true) && (count($this->results) != $this->queryCounter) )
 			{
 				$ret = new ErrorMessage( null, null, "Anzahl Queries", count($this->results), $this->queryCounter );
 			}
@@ -154,7 +154,7 @@
 			}
 			
 			// reset
-			$this->error = false;
+			$this->error = true;
 			$this->error_msg = false;
 			$this->patterns = array();
 			$this->results = array();
@@ -165,7 +165,7 @@
 		
 		function Query($query)
 		{
-			if( $this->isOpen && ($this->error_msg === false) )
+			if( $this->isOpen && ($this->error === true) && ($this->error_msg === false) )
 			{
 				if( count($this->patterns) <= $this->queryCounter )
 				{

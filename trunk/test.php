@@ -120,6 +120,30 @@
 				PrintTestResults($mitgliedTest->ConstructorTest());
 				$mitgliedTest->TearDown();
 				echo "</tr>";
+				
+				echo "<tr><td>Mitglied::GetAll()</td>";
+				$mitgliedTest->Setup();
+				PrintTestResults($mitgliedTest->GetAll());
+				$mitgliedTest->TearDown();
+				echo "</tr>";
+				
+				echo "<tr><td>Mitglied::Insert()</td>";
+				$mitgliedTest->Setup();
+				PrintTestResults($mitgliedTest->Insert());
+				$mitgliedTest->TearDown();
+				echo "</tr>";
+				
+				echo "<tr><td>Mitglied::Update()</td>";
+				$mitgliedTest->Setup();
+				PrintTestResults($mitgliedTest->Update());
+				$mitgliedTest->TearDown();
+				echo "</tr>";
+				
+				echo "<tr><td>Mitglied::Delete()</td>";
+				$mitgliedTest->Setup();
+				PrintTestResults($mitgliedTest->Delete());
+				$mitgliedTest->TearDown();
+				echo "</tr>";
 			?>
 		</tbody>
 	</table>

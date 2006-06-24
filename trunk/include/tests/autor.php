@@ -1,5 +1,6 @@
 <?php
 	require_once("include/tests/errormessage.php");
+	require_once("include/autor.php");
 	
 	class AutorTest
 	{
@@ -91,7 +92,7 @@
 			$autoren = Autor::Split( $testAutorNamen );
 			
 			$result = $sqldb->Verify();
-			if( $result !== false )
+			if( $result !== true )
 			{
 				$result->Unit = 'Autor';
 				$result->Test = 'Split (Gast)';
@@ -114,7 +115,7 @@
 			$autoren = Autor::Split( $testAutorNamen );
 
 			$result = $sqldb->Verify();
-			if( $result !== false )
+			if( $result !== true )
 			{
 				$result->Unit = 'Autor';
 				$result->Test = 'Split (Mitglied)';

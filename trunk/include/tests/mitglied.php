@@ -1,5 +1,6 @@
 <?php
 	require_once("include/tests/errormessage.php");
+	require_once("include/mitglied.php");
 	
 	class MitgliedTest
 	{
@@ -242,8 +243,8 @@
 			global $sqldb, $login;
 			
 			$queryResult = array();
-			$queryResult[] = CreateMemberData( 1, "Maximator", "passwort", "Max", "Mustermann", "max.mustermann@gmx.de", "Benutzer" ); 
-			$queryResult[] = CreateMemberData( 2, "FischerFritze", "passwort", "Fritz", "fischer", "fritz@fischer.net", "Administrator" );
+			$queryResult[] = $this->CreateMemberData( 1, "Maximator", "passwort", "Max", "Mustermann", "max.mustermann@gmx.de", "Benutzer" ); 
+			$queryResult[] = $this->CreateMemberData( 2, "FischerFritze", "passwort", "Fritz", "fischer", "fritz@fischer.net", "Administrator" );
 			
 			$login->Level = 0;	// Test mit Gast-Rechten
 			
