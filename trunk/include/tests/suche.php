@@ -1,5 +1,6 @@
 <?php
 	require_once("include/tests/errormessage.php");
+	require_once("include/tests/sqldb_mock.php");
 	require_once("include/suche.php");
 	
 	class SucheTest

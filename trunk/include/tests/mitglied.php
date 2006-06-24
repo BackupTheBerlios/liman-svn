@@ -1,5 +1,6 @@
 <?php
 	require_once("include/tests/errormessage.php");
+	require_once("include/tests/sqldb_mock.php");
 	require_once("include/mitglied.php");
 	
 	class MitgliedTest
@@ -83,7 +84,7 @@
 		{
 			global $sqldb, $login;
 			
-			$login->Rechte = 1;		// Test mit Mitglied-Rechten
+			$login->Level = 1;		// Test mit Mitglied-Rechten
 			
 			$delResult = Mitglied::Delete( 1 );
 			$dbResult = $sqldb->Verify();
@@ -95,30 +96,26 @@
 				return $dbResult;
 			}
 			
-			if( $delResult !== false )	//	< Admin darf nicht l�schen
+			if( $delResult === true )	//	< Admin darf nicht l�schen
 			{
-				return new ErrorMessage( 'Mitglied', 'Delete (Mitglied)', 'R�ckgabewert', false, $delResult );
+				return new ErrorMessage( 'Mitglied', 'Delete (Mitglied)', 'Rückgabewert', false, $delResult );
 			}
 			
 			// ------------------------------------------------
 			
-			$login->Rechte = 2;		// Test mit Admin-Rechten
+			$login->Level = 2;		// Test mit Admin-Rechten
 			
-			$sqldb->ExpectQuery( 'DELETE FROM.*Mitglieder.*WHERE', 1 );
+			$sqldb->ExpectQuery( 'DELETE FROM.*Mitglieder.*WHERE', 1 );	// Mitglied löschen
+			$sqldb->ExpectQuery( "DELETE FROM.*Kommentare.*WHERE Mitglieds_Nr = '1'" );	// Kommentare aufräumen
 			
-			$delResult = Mitglied::Delete( 1 );
+			Mitglied::Delete( 1 );
 			$dbResult = $sqldb->Verify();
 			
 			if( $dbResult !== true)
 			{
 				$dbResult->Unit = 'Mitglied';
-				$dbResult->Test = 'Delete (Mitglied)';
+				$dbResult->Test = 'Delete (Admin)';
 				return $dbResult;
-			}
-			
-			if( $delResult !== true )	// Admin darf l�schen
-			{
-				return new ErrorMessage( 'Mitglied', 'Delete (Admin)', 'R�ckgabewert', true, $delResult );
 			}
 			
 			return true;
@@ -128,7 +125,7 @@
 		{
 			global $sqldb, $login;
 			
-			$login->Rechte = 1;		// Test mit Mitglied-Rechten
+			$login->Level = 1;		// Test mit Mitglied-Rechten
 			
 			$insResult = Mitglied::Insert( 1, "Maximator", "passwort", "Max", "Mustermann", "max.mustermann@gmx.de", "Benutzer" );
 			$dbResult = $sqldb->Verify();
@@ -147,7 +144,7 @@
 			
 			// ------------------------------------------------
 			
-			$login->Rechte = 2;		// Test mit Admin-Rechten
+			$login->Level = 2;		// Test mit Admin-Rechten
 			
 			$sqldb->ExpectQuery( 'INSERT INTO.*Mitglieder.*VALUES', 1 );
 			
@@ -173,7 +170,7 @@
 		{
 			global $sqldb, $login;
 			
-			$login->Rechte = 1;	// Test mit Mitglied-Rechten
+			$login->Level = 1;	// Test mit Mitglied-Rechten
 			$login->Nr = 3;		// aber falscher Nummer
 			$updResult = Mitglied::Update( 1, "Maximator", "passwort", "Max", "Mustermann", "max.mustermann@gmx.de", "Benutzer" );
 			
@@ -193,7 +190,7 @@
 			
 			// ------------------------------------------------
 			
-			$login->Rechte = 1;	// Test mit Mitglied-Rechten
+			$login->Level = 1;	// Test mit Mitglied-Rechten
 			$login->Nr = 1;		// richtige Nummer
 			$sqldb->ExpectQuery( 'UPDATE.*Mitglieder.*WHERE', 1 );
 			
@@ -215,7 +212,7 @@
 			
 			// ------------------------------------------------
 			
-			$login->Rechte = 1;	// Test mit Administrator-Rechten
+			$login->Level = 2;	// Test mit Administrator-Rechten
 			$login->Nr = 2;		// andere Nummer
 			$sqldb->ExpectQuery( 'UPDATE.*Mitglieder.*WHERE', 1 );
 			
