@@ -106,7 +106,7 @@
 			$login->Level = 2;		// Test mit Admin-Rechten
 			
 			$sqldb->ExpectQuery( 'DELETE FROM.*Mitglieder.*WHERE', 1 );	// Mitglied löschen
-			$sqldb->ExpectQuery( "DELETE FROM.*Kommentare.*WHERE Mitglieds_Nr = '1'", false );	// Kommentare aufräumen
+			$sqldb->ExpectQuery( "DELETE FROM.*Kommentare.*WHERE Mitglieds_Nr = '1'", 1 );	// Kommentare aufräumen
 			
 			Mitglied::Delete( 1 );
 			$dbResult = $sqldb->Verify();

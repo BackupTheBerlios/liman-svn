@@ -110,6 +110,12 @@
 				$kommentarTest->TearDown();
 				echo "</tr>";
 				
+				echo "<tr><td>Kommentar::Delete()</td>";
+				$kommentarTest->Setup();
+				PrintTestResults($kommentarTest->Delete());
+				$kommentarTest->TearDown();
+				echo "</tr>";
+				
 				// Mitglied
 				require_once("include/mitglied.php");
 				require_once("include/tests/mitglied.php");
