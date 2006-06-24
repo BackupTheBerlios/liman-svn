@@ -4,7 +4,7 @@
 \subsubsection{Fall 1: Unit Tests}
 \begin{enumerate}
 \item Systemzustand vor dem Test:\\
-	TODO: Hübsche Formulierung für: egal, wird nicht benutzt
+	Alle Speicher sind vom System entkoppelt. Je nach Test werden spezielle, virtuelle Speicher angelegt, die auf den jeweiligen Test zugeschnitten sind. Allgemein werden dazu für Abfragen, Änderungs- und Löschaktionen statische Datensätze erstellt, die als Resultate behandelt werden. Für Einfügeaktionen werden leere virtuelle Speicher angenommen.
 \item Eingabedaten:\\
 	test.php wird aufgerufen. Sonstige Eingaben werden fest im Code der Tests durchgeführt.
 \item Erwartete Ereignisse:\\
