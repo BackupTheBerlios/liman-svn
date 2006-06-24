@@ -5,7 +5,9 @@ DISTDIR=/tmp
 FILES=*.php include design
 DROP=\
 	$(DISTDIR)/$(PACKAGE)-$(VERSION)/test.php\
-	$(DISTDIR)/$(PACKAGE)-$(VERSION)/include/tests
+	$(DISTDIR)/$(PACKAGE)-$(VERSION)/include/tests\
+	$(DISTDIR)/$(PACKAGE)-$(VERSION)/design/unittest.css\
+	$(DISTDIR)/$(PACKAGE)-$(VERSION)/*/.svn
 default:	dist
 dist:		$(DISTDIR)/$(PACKAGE)-$(VERSION).tar.gz
 $(DISTDIR)/$(PACKAGE)-$(VERSION).tar.gz: $(DEPEND) 
