@@ -126,7 +126,7 @@
 \item Systemzustand vor dem Test:\\
 	Alle Speicher bis auf Mitglieder sind leer. In Mitglieder ist nur der Datensatz des ersten Administrators.
 \item Eingabedaten:\\
-	Begonnen wird der Test mit dem Anmelden als Administrator. Neues Mitglied wird mit dem Login des Administratos angelegt. Beendet wird der Test mit dem Abmelden.
+	Begonnen wird der Test mit dem Anmelden als Administrator. Neues Mitglied wird mit dem Login des Administrators angelegt. Beendet wird der Test mit dem Abmelden.
 \item Erwartete Ereignisse:\\
 	System gibt Fehlermeldung aus.
 \item Systemzustand nach Test:\\
@@ -314,6 +314,42 @@
 22 & x &   &   &   &   & x & x &   &   & x &   &   & x & x &  \\\hline
 \end{longtable}
 
+\subsection{Zeitplan und Verantwortlichkeiten}
+Verantwortlich für die Vorbereitung, Durchführung und Auswertung der Tests waren Frank Wilhelm und Sven Eckelmann. Abhängigkeiten zwischen den einzelnen Testfällen besteht nicht. Alle Tests wurden mehrfach zwischen 30.04. und 26.06.2006 durchgeführt. Ein abschließender Test erfolgte am 26.06.2006.
+
 \section{Systemtest}
+\begin{longtable}{|c|p{8cm}|c|c|}
+\hline
+	\textbf{Testfall} & 
+	\textbf{Ergebnis} &
+	\textbf{korrekt} &
+	\textbf{nicht korrekt}\\
+\hline\hline
+\endhead
+
+ 1 & Alle Klassentests geben ``OK'' zurück. & x &  \\\hline
+ 2 & Speicher wurden angelegt bzw. gelöscht und danach neu angelegt. Neuer Administrator ist angelegt. & x &  \\\hline
+ 3 & Anzeige aller Ansichten. Kein Speicher wurde geändert. & x &  \\\hline
+ 4 & Anzeige aller Ansichten, außer gesperrter Ansichten. Kein Speicher wurde geändert. & x &  \\\hline
+ 5 & Anzeige aller Ansichten, außer gesperrter Ansichten. Kein Speicher wurde geändert. & x &  \\\hline
+ 6 & Neue Literatur wurde angelegt und wird in Literaturinformation angezeigt. Neue Autoren wurden in Autoren abgelegt und mit Literatur verknüpft. Kein weiterer Speicher wurde geändert. & x &  \\\hline
+ 7 & Neue Literatur wurde nach Bestätigung angelegt und wird in Literaturinformation angezeigt. Neue Autoren wurden in Autoren abgelegt und mit Literatur verknüpft. Kein weiterer Speicher wurde geändert. & x &  \\\hline
+ 8 & Literatur wurde geändert und wird in Literaturinformation angezeigt. Neue Autoren wurden in Autoren abgelegt, alte entfernt und neue mit Literatur verknüpft. Kein weiterer Speicher wurde geändert. & x &  \\\hline
+ 9 & Literatur wurde entfernt. Alte Autoren wurden genauso wie ihre Verknüpfungen entfernt. Kein weiterer Speicher wurde geändert. & x &  \\\hline
+10 & Neuer Nutzer wurde angelegt und wird angezeigt. Keine weiteren Speicher wurden geändert. & x &  \\\hline
+11 & Fehler wurde beim Anlegen ausgegeben. Keine Speicher wurden geändert. & x &  \\\hline
+12 & Nutzer wurde geändert und wird angezeigt. Keine weiteren Speicher wurden geändert. & x &  \\\hline
+13 & Eigener Nutzer wurde geändert und wird angezeigt. Keine weiteren Speicher wurden geändert. & x &  \\\hline
+14 & Nutzer wurde gelöscht. Keine weiteren Speicher wurden geändert. & x &  \\\hline
+15 & Neuer Kommentar wurde angelegt und wird in Literaturinformation angezeigt. Keine weiteren Speicher wurden geändert. & x &  \\\hline
+16 & Kommentar wurde geändert und wird in Literaturinformation angezeigt. Keine weiteren Speicher wurden geändert. & x &  \\\hline
+17 & Kommentar wurde gelöscht. Keine weiteren Speicher wurden geändert. & x &  \\\hline
+18 & Kommentar wurde gelöscht. Keine weiteren Speicher wurden geändert. & x &  \\\hline
+19 & Literatur wurde entfernt. Alte Autoren wurden genauso wie ihre Verknüpfungen und Kommentare entfernt. Kein weiterer Speicher wurde geändert. & x &  \\\hline
+20 & Nutzer wurde mit dazugehörigen Kommentaren gelöscht. Keine weiteren Speicher wurden geändert. & x &  \\\hline
+21 & Alle gesuchten Bücher wurden gefunden, ausgegeben und können ausgewählt werden. & x &  \\\hline
+22 & Alle gesuchten Bücher wurden gefunden, ausgegeben und können ausgewählt werden. & x &  \\\hline
+\end{longtable}
 
 \section{Abschlußeinschätzung}
+Die beim abschließenden Systemtest erhaltenen Ergebnisse stimmen mit den erwarteten Ergebnissen überein. Durch dies kann der Systemtest als erfolgreich angesehen werden. Die in der Spezifikation gesetzten Anforderungen wurden erfüllt. Das System kann aus diesem Grund als einsatzbereit angesehen werden. Eine vollkommene Fehlerfreiheit kann trotz der Tests nicht garantiert werden.
