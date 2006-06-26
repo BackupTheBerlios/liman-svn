@@ -106,9 +106,23 @@
 							ON bibliothek.Literatur_Nr = connect.Literatur_Nr)
 						INNER JOIN  ".$db_config['prefix']."Autoren AS autoren
 						ON connect.Autor_Nr = autoren.Autor_Nr
+						WHERE MATCH (Titel, Verlag, ISBN, Beschreibung, Ort, Stichworte) AGAINST ('$volltext' IN BOOLEAN MODE)
+						OR MATCH (Autorname) AGAINST ('$volltext' IN BOOLEAN MODE)";
+
+				if ($sqldb->Query($sql) === false)
+				{
+					// Workaround für MySQL < 4
+					// Ohne Boolean Mode suchen
+					$sql = "SELECT DISTINCT bibliothek.Literatur_Nr AS Nr, Titel, Verlag, ISBN
+						FROM (".$db_config['prefix']."Bibliothek AS bibliothek
+							INNER JOIN  ". $db_config['prefix'] ."Literatur_Autor AS connect
+							ON bibliothek.Literatur_Nr = connect.Literatur_Nr)
+						INNER JOIN  ".$db_config['prefix']."Autoren AS autoren
+						ON connect.Autor_Nr = autoren.Autor_Nr
 						WHERE MATCH (Titel, Verlag, ISBN, Beschreibung, Ort, Stichworte) AGAINST ('$volltext')
 						OR MATCH (Autorname) AGAINST ('$volltext')";
-				$sqldb->Query($sql);
+					$sqldb->Query($sql);
+				}
 				
 				// Lese Treffer aus
 				while ($cur = $sqldb->Fetch())
