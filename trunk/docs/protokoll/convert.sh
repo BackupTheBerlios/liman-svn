@@ -52,7 +52,7 @@ for FILE in *.xhtml;
 	sedit 's/<p>//'
 	#sedit 's/<p>/\\\\\n/'
 	sedit 's/<\/p>//'
-	sedit 's/<img src=\"/\\includegraphics\[scale=0.8\]\{\.\.\/protokoll\//'
+	sedit 's/<img src=\"/\\\\\\includegraphics\[scale=0.8\]\{\.\.\/protokoll\//'
 	sedit 's/\" alt=\"Klassenaufteilung\"\ \/>/}/'
 	sedit 's/<b>/\{\\em /' 
 	sedit 's/<\/b>/}/' 
@@ -62,9 +62,9 @@ for FILE in *.xhtml;
 	sedit 's/<i>/\{\\it /' 
 	sedit 's/<\/i>/}/' 
 
-	sedit 's/\&ouml/\"o/'
-	sedit 's/\&auml/\"a/'
-	sedit 's/\&uuml/\"u/'
+	sedit 's/\&ouml;/\"o/'
+	sedit 's/\&auml;/\"a/'
+	sedit 's/\&uuml;/\"u/'
 	dos2unix $TMP1
 
 	
