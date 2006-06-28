@@ -34,7 +34,11 @@ aus dem Webserver-Verzeichnis gel"oscht werden, damit niemand die Datenbankverbi
 setzen kann.
 
 \section{Programm-Filesystem}
-{TODO}
+
+
+
+Nachdem sie das System erfolgreich eingerichtet haben, sind folgende Datein auf Ihrem Webverzeichnis:
+
 \begin{longtable}{|l|p{6cm}|r|}
 \hline
 {\bf Bezeichnung der Datei} & {\bf Bedeutung} & {\bf Anzahl Bytes}\\
@@ -93,7 +97,30 @@ include/login.php &  Verwaltet die Session des Users und der damit entstehenden 
 \hline
 include/sqldb\_mysql.php & Startet eine Verbindung zum Datenbanksystem her und w"ahlt eine Datenbank & 7212\\
 \hline
+design/liman.css & Stylesheets & 2097\\
+\hline
+design/unittest.css & Stylesheets & 246\\
+\hline
 \end{longtable}
 
 
 \section{Administrationsanleitung}
+
+
+Es wird empfohlen, regelm"a"sig eine Sicherung der Datenbank anzulegen. Das System bietet diese Funktion nicht direkt an,
+sondern verweist auf das Programm phpMyAdmin. Um es zu starten, rufen sie die Datei ............ in Ihrem Installationsverzeichnis auf.
+Zust"andig f"ur die Sicherung der Datenbank ist der Link "Exportieren" in der Datenbankansicht. 
+
+{TODO Screenshot}
+
+Ihr Datenbank besteht aus mehreren Tabellen, bevor diese Exportiert werden k"onnen, m"ussen sie ausw"ahlen, welche der Tabellen Sie Sichern wollen. 
+Daneben stellen Sie ein, ob nur die Struktur 
+(also der Aufbau) der jeweiligen Tabelle, die Struktur zusammen mit den gespeicherten Datens"atzen oder nur die Datens"atze gesichert werden sollen.
+
+Weiter unten k"onnen Sie die Funktion Drop Table ausw"ahlen, welche bewirkt, dass die jeweilige Tabelle nach dem Kopieren sofort gel"oscht wird. Des weiteren 
+kann man einstellen, ob vollst"andige oder erweiterte Inserts ausgef"uhrt werden sollen.  
+
+Wenn Sie Senden ausw"ahlen, wird die Ausgabe als Datei gespeichert, was f"ur den Zweck der Datensicherung am Sinn vollsten ist. Ansonsten wird die 
+Ausgabe auf dem Bildschirm wiedergegeben. 
+Falls sie "ofters Sicherungen anlegt, ist eine weitere Option "ZIP / GZIP Komprimieren" sehr praktisch. Wenn Sie dies ausw"ahlen wird die Datei mit ZIP 
+komprimiert.
