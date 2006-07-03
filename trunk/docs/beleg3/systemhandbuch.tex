@@ -116,20 +116,18 @@ kann man einstellen, ob vollst"andige oder erweiterte Inserts ausgef"uhrt werden
 
 Wenn Sie Senden ausw"ahlen, wird die Ausgabe als Datei gespeichert, was f"ur den Zweck der Datensicherung am Sinn vollsten ist. Ansonsten wird die 
 Ausgabe auf dem Bildschirm wiedergegeben. 
-Falls sie "ofters Sicherungen anlegt, ist eine weitere Option ZIP / GZIP Komprimieren sehr praktisch. Wenn Sie dies ausw"ahlen wird die Datei mit ZIP 
-komprimiert.
+Falls sie "ofters Sicherungen anlegen, ist eine weitere Option ZIP / GZIP Komprimieren sehr praktisch. Wenn Sie dies ausw"ahlen wird die Datei mit ZIP komprimiert.
 
 Eine weitere Möglichkeit, besonders für die automatisierte Sicherung der Datenbank, bietet das Programm mysqldump, welches ein Teil der MySQL-Anwendungen ist. Eine genau Erklärung über die Funktionsweise von mysqldump ist in den Handbüchern zu MySQL enthalten (\pdfurl{http://www.mysql.com/doc/de/mysqldump.html}).
 
 
 Eine Fehlermeldung k"onnte zum Beispiel ''Could not connect to SQL server. Please inform Webmaster'' sein. Hier gelingt es dem System nicht, sich mit 
 der Datenbank zu verbinden. Als erstes sollten Sie sicher stellen, ob Ihr MySQL-Server gestartet ist. Ein weiterer Grund f"ur diese Fehlermeldung k"onnte 
-eine unaktuelle Config.php sein. In dieser Datei werden alle Einstellungen gespeichert, unter anderem auch f"ur den Datenbankzugriff wichtige Daten. Es 
+eine unaktuelle include/config.php sein. In dieser Datei werden alle Einstellungen gespeichert, unter anderem auch f"ur den Datenbankzugriff wichtige Daten. Es 
 kann vorkommen, dass hier zum Beispiel ein veralteter Benutzername oder Passwort enthalten ist.
 
 Was sollte man tun, wenn die Fehlermeldung, dass Daten nicht geschrieben/geändert oder gelöscht werden k"onnen, auftritt? Schauen Sie nach, ob die Rechte 
 der einzelnen Tabellen der Datenbank richtig gesetzt sind. Am besten mit dem weiter vorn schon erw"ahnten Programm ''phpMyAdmin''.
 
-Des weiteren kann auftreten, dass ein User nach dem einloggen direkt wieder aus geloggt wird. Der Grund f"ur diesen Fehler ist, dass Ihr Webserver keine 
-Schreib rechte auf den Ordner, der die Sessions speichert, hat. Die Zugriffsrechte f"ur Ordner/Datein auf einem Webserver lassen sich zum Beispiel 
-mit Hilfe eines FTP Programms einstellen. 
+Des weiteren kann auftreten, dass ein User nach dem Einloggen direkt wieder aus geloggt wird. Der Grund f"ur diesen Fehler ist, dass Ihr Webserver keine 
+Schreibrechte auf den Ordner hat, in der PHP die Sessions speichert.
