@@ -106,7 +106,6 @@ include/sqldb\_mysql.php & Startet eine Verbindung zum Datenbanksystem her und w
 Es wird empfohlen, regelm"a"sig eine Sicherung der Datenbank anzulegen. Das System bietet diese Funktion nicht direkt an,
 sondern verweist auf das Programm phpMyAdmin (\pdfurl{http://www.phpmyadmin.net/}). Zust"andig f"ur die Sicherung der Datenbank ist der Link ``Exportieren'' in der Datenbankansicht.
 
-{TODO Screenshot}
 
 Ihr Datenbank besteht aus mehreren Tabellen, bevor diese Exportiert werden k"onnen, m"ussen sie ausw"ahlen, welche der Tabellen Sie Sichern wollen. 
 Daneben stellen Sie ein, ob nur die Struktur 
@@ -117,13 +116,20 @@ kann man einstellen, ob vollst"andige oder erweiterte Inserts ausgef"uhrt werden
 
 Wenn Sie Senden ausw"ahlen, wird die Ausgabe als Datei gespeichert, was f"ur den Zweck der Datensicherung am Sinn vollsten ist. Ansonsten wird die 
 Ausgabe auf dem Bildschirm wiedergegeben. 
-Falls sie "ofters Sicherungen anlegt, ist eine weitere Option "ZIP / GZIP Komprimieren" sehr praktisch. Wenn Sie dies ausw"ahlen wird die Datei mit ZIP 
+Falls sie "ofters Sicherungen anlegt, ist eine weitere Option ZIP / GZIP Komprimieren sehr praktisch. Wenn Sie dies ausw"ahlen wird die Datei mit ZIP 
 komprimiert.
 
 Eine weitere Möglichkeit, besonders für die automatisierte Sicherung der Datenbank, bietet das Programm mysqldump, welches ein Teil der MySQL-Anwendungen ist. Eine genau Erklärung über die Funktionsweise von mysqldump ist in den Handbüchern zu MySQL enthalten (\pdfurl{http://www.mysql.com/doc/de/mysqldump.html}).
 
-{TODO Was tun, wenn der Webserver ``Could not connect to SQL server. Please inform Webmaster'' bringt?}
 
-{TODO Was tun, wenn Daten nie geschrieben/geändert/gelöscht werden?}
+Eine Fehlermeldung k"onnte zum Beispiel ''Could not connect to SQL server. Please inform Webmaster'' sein. Hier gelingt es dem System nicht, sich mit 
+der Datenbank zu verbinden. Als erstes sollten Sie sicher stellen, ob Ihr MySQL-Server gestartet ist. Ein weiterer Grund f"ur diese Fehlermeldung k"onnte 
+eine unaktuelle Config.php sein. In dieser Datei werden alle Einstellungen gespeichert, unter anderem auch f"ur den Datenbankzugriff wichtige Daten. Es 
+kann vorkommen, dass hier zum Beispiel ein veralteter Benutzername oder Passwort enthalten ist.
 
-{TODO Was tun, wenn User nach dem einloggen direkt wieder ausgeloggt werden?}
+Was sollte man tun, wenn die Fehlermeldung, dass Daten nicht geschrieben/geändert oder gelöscht werden k"onnen, auftritt? Schauen Sie nach, ob die Rechte 
+der einzelnen Tabellen der Datenbank richtig gesetzt sind. Am besten mit dem weiter vorn schon erw"ahnten Programm ''phpMyAdmin''.
+
+Des weiteren kann auftreten, dass ein User nach dem einloggen direkt wieder aus geloggt wird. Der Grund f"ur diesen Fehler ist, dass Ihr Webserver keine 
+Schreib rechte auf den Ordner, der die Sessions speichert, hat. Die Zugriffsrechte f"ur Ordner/Datein auf einem Webserver lassen sich zum Beispiel 
+mit Hilfe eines FTP Programms einstellen. 
