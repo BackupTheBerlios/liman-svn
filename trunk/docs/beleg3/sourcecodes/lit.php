@@ -91,10 +91,14 @@
 	<hr>
 
 	<table id="litkommentare">
-		<tbody>
-			<?php
-				require_once("include/form_helper.php");
-				$owncomment = ""; // hat der user schon etwas kommentiert?
+		<?php
+			require_once("include/form_helper.php");
+			$owncomment = ""; // hat der user schon etwas kommentiert?
+			
+			
+			if (empty($literatur->Kommentare) === false)
+			{
+				echo "<tbody>";
 				foreach ($literatur->Kommentare as $cur)
 				{
 					// Suche ob schon ein Kommentar des aktuellen Mitglieds existiert
@@ -119,8 +123,13 @@
 				</tr>
 			<?php
 				}
-			?>
-		</tbody>
+				echo "</tbody>";
+			}
+			else
+			{
+				echo "<tbody><tr><td colspan=\"2\">Keine Kommentare vorhanden</td></tr></tbody>";
+			}
+		?>
 	</table>
 
 	<?php

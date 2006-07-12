@@ -1,12 +1,12 @@
 <?php
-	// Datenbankeinstellungen
-	$db_config['dbms'] = "mysql";	// welche Datenbankklasse benutzen?
-	$db_config['user'] = "liman"; // Nutzername des Datenbanknutzers
-	$db_config['pass'] = "drownamil"; // Passwort für Datenbanknutzer
-	$db_config['name'] = "liman"; // Name der Datenbank
-	$db_config['host'] = "db.berlios.de"; // Adresse des Datenbankservers
-	$db_config['prefix'] = "liman_"; // Prefix der Tabellennamen
+        // Datenbankeinstellungen
+        $db_config['dbms'] = "mysql";
+        $db_config['user'] = "liman";
+        $db_config['pass'] = "drownamil";
+        $db_config['name'] = "liman";
+        $db_config['host'] = "db.berlios.de";
+        $db_config['prefix'] = "liman_";
 
-	$ext = "php";	// Endung der von den Usern abrufbaren Dateien
-	$gz_enable = true; // aktiviere GZIP-Kompression der HTML-Dateien
+        $ext = "php";   // Endung der von den Usern abrufbaren Dateien
+        $gz_enable = false; // aktiviere GZIP-Kompression der HTML-Dateien
 ?>

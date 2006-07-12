@@ -56,7 +56,7 @@
 		{
 	?>
 		<tr>
-			<td><a href="lit.<?= $ext; ?>?id=<?= htmlspecialchars($cur->Nr); ?>"><?= htmlspecialchars($cur->Titel); ?></a></td>
+			<td><a href="lit.<?=$ext;?>?id=<?= htmlspecialchars($cur->Nr); ?>"><?= htmlspecialchars($cur->Titel); ?></a></td>
 			<td><?=htmlspecialchars($cur->Autor);?></td>
 			<td><?=htmlspecialchars($cur->Verlag);?></td>
 			<td><?=htmlspecialchars($cur->ISBN);?></td>
@@ -71,7 +71,7 @@
 	else
 	{
 		// Wenn nicht, gebe Information aus
-		echo "<div id=\"warning\">Keine Treffern gefunden</div>";
+		echo "<div id=\"warning\">Keine Treffer gefunden</div>";
 	}
 ?>
 

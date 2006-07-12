@@ -71,7 +71,7 @@
 	else
 	{
 		// Wenn nicht, gebe Information aus
-		echo "<div id=\"warning\">Keine Treffern gefunden</div>";
+		echo "<div id=\"warning\">Keine Treffer gefunden</div>";
 	}
 ?>
 

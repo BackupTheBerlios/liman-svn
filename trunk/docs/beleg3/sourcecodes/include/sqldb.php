@@ -4,7 +4,15 @@
 	{
 		default:
 		case "mysql":
-			require_once("include/sqldb_mysql.php");
+			if (function_exists("mysql_connect") === true
+			    && function_exists("mysql_connect") === true)
+			{
+				require_once("include/sqldb_mysql.php");
+			}
+			else
+			{
+				die("Es liegt ein Problem mit der PHP-MySQL-Einbindung vor. Bitte vergewissern sie sich, dass alle nötigen PHP-Module vorhanden sind.");
+			}
 			break;
 	}
 	
@@ -13,5 +21,8 @@
 	
 	// Gib Fehler aus und breche ab, wenn keine Verbindung zum SQL-Server besteht
 	if ($sqldb->db_id === false)
-		die(mysql_error().". Could not connect to SQL server. Please inform Webmaster");;
+	{
+		$error = $sqldb->GetError();
+		die("Could not connect to SQL server. Please inform Webmaster:\n ".$error['msg']);
+	}
 ?>

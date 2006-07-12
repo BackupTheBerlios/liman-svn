@@ -14,10 +14,12 @@
 				<th scope="col">Aktionen</th>
 			</tr>
 		</thead>
-		<tbody>
-			<?php
-				require_once("include/mitglied.php");
+		<?php
+			require_once("include/mitglied.php");
 
+			if (empty($members->Treffer) === false)
+			{
+				echo "<tbody>";
 				// Lese alle Mitglieder aus (wenn Administrator)
 				// oder eigene Daten (wenn Mitglied)
 				$members = Mitglied::GetAll();
@@ -52,8 +54,13 @@
 			</tr>
 			<?php
 				}
-			?>
-		</tbody>
+				echo "</tbody>";
+			}
+			else
+			{
+				echo "<tbody><tr><td colspan=\"5\">Keine Mitglieder gefunden</td></tr></tbody>";
+			}
+		?>
 	</table>
 
 	<?php

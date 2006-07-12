@@ -201,7 +201,7 @@
 
 			// Finde alle BibTeX-Einträge
 			// Funktioniert nicht bei Argumenten über mehrere Zeilen
-			if (preg_match_all('/@([\w]+[\s]*)\{[\s]*([-\d\w]+)(([\s]*,[\s]*'. '[\w]*[\s]*=[\s]*([\w]+|\{.*\}|".*")[\s]*)+)\}/', $bibtex, $regexp_entries) !== false)
+			if (preg_match_all('/@([\w]+[\s]*)\{[\s]*([-\d\w]+)(([\s]*,[\s]*[\w]*[\s]*=[\s]*([\w]+|\{.*\}|".*")[\s]*)+)\}/', $bibtex, $regexp_entries) !== false)
 			{
 				$num_entries = sizeof($regexp_entries[0]);
 			}
@@ -243,10 +243,11 @@
 				$cur->id = trim($regexp_entries[2][$i]);
 
 				// Extrahiere "Optionen"
-				if (preg_match_all('/(([\w]*)[\s]*=[\s]*([\w]+|\{.*\}|'. '".*")[\s]*(,|\}))+/', $regexp_entries[3][$i], $regexp_options) !== false)
+				if (preg_match_all('/(([\w]*)[\s]*=[\s]*([\w]+|\{.*\}|".*")[\s]*(,|))+/', $regexp_entries[3][$i], $regexp_options) !== false)
 				{
 					// Lese die Optionen des aktuellen BibTeX-Eintrags einzeln
 					$num_options = sizeof($regexp_options[0]);
+					print_r($regexp_options[0]);
 					for ($j = 0; $j < $num_options; $j++)
 					{
 						// Name des Arguments der "Option" auslesen und bereinigen
@@ -262,7 +263,7 @@
 						}
 
 						// Weiße Daten der aktuellen Option zu
-						switch (strtolower( trim($regexp_options[2][$j])))
+						switch (strtolower(trim($regexp_options[2][$j])))
 						{
 						case "title":
 							$cur->titel = $argument;

@@ -14,12 +14,14 @@
 				<th scope="col">ISBN</th>
 			</tr>
 		</thead>
-		<tbody>
-			<?php
-				// Suche zuletzt hinzugefügte Literatur
-				require_once("include/suche.php");
-				$search = new Suche();
+		<?php
+			// Suche zuletzt hinzugefügte Literatur
+			require_once("include/suche.php");
+			$search = new Suche();
 
+			if (empty($search->Treffer) === false)
+			{
+				echo "<tbody>";
 				// Gebe alle gefundenen Treffer aus
 				foreach ($search->Treffer as $cur)
 				{
@@ -34,8 +36,13 @@
 					</tr>
 				<?php
 				}
-			?>
-		</tbody>
+				echo "</tbody>";
+			}
+			else
+			{
+				echo "<tbody><tr><td colspan=\"4\">Keine Literatur vorhanden</td></tr></tbody>";
+			}
+		?>
 	</table>
 	<?php
 		// Sind Mitgliedsrechte vorhanden, gebe Hinzufüge- und Importierknopf aus
