@@ -247,7 +247,6 @@
 				{
 					// Lese die Optionen des aktuellen BibTeX-Eintrags einzeln
 					$num_options = sizeof($regexp_options[0]);
-					print_r($regexp_options[0]);
 					for ($j = 0; $j < $num_options; $j++)
 					{
 						// Name des Arguments der "Option" auslesen und bereinigen
