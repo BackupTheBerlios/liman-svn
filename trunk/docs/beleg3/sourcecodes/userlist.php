@@ -17,12 +17,12 @@
 		<?php
 			require_once("include/mitglied.php");
 
-			if (empty($members->Treffer) === false)
+			// Lese alle Mitglieder aus (wenn Administrator)
+			// oder eigene Daten (wenn Mitglied)
+			$members = Mitglied::GetAll();
+			if (empty($members) === false)
 			{
 				echo "<tbody>";
-				// Lese alle Mitglieder aus (wenn Administrator)
-				// oder eigene Daten (wenn Mitglied)
-				$members = Mitglied::GetAll();
 				foreach ($members as $cur)
 				{
 			?>
