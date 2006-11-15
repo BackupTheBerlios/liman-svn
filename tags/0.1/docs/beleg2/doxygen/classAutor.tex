@@ -1,0 +1,138 @@
+\hypertarget{classAutor}{
+\subsection{Autor Klassenreferenz}
+\label{classAutor}\index{Autor@{Autor}}
+}
+Verwaltet Autoren.  
+
+
+\subsubsection*{\"{O}ffentliche Methoden}
+\begin{CompactItemize}
+\item 
+\hyperlink{classAutor_2302710dd8970853f5d49c62d4586e8f}{Autor} (\$data)
+\begin{CompactList}\small\item\em Legt Autorenobjekt an. \item\end{CompactList}\item 
+\hyperlink{classAutor_77b27af7e471abe5a404fc92c7319921}{Clean} ()
+\begin{CompactList}\small\item\em Entfernt unnötige Autoren. \item\end{CompactList}\item 
+\hyperlink{classAutor_79cd90084cab240919a5daecf39156a7}{Get\-All} (\$literatur\_\-nr)
+\begin{CompactList}\small\item\em Gibt Autoren zu bestimmter \hyperlink{classLiteratur}{Literatur} zurück. \item\end{CompactList}\item 
+\hyperlink{classAutor_2ba5418b6622f414fa8a054e6c2a2db8}{Split} (\$autoren)
+\begin{CompactList}\small\item\em Legt neue Autoren aus kommagetrennter Liste an. \item\end{CompactList}\end{CompactItemize}
+\subsubsection*{\"{O}ffentliche Attribute}
+\begin{CompactItemize}
+\item 
+\hyperlink{classAutor_23e64634d5dc31b41b7ee9c49b9ea6b9}{\$Nr}
+\begin{CompactList}\small\item\em Identifikationsnummer des Autors. \item\end{CompactList}\item 
+\hyperlink{classAutor_8602b5705cef83e7c16f4040f9add56d}{\$Name}
+\begin{CompactList}\small\item\em Name des Autors. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsubsection{Ausf\"{u}hrliche Beschreibung}
+Verwaltet Autoren. 
+
+Stellt Funktionen zum Hinzufügen von Autoren und Bereinigen nicht mehr benutzter Autoren bereit. \begin{Desc}
+\item[Vorbedingung:]Datenbankverbindung muss bestehen \end{Desc}
+\begin{Desc}
+\item[Importiert:]\begin{itemize}
+\item \hyperlink{classLogin_70d2747b0aa454f4203a789afea25318}{Login::Is\-Member}\item \hyperlink{classSQLDB_fc6ffa8df50f68f07d9f5e3385b96d7a}{SQLDB::Query}\item \hyperlink{classSQLDB_a55c00ce1de0e50e0a58cae61892ba35}{SQLDB::Fetch}\item \hyperlink{classSQLDB_094a5b811d412900f2435cabb2194fb8}{SQLDB::Get\-Insert\-ID}\end{itemize}
+\end{Desc}
+\begin{Desc}
+\item[Autor:]Frank Wilhelm \end{Desc}
+\begin{Desc}
+\item[Änderungsstand:]6.06.2006 \end{Desc}
+
+
+
+
+\subsubsection{Beschreibung der Konstruktoren und Destruktoren}
+\hypertarget{classAutor_2302710dd8970853f5d49c62d4586e8f}{
+\index{Autor@{Autor}!Autor@{Autor}}
+\index{Autor@{Autor}!Autor@{Autor}}
+\paragraph[Autor]{\setlength{\rightskip}{0pt plus 5cm}Autor::Autor (\$ {\em data})}\hfill}
+\label{classAutor_2302710dd8970853f5d49c62d4586e8f}
+
+
+Legt Autorenobjekt an. 
+
+Legt ein neues Autorenobjekt aus einem Objekt mit den Attributen Nr und Name an. \begin{Desc}
+\item[Vorbedingung:]- \end{Desc}
+\begin{Desc}
+\item[Parameter:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em \$data}]Objekt mit Autorendaten der Form\begin{itemize}
+\item Nr\item Name \end{itemize}
+\end{description}
+\end{Desc}
+
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{classAutor_77b27af7e471abe5a404fc92c7319921}{
+\index{Autor@{Autor}!Clean@{Clean}}
+\index{Clean@{Clean}!Autor@{Autor}}
+\paragraph[Clean]{\setlength{\rightskip}{0pt plus 5cm}Autor::Clean ()}\hfill}
+\label{classAutor_77b27af7e471abe5a404fc92c7319921}
+
+
+Entfernt unnötige Autoren. 
+
+Entfernt aus Autoren alle Autoren, die keine Verbindung (Literatur\_\-Autor-Tabelle) mehr mit \hyperlink{classLiteratur}{Literatur} haben. \begin{Desc}
+\item[Vorbedingung:]Datenbankverbindung muss bestehen \end{Desc}
+\begin{Desc}
+\item[Bemerkungen:]Ist der Nutzer nicht eingeloggt, werden keine Operationen ausgeführt. \end{Desc}
+\hypertarget{classAutor_79cd90084cab240919a5daecf39156a7}{
+\index{Autor@{Autor}!GetAll@{GetAll}}
+\index{GetAll@{GetAll}!Autor@{Autor}}
+\paragraph[GetAll]{\setlength{\rightskip}{0pt plus 5cm}Autor::Get\-All (\$ {\em literatur\_\-nr})}\hfill}
+\label{classAutor_79cd90084cab240919a5daecf39156a7}
+
+
+Gibt Autoren zu bestimmter \hyperlink{classLiteratur}{Literatur} zurück. 
+
+Liest alle Autoren die einer \hyperlink{classLiteratur}{Literatur} (\$literatur\_\-nr) zugeordnet sind aus Kommentare aus und gibt sie als Feld des Typs \hyperlink{classAutor}{Autor} zurück. \begin{Desc}
+\item[Parameter:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em \$literatur\_\-nr}]Nr einer \hyperlink{classLiteratur}{Literatur} mit Autoren \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Vorbedingung:]Datenbankverbindung muss bestehen \end{Desc}
+\begin{Desc}
+\item[R\"{u}ckgabe:]Feld mit Elementen vom Typ \hyperlink{classAutor}{Autor} \end{Desc}
+\hypertarget{classAutor_2ba5418b6622f414fa8a054e6c2a2db8}{
+\index{Autor@{Autor}!Split@{Split}}
+\index{Split@{Split}!Autor@{Autor}}
+\paragraph[Split]{\setlength{\rightskip}{0pt plus 5cm}Autor::Split (\$ {\em autoren})}\hfill}
+\label{classAutor_2ba5418b6622f414fa8a054e6c2a2db8}
+
+
+Legt neue Autoren aus kommagetrennter Liste an. 
+
+Teilt die kommagetrennte Liste von Autoren in einzelne Autorennamen ein und überprüft gegen Autorentabelle, ob diese schon in der Datenbank existieren. Sollten diese schon existieren, dann wird Autor\_\-Nr ausgelesen und zum Feld hinzugefügt. Sollten diese noch nicht existieren, werden sie hinzugefügt und die neuen Autor\_\-Nr zum Feld hinzugefügt. Das komplette Feld mit Autor\_\-Nr wird zurückgegeben. \begin{Desc}
+\item[Vorbedingung:]Datenbankverbindung muss bestehen \end{Desc}
+\begin{Desc}
+\item[Parameter:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em \$autoren}]String mit kommagetrennter Liste von Autoren \end{description}
+\end{Desc}
+\begin{Desc}
+\item[R\"{u}ckgabe:]Feld mit Autor\_\-Nr der Autoren \end{Desc}
+\begin{Desc}
+\item[Bemerkungen:]Ist der Nutzer nicht eingeloggt, werden keine Operationen ausgeführt. \end{Desc}
+
+
+\subsubsection{Dokumentation der Datenelemente}
+\hypertarget{classAutor_8602b5705cef83e7c16f4040f9add56d}{
+\index{Autor@{Autor}!$Name@{\$Name}}
+\index{$Name@{\$Name}!Autor@{Autor}}
+\paragraph[\$Name]{\setlength{\rightskip}{0pt plus 5cm}Autor::\$Name}\hfill}
+\label{classAutor_8602b5705cef83e7c16f4040f9add56d}
+
+
+Name des Autors. 
+
+\hypertarget{classAutor_23e64634d5dc31b41b7ee9c49b9ea6b9}{
+\index{Autor@{Autor}!$Nr@{\$Nr}}
+\index{$Nr@{\$Nr}!Autor@{Autor}}
+\paragraph[\$Nr]{\setlength{\rightskip}{0pt plus 5cm}Autor::\$Nr}\hfill}
+\label{classAutor_23e64634d5dc31b41b7ee9c49b9ea6b9}
+
+
+Identifikationsnummer des Autors. 
+

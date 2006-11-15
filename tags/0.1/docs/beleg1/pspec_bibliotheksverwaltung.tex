@@ -1,0 +1,103 @@
+% Literatur_anlegen
+\paragraph{Literatur\_anlegen}
+\begin{tabular}[t]{p{9.5cm}ll}
+\textbf{Prozess}: Literatur\_anlegen  	&\textbf{Datum}:      &21.04.2006\\
+					&\textbf{Bearbeiter}: &Frank Wilhelm\\
+\end{tabular}
+
+\hrulefill\\
+\textbf{Voraussetzung}: Benutzer ist angemeldet. Bibliothek ist nicht voll.
+\begin{verbatim}
+ BEGIN
+   Finde in Bibliothek Literatur
+         mit Literatur.Titel = Literaturdaten.Titel
+         und Literatur.Autor = Literaturdaten.Autor;
+ 
+   IF gefunden THEN
+   BEGIN
+     Zeige Warnung 101
+     IF not bestätigt THEN
+       Abbrechen
+   END
+   
+   Finde in Autoren Autor
+         mit Autor.Name = Literaturdaten.Autor.Name;
+         
+   IF gefunden THEN
+     Literaturdaten.Autor := Autor
+   ELSE
+   BEGIN
+     Lege in Autoren Autor mit Literaturdaten.Autor.Name an
+     Literaturdaten.Autor := Autor
+   END
+   
+   Lege in Bibliothek Literatur mit Literaturdaten an
+   Setze Bestätigung_Literaturanlegen
+ END
+\end{verbatim}
+\hrulefill
+
+
+
+% Literatur_ändern
+\paragraph{Literatur\_ändern}
+\begin{tabular}[t]{p{9.5cm}ll}
+\textbf{Prozess}: Literatur\_ändern  	&\textbf{Datum}:      &21.04.2006\\
+					&\textbf{Bearbeiter}: &Frank Wilhelm\\
+\end{tabular}
+
+\hrulefill\\
+\textbf{Voraussetzung}: Benutzer ist angemeldet.
+\begin{verbatim}
+ BEGIN
+   Finde in Autoren Autor
+         mit Autor.Name =  Literatur.Autor.Name;
+         
+   IF gefunden THEN
+      Literatur.Autor := Autor
+   ELSE
+   BEGIN
+     Lege in Autoren Autor mit Literaturdaten.Autor.Name an
+     Literatur.Autor := Autor
+   END
+   
+   Setze in Bibliothek Literatur_Eintrag
+         mit Literatur_Eintrag.Literatur_Nr = Literatur.Literatur_Nr
+         auf Literatur;
+  
+   IF erfolgreich THEN
+     Setze Bestätigung_Literaturändern
+   ELSE
+     Setze Fehler 102
+ END
+\end{verbatim}
+\hrulefill
+
+
+
+% Literatur_löschen
+\paragraph{Literatur\_löschen}
+\begin{tabular}[t]{p{9.5cm}ll}
+\textbf{Prozess}: Literatur\_löschen  	&\textbf{Datum}:      &21.04.2006\\
+					&\textbf{Bearbeiter}: &F. Wilhelm\\
+\end{tabular}
+
+\hrulefill\\
+\textbf{Voraussetzung}: Benutzer ist angemeldet.
+\begin{verbatim}
+ BEGIN
+   Lösche in Bibliothek Literatur mit Literatur.Literatur_Nr = 
+                                      Literatur_Nr;
+
+   IF erfolgreich THEN
+     Lösche in Kommentare Kommentar mit Kommentar.Literatur_Nr = 
+                                        Literatur_Nr
+
+     Lösche in Autoren Autor mit Autor ohne Literatur
+
+     Setze Bestätigung_Literaturlöschen
+   ELSE
+     Setze Fehler 103
+ END
+\end{verbatim}
+\hrulefill

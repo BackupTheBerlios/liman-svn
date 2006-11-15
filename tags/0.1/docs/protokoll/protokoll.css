@@ -1,0 +1,16 @@
+h1, h2 {
+	text-align: center;
+}
+
+abbr, acronym {
+	border-bottom: 1px dotted #000;
+	cursor: help;
+}
+
+@media print {
+	a[href^="http:"]:after
+	{
+		content: " (" attr(href) ") ";
+		font-size: 90%;
+	}
+}

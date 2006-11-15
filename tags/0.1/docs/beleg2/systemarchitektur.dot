@@ -1,0 +1,92 @@
+digraph G
+{
+	ranksep=1;
+	concentrate=true;
+	ratio=fill;
+	size="10,5"
+	subgraph LiMan
+	{
+		node [shape=box];
+		rank = min;
+
+		Literaturverwaltung
+	}
+
+	subgraph Prozesse
+	{
+		node [shape=box];
+		rank = same;
+
+		Bibliotheksverwaltung
+		Kommentarverwaltung
+		Mitgliedsverwaltung
+		Literaturinformation
+		Suchsystem
+	}
+
+	subgraph Klassen
+	{
+		node [shape=box];
+		edge [weight=100, minlen=0, constraint=false]
+		rank = same;
+		
+		LiteraturArt
+		Autor
+		Kommentar
+		Literatur
+		Mitglied
+		Suche
+
+		// Klassen untereinander
+		Literatur -> Autor
+		Literatur -> Kommentar
+		Literatur -> LiteraturArt
+		Mitglied -> Kommentar
+	
+		Suche -> Autor
+	}
+
+	subgraph SQLDB
+	{
+		node [shape=box]
+		rank = same
+
+		SQLDB
+	}
+
+	subgraph Datenbank
+	{
+		node [shape=box];
+		rank = max;
+
+		Datenbank
+	}
+
+
+	// LiMan zu Prozesse
+	Literaturverwaltung -> Bibliotheksverwaltung
+	Literaturverwaltung -> Kommentarverwaltung
+	Literaturverwaltung -> Mitgliedsverwaltung
+	Literaturverwaltung -> Literaturinformation
+	Literaturverwaltung -> Suchsystem
+
+	// Prozesse zu Klassen
+	Bibliotheksverwaltung -> Literatur
+
+	Literaturinformation -> Literatur
+
+	Kommentarverwaltung -> Kommentar
+
+	Mitgliedsverwaltung -> Mitglied
+
+	Suchsystem -> Suche
+
+	// Klassen auf Datenbank
+	Autor -> SQLDB
+	Kommentar -> SQLDB
+	Literatur -> SQLDB
+	Mitglied -> SQLDB
+	Suche -> SQLDB
+
+	SQLDB -> Datenbank
+}

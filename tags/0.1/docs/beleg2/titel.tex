@@ -1,0 +1,43 @@
+% Momentan (schlecht) handgestrickt - wenn jemand es mit \maketitle und den
+% Autoren wie in Vorlage hinbekommt, bitte ändern
+
+\begin{titlepage}
+	\begin{center}\sffamily
+		\vspace{15mm}
+		\includegraphics{tuclogo}
+		\vfill
+		{% Kopf des Titels
+			\large Softwarepraktikum 2006\\[1.5ex]
+		}
+		\vfill \vfill
+
+		%Titel
+		\textbf{\Huge\dctitle}
+		\vspace{1.5cm}
+		
+		% Subjekt
+		\textbf{\Large\dcsubject}
+
+		% Untertitel
+		\textsc{\Large \dcsubtitle}
+		\vfill \vfill
+	\end{center}
+	
+	
+	{%Autoren
+		\begin{tabbing}
+			\hspace{4.5cm}\=\textbf{Teamleiter:}\hspace{0.5cm}\=Simon~Wunderlich\\[2.0ex]
+				\>\textbf{Mitglieder des Projektteams:}\\[1.5ex]
+				\>            \>Andreas~Tröger \\[1.5ex]
+				\>            \>Frank~Wilhelm \\[1.5ex]
+				\>            \>Florian~Scharl \\[1.5ex]
+				\>            \>Sven~Eckelmann \\[4.0ex]
+				\> \textbf{Praktikumsbetreuer:} Michael Rentzsch
+		\end{tabbing}
+	}
+	\vfill
+	
+	{%Datum
+		Chemnitz, den \dcdate
+	}
+\end{titlepage}

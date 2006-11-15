@@ -1,0 +1,245 @@
+\hypertarget{classMitglied}{
+\subsection{Mitglied Klassenreferenz}
+\label{classMitglied}\index{Mitglied@{Mitglied}}
+}
+Verwaltet Mitglieder.  
+
+
+\subsubsection*{\"{O}ffentliche Methoden}
+\begin{CompactItemize}
+\item 
+\hyperlink{classMitglied_0ee18db6476bcb6d71d30978eb69c7ae}{Mitglied} (\$nr)
+\begin{CompactList}\small\item\em Liest \hyperlink{classMitglied}{Mitglied} ein. \item\end{CompactList}\item 
+\hyperlink{classMitglied_9b13db80866c22bf992e73f2eb75e369}{Password\-Hash} (\$pass)
+\begin{CompactList}\small\item\em Generiert Passworthash. \item\end{CompactList}\item 
+\hyperlink{classMitglied_c6900c12663e9b228bf9942fc045b8b4}{Delete} (\$nr)
+\begin{CompactList}\small\item\em Entfernt \hyperlink{classMitglied}{Mitglied}. \item\end{CompactList}\item 
+\hyperlink{classMitglied_5d9d5d087779303f002cbbcfcf1735c1}{Insert} (\$loginname, \$passwort, \$rechte, \$vorname, \$nachname, \$email)
+\begin{CompactList}\small\item\em Legt \hyperlink{classMitglied}{Mitglied} an. \item\end{CompactList}\item 
+\hyperlink{classMitglied_5bd2a31b6aeea5c69de9b6de825e11c2}{Update} (\$nr, \$loginname, \$passwort, \$rechte, \$vorname, \$nachname, \$email)
+\begin{CompactList}\small\item\em Ändert ein \hyperlink{classMitglied}{Mitglied}. \item\end{CompactList}\item 
+\hyperlink{classMitglied_70ce63c9c9a7159966dc9e80a7f726a2}{Get\-All} ()
+\begin{CompactList}\small\item\em Rückgabe einer Liste der Mitglieder. \item\end{CompactList}\end{CompactItemize}
+\subsubsection*{\"{O}ffentliche Attribute}
+\begin{CompactItemize}
+\item 
+\hyperlink{classMitglied_113efe44273361b7c167c729666ad04c}{\$Nr}
+\begin{CompactList}\small\item\em Identifikationsnummer des Mitglieds. \item\end{CompactList}\item 
+\hyperlink{classMitglied_626ee2f2551cc2840bdeac6a04491b2e}{\$Login}
+\begin{CompactList}\small\item\em Benutzername des Mitglieds. \item\end{CompactList}\item 
+\hyperlink{classMitglied_94f43b65c468ad42ac45be064d015446}{\$Passwort}
+\begin{CompactList}\small\item\em Passworthash des Benutzerpassworts. \item\end{CompactList}\item 
+\hyperlink{classMitglied_adadc54a72a46a089ddec43855ba3c7e}{\$Rechte}
+\begin{CompactList}\small\item\em Rechte des Mitglieds (0 - Gast, 1 - \hyperlink{classMitglied}{Mitglied}, 2 - Administrator). \item\end{CompactList}\item 
+\hyperlink{classMitglied_157424daca1ecda5b6f6a3e0f24ecfce}{\$Vorname}
+\begin{CompactList}\small\item\em Vorname des Mitglieds. \item\end{CompactList}\item 
+\hyperlink{classMitglied_635def9ec266748689397299c7f79d9c}{\$Nachname}
+\begin{CompactList}\small\item\em Nachname des Mitglieds. \item\end{CompactList}\item 
+\hyperlink{classMitglied_4be6b837c482ac912188663380d31122}{\$Email}
+\begin{CompactList}\small\item\em E-Mail-Adresse des Mitglieds. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsubsection{Ausf\"{u}hrliche Beschreibung}
+Verwaltet Mitglieder. 
+
+Stellt Funktionen zum Entfernen, Hinzufügen, Ändern und Auflisten von Mitgliedern bereit. \begin{Desc}
+\item[Vorbedingung:]Datenbankverbindung muss bestehen \end{Desc}
+\begin{Desc}
+\item[Importiert:]\begin{itemize}
+\item \hyperlink{classKommentar_92a8fcea1b065341c7c53e8a8464fcf0}{Kommentar::Delete\-All\-Member}\item \hyperlink{classLogin_6c120224aa6719f58c6ccd08acc28758}{Login::Is\-Administrator}\item \hyperlink{classLogin_70d2747b0aa454f4203a789afea25318}{Login::Is\-Member}\item \hyperlink{classSQLDB_fc6ffa8df50f68f07d9f5e3385b96d7a}{SQLDB::Query}\item \hyperlink{classSQLDB_a55c00ce1de0e50e0a58cae61892ba35}{SQLDB::Fetch}\end{itemize}
+\end{Desc}
+\begin{Desc}
+\item[Autor:]Sven Eckelmann \end{Desc}
+\begin{Desc}
+\item[Änderungsstand:]30.05.2006 \end{Desc}
+
+
+
+
+\subsubsection{Beschreibung der Konstruktoren und Destruktoren}
+\hypertarget{classMitglied_0ee18db6476bcb6d71d30978eb69c7ae}{
+\index{Mitglied@{Mitglied}!Mitglied@{Mitglied}}
+\index{Mitglied@{Mitglied}!Mitglied@{Mitglied}}
+\paragraph[Mitglied]{\setlength{\rightskip}{0pt plus 5cm}Mitglied::Mitglied (\$ {\em nr})}\hfill}
+\label{classMitglied_0ee18db6476bcb6d71d30978eb69c7ae}
+
+
+Liest \hyperlink{classMitglied}{Mitglied} ein. 
+
+Liest \hyperlink{classMitglied}{Mitglied} mit Mitglied\_\-Nr (\$nr) und setzt Felder entsprechend den Daten. \begin{Desc}
+\item[Vorbedingung:]Datenbankverbindung muss bestehen \end{Desc}
+\begin{Desc}
+\item[Parameter:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em \$nr}]Nummer der zu einlesenden \hyperlink{classLiteratur}{Literatur} \end{description}
+\end{Desc}
+
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{classMitglied_c6900c12663e9b228bf9942fc045b8b4}{
+\index{Mitglied@{Mitglied}!Delete@{Delete}}
+\index{Delete@{Delete}!Mitglied@{Mitglied}}
+\paragraph[Delete]{\setlength{\rightskip}{0pt plus 5cm}Mitglied::Delete (\$ {\em nr})}\hfill}
+\label{classMitglied_c6900c12663e9b228bf9942fc045b8b4}
+
+
+Entfernt \hyperlink{classMitglied}{Mitglied}. 
+
+Entfernt \hyperlink{classMitglied}{Mitglied} mit Mitgliedsnummer (\$nr) aus Mitglieder und löscht zusätzlich die Kommentare des Mitglieds in Kommentare \begin{Desc}
+\item[Vorbedingung:]Datenbankverbindung muss bestehen 
+
+\hyperlink{classMitglied}{Mitglied} in Mitglieder mit Mitglieds\_\-Nr \$nr muss existieren \end{Desc}
+\begin{Desc}
+\item[Parameter:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em \$nr}]Mitglieds\_\-Nr des zu löschenden Mitglieds \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Bemerkungen:]Ist der Nutzer nicht als Administrator angemeldet, werden keine Operationen ausgeführt \end{Desc}
+\hypertarget{classMitglied_70ce63c9c9a7159966dc9e80a7f726a2}{
+\index{Mitglied@{Mitglied}!GetAll@{GetAll}}
+\index{GetAll@{GetAll}!Mitglied@{Mitglied}}
+\paragraph[GetAll]{\setlength{\rightskip}{0pt plus 5cm}Mitglied::Get\-All ()}\hfill}
+\label{classMitglied_70ce63c9c9a7159966dc9e80a7f726a2}
+
+
+Rückgabe einer Liste der Mitglieder. 
+
+Liest alle Mitglieder mit Nr, \hyperlink{classLogin}{Login}, Vorname, Nachname und Email aus Tabelle Mitglieder und gibt die ausgelesenen Objekte in einem Feld zurück \begin{Desc}
+\item[Vorbedingung:]Datenbankverbindung muss bestehen \end{Desc}
+\begin{Desc}
+\item[R\"{u}ckgabe:]Feld mit Objekten der Form\begin{itemize}
+\item Nr\item \hyperlink{classLogin}{Login}\item Vorname\item Nachname\item Email \end{itemize}
+\end{Desc}
+\begin{Desc}
+\item[Bemerkungen:]Ist der Nutzer nicht als Administrator, sondern als \hyperlink{classMitglied}{Mitglied} angemeldet, wird nur der eigene Eintrag zurückgegeben. Ist der Nutzer nicht angemeldet werden keine Operationen ausgeführt. \end{Desc}
+\hypertarget{classMitglied_5d9d5d087779303f002cbbcfcf1735c1}{
+\index{Mitglied@{Mitglied}!Insert@{Insert}}
+\index{Insert@{Insert}!Mitglied@{Mitglied}}
+\paragraph[Insert]{\setlength{\rightskip}{0pt plus 5cm}Mitglied::Insert (\$ {\em loginname}, \$ {\em passwort}, \$ {\em rechte}, \$ {\em vorname}, \$ {\em nachname}, \$ {\em email})}\hfill}
+\label{classMitglied_5d9d5d087779303f002cbbcfcf1735c1}
+
+
+Legt \hyperlink{classMitglied}{Mitglied} an. 
+
+Fügt neues \hyperlink{classMitglied}{Mitglied} mit Benutzernamen (\$loginname), Passwort (\$passwort), Benutzerrechten (\$rechte), Vorname (\$vorname), Nachname (\$nachname), E-Mail-Adresse (\$email) in Mitglieder ein. Dazu wird das Passwort noch mit \hyperlink{classMitglied_9b13db80866c22bf992e73f2eb75e369}{Mitglied::Password\-Hash} gehasht. Sollte ein \hyperlink{classMitglied}{Mitglied} mit gleichem \hyperlink{classLogin}{Login} existieren wird ein Fehler zurückgegeben, da die Datenbank nur ein \hyperlink{classMitglied}{Mitglied} mit gleichem \hyperlink{classLogin}{Login} erlaubt. \begin{Desc}
+\item[Vorbedingung:]Datenbankverbindung muss bestehen \end{Desc}
+\begin{Desc}
+\item[Parameter:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em \$loginname}]Benutzername des neuen Mitglieds \item[\mbox{$\leftarrow$} {\em \$passwort}]Benutzerpasswort des neuen Mitglieds \item[\mbox{$\leftarrow$} {\em \$rechte}]Rechte des neuen Mitglieds (Benutzer, Administrator) \item[\mbox{$\leftarrow$} {\em \$vorname}]Vorname des neuen Mitglieds \item[\mbox{$\leftarrow$} {\em \$nachname}]Nachname des neuen Mitglieds \item[\mbox{$\leftarrow$} {\em \$email}]E-Mail-Adresse des neuen Mitglieds \end{description}
+\end{Desc}
+\begin{Desc}
+\item[R\"{u}ckgabewerte:]
+\begin{description}
+\item[{\em true}]\hyperlink{classMitglied}{Mitglied} wurde eingefügt \item[{\em false}]\hyperlink{classMitglied}{Mitglied} konnte nicht hinzugefügt werden \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Bemerkungen:]Ist der Nutzer nicht als Administrator angemeldet, werden keine Operationen ausgeführt. \end{Desc}
+\hypertarget{classMitglied_9b13db80866c22bf992e73f2eb75e369}{
+\index{Mitglied@{Mitglied}!PasswordHash@{PasswordHash}}
+\index{PasswordHash@{PasswordHash}!Mitglied@{Mitglied}}
+\paragraph[PasswordHash]{\setlength{\rightskip}{0pt plus 5cm}Mitglied::Password\-Hash (\$ {\em pass})}\hfill}
+\label{classMitglied_9b13db80866c22bf992e73f2eb75e369}
+
+
+Generiert Passworthash. 
+
+Aus übergebenes Klartextpasswort wird ein 40 Byte großer hexkodierter Hash generiert. Als Hashingalgorithmus wird SHA-1 genutzt \begin{Desc}
+\item[Vorbedingung:]- \end{Desc}
+\begin{Desc}
+\item[Parameter:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em \$pass}]zu hashendes Klartextpasswort \end{description}
+\end{Desc}
+\hypertarget{classMitglied_5bd2a31b6aeea5c69de9b6de825e11c2}{
+\index{Mitglied@{Mitglied}!Update@{Update}}
+\index{Update@{Update}!Mitglied@{Mitglied}}
+\paragraph[Update]{\setlength{\rightskip}{0pt plus 5cm}Mitglied::Update (\$ {\em nr}, \$ {\em loginname}, \$ {\em passwort}, \$ {\em rechte}, \$ {\em vorname}, \$ {\em nachname}, \$ {\em email})}\hfill}
+\label{classMitglied_5bd2a31b6aeea5c69de9b6de825e11c2}
+
+
+Ändert ein \hyperlink{classMitglied}{Mitglied}. 
+
+Ändert die Daten des Mitglieds mit der Mitglieds\_\-Nr (\$nr), in neuen Benutzernamen (\$loginname), Passwort (\$passwort), Benutzerrechten (\$rechte), Vorname (\$vorname), Nachname (\$nachname), E-Mail-Adresse (\$email) in Mitglieder. Wenn \$passwort nicht die Länge 0 hat, wird es noch mit Mitglied::Passwort\-Hash gehasht. Andernfalls wird das alte Passwort in Mitglieder beibehalten. Sollte ein \hyperlink{classMitglied}{Mitglied} mit gleichem \hyperlink{classLogin}{Login} existieren wird ein Fehler zurückgegeben, da die Datenbank nur ein \hyperlink{classMitglied}{Mitglied} mit gleichem \hyperlink{classLogin}{Login} erlaubt. \begin{Desc}
+\item[Vorbedingung:]Datenbankverbindung muss bestehen 
+
+\hyperlink{classMitglied}{Mitglied} in Mitglieder mit Mitglieds\_\-Nr \$nr muss existieren \end{Desc}
+\begin{Desc}
+\item[Parameter:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em \$nr}]Mitglieds\_\-Nr des zu verändernden Mitglieds \item[\mbox{$\leftarrow$} {\em \$loginname}]neuer Benutzername des Mitglieds \item[\mbox{$\leftarrow$} {\em \$passwort}]neues Passwort des Mitglieds \item[\mbox{$\leftarrow$} {\em \$rechte}]neuen Rechte des Mitglieds (Benutzer, Administrator) \item[\mbox{$\leftarrow$} {\em \$vorname}]neuer Vorname des Mitglieds \item[\mbox{$\leftarrow$} {\em \$nachname}]neuer Nachname des Mitglieds \item[\mbox{$\leftarrow$} {\em \$email}]neue E-Mail-Adresse des Mitglieds \end{description}
+\end{Desc}
+\begin{Desc}
+\item[R\"{u}ckgabewerte:]
+\begin{description}
+\item[{\em true}]\hyperlink{classMitglied}{Mitglied} wurde geändert \item[{\em false}]\hyperlink{classMitglied}{Mitglied} konnte nicht geändert werden \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Bemerkungen:]Ist der Nutzer nicht als Administrator angemeldet, werden keine Operationen ausgeführt, wenn \$nr ungleich der eigenen Mitglieds\_\-Nr is. \end{Desc}
+
+
+\subsubsection{Dokumentation der Datenelemente}
+\hypertarget{classMitglied_4be6b837c482ac912188663380d31122}{
+\index{Mitglied@{Mitglied}!$Email@{\$Email}}
+\index{$Email@{\$Email}!Mitglied@{Mitglied}}
+\paragraph[\$Email]{\setlength{\rightskip}{0pt plus 5cm}Mitglied::\$Email}\hfill}
+\label{classMitglied_4be6b837c482ac912188663380d31122}
+
+
+E-Mail-Adresse des Mitglieds. 
+
+\hypertarget{classMitglied_626ee2f2551cc2840bdeac6a04491b2e}{
+\index{Mitglied@{Mitglied}!$Login@{\$Login}}
+\index{$Login@{\$Login}!Mitglied@{Mitglied}}
+\paragraph[\$Login]{\setlength{\rightskip}{0pt plus 5cm}Mitglied::\$\hyperlink{classLogin}{Login}}\hfill}
+\label{classMitglied_626ee2f2551cc2840bdeac6a04491b2e}
+
+
+Benutzername des Mitglieds. 
+
+\hypertarget{classMitglied_635def9ec266748689397299c7f79d9c}{
+\index{Mitglied@{Mitglied}!$Nachname@{\$Nachname}}
+\index{$Nachname@{\$Nachname}!Mitglied@{Mitglied}}
+\paragraph[\$Nachname]{\setlength{\rightskip}{0pt plus 5cm}Mitglied::\$Nachname}\hfill}
+\label{classMitglied_635def9ec266748689397299c7f79d9c}
+
+
+Nachname des Mitglieds. 
+
+\hypertarget{classMitglied_113efe44273361b7c167c729666ad04c}{
+\index{Mitglied@{Mitglied}!$Nr@{\$Nr}}
+\index{$Nr@{\$Nr}!Mitglied@{Mitglied}}
+\paragraph[\$Nr]{\setlength{\rightskip}{0pt plus 5cm}Mitglied::\$Nr}\hfill}
+\label{classMitglied_113efe44273361b7c167c729666ad04c}
+
+
+Identifikationsnummer des Mitglieds. 
+
+\hypertarget{classMitglied_94f43b65c468ad42ac45be064d015446}{
+\index{Mitglied@{Mitglied}!$Passwort@{\$Passwort}}
+\index{$Passwort@{\$Passwort}!Mitglied@{Mitglied}}
+\paragraph[\$Passwort]{\setlength{\rightskip}{0pt plus 5cm}Mitglied::\$Passwort}\hfill}
+\label{classMitglied_94f43b65c468ad42ac45be064d015446}
+
+
+Passworthash des Benutzerpassworts. 
+
+\hypertarget{classMitglied_adadc54a72a46a089ddec43855ba3c7e}{
+\index{Mitglied@{Mitglied}!$Rechte@{\$Rechte}}
+\index{$Rechte@{\$Rechte}!Mitglied@{Mitglied}}
+\paragraph[\$Rechte]{\setlength{\rightskip}{0pt plus 5cm}Mitglied::\$Rechte}\hfill}
+\label{classMitglied_adadc54a72a46a089ddec43855ba3c7e}
+
+
+Rechte des Mitglieds (0 - Gast, 1 - \hyperlink{classMitglied}{Mitglied}, 2 - Administrator). 
+
+\hypertarget{classMitglied_157424daca1ecda5b6f6a3e0f24ecfce}{
+\index{Mitglied@{Mitglied}!$Vorname@{\$Vorname}}
+\index{$Vorname@{\$Vorname}!Mitglied@{Mitglied}}
+\paragraph[\$Vorname]{\setlength{\rightskip}{0pt plus 5cm}Mitglied::\$Vorname}\hfill}
+\label{classMitglied_157424daca1ecda5b6f6a3e0f24ecfce}
+
+
+Vorname des Mitglieds. 
+

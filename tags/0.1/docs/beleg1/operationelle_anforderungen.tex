@@ -1,0 +1,163 @@
+\chapter{Spezifikation der operationellen Anforderungen}
+\section{Operationelle Anforderungen an die Daten und Datenbasen}
+Für die Abschätzung des Speicherplatzbedarfes für Daten und Speicher wird von den Annahmen ausgegangen,
+dass für die Speicherung von in der Regel (bis auf wenige Ausnahmen, für die das gesondert vermerkt ist)\\
+         gZahl - 2Byte, rZahl - 4 Byte\\
+         Zeichenkette - 1Byte pro Zeichen (der maximalen Länge) erforderlich sind.
+
+\begin{longtable}{|l|p{6.0cm}|p{2cm}|}
+\hline
+Element & Struktur & Bytes\\
+\hline\hline
+\endhead
+
+Literatur & @Literatur\_Nr + Art + Titel + (Jahr) + (Verlag) + (ISBN) + (Beschreibung) + (Ort) + (Stichworte) & $4 + 16 + 40 + 2 + 40 + 20 + 250 + 40 + 100 = 512$ \\
+\hline
+Literatur\_Nr & gZahl *6stellig, 000001 $\leq$ Literatur\_Nr $\leq$ 999999*  & $4$\\
+\hline
+Art & ['' Buch'' | '' Artikel '' | '' Broschüre '' | '' Protokoll '' | '' Anleitung '' | '' Diplomarbeit '' | '' Dissertation '' | '' Techn. Bericht '' | '' Unveröffentlicht '' | '' Sonstiges ''] & $16$\\
+\hline
+Titel & Zeichenkette40 & $40$ \\
+\hline
+Jahr & gZahl & $2$\\
+\hline
+Verlag & Zeichenkette40 & $40$ \\
+\hline
+ISBN & Zeichenkette20 & $20$  \\
+\hline
+Beschreibung & Zeichenkette250 & $250$ \\
+\hline
+Ort & Zeichenkette40 & $40$ \\
+\hline
+Stichworte & Zeichenkette100 & $100$\\
+\hline\hline
+
+Autor & @Autor\_Nr + Autorname & $4 + 40 = 44  $\\
+\hline
+Autor\_Nr & gZahl *6stellig, 000001 $\leq$ Autor\_Nr $\leq$ 999999* & $4$ \\
+\hline
+Autorname & Zeichenkette40 & $40$\\
+\hline\hline
+
+Kommentar & @Kommentar\_Nr + Kommentartext + Literatur\_Nr + Mitglieds\_Nr & $4 + 400 + 4 + 4 = 412 $\\
+\hline
+Kommentar\_Nr & gZahl *6stellig, 000001 $\leq$ Kommentar\_Nr $\leq$ 999999* & $4$ \\
+\hline
+Kommentartext & Zeichenkette400 & $400$\\
+\hline\hline
+
+Mitglied  & @Mitglieds\_Nr  + Name + Vorname + Login + Passwort + Rechte + E-Mail & $4 + 20 + 20  + 12 + 40 + 13 + 350 = 459 $\\
+\hline
+Mitglieds\_Nr & gZahl *6stellig, 000001 $\leq$ Benutzer\_Nr $\leq$ 999999* & $4$ \\ 
+\hline
+Name & Zeichenkette20 & $20$\\
+\hline
+Vorname & Zeichenkette20 & $20$ \\
+\hline
+E-Mail & Zeichenkette350 & $350$ \\
+\hline
+Login & Zeichenkette12 & $12$\\
+\hline
+Passwort & Zeichenkette40 & $40$\\
+\hline
+Rechte & [``Benutzer'' $\mid $``Administrator``] & $13$ \\
+\hline\hline
+
+Mitgliedsdaten & Name + Vorname + Login + Passwort + Rechte + E-Mail& $20 + 20 + 12 + 40 + 13 + 350 = 455 $\\
+\hline
+Kommentardaten & Literatur\_Nr + Mitglieds\_Nr + Kommentartext & $4 + 4 + 4 = 12 $ \\
+\hline
+BibTeX-Datei & *Datei im Bibtexformat* & $1024$\\
+\hline
+Suchanfrage & [Suchbegriff | Titel + Autor] & $40+40=80$\\
+\hline
+Suchbegriff & Zeichenkette100 & $100 $ \\
+\hline
+Exportanfrage & Literatur\_Nr & $4 $ \\
+\hline\hline
+
+Bestätigung\_BibTeXImport & Literatur\_Nr + Zeichenkette ''Importieren vorgenommen`` & $4 + 23 = 27 $\\
+\hline
+Bestätigung\_Literaturanlegen & Literatur\_Nr + Zeichenkette ''Anlegen vorgenommen`` & $4 + 19 = 23 $\\
+\hline
+Bestätigung\_Literaturändern & Literatur\_Nr + Zeichenkette ''Änderung vorgenommen`` & $4 + 20 = 24$ \\
+\hline
+Bestätigung\_Literaturlöschen & Literatur\_Nr + Zeichenkette ''Löschen vorgenommen`` & $4 + 19 = 23 $\\
+\hline
+Bestätigung\_Kommentaranlegen & Kommentar\_Nr + Zeichenkette ''Anlegen vorgenommen`` & $4 + 19 = 23 $\\
+\hline
+Bestätigung\_Kommentarändern & Kommentar\_Nr + Zeichenkette ''Änderung vorgenommen`` & $4 + 20 = 23$\\
+\hline
+Bestätigung\_Kommentarlöschen & Kommentar\_Nr + Zeichenkette ''Löschen vorgenommen`` & $4 + 19 = 23$ \\
+\hline
+Bestätigung\_Mitgliedanlegen & Mitglieds\_Nr + Zeichenkette ''Anlegen vorgenommen`` & $4 + 19 = 23 $ \\
+\hline
+Bestätigung\_Mitgliedändern & Mitglieds\_Nr + Zeichenkette ''Änderung vorgenommen`` & $4 + 20 = 24$\\
+\hline
+Bestätigung\_Mitgliedlöschen & Mitglieds\_Nr + Zeichenkette ''Löschen vorgenommen`` & $4 + 19 = 23$\\
+\hline
+Mitgliederliste & \{Mitglieds\_Nr + Name + Vorname\} & $4 + 20 + 20 = 44 $\\
+\hline
+\end{longtable}
+
+
+\subsection{Speicher (Angaben zum Speicherbedarf in Byte)}
+\begin{tabular}[ht]{|l|l|l|l|l|}
+\hline
+Speicher & Struktur & Minimum & Mittel & Maximum \\
+\hline\hline
+Bibliothek & {Literatur} & $0*512$ & $50*512=25600$ & $100*512=51200$ \\
+\hline
+Kommentare & {Kommentar} & $0*412$ & $50*412=20600$ & $100*412=41200$ \\
+\hline
+Mitglieder & {Mitglied}  & $0*459$ & $50*459=22950$ & $100*459=45900$ \\
+\hline
+Autoren & {Autor} & $1*44$ & $2*44=88$ & $5*44=220$ \\ 
+\hline
+\end{tabular}
+
+\subsection{Weitere Datenflüsse}
+\begin{tabular}[ht]{|l|p{4cm}|p{2cm}|p{2cm}|p{2cm}|}
+\hline
+Datenfluss & Struktur & Minimum & Mittel & Maximum \\
+\hline\hline
+
+Autorennamen & \{Autorname\} & $1*40=0$ & $2*40=80$ & $5*40=200$\\
+\hline
+Literaturdaten & Art + Titel + Autorennamen + (Jahr) + (Verlag) + (ISBN) + (Beschreibung) + (Ort) + (Stichworte) & $24 + 40 + 1*40 + 2 + 40 + 20 + 250 + 40 + 100 = 556 $ & $24 + 40 + 2*40 + 2 + 40 + 20 + 250 + 40 + 100=596$ & $24 + 40 + 5*40 + 2 + 40 + 20 + 250 + 40 + 100 = 716 $  \\
+\hline
+LiteraturdatenID & Literatur\_Nr + Literaturdaten & $4 + 556 = 560 $ & $4 + 596 = 600$ & $4 + 716 = 720 $  \\
+\hline
+Suchtreffer & \{Literatur\_Nr + Titel + Autorennamen + Verlag + ISBN\} & $0*(4 + 40 + 1*40 + 40 + 20) = 0$ & $50*(4 + 40 + 2*40 + 40 + 20) = 9200$ & $100*(4 + 40 + 5*40 + 40 + 20) = 30400$\\
+\hline
+Letzte\_Literatur & \{Literatur\_Nr + Titel + Autorennamen + Verlag + ISBN\} & $0*(4 + 40 + 1*40 + 40 + 20) = 0$ & $50*(4 + 40 + 2*40 + 40 + 20)=9200$ & $100*(4 + 40 + 5*40 + 40 + 20)=30400$\\
+\hline
+BibTeX-Datei & \{Datei im Bibtexformat\} & $0*1024$ & $50*1024=51200$ & $100*1024=102400$ \\
+\hline
+Literatur\_Info & \{Literatur + Kommentare\} & $512 + 0*412=512$ & $512 + 100*412=41712$ & $512 + 200*412=82912$ \\
+\hline
+\end{tabular}
+
+\subsection{Abschätzungen}
+\begin{itemize}
+ \item \textbf{Gesamtsystem}: Als Nutzungszeit wird von 5 Jahren ausgegangen, wobei die maximale Nutzungszeit, 
+die an das System gestellt wird, 10 Jahre betr\"agt.
+ \item \textbf{Mitglieder}: Es wird erwartet, dass nicht mehr als 500 Mitglieder den Dienst in Anspruch nehmen werden. Im Durchschnitt wird
+ die Mitgliederzahl etwa 200 betragen.
+\item \textbf{Leistungen}: Bei einem Stundenaufkommen zwischen 20 und 30 Stunden pro Jahr, kann davon ausgegangen werden, dass jedes 
+Mitglied in etwa 53 Suchanfragen, 10 Literatureinstellung und 20 Kommentaren abgibt. Die Informationen bleiben erhalten, solange der Dienst existiert.  
+\item \textbf{Exportieren}: In einem Jahr werden ca. 100 bis 150 Exportanfragen pro Mitglied erwartet.
+\end{itemize}
+
+\subsection{Genauigkeit}
+Es werden nur Ganzzahlen im ganzen System verarbeitet. Es werden hierbei keine problematische Rechnungen vorgenommen.
+
+\section{Operationelle Anforderungen an die Datenströme}
+Umfangreiche Datenstr\"ome k\"onnen im System nur auftreten, wenn Suchanfragen gestellt, Letzte Literatur aufgerufen oder eine BibTex-Datei abgefragt wird. 
+Diese Datenstr\"ome bewegen sich im Bereich von maximal 1 Megabyte und im Durchschnitt 30 Kilobyte, sodass es selten
+zu gr\"o\"seren Datenstr\"omen kommt.
+
+
+\section{Operationelle Anforderungen an die Prozesse}
+Es wird von Antwortzeiten bis zu 2 Sekunden gerechnet. Da die meisten Prozesse auf dem Server verarbeitet werden und der Client diese nur Darstellen muss, 
+kann von 2 Sekunden ausgegangen werden. 

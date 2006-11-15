@@ -1,0 +1,269 @@
+\chapter{Spezifikation der funktionellen Anforderungen}
+\section{Produktbeschreibung}
+Das Literaturverwaltungssystem LiMan unterst"utzt Autoren bei
+ihrer Recherche durch ein intuitives Suchsystem. "Uber eine einfach
+gehaltene Oberfl"ache werden alle Nutzungs- und Administrationsvorg"ange
+abgewickelt. Durch das Websystem ist der Nutzer unabh"angig von Betriebssystem 
+und Position.
+\subsubsection*{Nutzungsumgebung}
+Das System wird auf einem Webserver im Intranet oder 
+Internet installiert, w"ahrend die Nutzer von ihren PCs mit
+einem Webbrowser darauf zugreifen.
+\subsubsection*{Nutzergruppe}
+Es gibt 3 Nutzerebenen. Unregistrierte Nutzer k"onnen suchen und recherchieren,
+Mitglieder d"urfen Literatur hinzuf"ugen und kommentieren, und Administratoren
+d"urfen außerdem noch Mitglieder verwalten.
+
+
+\section{Funktionelle Anforderungen}
+\subsection{Umgebungsmodell}
+
+\subsubsection{Ereignistabelle}
+N = Nutzer, M = registriertes Mitglied, A = Administrator \\
+M kann zusätzlich zu seinen, alle Ereignisse von N auslösen. A kann ebenso alle Ereignisse von M und N auslösen.
+
+\begin{longtable}{|c|p{9.0em}|p{10.5em}|l|}
+\hline
+Nr & Ereignis & Datenfluß im System & Antwort des Systems \\
+\hline\hline
+\endhead
+
+1. & N ruft neu hinzugefügte Literatur ab & - & Letzte\_Literatur \\\hline
+2. & N sucht Literatur & Suchanfrage & Suchtreffer \\\hline
+3. & N wählt Literatur & Literatur\_Nr & Literatur\_Info \\\hline
+4. & N exportiert Literatur & Exportanfrage &  BibTeX-Datei \\\hline
+5. & M legt Literatur an & Literaturdaten & Bestätigung\_Literaturanlegen \\\hline
+6. & M ändert Literatur & LiteraturdatenID & Bestätigung\_Literaturändern\\\hline
+7. & M löscht Literatur & Literatur\_Nr & Bestätigung\_Literaturlöschen \\\hline
+8. & M ändert Mitglied & Mitglied & Bestätigung\_Mitgliedändern \\\hline
+9. & M legt Kommentar an & Kommentardaten & Bestätigung\_Kommentaranlegen \\\hline
+10. & M ändert Kommentar & Kommentar & Bestätigung\_Kommentarändern \\\hline
+11. & M löscht Kommentar & Kommentar\_Nr & Bestätigung\_Kommentarlöschen \\\hline
+12.& M importiert BibTeX & BibTeX-Datei & Bestätigung\_BibTeXImport \\\hline
+13.& A legt Mitglied an & Mitgliedsdaten & Bestätigung\_Mitgliedanlegen \\\hline
+14.& A löscht Mitglied & Mitglieds\_Nr & Bestätigung\_Mitgliedlöschen \\\hline
+15.& A ruft Mitglieder ab & - & Mitgliederliste \\\hline
+\end{longtable}
+
+\newpage % Viele Bilder so skaliert, dass sie ordentlich auf A4-Seiten passen
+\subsubsection{Kontextdiagramm}
+
+%\includegraphics[scale=0.5]{kontextdiagramm}
+\includegraphics[scale=0.75]{kontextdiagramm}
+
+\subsection{Verhaltensmodell}
+\subsubsection{Grobes Verhaltensmodell (vergröbertes primäres Verhaltensmodell)}
+\includegraphics[scale=0.70]{grobes_verhaltensmodell}
+
+\subsubsection{Primäres Verhaltensmodell}
+\paragraph{Teilmodell BibTeX}
+\includegraphics[scale=1.0]{teilmodell_bibtex}
+
+\paragraph{Teilmodell Literaturinformation}
+\includegraphics[scale=1.0]{teilmodell_literaturinformation}
+
+\paragraph{Teilmodell Literaturverwaltung}
+\includegraphics[scale=0.93]{teilmodell_bibliotheksverwaltung}
+
+\paragraph{Teilmodell Kommentarverwaltung}
+\includegraphics[scale=0.88]{teilmodell_kommentarverwaltung}
+
+\paragraph{Teilmodell Mitgliederverwaltung}
+\includegraphics[scale=0.85]{teilmodell_mitgliederverwaltung}
+\newpage
+
+\subsubsection{Datenkatalog}
+\begin{longtable}{|l|p{8.5cm}|}
+\hline
+Element & Strukturbeschreibung \\
+\hline\hline
+\endhead
+
+\emph{Bibliothek} & \{Literatur\} \\
+\hline
+Literatur & @Literatur\_Nr + Art + Titel + (Jahr) + (Verlag) + (ISBN) + (Beschreibung) + (Ort) + (Stichworte) \\
+\hline
+Literatur\_Nr & gZahl *6stellig, 000001 $\leq$ Literatur\_Nr $\leq$ 999999* \\
+\hline
+Art & ['' Buch'' | '' Artikel '' | '' Broschüre '' | '' Protokoll '' | '' Anleitung '' | '' Diplomarbeit '' | '' Dissertation '' | '' Techn. Bericht '' | '' Unveröffentlicht '' | '' Sonstiges ''] \\
+\hline
+Titel & Zeichenkette40 \\
+\hline
+Jahr & gZahl \\
+\hline
+Verlag & Zeichenkette40 \\
+\hline
+ISBN & Zeichenkette20 \\
+\hline
+Beschreibung & Zeichenkette250 \\
+\hline
+Ort & Zeichenkette40 \\
+\hline
+Stichworte & Zeichenkette100 \\
+\hline\hline
+
+\emph{Autoren} & \{Autor\} \\
+\hline
+Autor & @Autor\_Nr + Autorname \\
+\hline
+Autor\_Nr & gZahl *6stellig, 000001 $\leq$ Autor\_Nr $\leq$ 999999* \\
+\hline
+Autorname & Zeichenkette40 \\
+\hline\hline
+
+\emph{Kommentare} & \{Kommentar\} \\
+\hline
+Kommentar & @Kommentar\_Nr + Kommentartext + Literatur\_Nr + Mitglieds\_Nr\\
+\hline
+Kommentar\_Nr & gZahl *6stellig, 000001 $\leq$ Kommentar\_Nr $\leq$ 999999* \\
+\hline
+Kommentartext & Zeichenkette400 \\
+\hline\hline
+
+\emph{Mitglieder} & \{Mitglied\} \\
+\hline
+Mitglied  & @Mitglieds\_Nr  + Name + Vorname + Login + Passwort + Rechte + E-Mail\\
+\hline
+Mitglieds\_Nr & gZahl *6stellig, 000001 $\leq$ Mitglieds\_Nr $\leq$ 999999* \\ 
+\hline
+Name & Zeichenkette20 \\
+\hline
+Vorname & Zeichenkette20 \\
+\hline
+E-Mail & Zeichenkette350 \\
+\hline
+Login & Zeichenkette12 \\
+\hline
+Passwort & Zeichenkette40 \\
+\hline
+Rechte & [``Benutzer'' $\mid $``Administrator``] \\
+\hline\hline
+
+Autorennamen & \{Autorname\} \\
+\hline
+Mitgliedsdaten & Name + Vorname + Login + Passwort + Rechte + E-Mail\\
+\hline
+Literaturdaten & Art + Titel + Autorennamen + (Jahr) + (Verlag) + (ISBN) + (Beschreibung) + (Ort) + (Stichworte) \\
+\hline
+LiteraturdatenID & Literatur\_Nr + Literaturdaten \\
+\hline
+Kommentardaten & Literatur\_Nr + Mitglieds\_Nr + Kommentartext \\
+\hline
+BibTeX-Datei & *Datei im Bibtexformat* \\
+\hline
+Suchanfrage & [Suchbegriff | Titel + Autor] \\
+\hline
+Suchbegriff & Zeichenkette100 \\
+\hline
+Exportanfrage & Literatur\_Nr \\
+\hline\hline
+
+Bestätigung\_BibTeXImport & Literatur\_Nr + Zeichenkette ''Importieren vorgenommen`` \\
+\hline
+Bestätigung\_Literaturanlegen & Literatur\_Nr + Zeichenkette ''Anlegen vorgenommen`` \\
+\hline
+Bestätigung\_Literaturändern & Literatur\_Nr + Zeichenkette ''Änderung vorgenommen`` \\
+\hline
+Bestätigung\_Literaturlöschen & Literatur\_Nr + Zeichenkette ''Löschen vorgenommen`` \\
+\hline
+Bestätigung\_Kommentaranlegen & Kommentar\_Nr + Zeichenkette ''Anlegen vorgenommen`` \\
+\hline
+Bestätigung\_Kommentarändern & Kommentar\_Nr + Zeichenkette ''Änderung vorgenommen`` \\
+\hline
+Bestätigung\_Kommentarlöschen & Kommentar\_Nr + Zeichenkette ''Löschen vorgenommen`` \\
+\hline
+Bestätigung\_Mitgliedanlegen & Mitglieds\_Nr + Zeichenkette ''Anlegen vorgenommen`` \\
+\hline
+Bestätigung\_Mitgliedändern & Mitglieds\_Nr + Zeichenkette ''Änderung vorgenommen`` \\
+\hline
+Bestätigung\_Mitgliedlöschen & Mitglieds\_Nr + Zeichenkette ''Löschen vorgenommen`` \\
+\hline
+Suchtreffer & \{Literatur\_Nr + Titel + Autorennamen + Verlag + ISBN\}\\
+\hline
+Letzte\_Literatur & \{Literatur\_Nr + Titel + Autorennamen + Verlag + ISBN\}\\
+\hline
+Mitgliederliste & \{Mitglieds\_Nr + Name + Vorname\}\\
+\hline
+\end{longtable}
+
+\subsubsection{Beziehungen zwischen Speichern (ERD)}
+\includegraphics[scale=0.36]{erd1}
+
+\subsubsection{Prozessspezifikation}
+\input{pspec_bibliotheksverwaltung}
+\input{pspec_bibtex}
+\input{pspec_kommentarverwaltung}
+\input{pspec_literaturinformation}
+\input{pspec_mitgliederverwaltung}
+
+\subsection{Definition der Nutzerschnittstelle}
+
+Durch das Websystem ist die Nutzerschnittstelle beschr"ankt auf die Darstellung im Browser. Dadurch kann die Darstellung
+leicht bei verschiedenen Browser und Betriebssystemen variieren. Die Eingabefelder und Kn"opfe werden im Stil der grafischen Oberfläche dargestellt, sodass der Benutzer stets seine gewohnte Umgebung vorfinden kann. Ebenso kann man mittels der Optionen
+des Browser Schriftgr"o"se und andere visuelle Einstellungen ver"andern. Das Grundlayout bleibt jedoch immer erhalten
+und richtet sich unter anderem auch nach der Gr"o"se des ge"offneten Browserfensters.\\
+\\
+Das Layout teilt sich in einen Navigations-/"Ubersichtsteil auf der linken Seite der unabh"angig von der Auswahl immer
+zu sehen ist. Hier findet sich die Navigation, die Suchmaske f"ur die Suchfunktion sowie Authentifikationsmaske zum Login.
+Auf der rechten, gr"o"seren Seite befindet sich der Inhalt der aktuell aufgerufenen Funktion.\\
+\\
+Die Benutzung beginnt gew"ohnlich auf der Literaturliste (Startseite), jede Seite kann aber "uber direkte
+Ansteuerung mittels der Adresszeile des Browser oder auch Bookmarks abgerufen werden.\\
+
+\subsubsection{Ein- und Ausgabegeräte}
+F"ur die Eingabe wird ein vernetzter PC mit Tastatur und Maus vorrausgesetzt.\\
+Die Ausgabe erfolgt stets "uber einen Farbmonitor.
+\newpage
+\subsubsection{Navigationsleiste}
+\begin{floatingfigure}[r]{0.4\textwidth}
+\centering
+\includegraphics[scale=0.6]{navigation.png} 
+\end{floatingfigure}
+
+Diese Leiste findet man unabh"angig vom Inhalt immer auf der linken Seite.
+Unter {\bf Navigation} findet man die Unterpunkte ``Literatur'' und ``Nutzer'', die zu den entsprechenden Listen f"uhren.\\
+\\
+{\bf Suchen} erlaubt die Eingabe eines Suchbegriffes, mit dem Knopf ``Suche'' wird der Vorgang gestartet. 
+Das Ergebnis findet sich dann im Inhaltsbereich auf der rechten Seite.\\
+\\
+Zum {\bf Einloggen} gibt man seinen Nutzerkennzeichen und Passwort ein. Ist man bereits eingeloggt, ist hier der Nutzerstatus
+und die M"oglichkeit zum Ausloggen zu finden.
+\subsubsection{Startseite, Literaturliste}
+\includegraphics[scale=0.6]{index.png}
+
+Hier ist die verf"ugbare Literatur aufgelistet. Durch Klicken der Titel gelangt man zur Detailansicht f"ur 
+das jeweilige Buch. Mit dem Knopf am Ende der Liste (und entsprechenden Rechten) kann man Literatur hinzuf"ugen.
+
+\subsubsection{Literaturdetails}
+\includegraphics[scale=0.6]{lit.png}
+
+Alle verf"ugbaren Information zum Buch werden hier aufgelistet. Hat man entsprechende Privilegien kann man auch
+Bearbeiten/l"oschen oder Kommentare hinzuf"ugen/l"oschen.
+
+\subsubsection{Literatur bearbeiten/hinzuf"ugen}
+\includegraphics[scale=0.6]{litmod.png}
+
+Hier kann Literatur bearbeitet oder hinzugef"ugt werden. Die Art der Literatur ist "uber eine Selectbox ausw"ahlbar.
+Mehrere Autoren werden durch Kommata getrennt.
+\newpage
+\subsubsection{Erweiterte Suche}
+\includegraphics[scale=0.6]{searchmore.png}
+
+Der Benutzer kann wahlweise "uber das Formular ``Volltextsuche'' analog zu der Suche in der Navigation suchen, oder die Suche
+in dem Formluar ``Autoren- und Titelsuche'' auf Titel und/oder Autor beschr"anken.
+\subsubsection{Suchergebnisse}
+\includegraphics[scale=0.6]{search.png}
+
+Das Ergebnis der Suche ist eine Literaturliste und wird entsprechend genauso bedient.
+
+\subsubsection{Nutzerliste}
+\includegraphics[scale=0.6]{user.png}
+
+Hier werden alle Nutzer des Systems angezeigt, je nach Privilegien k"onnen auch die eigenen Daten oder andere
+Daten modifiziert oder hinzugef"ugt werden.
+
+\subsubsection{Nutzer bearbeiten/hinzuf"ugen}
+\includegraphics[scale=0.6]{usermod.png}
+
+Hier werden nutzerspezifische Daten und das Passwort ge"andert. Die Rechtevergabe steht nur zur Auswahl wenn
+der angemeldete Nutzer selbst Administrator ist.

@@ -1,0 +1,153 @@
+html, body {
+	background-color: #f0f0f0;
+	color: black;
+	font: x-small sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+abbr, acronym {
+	border-bottom: 1px dotted black;
+	cursor: help;
+}
+
+h1 {
+	margin-left: 1em;
+}
+
+hr {
+	margin-top: 2em;
+	margin-bottom: 2em;
+}
+
+#installerror {
+	margin: 0;
+	padding: 3px;
+	border-bottom: 1px solid #000000;
+	background-color: #ffffdc;
+}
+
+#content h2 {
+	padding-bottom: 1em;
+}
+
+#sidebar {
+	float: left;
+	width: 11.5em;
+	padding: 0;
+	margin-left: .1em;
+	font-size: 125%;
+}
+
+#sidebar h2 {
+	font-size: 1em;	
+	margin: .2em .2em .2em .5em;
+}
+
+#navigation, #search, #loginbox {
+	background-color: white;
+	border: 1px solid #aaa;
+	color: black;
+	font-size: 0.9em;
+	margin-bottom: 1em;	
+	padding: 0 0.5em .3em 0em;
+	position: relative;
+	z-index: 3;
+}
+
+#navigation ul {
+	margin: 0 0 1em 0;
+	padding-left: 1em;
+	list-style: none;
+}
+
+#search input, #loginform #loginname, #loginform #passwort {
+	margin: 0 auto;
+	font-size: 1em;
+	width: 10.8em;
+	display: box;
+}
+
+#search form, #loginform {
+	text-align: center
+}
+
+#content {
+	background-color: white;
+	border: 1px solid #aaa;
+	font-size: 125%;
+	margin: 0em .1em 0em 12em;
+	padding: 1em;
+	position: relative;
+	min-height: 20em;
+}
+
+#content h2 {
+	margin: 0.1em;
+}
+
+.content {
+	margin-left: 1em;
+}
+
+#content form td {
+	width: 99%;
+}
+
+#content form th {
+	width: 20em;
+}
+
+#content .input_text,
+#content .input_file,
+#content .input_password,
+#content form textarea {
+	width: 99%;
+}
+
+#searchresult, #userlist {
+	
+	width: 99%;
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+.searchmore th label {
+	width:9em;
+}
+
+
+#searchresult td, #searchresult th,  #userlist th{
+	border: 1px solid black;
+	text-align: center;
+}
+#userlist td {
+	border: 1px solid black;
+	text-align: left;
+}
+
+#litdetails th {
+	text-align: left;
+	vertical-align: top;
+}
+
+#litkommentare .kommentar {
+	width: 99%;
+}
+
+#error_list, #error {
+	padding: 0.5em;
+	border: 2px solid red;
+	margin: 0 auto;
+	margin-bottom: 1em;
+	background-color: #ffeaea;
+}
+
+#error, #warning {
+	text-align: center;
+}
+
+.input_failure {
+	border-color: red;
+	background-color: red;
+	color: black;
+}

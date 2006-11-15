@@ -1,0 +1,83 @@
+\hypertarget{classLiteraturArt}{
+\subsection{Literatur\-Art Klassenreferenz}
+\label{classLiteraturArt}\index{LiteraturArt@{LiteraturArt}}
+}
+Verwaltet Literaturarten.  
+
+
+\subsubsection*{\"{O}ffentliche Methoden}
+\begin{CompactItemize}
+\item 
+\hyperlink{classLiteraturArt_b3312217430531ed7821a46a39c49af7}{Literatur\-Art} (\$text)
+\begin{CompactList}\small\item\em Importiert Bib\-Te\-X- bzw. interne Namen. \item\end{CompactList}\item 
+\hyperlink{classLiteraturArt_43f747a6c5d840a22ddcd7e46d27cba0}{Get\-Display\-Text} ()
+\begin{CompactList}\small\item\em Liefert Bezeichner für Datenbank/Benutzeroberfläche. \item\end{CompactList}\item 
+\hyperlink{classLiteraturArt_01e1a2acd95df1ae0bb22e57b70a63de}{Get\-Bibtex\-Text} ()
+\begin{CompactList}\small\item\em Liefert Bezeichner für Bib\-Te\-X. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsubsection{Ausf\"{u}hrliche Beschreibung}
+Verwaltet Literaturarten. 
+
+Verwaltet die aus der Datenbank oder Bib\-Te\-X-Datei erhaltenen Informationen zur Art einer \hyperlink{classLiteratur}{Literatur}. Enthaltene Informationen können wieder als Bib\-Te\-X- oder als der in Datenbank/Benutzeroberfläche verwendeten Namen zurückgegeben werden. \begin{Desc}
+\item[Vorbedingung:]-\end{Desc}
+\begin{Desc}
+\item[Autor:]Frank Wilhelm \end{Desc}
+\begin{Desc}
+\item[Änderungsstand:]30.05.2006 \end{Desc}
+
+
+
+
+\subsubsection{Beschreibung der Konstruktoren und Destruktoren}
+\hypertarget{classLiteraturArt_b3312217430531ed7821a46a39c49af7}{
+\index{LiteraturArt@{Literatur\-Art}!LiteraturArt@{LiteraturArt}}
+\index{LiteraturArt@{LiteraturArt}!LiteraturArt@{Literatur\-Art}}
+\paragraph[LiteraturArt]{\setlength{\rightskip}{0pt plus 5cm}Literatur\-Art::Literatur\-Art (\$ {\em text})}\hfill}
+\label{classLiteraturArt_b3312217430531ed7821a46a39c49af7}
+
+
+Importiert Bib\-Te\-X- bzw. interne Namen. 
+
+Importiert die in Bib\-Te\-X-Dateien oder in der Datenbank/Benutzeroberflächen verwendeten Bezeichner für Literaturarten und weist sie einen internen Wert zu. \begin{Desc}
+\item[Vorbedingung:]- \end{Desc}
+\begin{Desc}
+\item[Parameter:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em \$text}]Bib\-Te\-X oder interner Bezeichner einer Literaturart \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Bemerkungen:]Ist der Bezeichner unbekannt, erhält die \hyperlink{classLiteratur}{Literatur} die Art \char`\"{}Sonstiges\char`\"{} \end{Desc}
+
+
+\subsubsection{Dokumentation der Elementfunktionen}
+\hypertarget{classLiteraturArt_01e1a2acd95df1ae0bb22e57b70a63de}{
+\index{LiteraturArt@{Literatur\-Art}!GetBibtexText@{GetBibtexText}}
+\index{GetBibtexText@{GetBibtexText}!LiteraturArt@{Literatur\-Art}}
+\paragraph[GetBibtexText]{\setlength{\rightskip}{0pt plus 5cm}Literatur\-Art::Get\-Bibtex\-Text ()}\hfill}
+\label{classLiteraturArt_01e1a2acd95df1ae0bb22e57b70a63de}
+
+
+Liefert Bezeichner für Bib\-Te\-X. 
+
+Je nach der bei der Erstellung des Objekts gewählten Art, wird der dazugehörige Bezeichner für die Literaturart in Bib\-Te\-X herausgesucht. \begin{Desc}
+\item[Vorbedingung:]- \end{Desc}
+\begin{Desc}
+\item[R\"{u}ckgabe:]String mit Bezeichner der Literaturart in Bib\-Te\-X-Darstellung \end{Desc}
+\begin{Desc}
+\item[Bemerkungen:]Sollte der Wert der \hyperlink{classLiteratur}{Literatur} nicht bekannt sein wird \char`\"{}Sonstiges\char`\"{} zurückgegeben \end{Desc}
+\hypertarget{classLiteraturArt_43f747a6c5d840a22ddcd7e46d27cba0}{
+\index{LiteraturArt@{Literatur\-Art}!GetDisplayText@{GetDisplayText}}
+\index{GetDisplayText@{GetDisplayText}!LiteraturArt@{Literatur\-Art}}
+\paragraph[GetDisplayText]{\setlength{\rightskip}{0pt plus 5cm}Literatur\-Art::Get\-Display\-Text ()}\hfill}
+\label{classLiteraturArt_43f747a6c5d840a22ddcd7e46d27cba0}
+
+
+Liefert Bezeichner für Datenbank/Benutzeroberfläche. 
+
+Je nach der bei der Erstellung des Objekts gewählten Art, wird der dazugehörige Bezeichner für die Literaturart in der Datenbank/Benutzeroberfläche herausgesucht. \begin{Desc}
+\item[Vorbedingung:]- \end{Desc}
+\begin{Desc}
+\item[R\"{u}ckgabe:]String mit Bezeichner der Literaturart in Datenbank/Benutzeroberflächendarstellung \end{Desc}
+\begin{Desc}
+\item[Bemerkungen:]Sollte der Wert der \hyperlink{classLiteratur}{Literatur} nicht bekannt sein wird \char`\"{}Sonstiges\char`\"{} zurückgegeben \end{Desc}

@@ -1,0 +1,133 @@
+\chapter{Systemhandbuch}
+\section{Installationsanleitung}
+Das System ist frei und kostenlos "uber das Internet von \pdfurl{http://liman.berlios.de/} 
+bzw. direkt der 
+Downloadseite \pdfurl{http://developer.berlios.de/project/showfiles.php?group\_id=6441} 
+zu beziehen.
+
+Je nach verf"ugbarem Entpackprogramm sollte man die neuste Version im .tar.gz, 
+.tar.bz2 (zu entpacken mit z.b. GNU tar, \pdfurl{http://www.gnu.org/software/tar/}) oder .zip-Format 
+(zu entpacken mit z. B. 7-Zip, \pdfurl{http://www.7-zip.org/}) herunterladen und entpacken.
+
+Nun muss der Inhalt des Archivs auf das Server in einen vom Webserver verwalteten Ordner 
+abgelegt werden, z. B. in (oder unterhalb) von /var/www auf einem Standard-Debian System.
+
+Befindet man sich nicht direkt auf dem Webserver, k"onnen die Dateien beispielsweise mit 
+einem FTP-Programm oder einem SCP-Programm hochgeladen werden, je nach dem was der Server 
+unterst"utzt.
+
+Die Datenbankverbindung und der erste Administrator werden "uber das Installationskript 
+festgelegt. Dazu ist es empfohlen, dass der Webserver Schreibzugriff auf include/config.php
+hat. Es sollte also ggf. noch schreibbar gesetzt werden. Richten sie nun Ihren Webbrowser 
+(je nach Installationsort) auf http://ihr.server.de/liman/install.php und tragen sie die 
+Verbindungsdaten zum MySQL-Server ein.
+Prefix beschreibt die ersten Zeichen der Tabellennamen und sollte im Allgemeinen so belassen
+werden.
+
+Mit dem Best"atigen des Formulares werden automatisch die ben"otigten Tabellen in der Datenbank 
+und der Administrator angelegt. Sie k"onnen ihre Einstellungen auch sp"ater noch in der Datei
+include/config.php anpassen.
+
+"Uberpr"ufen sie Ihre Einstellungen mit einem Login auf http://ihr.server.de/liman/ .
+Wenn alles korrekt installiert wurde, sollten abschlie"send noch die Datei install.php 
+aus dem Webserver-Verzeichnis gel"oscht werden, damit niemand die Datenbankverbindungsdaten neu 
+setzen kann.
+
+\section{Programm-Filesystem}
+
+
+
+Nachdem sie das System erfolgreich eingerichtet haben, sind folgende Datein auf Ihrem Webverzeichnis:
+
+\begin{longtable}{|l|p{6cm}|r|}
+\hline
+{\bf Bezeichnung der Datei} & {\bf Bedeutung} & {\bf Anzahl Bytes}\\
+\hline\hline
+\endhead
+
+index.php & Startseite mit Letzte Literatur & 1364\\
+\hline
+login.php & login/logout mit Begr"u"sungstext & 1384\\
+\hline
+user.php & Nutzerdetails & 1983\\
+\hline
+usermod.php & Nutzer l"oschen/"andern/hinzuf"ugen & 9534\\
+\hline
+userlist.php & Nutzerdaten anzeigen & 2251\\
+\hline
+search.php & Suche (Ergebnisse) & 2245\\
+\hline
+searchmore.php & Suche (Formular) & 1257\\
+\hline
+litmod.php & Literatur l"oschen / "andern / hinzuf"ugen & 11701\\
+\hline
+commentmod.php & Kommentar l"oschen / "andern / hinzuf"ugen & 4009\\
+\hline
+lit.php & Literaturdetails & 4771\\
+\hline
+bibtex.php & BibTeX Importieren & 2856\\
+\hline
+design/liman.css & Stylesheet für LiMan & 2097\\
+\hline
+include/config.php & Datenbankkonfiguration & 362\\
+\hline
+include/global.php & Einrichtung Prog. - Umgebung & 1375\\
+\hline
+include/literatur.php & Stellt Funktionen f"ur Literatur in Bibliothek zur Verf"ugung & 13372\\
+\hline
+include/mitglied.php & Stellt Funktionen f"ur Mitglieder bereit & 9370\\
+\hline
+include/suche.php & Durchsucht die Tabelle Bibliothek und Autoren "uber Volltextsuche & 8463\\
+\hline
+include/footer.php & Ende jeder HTML-Datei & 36 \\
+\hline
+include/header.php & Kopf jeder HTML-Datei & 3236 \\
+\hline
+include/literaturart.php & Speicherung aus der Datenbank oder BibTeX-Datei erhaltenen Art von Informationen & 3959\\
+\hline
+include/sqldb.php & Datenbankzugriffsauswahl & 481 \\
+\hline
+include/autor.php & Stellt Funktionen f"ur Autoren bereit & 5495\\
+\hline
+include/formhelper.php & Hilfsfunktionen f"ur Formulare & 2278\\
+\hline
+include/kommentar.php & Stellt Funktionen f"ur Kommentare bereit & 9342\\
+\hline   
+include/login.php &  Verwaltet die Session des Users und der damit entstehenden Rechte & 5414\\
+\hline
+include/sqldb\_mysql.php & Startet eine Verbindung zum Datenbanksystem her und w"ahlt eine Datenbank & 7212\\
+\hline
+\end{longtable}
+
+
+\section{Administrationsanleitung}
+
+
+Es wird empfohlen, regelm"a"sig eine Sicherung der Datenbank anzulegen. Das System bietet diese Funktion nicht direkt an,
+sondern verweist auf das Programm phpMyAdmin (\pdfurl{http://www.phpmyadmin.net/}). Zust"andig f"ur die Sicherung der Datenbank ist der Link ``Exportieren'' in der Datenbankansicht.
+
+
+Ihr Datenbank besteht aus mehreren Tabellen, bevor diese Exportiert werden k"onnen, m"ussen sie ausw"ahlen, welche der Tabellen Sie Sichern wollen. 
+Daneben stellen Sie ein, ob nur die Struktur 
+(also der Aufbau) der jeweiligen Tabelle, die Struktur zusammen mit den gespeicherten Datens"atzen oder nur die Datens"atze gesichert werden sollen.
+
+Weiter unten k"onnen Sie die Funktion Drop Table ausw"ahlen, welche bewirkt, dass die jeweilige Tabelle nach dem Kopieren sofort gel"oscht wird. Des weiteren 
+kann man einstellen, ob vollst"andige oder erweiterte Inserts ausgef"uhrt werden sollen.  
+
+Wenn Sie Senden ausw"ahlen, wird die Ausgabe als Datei gespeichert, was f"ur den Zweck der Datensicherung am Sinn vollsten ist. Ansonsten wird die 
+Ausgabe auf dem Bildschirm wiedergegeben. 
+Falls sie "ofters Sicherungen anlegen, ist eine weitere Option ZIP / GZIP Komprimieren sehr praktisch. Wenn Sie dies ausw"ahlen wird die Datei mit ZIP komprimiert.
+
+Eine weitere Möglichkeit, besonders für die automatisierte Sicherung der Datenbank, bietet das Programm mysqldump, welches ein Teil der MySQL-Anwendungen ist. Eine genau Erklärung über die Funktionsweise von mysqldump ist in den Handbüchern zu MySQL enthalten (\pdfurl{http://www.mysql.com/doc/de/mysqldump.html}).
+
+
+Eine Fehlermeldung k"onnte zum Beispiel ''Could not connect to SQL server. Please inform Webmaster'' sein. Hier gelingt es dem System nicht, sich mit 
+der Datenbank zu verbinden. Als erstes sollten Sie sicher stellen, ob Ihr MySQL-Server gestartet ist. Ein weiterer Grund f"ur diese Fehlermeldung k"onnte 
+eine unaktuelle include/config.php sein. In dieser Datei werden alle Einstellungen gespeichert, unter anderem auch f"ur den Datenbankzugriff wichtige Daten. Es 
+kann vorkommen, dass hier zum Beispiel ein veralteter Benutzername oder Passwort enthalten ist.
+
+Was sollte man tun, wenn die Fehlermeldung, dass Daten nicht geschrieben/geändert oder gelöscht werden k"onnen, auftritt? Schauen Sie nach, ob die Rechte 
+der einzelnen Tabellen der Datenbank richtig gesetzt sind. Am besten mit dem weiter vorn schon erw"ahnten Programm ''phpMyAdmin''.
+
+Des weiteren kann auftreten, dass ein User nach dem Einloggen direkt wieder aus geloggt wird. Der Grund f"ur diesen Fehler ist, dass Ihr Webserver keine 
+Schreibrechte auf den Ordner hat, in der PHP die Sessions speichert.

@@ -1,0 +1,34 @@
+\chapter{Spezifikation wichtiger Qualitätsanforderungen}
+\section{Benutzerbarkeit}
+Im wesentlichen existieren drei Arten von Benutzern:
+
+\begin{enumerate}
+ \item \textbf{Administrator:}\\
+Er ist im wesentlichen f\"ur die Mitgliedsverwaltung zust\"andig, also das Anlegen, \"Andern und L\"oschen von Mitgliedseintr\"agen. \\
+Des Weiteren k\"ummert er sich mit Hilfe der quelloffenen Basisprogramme um Datensicherungen. Eine gewisse Grundkenntnis im Umgang mit
+besagten Programmen ist also vorrausgesetzt.
+
+ \item \textbf{Mitglied:}\\
+Nachdem man in der Literaturverwaltung registriert ist, wird man zum Mitglied und erh"alt neue Nutzerprivilegien. \\
+So kann man neue Literatur hinzuf\"ugen, ab\"andern und l\"oschen oder Kommentare \"uber Literatureintr\"age verfassen.
+
+ \item \textbf{Nutzer:}\\
+Wenn man sich nicht registriert, ist man in der Gruppe der Nutzer. Diese Gruppe hat keine M\"oglichkeit auf den Datenbestand der Literaturverwaltung einzuwirken.\\
+Die Rechte sind auf die Recherche beschr\"ankt, der Nutzer kann also B\"ucher suchen, ausw\"ahlen und sich die Beschreibungen und Kommentare ansehen.
+\end{enumerate}
+
+\section{Zuverlässigkeit}
+Eine einfache Bedienoberfl\"ache und klar formulierte Fehlermeldungen erm\"oglichen dem Nutzer bei Fehleingaben schnell auf die entsprechende Situation zu reagieren.\\
+Daten, die gespeichert werden sollen, werden erst nach Best\"atigung in den Bestand \"ubernommen, sollte es vor der Best\"atigung zu einem Absturz kommen, muss das Mitglied die Daten erneut eingeben. \\
+Sollte es zur unbeabsichtigten L\"oschung oder Besch\"adigung von Daten kommen, hat der Administrator au\ss erhalb des zu entwicklenden Systems M\"oglichkeiten mit Hilfe des verwendeten Datenbanksystems diese zu retten.
+
+\section{Integrität}
+Auch wenn aktiv auf den Datenbestand eingewirkt werden kann, so ist dies jedoch ausschlie\ss lich registrierten Mitgliedern m\"oglich solche \"Anderungen vorzunehmen.
+Diese \"Anderungen k\"onnen auch vom Administrator bereinigt werden.\\
+Sollte es wiederholt zu sch\"adigenden Eingriffen seitens eines Mitglieds kommen, so ist es dem Adminstrator möglich das betreffende Mitgliedskonto samt aller Mitgliedsdaten zu l\"oschen.
+
+\section{Flexibilität}
+Bereits im Datenbankentwurf wurde auf sp\"atere Modifikationen des Projekts seitens des Kunden R\"ucksicht genommen. Es wurden Schnittstellen zum Datenbestand implementiert die sp\"atere \"Anderungen wesentlich erleichtern. \\
+
+\section{Portabilität}
+Aufgrund der frei verfügbaren und verbreiteten Software, die zum Betrieb der Software benötigt werden, kann die Software auf einer großen Reihe von Hard- und Softwarekombinationen genutzt werden. Eine Benutzung anderer Basissoftware ist nicht direkt möglich.

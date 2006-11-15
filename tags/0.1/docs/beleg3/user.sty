@@ -1,0 +1,44 @@
+\RequirePackage{array}
+\RequirePackage{rotating}
+
+% Nummer auch vor subsubsection anzeigen
+\setcounter{secnumdepth}{3}
+
+% Zeilenumbruch nach paragraph
+\makeatletter
+\renewcommand{\paragraph}{\@startsection{paragraph}{4}{\z@} 
+               {3.25ex \@plus1ex \@minus.2ex} %
+               {1.5ex \@plus .2ex} %
+               {\setlength{\parfillskip}{\z@ \@plus 1fil}%
+               \raggedsection\normalfont\sectfont\nobreak\size@paragraph\nobreak}}
+\makeatother 
+
+% Hilfsfunktion für Erkennenung der Erzeugung von PDF
+\newif\ifpdf 
+\ifx\pdfoutput\undefined
+  \pdffalse
+\else
+  \ifx\pdfoutput\relax
+    \pdffalse
+  \else
+    \ifnum\pdfoutput>0
+      \pdftrue
+    \else
+      \pdffalse
+    \fi
+  \fi
+\fi
+
+% Rotierte Spaltenköpfe
+\newcolumntype{R}[1]{%
+  >{\begin{turn}{90}\begin{minipage}{#1}\footnotesize\raggedright\hspace{0pt}}l%
+  <{\end{minipage}\end{turn}}%
+}
+
+\newcommand{\pdfurl}[1]{
+	\ifpdf
+		\url{#1}
+	\else
+		#1
+	\fi
+}

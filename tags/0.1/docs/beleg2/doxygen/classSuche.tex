@@ -1,0 +1,79 @@
+\hypertarget{classSuche}{
+\subsection{Suche Klassenreferenz}
+\label{classSuche}\index{Suche@{Suche}}
+}
+\hyperlink{classSuche}{Suche} Literaturdaten.  
+
+
+\subsubsection*{\"{O}ffentliche Methoden}
+\begin{CompactItemize}
+\item 
+\hyperlink{classSuche_277cd59d3689d6f0875d114be0024935}{Suche} (\$suchbegriff=\char`\"{}\char`\"{}, \$autor=\char`\"{}\char`\"{})
+\begin{CompactList}\small\item\em Sucht \hyperlink{classLiteratur}{Literatur}. \item\end{CompactList}\end{CompactItemize}
+\subsubsection*{\"{O}ffentliche Attribute}
+\begin{CompactItemize}
+\item 
+\hyperlink{classSuche_0ee0e1ffb3f79392915fd39934d7140d}{\$Treffer}
+\begin{CompactList}\small\item\em gefundene Treffer \item\end{CompactList}\end{CompactItemize}
+
+
+\subsubsection{Ausf\"{u}hrliche Beschreibung}
+\hyperlink{classSuche}{Suche} Literaturdaten. 
+
+Durchsucht die Tabelle Bibliothek und Autoren über Volltextsuche, nach \hyperlink{classAutor}{Autor} und Titel oder nach den 10 zuletzt hinzugefügten Literatureinträgen und speichert sie in \$Treffer zwischen. \begin{Desc}
+\item[Vorbedingung:]Datenbankverbindung muss bestehen \end{Desc}
+\begin{Desc}
+\item[Importiert:]\begin{itemize}
+\item \hyperlink{classAutor_79cd90084cab240919a5daecf39156a7}{Autor::Get\-All}\item \hyperlink{classSQLDB_fc6ffa8df50f68f07d9f5e3385b96d7a}{SQLDB::Query}\item \hyperlink{classSQLDB_a55c00ce1de0e50e0a58cae61892ba35}{SQLDB::Fetch}\end{itemize}
+\end{Desc}
+\begin{Desc}
+\item[Autor:]Sven Eckelmann \end{Desc}
+\begin{Desc}
+\item[Änderungsstand:]30.05.2006 \end{Desc}
+
+
+
+
+\subsubsection{Beschreibung der Konstruktoren und Destruktoren}
+\hypertarget{classSuche_277cd59d3689d6f0875d114be0024935}{
+\index{Suche@{Suche}!Suche@{Suche}}
+\index{Suche@{Suche}!Suche@{Suche}}
+\paragraph[Suche]{\setlength{\rightskip}{0pt plus 5cm}Suche::Suche (\$ {\em suchbegriff} = {\tt \char`\"{}\char`\"{}}, \$ {\em autor} = {\tt \char`\"{}\char`\"{}})}\hfill}
+\label{classSuche_277cd59d3689d6f0875d114be0024935}
+
+
+Sucht \hyperlink{classLiteratur}{Literatur}. 
+
+Wenn keine Parameter übergeben werden:\begin{itemize}
+\item Sucht in Tabelle Bibliothek nach den 10 zuletzt hinzugefügten Literatureinträgen und speichert Nr, Titel, \hyperlink{classAutor}{Autor}, Verlag und ISBN als Objekt im Feld \$Treffer. Sollte ein Fehler auftreten oder bisher keine Einträge vorhanden sein, dann wird \$Treffer ein Feld der Länge 0.\end{itemize}
+
+
+Wenn ein \$suchbegriff übergeben wird:\begin{itemize}
+\item Sucht in Tabelle \hyperlink{classLiteratur}{Literatur} und Autoren nach dem Auftreten des übergebenen Textes in Literatureinträgen und speichert Nr, Titel, \hyperlink{classAutor}{Autor}, Verlag und ISBN als Objekt im Feld \$Treffer. Sollte ein Fehler auftreten oder keine passenden Einträge vorhanden sein, dann wird \$Treffer ein Feld der Länge 0.\end{itemize}
+
+
+Wenn \$suchbegriff und \$autor übergeben werden:\begin{itemize}
+\item Sucht in Tabelle Bibliothek und Autoren nach dem Auftreten von \$autor in \hyperlink{classAutor}{Autor} und \$suchbegriff im Titel des Literatureintrags und speichert Nr, Titel, \hyperlink{classAutor}{Autor}, Verlag als Objekt im Feld \$Treffer. Sollte ein Fehler auftreten und ISBN der Treffer oder keine passenden Einträge vorhanden sein, dann wird \$Treffer ein Feld der Länge 0.\item Wird eine kommagetrennte Liste von Autoren als \$autor übergeben, muss in Treffern nur einer der genannten Autoren auftreten.\end{itemize}
+
+
+\begin{Desc}
+\item[Vorbedingung:]Datenbankverbindung muss bestehen. \end{Desc}
+\begin{Desc}
+\item[Parameter:]
+\begin{description}
+\item[\mbox{$\leftarrow$} {\em \$autor}]String mit Autorname \item[\mbox{$\leftarrow$} {\em \$suchbegriff}]String mit Literaturtitel bzw. wenn einzeln übergeben Suchtext für Volltextsuche \end{description}
+\end{Desc}
+
+
+\subsubsection{Dokumentation der Datenelemente}
+\hypertarget{classSuche_0ee0e1ffb3f79392915fd39934d7140d}{
+\index{Suche@{Suche}!$Treffer@{\$Treffer}}
+\index{$Treffer@{\$Treffer}!Suche@{Suche}}
+\paragraph[\$Treffer]{\setlength{\rightskip}{0pt plus 5cm}Suche::\$Treffer}\hfill}
+\label{classSuche_0ee0e1ffb3f79392915fd39934d7140d}
+
+
+gefundene Treffer 
+
+Feld aus gefundenen Trefferobjekten mit Attributen\begin{itemize}
+\item Nr\item Titel\item \hyperlink{classAutor}{Autor}\item Verlag\item ISBN \end{itemize}

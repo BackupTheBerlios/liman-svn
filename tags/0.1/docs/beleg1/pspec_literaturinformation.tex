@@ -1,0 +1,74 @@
+% Literatur_anzeigen
+\paragraph{Literatur\_anzeigen}
+\begin{tabular}[t]{p{9.5cm}ll}
+\textbf{Prozess}: Literatur\_anzeigen  	&\textbf{Datum}:      &21.04.2006\\
+					&\textbf{Bearbeiter}: &S. Eckelmann\\
+\end{tabular}
+
+\hrulefill\\
+\textbf{Voraussetzung}: -
+\begin{verbatim}
+ BEGIN
+   Finde in Bibliothek Literatur
+         mit Literatur.Literatur_Nr = Literatur_Nr
+
+   IF gefunden THEN
+   BEGIN
+     Finde in Kommentare Kommentar
+           mit Kommentar.Literatur_Nr =  Literatur_Nr
+
+     IF gefunden THEN
+       Setze Literatur_Info := gefundene_Literatur
+                             + gefundene_Kommentare
+     ELSE
+       Setze Literatur_Info := gefundene_Literatur
+   END
+   ELSE
+     Setze Fehler 401
+ END
+\end{verbatim}
+\hrulefill
+
+% Literatur_Neuigkeiten_anzeigen
+\paragraph{Literatur\_Neuigkeiten\_anzeigen}
+\begin{tabular}[t]{p{9.5cm}ll}
+\textbf{Prozess}: Literatur\_Neuigkeiten\_anzeigen  	&\textbf{Datum}:      &21.04.2006\\
+					&\textbf{Bearbeiter}: &S. Eckelmann\\
+\end{tabular}
+
+\hrulefill\\
+\textbf{Voraussetzung}: -
+\begin{verbatim}
+ BEGIN
+   Finde 10 Einträge mit den höchsten Literatur_Nr in Bibliothek
+
+   IF erfolgreich THEN
+      Setze Letzte_Literatur := gefundene_Literatur
+   ELSE
+      Setze Fehler 402
+ END
+\end{verbatim}
+\hrulefill
+
+
+% Literatur_suchen
+\paragraph{Literatur\_suchen}
+\begin{tabular}[t]{p{9.5cm}ll}
+\textbf{Prozess}: Literatur\_suchen  	&\textbf{Datum}:      &21.04.2006\\
+					&\textbf{Bearbeiter}: &S. Eckelmann\\
+\end{tabular}
+
+\hrulefill\\
+\textbf{Voraussetzung}: -
+\begin{verbatim}
+ BEGIN
+   Finde in Bibliothek Literatur
+         die Suchanfrage erfüllt
+   
+   IF gefunden THEN
+     Setz Suchtreffer := gefundene_Literatur
+   ELSE
+     Setze Fehler 403
+ END
+\end{verbatim}
+\hrulefill

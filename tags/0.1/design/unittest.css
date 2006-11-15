@@ -1,0 +1,20 @@
+#testresults {
+	width: 99%;
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+#testresults td {
+	width: 49%;
+	border: 1px solid black;
+	text-align: center;
+}
+
+.uniterror {
+	color: red;
+}
+
+.unitcorrect {
+	color: green;
+	font-weight: bold;
+}

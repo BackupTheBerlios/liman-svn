@@ -1,0 +1,82 @@
+% Kommentar_anlegen
+\paragraph{Kommentar\_anlegen}
+\begin{tabular}[t]{p{9.5cm}ll}
+\textbf{Prozess}: Kommentar\_anlegen  	&\textbf{Datum}:      &21.04.2006\\
+					&\textbf{Bearbeiter}: &S. Eckelmann\\
+\end{tabular}
+
+\hrulefill\\
+\textbf{Voraussetzung}: Benutzer ist angemeldet. Kommentardaten.Mitglieds\_Nr ist die Nummer des aktuell angemeldeten Nutzers. Kommentare ist nicht voll.
+\begin{verbatim}
+  BEGIN
+   Finde in Bibliothek Literatur
+         mit Literatur.Literatur_Nr = Kommentardaten.Literatur_Nr
+ 
+   IF gefunden THEN
+   BEGIN
+     Finde in Kommentare Kommentar
+           mit Kommentar.Mitglieds_Nr = Kommentardaten.Mitglieds_Nr
+           und Kommentar.Literatur_Nr = Kommentardaten.Literatur_Nr
+
+     IF gefunden THEN
+       Setze Fehler 301
+     ELSE
+     BEGIN
+       Lege in Kommentare Kommentar mit Kommentardaten an
+       Setze Bestätigung_Kommentaranlegen
+     END
+   END
+   ELSE
+       Setze Fehler 302
+ END
+\end{verbatim}
+\hrulefill
+
+
+
+% Kommentar_ändern
+\paragraph{Kommentar\_ändern}
+\begin{tabular}[t]{p{9.5cm}ll}
+\textbf{Prozess}: Kommentar\_ändern  	&\textbf{Datum}:      &21.04.2006\\
+					&\textbf{Bearbeiter}: &S. Eckelmann\\
+\end{tabular}
+
+\hrulefill\\
+\textbf{Voraussetzung}: Benutzer ist angemeldet. Kommentardaten.Mitglieds\_Nr ist die Nummer des aktuell angemeldeten Nutzers (außer er ist Administrator)
+\begin{verbatim}
+ BEGIN
+   Setze in Kommentare Kommentar_Eintrag
+         mit Kommentar_Eintrag.Kommentar_Nr = Kommentar.Kommentar_Nr
+         auf Kommentar;
+  
+   IF erfolgreich THEN
+     Setze Bestätigung_Kommentarändern
+   ELSE
+     Setze Fehler 303
+ END
+\end{verbatim}
+\hrulefill
+
+
+
+% Kommentar_löschen
+\paragraph{Kommentar\_löschen}
+\begin{tabular}[t]{p{9.5cm}ll}
+\textbf{Prozess}: Kommentar\_löschen  	&\textbf{Datum}:      &21.04.2006\\
+					&\textbf{Bearbeiter}: &S. Eckelmann\\
+\end{tabular}
+
+\hrulefill\\
+\textbf{Voraussetzung}: Benutzer ist angemeldet. Kommentardaten.Mitglieds\_Nr ist die Nummer des aktuell angemeldeten Nutzers (außer er ist Administrator)
+\begin{verbatim}
+ BEGIN
+   Lösche in Kommentare Kommentar mit Kommenar.Kommentar_Nr = 
+                                      Kommentar_Nr;
+   
+   IF erfolgreich THEN
+     Setze Bestätigung_Kommentarlöschen
+   ELSE
+     Setze Fehler 304
+ END
+\end{verbatim}
+\hrulefill
